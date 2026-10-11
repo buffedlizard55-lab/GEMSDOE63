@@ -244,3 +244,26 @@ def test_overlap_fraction_measures_within_3px():
 def test_gate_thresholds_are_the_brief_values():
     assert RANK_CORR_GATE == 0.90
     assert OVERLAP_GATE == 0.70
+
+
+def test_footprint_falls_back_and_says_so(monkeypatch, tmp_path):
+    """A clean clone has no 400 MB feature stack; the fallback must be loud, not silent.
+
+    Regression test for the merge: footprint() read the feature stack unconditionally,
+    so two validator tests could not run from a fresh checkout of main.
+    """
+    from gems63_rs import raster_io
+
+    monkeypatch.setattr(raster_io, "FEATURES", tmp_path / "absent.tif")
+    fp = raster_io.footprint()
+    assert raster_io.FOOTPRINT_SOURCE == "labels-fallback"
+    assert fp.dtype == bool and fp.ndim == 2
+    # the fallback must still cover the catalogue, or every emission would be NaN there
+    assert (raster_io.catalogue() & ~fp).sum() == 0
+
+    monkeypatch.undo()
+    fp2 = raster_io.footprint()
+    if raster_io.FEATURES.exists():
+        assert raster_io.FOOTPRINT_SOURCE == "features"
+        # measured on this data: the two masks differ by 4,601 px of 5.17 M (0.09%)
+        assert int((fp ^ fp2).sum()) < 0.01 * int(fp2.sum())
