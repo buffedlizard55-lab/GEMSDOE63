@@ -1,0 +1,17 @@
+[unique] scanning 730 registry rasters ...
+[unique] 50/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 100/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 150/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 200/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 250/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 300/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 350/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 400/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 450/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 500/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 550/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 600/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 650/730 done (worst rho 0.340, worst overlap 1.000)
+[unique] 700/730 done (worst rho 0.340, worst overlap 1.000)
+[evidence] /home/user/GEMSDOE63/evidence/e3_uniqueness.json
+[unique] literal unique=False worst_rho=0.3400 worst_overlap=1.0000 errors=1 | dotlike gate pass=False (worst ov 1.0 / worst rho 0.174)

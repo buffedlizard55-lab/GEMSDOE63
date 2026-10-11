@@ -1,0 +1,33 @@
+{
+ "evidence_class": "CANARY-AUC",
+ "leakage_threshold": 0.9,
+ "n_positive_px": 22641,
+ "features": {
+  "k_visible": {
+   "auc": 0.6199351270234309,
+   "leakage_flag": false,
+   "note": "below the 0.90 leakage bar"
+  },
+  "rad_ratio": {
+   "auc": 0.47208935792643875,
+   "leakage_flag": false,
+   "note": "below the 0.90 leakage bar"
+  }
+ },
+ "generated_utc": "2026-10-11T21:29:08Z",
+ "rad_band_receipt": {
+  "usable": true,
+  "bands": [
+   "k",
+   "th",
+   "u",
+   "tc"
+  ],
+  "reason": "",
+  "k_band": 0,
+  "th_band": 1,
+  "peaks": 1,
+  "z_threshold": 1.5,
+  "filter": "7px max-filter"
+ }
+}

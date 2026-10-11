@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "note": "Pinned inputs for lane 63 (CVaR robust selection). Hashes copied from GEMSDOE66/registry/data_manifest.json, which recorded the owner-supplied mirrors of the login-walled DrivenData files. Pins prove mirror consistency, NOT organizer authentication.",
+  "files": [
+    {
+      "id": "labels",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/labels.tif",
+      "dest": "data/bridge/labels.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "verified_local": true,
+      "verified_utc": "2026-10-11T21:20:00Z"
+    },
+    {
+      "id": "existing_faults",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/existing_faults.tif",
+      "dest": "data/bridge/existing_faults.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "verified_local": true,
+      "note": "byte-identical to labels.tif (public labels raster IS the mapped-fault catalogue; scored truth is not published)"
+    },
+    {
+      "id": "sample_submission",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/sample_submission.tif",
+      "dest": "data/bridge/sample_submission.tif",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597,
+      "verified_local": true
+    },
+    {
+      "id": "ext_geodawn_rad_u8",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/geodawn_rad_u8.tif",
+      "dest": "data/external/geodawn_rad_u8.tif",
+      "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+      "bytes": 26612970,
+      "verified_local": true,
+      "note": "GeoDAWN radiometric u8 layer mirrored in GEMSDOE24; sha256 computed locally after download (no prior pin existed)"
+    }
+  ],
+  "registry_rasters": {
+    "source": "buffedlizard55-lab/GEMSDOE65 registry/prior_rasters.json (751 unique blobs)",
+    "prediction_like_selected": 730,
+    "dest": "data/registry_rasters/<git_blob_sha>.tif",
+    "purpose": "uniqueness scan (Spearman rho and 3-px forward dot overlap)",
+    "log": "evidence/registry_download.log"
+  }
+}
