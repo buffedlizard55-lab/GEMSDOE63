@@ -69,17 +69,41 @@ def read_features() -> tuple[np.ndarray, list[dict]]:
     return data, tags
 
 
+FOOTPRINT_SOURCE: str = ""
+"""Which raster the last :func:`footprint` call derived the mask from.
+
+``"features"`` is authoritative.  ``"labels-fallback"`` means the 400 MB feature stack
+was absent and the mask came from ``labels.tif`` instead.  The two differ by 4,601 px
+out of 5.17 M (0.09%), so a file written on the fallback may place NaN where the
+organizer's own coverage says data belongs.  The run card records this and the
+validator prints it; it is not something to discover after a submission is rejected.
+"""
+
+
 def footprint() -> np.ndarray:
-    """Pixels where the official feature stack has data (survey coverage).
+    """Pixels of survey coverage: where the official feature stack has data.
 
     Outside this footprint the competition asks for null/NaN; inside it, values must
     be finite and in [0, 1].  ``data == nodata`` (the float32 -3.4e38 sentinel) is
     the definition of "no data" used by the reference solution notebook.
+
+    The feature stack is 400 MB and is deliberately not committed, so on a clean clone
+    it is absent.  Rather than raise, this falls back to the valid region of
+    ``labels.tif`` and sets :data:`FOOTPRINT_SOURCE` to say so.  Measured difference
+    between the two masks on this data: 4,601 px of 5,165,852 (0.09%).
     """
-    with rasterio.open(FEATURES) as src:
+    global FOOTPRINT_SOURCE
+    if FEATURES.exists():
+        with rasterio.open(FEATURES) as src:
+            nd = src.nodata
+            b1 = src.read(1)
+        FOOTPRINT_SOURCE = "features"
+        return ~(b1 <= nd) if nd is not None else np.isfinite(b1)
+    with rasterio.open(LABELS) as src:
         nd = src.nodata
-        b1 = src.read(1)
-    return ~(b1 <= nd) if nd is not None else np.isfinite(b1)
+        lab = src.read(1)
+    FOOTPRINT_SOURCE = "labels-fallback"
+    return (lab != nd) if nd is not None else np.ones(lab.shape, dtype=bool)
 
 
 def catalogue() -> np.ndarray:
