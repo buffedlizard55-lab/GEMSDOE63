@@ -24,11 +24,11 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.dti import components_binary, dti_from_components, cvar_lower, R_PX  # noqa: E402
-from gems63.emit import ridge_score_vec, logit_score_vec, score_to_grid, policy_dots  # noqa: E402
-from gems63.features import build_feature_stack  # noqa: E402
-from gems63.grid import REPO, load_grid, withheld_mask, N_FOLDS  # noqa: E402
-from gems63.worlds import FoldSegments, make_world, nominal_truth  # noqa: E402
+from gems63_stack.dti import components_binary, dti_from_components, cvar_lower, R_PX  # noqa: E402
+from gems63_stack.emit import ridge_score_vec, logit_score_vec, score_to_grid, policy_dots  # noqa: E402
+from gems63_stack.features import build_feature_stack  # noqa: E402
+from gems63_stack.grid import REPO, load_grid, withheld_mask, N_FOLDS  # noqa: E402
+from gems63_stack.worlds import FoldSegments, make_world, nominal_truth  # noqa: E402
 
 N_WORLDS = 40
 LAMBDA = 0.5
@@ -164,7 +164,7 @@ def main():
                       kernel_R_px=R_PX, alpha_fp=0.2, beta_fn=0.8, seed=SEED),
         candidates=sorted(cache.values(), key=lambda d: -d["J"]),
         chosen=chosen,
-        note=("Nominal scores are HOLDOUT-DTI (evaluator = gems63.dti, exact binary DTI, 300 m triangular kernel, "
+        note=("Nominal scores are HOLDOUT-DTI (evaluator = gems63_stack.dti, exact binary DTI, 300 m triangular kernel, "
               "pooled over 5 spatial folds). Not organiser scores."),
         runtime_s=round(time.time() - t0, 1),
     )
@@ -176,7 +176,7 @@ def main():
              holdout_nominal_dti=chosen["nominal_pooled_dti"],
              holdout_nominal_ci95=chosen["nominal_ci95_fold_bootstrap"],
              n_withheld_positives=chosen["n_withheld_positives_scored"],
-             evaluator="gems63.dti (exact binary DTI, alpha=0.2, beta=0.8, R=300 m)"), indent=2))
+             evaluator="gems63_stack.dti (exact binary DTI, alpha=0.2, beta=0.8, R=300 m)"), indent=2))
     print("CHOSEN:", json.dumps(chosen["theta"]), "J=%.4f mean=%.4f cvar=%.4f nominal=%.4f CI=%s" % (
         chosen["J"], chosen["mean_world_dti"], chosen["cvar_world_dti"], chosen["nominal_pooled_dti"],
         [round(x, 4) for x in chosen["nominal_ci95_fold_bootstrap"]]))

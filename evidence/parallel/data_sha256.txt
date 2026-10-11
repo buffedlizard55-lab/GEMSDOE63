@@ -1,0 +1,4 @@
+7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093  data/official/existing_faults.tif
+7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093  data/official/labels.tif
+2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc  data/official/sample_submission.tif
+4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5  data/cache/gems-geodawn-numerical-features.tif

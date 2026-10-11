@@ -1,0 +1,60 @@
+{
+ "artifact": {
+  "alias": "gemsdoe32_h33_2_b2_02778_zeros",
+  "path": "registry/rasters/gemsdoe32_h33_2_b2_02778_zeros.tif",
+  "bytes": 219065,
+  "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+  "manifest_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+  "sha256_matches_manifest": true,
+  "shape": [
+   3730,
+   3292
+  ],
+  "crs": "EPSG:32611",
+  "dtype": "float32",
+  "n_nan": 0,
+  "distinct_values": [
+   0.0,
+   1.0
+  ],
+  "is_binary": true
+ },
+ "measured": {
+  "positive_pixels": 37654,
+  "on_catalogue_pixels": 0,
+  "within_3px_of_catalogue": 2171,
+  "beyond_3px_of_catalogue": 35483,
+  "fraction_beyond_3px": 0.9423434429277102,
+  "mean_distance_to_catalogue_px": 28.996593932371773,
+  "median_distance_to_catalogue_px": 19.6468827043885,
+  "spatial_blocks_3x2": [
+   [
+    12422,
+    9257
+   ],
+   [
+    8655,
+    1345
+   ],
+   [
+    1746,
+    4229
+   ]
+  ],
+  "catalogue_pixels_total": 60988,
+  "footprint_pixels_total": 5165852,
+  "dot_density_of_footprint": 0.007289020281649571
+ },
+ "implied_by_owner_reported_score": {
+  "score_used": 0.2778,
+  "score_class": "OWNER-REPORTED, not an organizer receipt",
+  "T_equals": "T = 0.058829*S + 0.235314*N",
+  "recall_floor_T_over_N_at_S_zero": 0.235314048536699,
+  "case_A_assumption": "all scoreable truth lies within 3 px (300 m) of the mapped catalogue, i.e. this repository's offset-ribbon hypothesis is the whole truth",
+  "case_A_min_S": 35483,
+  "case_A_max_T": 6513.0,
+  "case_A_max_truth_pixels_N": 18807.155507559393,
+  "case_A_max_N_as_fraction_of_catalogue": 0.30837468858725314,
+  "reading": "If the scoreable truth were confined to within 300 m of the mapped catalogue, this artifact could only have reached 0.2778 if the entire truth set were <= 18,807 pixels, about 31% of the catalogue's own pixel count. A larger truth set makes that impossible, which would mean a substantial share of the truth lies further out than 300 m -- exactly where 94% of this artifact's dots are."
+ }
+}

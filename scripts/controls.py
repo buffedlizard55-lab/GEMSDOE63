@@ -7,11 +7,11 @@ import json, sys
 from pathlib import Path
 import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.dti import components_binary, dti_from_components
-from gems63.emit import ridge_score_vec, score_to_grid, policy_dots
-from gems63.features import build_feature_stack
-from gems63.grid import REPO, load_grid, N_FOLDS
-from gems63.worlds import FoldSegments, nominal_truth
+from gems63_stack.dti import components_binary, dti_from_components
+from gems63_stack.emit import ridge_score_vec, score_to_grid, policy_dots
+from gems63_stack.features import build_feature_stack
+from gems63_stack.grid import REPO, load_grid, N_FOLDS
+from gems63_stack.worlds import FoldSegments, nominal_truth
 
 pol = json.loads((REPO / "registry" / "submission_policy.json").read_text())["policy"]
 rng = np.random.default_rng(7)

@@ -1,0 +1,224 @@
+{
+ "note": "Prior artifacts used ONLY for the parallel-run lane-drift check. Published scores are the values quoted on the sibling sites and on the DrivenData public leaderboard; they are NOT organizer receipts for these bytes.",
+ "source_host": "https://api.github.com/repos/buffedlizard55-lab/<repo>/contents/<path> (Accept: application/vnd.github.raw)",
+ "entries": [
+  {
+   "alias": "gemsdoe32_h33_2_b2_02778_zeros",
+   "repo": "GEMSDOE32",
+   "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+   "local": "/tmp/gems/registry/gemsdoe32_h33_2_b2_02778_zeros.tif",
+   "bytes": 219065,
+   "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "owner_reported_score": 0.2778,
+   "note": null
+  },
+  {
+   "alias": "gems28_h27_4_r1_solo_d2_8_02708",
+   "repo": "GEMSDOE28",
+   "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+   "local": "/tmp/gems/registry/gems28_h27_4_r1_solo_d2_8_02708.tif",
+   "bytes": 1595850,
+   "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+   "owner_reported_score": 0.2708,
+   "note": null
+  },
+  {
+   "alias": "gems25_dotted_h19_5_d2_8_02600",
+   "repo": "GEMSDOE25",
+   "path": "docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif",
+   "local": "/tmp/gems/registry/gems25_dotted_h19_5_d2_8_02600.tif",
+   "bytes": 836982,
+   "sha256": "3e78737f0da8dd2ca66cc6caac0ce8eeefcd6715707f8d1bd3091845cd9bcc30",
+   "owner_reported_score": 0.26,
+   "note": null
+  },
+  {
+   "alias": "gems33_h33d_tip_stepover_r30_02632",
+   "repo": "GEMSDOE33",
+   "path": "docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+   "local": "/tmp/gems/registry/gems33_h33d_tip_stepover_r30_02632.tif",
+   "bytes": 917544,
+   "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+   "owner_reported_score": 0.2632,
+   "note": null
+  },
+  {
+   "alias": "gems8_hedge_v2_01563",
+   "repo": "8GEMSDOE",
+   "path": "docs/downloads/8GEMSDOE_Hedge-v2_submission.tif",
+   "local": "/tmp/gems/registry/gems8_hedge_v2_01563.tif",
+   "bytes": 736494,
+   "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+   "owner_reported_score": 0.1563,
+   "note": null
+  },
+  {
+   "alias": "gems13_r11_greedy_mp",
+   "repo": "13GEMSDOE",
+   "path": "docs/downloads/13gems_20261001_r11-greedy-mp_v2_nan-outside.tif",
+   "local": "/tmp/gems/registry/gems13_r11_greedy_mp.tif",
+   "bytes": 1954898,
+   "sha256": "033df94ceef16350030a69d5cfdec0afe7bc605bb155d8f3b98b203aabf80abd",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems13_r13_lattice_s5_00904",
+   "repo": "13GEMSDOE",
+   "path": "docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+   "local": "/tmp/gems/registry/gems13_r13_lattice_s5_00904.tif",
+   "bytes": 1706456,
+   "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+   "owner_reported_score": 0.0904,
+   "note": null
+  },
+  {
+   "alias": "gems13_r14_union_tips10_lat6",
+   "repo": "13GEMSDOE",
+   "path": "docs/downloads/13gems_20261001_r14-union-tips10-lat6_nan-outside.tif",
+   "local": "/tmp/gems/registry/gems13_r14_union_tips10_lat6.tif",
+   "bytes": 1748864,
+   "sha256": "c9d1398e464603350e464fff7213a8a5e380f1ccf505e263a685607970ae28ef",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems50_h52_coincidence8_80k",
+   "repo": "GEMSDOE50",
+   "path": "docs/downloads/gems50-h52-coincidence8-80000-20261007T032938Z.tif",
+   "local": "/tmp/gems/registry/gems50_h52_coincidence8_80k.tif",
+   "bytes": 376448,
+   "sha256": "a2ed87fac9fdb4b9604ab2850b5f750eefe51fa9795caa6a503fc4739de6475d",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems50_h60_officialstack_50k",
+   "repo": "GEMSDOE50",
+   "path": "docs/downloads/gemsdoe50-h60-officialstack-50000-20261007T2100Z.tif",
+   "local": "/tmp/gems/registry/gems50_h60_officialstack_50k.tif",
+   "bytes": 338302,
+   "sha256": "7d5a83a326f9e3a951b88dbcf3db74228cfab0ab13271babbbf79f5679b69f5a",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems50_h60_union_d2_75308",
+   "repo": "GEMSDOE50",
+   "path": "docs/downloads/gemsdoe50-h60-union-d2-75308-20261007T2250Z.tif",
+   "local": "/tmp/gems/registry/gems50_h60_union_d2_75308.tif",
+   "bytes": 396677,
+   "sha256": "772cf4502bfc00f9265560b001cd307c8bc699ab2b0bac2c17528020d779fd19",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems19_h19_4_multiline_thermal_01894",
+   "repo": "19GEMSDOE",
+   "path": "docs/downloads/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+   "local": "/tmp/gems/registry/gems19_h19_4_multiline_thermal_01894.tif",
+   "bytes": 1716768,
+   "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+   "owner_reported_score": 0.1894,
+   "note": null
+  },
+  {
+   "alias": "gems19_h19_5_powerlaw_01922",
+   "repo": "19GEMSDOE",
+   "path": "docs/downloads/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+   "local": "/tmp/gems/registry/gems19_h19_5_powerlaw_01922.tif",
+   "bytes": 1712322,
+   "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+   "owner_reported_score": 0.1922,
+   "note": null
+  },
+  {
+   "alias": "gems49_gate_ortho_w025_02376",
+   "repo": "GEMSDOE49",
+   "path": "docs/downloads/gems49-gate_ortho_w0.25-40k-20261006T213721Z-nan.tif",
+   "local": "/tmp/gems/registry/gems49_gate_ortho_w025_02376.tif",
+   "bytes": 377092,
+   "sha256": "c58fe0551e120678fff190239146985d0b2f7255255535fb5fb637a05cb40af3",
+   "owner_reported_score": 0.2376,
+   "note": null
+  },
+  {
+   "alias": "gems36_anderson_pinn_02750",
+   "repo": "GEMSDOE36",
+   "path": "docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-nan.tif",
+   "local": "/tmp/gems/registry/gems36_anderson_pinn_02750.tif",
+   "bytes": 371126,
+   "sha256": "96d451d5ffc819fc3834052f22ab66190621f206c0bf8990446082a3363dc2ef",
+   "owner_reported_score": 0.275,
+   "note": null
+  },
+  {
+   "alias": "gems32_h32d_submodular_46090",
+   "repo": "GEMSDOE32",
+   "path": "docs/downloads/gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif",
+   "local": "/tmp/gems/registry/gems32_h32d_submodular_46090.tif",
+   "bytes": 250577,
+   "sha256": "f81e26d7712d1a4a9d3d5393037b09849400c3976d1ebd40e2760a586f2adc2f",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems48_h59_cover_ds_belief_02296",
+   "repo": "GEMSDOE48",
+   "path": "docs/downloads/GEMSDOE48-H59-cover-ds-belief-20261008T184547Z.tif",
+   "status": "missing",
+   "error": "HTTP Error 404: Not Found"
+  },
+  {
+   "alias": "gems27_topo_gap_closure_t_v2_02449",
+   "repo": "GEMSDOE27",
+   "path": "docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+   "local": "/tmp/gems/registry/gems27_topo_gap_closure_t_v2_02449.tif",
+   "bytes": 1635084,
+   "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+   "owner_reported_score": 0.2449,
+   "note": null
+  },
+  {
+   "alias": "gems52_h83_offcatalogue_cotrain_e3",
+   "repo": "GEMSDOE52",
+   "path": "docs/downloads/gems52-h83-offcatalogue-cotrain-37654px-e3-20261010T202956Z-template-nan.tif",
+   "local": "/tmp/gems/registry/gems52_h83_offcatalogue_cotrain_e3.tif",
+   "bytes": 1582635,
+   "sha256": "dee4ee5ee364ae2dae4b684e9f35cbf0a07216b75f13369630bc24cc5d65efd2",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems60_h65_dem10_knick",
+   "repo": "60GEMSDOE",
+   "path": "docs/downloads/gems60-h65-dem10-knick-40000-20261011T051305Z-9406dc92098b-zeros.tif",
+   "local": "/tmp/gems/registry/gems60_h65_dem10_knick.tif",
+   "bytes": 104586,
+   "sha256": "0728d1193d9ee9f31e800ea8f9167058a409e5e17bdb24c1127ae94f3225375e",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems60_h66_dem10_bedrock_dksn",
+   "repo": "60GEMSDOE",
+   "path": "docs/downloads/gems60-h66-dem10-bedrock-dksn-40000-20261011T162456Z-dbafa4373009-zeros.tif",
+   "local": "/tmp/gems/registry/gems60_h66_dem10_bedrock_dksn.tif",
+   "bytes": 144835,
+   "sha256": "cde6b57be8aaac9b3e35df6c90e26fd51a95b190653acc375d354ae69a5eada1",
+   "owner_reported_score": null,
+   "note": null
+  },
+  {
+   "alias": "gems61c_gravstep_liveband_40k",
+   "repo": "61GEMSDOE",
+   "path": "docs/downloads/gems61c-gravstep-liveband-40k-20261011.tif",
+   "local": "/tmp/gems/registry/gems61c_gravstep_liveband_40k.tif",
+   "bytes": 154559,
+   "sha256": "e3ccdf59f8b36f2f089f0eeaafac2547a96cc46e07c7eb2535449bd0e26f8873",
+   "owner_reported_score": null,
+   "note": null
+  }
+ ],
+ "provenance": "Manifest copied from the sibling repository 62GEMSDOE (registry/registry_manifest.json, commit on main as of 2026-10-11) and re-verified byte-for-byte here by scripts/fetch_registry.py. Used ONLY for the parallel-run lane-drift check."
+}

@@ -9,3 +9,6 @@ data/external/*.zip
 data/external/*.csv
 *.log
 /tmp/
+data/cache/
+__pycache__/
+*.pyc

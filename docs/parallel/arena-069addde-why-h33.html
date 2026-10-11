@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why 0.2778 - GEMSDOE63</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header><div class="wrap">
+<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
+<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
+plausible label worlds &middot; every number on this site is generated from
+<code>evidence/run_card.json</code></p>
+</div></header>
+<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html" class="on">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<div class="wrap">
+
+<section>
+<h2>Why <code>h33-2-b2</code> scored 0.2778, and what would beat it</h2>
+<div class="warnbox"><b>0.2778 is OWNER-REPORTED, not an organizer receipt.</b> It is the
+value quoted on a sibling site and consistent with the public leaderboard. Everything
+<i>measured</i> below was read from the artifact's own bytes in this session, and its
+sha256 matches the registry manifest
+(yes).</div>
+
+<h3>1. What the file actually is &mdash; measured here, first-hand</h3>
+<table>
+<tr><th>property</th><th>value</th><th>class</th></tr>
+<tr><td>sha256 (first 16)</td><td><code>c55bafc470054e82</code></td><td>MEASURED</td></tr>
+<tr><td>bytes</td><td class="num">219,065</td><td>MEASURED</td></tr>
+<tr><td>shape / CRS / dtype</td><td>3730&times;3292 /
+EPSG:32611 / float32</td><td>MEASURED</td></tr>
+<tr><td>NaN pixels</td><td class="num">0</td><td>MEASURED</td></tr>
+<tr><td>distinct values</td><td>[0.0, 1.0] &mdash;
+a binary dot field, not a probability surface</td>
+<td>MEASURED</td></tr>
+<tr><td>positive pixels</td><td class="num">37,654</td><td>MEASURED</td></tr>
+<tr><td>&hellip;on catalogue pixels</td><td class="num">0</td><td>MEASURED</td></tr>
+<tr><td>&hellip;within 3 px of the catalogue</td><td class="num">2,171
+(5.8%)</td><td>MEASURED</td></tr>
+<tr><td>&hellip;<b>beyond</b> 3 px of the catalogue</td>
+<td class="num">35,483 (94.2%)</td>
+<td>MEASURED</td></tr>
+<tr><td>mean / median distance to nearest catalogue pixel</td>
+<td class="num">29.0 px / 19.6 px
+(1 px = 100 m)</td><td>MEASURED</td></tr>
+<tr><td>dot density</td><td class="num">0.729% of the
+5,165,852-px footprint</td><td>MEASURED</td></tr>
+</table>
+<h4>Spatial spread (3&times;2 blocks) &mdash; it is basin-wide, not regional</h4>
+<table><tr><th></th><th class="num">west</th><th class="num">east</th></tr><tr><th>band 0</th><td class="num">12,422</td><td class="num">9,257</td></tr><tr><th>band 1</th><td class="num">8,655</td><td class="num">1,345</td></tr><tr><th>band 2</th><td class="num">1,746</td><td class="num">4,229</td></tr></table>
+
+<h3>2. Why it scores what it scores &mdash; the arithmetic</h3>
+<p>From the published metric, with <code>N = |G|</code> (identity 1 on the
+<a href="method.html">method</a> page):</p>
+<pre>DTI = T / ( 0.2 T + 0.2 S + 0.8 N )
+T = 0.058829*S + 0.235314*N</pre>
+<p>Two consequences, both computed rather than asserted:</p>
+<ol>
+<li><b>The score certifies a floor on recall.</b> Setting <code>S = 0</code> gives the best
+case, so <code>T/N &ge; 0.2353</code>. The artifact
+demonstrably found at least <b>23.5%</b>
+(kernel-weighted) of a truth set that is <i>defined</i> as the faults absent from
+USGS/INGENIOUS. No instrument in this repository can produce that number, because the
+only local truth is the catalogue.</li>
+<li><b>The marginal bar for adding a dot is low.</b> A dot raises the score iff its
+realised kernel weight exceeds <code>0.2 &times; DTI</code> =
+<b>0.0556</b>. Any dot with a better than
+5.6% chance of landing within 300 m of a hidden new fault
+helps. That is why 37,654 basin-wide dots is a rational design and not
+spam.</li>
+</ol>
+
+<h3>3. The finding that matters most for this repository</h3>
+<p><b>94.2% of this artifact's dots are more than 3 px from
+any mapped fault</b>, and none sit on a catalogue pixel. The group's best-scoring
+artifact is almost entirely <i>off</i> the catalogue &mdash; it is a lineament-detector
+field, not a catalogue-adjacent ribbon. That is the opposite bet to the one this lane
+makes, so it has to be confronted rather than ignored.</p>
+<div class="note">If the scoreable truth were confined to within 300 m of the mapped catalogue, this artifact could only have reached 0.2778 if the entire truth set were &lt;= 18,807 pixels, about 31% of the catalogue&#x27;s own pixel count. A larger truth set makes that impossible, which would mean a substantial share of the truth lies further out than 300 m -- exactly where 94% of this artifact&#x27;s dots are.</div>
+<p>Stated as a necessary condition, with every assumption on the table:</p>
+<ul>
+<li><b>If</b> the scoreable truth lay entirely within 300 m of the mapped catalogue
+(this lane's hypothesis), <b>then</b> the 35,483 far dots all
+have <code>kmax = 0</code>, so <code>S &ge; 35,483</code>; and no set of
+2,171 near dots can earn more than
+<code>6,513</code> of <code>T</code> (3.0 per dot is the
+competition's own worked example). Together with the owner-reported score that forces
+<code>N &le; 18,807</code> truth pixels &mdash; about
+<b>31%</b> of the catalogue's
+60,988 pixels.</li>
+<li>That is possible but restrictive. If the real truth set is larger, the far dots must
+be earning credit, and the truth extends well beyond 300 m from the catalogue.</li>
+</ul>
+<p><b>What this repository does about it.</b> The label-world ensemble does not assume
+the answer. Its <code>phi</code> parameter &mdash; the share of truth that is newly mapped
+geometry of an <i>existing</i> system &mdash; is drawn per world across
+0.15&ndash;0.95, and the remainder is unrelated new structure scattered at the observed
+density, i.e. far from the catalogue. The CVaR objective is tail-penalised over that
+whole range, so the selected emission is the one that survives <i>both</i> readings. The
+phi-stratified table on the <a href="results.html">results</a> page shows how each
+candidate moves as phi moves; it is the honest answer to "which bet is this?".</p>
+
+<h3>4. Can a higher-scoring submission be generated? Ranked by expected gain</h3>
+<ol>
+<li><b>Raise per-dot credit, not dot count.</b> The bar is ~0.056
+and the metric's true-positive term is a <i>maximum</i> per truth pixel, so extra dots in
+the same place earn nothing while still paying false-positive cost. Better-placed dots
+are the only lever that does not saturate.</li>
+<li><b>Use the layers nobody has used.</b> The geodetic strain bands (second invariant,
+shear, dilatation) are in the provided stack and, so far as the registry shows, no prior
+artifact uses them as a primary detector. See <a href="hypotheses.html">hypotheses</a>.</li>
+<li><b>Do not optimise the local catalogue proxy.</b> It cannot see the target
+population. Sibling repositories report it anti-selects novelty.</li>
+<li><b>Change one factor per slot.</b> The submission page is the only
+organizer-confirmed channel; a slot that changes density and detector together cannot be
+interpreted afterwards.</li>
+</ol>
+
+<h3>5. What this page does not claim</h3>
+<p>It does not claim 0.2778 is reproducible, or that any file here is comparable to it.
+The recall floor in &sect;2 is a <i>necessary condition</i> implied by an owner-reported
+score, not a measurement of the artifact against the hidden test faults &mdash; which are
+not available in this sandbox by the organizers' explicit policy (thread 11527).</p>
+</section>
+<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
+hand.</footer>
+</div></body></html>

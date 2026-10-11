@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to submit - GEMSDOE63</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header><div class="wrap">
+<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
+<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
+plausible label worlds &middot; every number on this site is generated from
+<code>evidence/run_card.json</code></p>
+</div></header>
+<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html" class="on">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<div class="wrap">
+
+<div class="hero">
+<h2>Submission file &mdash; download here</h2>
+<p><span class="pill ok">THE FILE IS FORMAT-VALID AND WOULD BE ACCEPTED</span> &nbsp;<span class="pill warn">BUT SUBMITTING IT IS NOT RECOMMENDED</span></p><p>The validator passes every check. However the lane-drift overlap gate is <b>literally tripped</b> by <code>gems8_hedge_v2_01563, gems13_r11_greedy_mp, gems13_r14_union_tips10_lat6, gems13_r13_lattice_s5_00904</code>, so this file is logged as a duplicate and the decision is escalated to the selector step rather than made here. The reasons, including a measured explanation of why that statistic cannot discriminate in this configuration, are in the box below and on the <a href="results.html">results page</a>.</p>
+<a class="dl" href="../downloads/gems63-cvar-offset-band.tif" download>&#11015;&nbsp; Download gems63-cvar-offset-band.tif</a>
+<div><span class="pill ok">VALIDATOR: PASS</span> &nbsp; <span class="pill warn">LANE-DRIFT GATE: LITERALLY TRIPPED &mdash; SEE BELOW</span></div>
+<div class="grid">
+<div class="card"><div class="k">sha256</div><div class="v" style="font-size:13px;word-break:break-all">b8f15e4d5fee63348c00bb7fb5a92ed529be438fa3b0a70af933ba63fac25244</div></div>
+<div class="card"><div class="k">positive pixels</div><div class="v">122509</div></div>
+<div class="card"><div class="k">value range</div><div class="v">[0.0, 1.0]</div></div>
+<div class="card"><div class="k">size</div><div class="v">197922 B</div></div>
+</div>
+<h3>What to type in the submission form</h3>
+<table>
+<tr><th style="width:150px">Field</th><th>Value</th></tr>
+<tr><td>File to submit</td><td><code>gems63-cvar-offset-band.tif</code> (the file above)</td></tr>
+<tr><td>Note (optional)</td><td><code>GEMSDOE63-CVaR-band1 | 1px offset ribbon, catalogue px removed | CVaR over 48 label worlds | drift gate tripped - see site</code>
+<div class="mut">122 / 140 characters</div></td></tr>
+</table>
+<div class="warnbox" style="text-align:left"><b>DO NOT SPEND A SLOT ON THIS FILE (selector step must decide)</b><ul><li>The brief&#x27;s lane-drift overlap gate is literally tripped: 100.0% of this file&#x27;s 122,509 dots lie within 3 px of gems8_hedge_v2_01563, against a 70% threshold.</li><li>That statistic is non-discriminating here, and measurably so: gems8_hedge_v2 emits p=1.0 on all 60,988 catalogue pixels (measured here; corroborated by 8GEMSDOE reports/hedge_v2.json), and this emission is the 1-px ring around that same catalogue, so every dot is 0 px from a hedge dot by construction.</li><li>The discriminating statistic is clean: max Spearman rank correlation against all 21 registry rasters is 0.079 against a 0.90 gate; against hedge_v2 it is -0.006.</li><li>The three other literal trips are dense-comparator artifacts: their chance overlap is 0.763, 0.999 and 0.739 versus observed 0.770, 0.999 and 1.000 (lift 1.01, 1.00, 1.35).</li><li>Separately, the mechanism this file implements is already occupied: the catalogue hedge scored 0.1563 (owner-reported), well below the group&#x27;s best off-catalogue artifact at 0.2778. Spending a slot here would repeat a lower-scoring bet.</li></ul><p><b>Measured verification of the gate trip:</b> Any emission confined to the 1-px ring around the catalogue is within 1 px of a hedge-v2 dot at every pixel, so the brief&#x27;s 70%-within-3px statistic is 1.000 by construction and cannot discriminate. The discriminating statistic is rank correlation, measured at -0.006 against a 0.90 gate. <code>gems8_hedge_v2</code> covers 60,988 of 60,988 catalogue pixels, so a 1-px ring around that catalogue is 0 px away from it at every pixel.</p><p><b>What is still true:</b> The file is format-valid: 13/13 validator checks pass, single band, float32, EPSG:32611, 100 m, exact geotransform, 0 NaN, values {0,1}. It is safe to download and would be accepted by the form. The recommendation against submitting is scientific, not technical.</p><p><b>Use the next slot on H1 (strain-rate second invariant) from hypotheses.html: it is off-catalogue, so it is gate-clear by construction and aligned with where the score actually is.</b></p></div>
+</div>
+<section>
+<h2>Exactly how to make a submission</h2>
+<ol>
+<li><b>Download the file.</b> Use the green button above. It is
+<code>docs/downloads/gems63-cvar-offset-band.tif</code> in this repository.</li>
+<li><b>Open the submission page.</b>
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition-doe-gems</a>
+&rarr; <em>Submit</em> &rarr; <em>New submission</em>.</li>
+<li><b>File to submit:</b> choose the downloaded <code>.tif</code>. The form accepts a
+single-band GeoTIFF, or a zip containing one.</li>
+<li><b>Note (optional):</b> paste
+<code>GEMSDOE63-CVaR-band1 | 1px offset ribbon, catalogue px removed | CVaR over 48 label worlds | drift gate tripped - see site</code></li>
+<li><b>Submit.</b> The score that comes back is the only ORGANIZER-CONFIRMED number in
+this whole workflow. Record it against the sha256 above.</li>
+</ol>
+<div class="note">This lane does <b>not</b> spend a submission slot. Promotion to a real
+slot is a separate selector step, inside the weekly cap shown on the submission page.</div>
+
+<h3>The format rules, and this file against them</h3>
+<p class="mut">Transcribed from
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page
+967, "Submission format"</a>, and checked by <code>src/gems63/validate.py</code> against
+the organizer's own <code>sample_submission.tif</code>.</p>
+<table>
+<tr><th>Rule</th><th>Status</th></tr>
+<tr><td>file exists</td><td>&#10003;</td></tr><tr><td>driver is GTiff</td><td>&#10003;</td></tr><tr><td>single band (count == 1)</td><td>&#10003;</td></tr><tr><td>dtype is float32</td><td>&#10003;</td></tr><tr><td>CRS is EPSG:32611</td><td>&#10003;</td></tr><tr><td>shape matches template (3730 x 3292)</td><td>&#10003;</td></tr><tr><td>geotransform matches template exactly</td><td>&#10003;</td></tr><tr><td>resolution is 100 m</td><td>&#10003;</td></tr><tr><td>no NaN inside the survey footprint</td><td>&#10003;</td></tr><tr><td>no NaN anywhere in the raster (zeros-outside variant)</td><td>&#10003;</td></tr><tr><td>min value &gt;= 0</td><td>&#10003;</td></tr><tr><td>max value &lt;= 1</td><td>&#10003;</td></tr><tr><td>no infinities</td><td>&#10003;</td></tr>
+</table>
+
+<h3>Why an earlier download was rejected</h3>
+<p>A previous session's file was rejected by the form with
+<em>"Predicted values must be in range [0, 1]"</em>. The rule is a single float32 layer
+with values between 0 and 1. Two things in this repository exist specifically to stop
+that recurring:</p>
+<ul>
+<li><code>raster_io.write_submission()</code> refuses to write a file whose values leave
+[0, 1], that contains a non-finite value, or whose shape differs from the template. It
+raises rather than producing a file the form will reject.</li>
+<li><code>validate.validate_submission()</code> then re-opens the written file from disk
+and re-checks it, including CRS, shape and geotransform compared byte-for-byte with the
+organizer's template. The result above is that re-check, not a promise.</li>
+</ul>
+<p>This file is written <b>all-finite with zeros outside the survey footprint</b>. NaN is
+permitted outside the bounds by the rules, but an all-finite file removes an entire class
+of validator disagreement, and sibling repositories have scored with exactly this
+convention.</p>
+
+<h3>Reproduce it</h3>
+<pre>pip install rasterio numpy scipy pytest
+python3 scripts/fetch_registry.py     # 21 prior rasters, sha256-verified
+python3 scripts/run_lane.py --worlds 12 --name my-run
+python3 scripts/make_site.py</pre>
+<p class="mut">Runtime for the full lane on this sandbox: 594.9 s.
+The competition feature stack is expected at
+<code>data/cache/gems-geodawn-numerical-features.tif</code> (419 MB, gitignored).</p>
+</section>
+<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
+hand.</footer>
+</div></body></html>

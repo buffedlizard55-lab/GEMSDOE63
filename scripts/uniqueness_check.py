@@ -22,7 +22,7 @@ from scipy.spatial import cKDTree
 from scipy.stats import spearmanr
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.grid import REPO  # noqa: E402
+from gems63_stack.grid import REPO  # noqa: E402
 
 REG_ROOT = Path("/tmp/regs")
 R_GATE = 0.90
