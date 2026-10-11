@@ -5,7 +5,7 @@ Policy: registry/submission_policy.json (chosen in E2 by CVaR over label worlds)
 Output: docs/downloads/<name>.tif (float32, EPSG:32611, 100 m, NaN outside footprint, 0/1 inside)
         registry/submissions/<name>.json (validator output, sha256, policy, evidence labels)
 The organiser's 'Predicted values must be in range [0,1]' rejection is prevented by construction
-(values are only 0.0 or 1.0 inside the footprint) and re-checked by gems63.validate.
+(values are only 0.0 or 1.0 inside the footprint) and re-checked by gems63_stack.validate.
 """
 import datetime as dt
 import json
@@ -16,10 +16,10 @@ import numpy as np
 import rasterio
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.emit import ridge_score_vec, score_to_grid, policy_dots  # noqa: E402
-from gems63.features import build_feature_stack  # noqa: E402
-from gems63.grid import REPO, DATA_DIR, load_grid  # noqa: E402
-from gems63.validate import validate  # noqa: E402
+from gems63_stack.emit import ridge_score_vec, score_to_grid, policy_dots  # noqa: E402
+from gems63_stack.features import build_feature_stack  # noqa: E402
+from gems63_stack.grid import REPO, DATA_DIR, load_grid  # noqa: E402
+from gems63_stack.validate import validate  # noqa: E402
 
 
 def main():
@@ -57,7 +57,7 @@ def main():
         evidence=dict(
             holdout_nominal_dti=dict(value=pol["holdout_nominal_dti"], ci95=pol["holdout_nominal_ci95"],
                                       n_withheld_positives=pol["n_withheld_positives"],
-                                      evaluator="gems63.dti v1 (exact binary, alpha 0.2, beta 0.8, R 300 m)",
+                                      evaluator="gems63_stack.dti v1 (exact binary, alpha 0.2, beta 0.8, R 300 m)",
                                       label="HOLDOUT-DTI"),
             random_dot_control_dti=dict(label="HOLDOUT-DTI control",
                                         source="registry/experiments/controls.json"),

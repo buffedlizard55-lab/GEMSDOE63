@@ -6,7 +6,7 @@ import rasterio
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.validate import validate
+from gems63_stack.validate import validate
 
 LABELS = Path("/tmp/gems_data/labels.tif")
 pytestmark = pytest.mark.skipif(not LABELS.exists(), reason="competition labels not placed (see scripts/fetch_data.py)")

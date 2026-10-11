@@ -16,8 +16,8 @@ import numpy as np
 from scipy.stats import rankdata
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.grid import REPO, load_grid, withheld_mask, clearance_zone, N_FOLDS  # noqa: E402
-from gems63.features import build_feature_stack  # noqa: E402
+from gems63_stack.grid import REPO, load_grid, withheld_mask, clearance_zone, N_FOLDS  # noqa: E402
+from gems63_stack.features import build_feature_stack  # noqa: E402
 
 LEAK_AUC = 0.90
 RNG = np.random.default_rng(63)

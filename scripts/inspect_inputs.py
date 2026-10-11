@@ -4,7 +4,7 @@ import json, sys
 from pathlib import Path
 import numpy as np, rasterio
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gems63.grid import DATA_DIR, REPO
+from gems63_stack.grid import DATA_DIR, REPO
 out = {}
 with rasterio.open(DATA_DIR / "labels.tif") as s:
     L = s.read(1)

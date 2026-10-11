@@ -1,0 +1,8 @@
+{
+ "hedge_v2_contains_whole_catalogue": true,
+ "catalogue_px": 60988,
+ "catalogue_px_in_hedge": 60988,
+ "source": "measured here from registry/rasters/gems8_hedge_v2_01563.tif",
+ "corroborating_report": "8GEMSDOE reports/hedge_v2.json: on_training_labels_px = 60988; description = base 0.1563 emission UNIONED with the full USGS/INGENIOUS catalogue at p=1.0",
+ "consequence": "Any emission confined to the 1-px ring around the catalogue is within 1 px of a hedge-v2 dot at every pixel, so the brief's 70%-within-3px statistic is 1.000 by construction and cannot discriminate. The discriminating statistic is rank correlation, measured at -0.006 against a 0.90 gate."
+}

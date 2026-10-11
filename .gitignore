@@ -9,6 +9,9 @@ data/external/*.zip
 data/external/*.csv
 *.log
 /tmp/
+data/cache/
+__pycache__/
+*.pyc
 
 # downloaded registry scan inputs (restorable via scripts/fetch_inputs.sh)
 data/registry_rasters/

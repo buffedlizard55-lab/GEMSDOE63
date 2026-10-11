@@ -1,0 +1,30 @@
+{
+  "note": "Prior artifacts used ONLY for the parallel-run lane-drift check. Published scores are the values quoted on the sibling sites and on the DrivenData public leaderboard; they are NOT organizer receipts for these bytes.",
+  "source_host": "https://api.github.com/repos/buffedlizard55-lab/<repo>/contents/<path> (Accept: application/vnd.github.raw)",
+  "entries": [
+    {"alias": "gemsdoe32_h33_2_b2_02778_zeros", "repo": "GEMSDOE32", "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif", "owner_reported_score": 0.2778, "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9", "bytes": 219065},
+    {"alias": "gems28_h27_4_r1_solo_d2_8_02708", "repo": "GEMSDOE28", "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif", "owner_reported_score": 0.2708, "bytes": 1595850},
+    {"alias": "gems25_dotted_h19_5_d2_8_02600", "repo": "GEMSDOE25", "path": "docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif", "owner_reported_score": 0.2600, "bytes": 836982},
+    {"alias": "gems33_h33d_tip_stepover_r30_02632", "repo": "GEMSDOE33", "path": "docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif", "owner_reported_score": 0.2632, "bytes": 917544},
+    {"alias": "gems8_hedge_v2_01563", "repo": "8GEMSDOE", "path": "docs/downloads/8GEMSDOE_Hedge-v2_submission.tif", "owner_reported_score": 0.1563, "bytes": 736494},
+    {"alias": "gems13_r11_greedy_mp", "repo": "13GEMSDOE", "path": "docs/downloads/13gems_20261001_r11-greedy-mp_v2_nan-outside.tif", "owner_reported_score": null, "bytes": 1954898},
+    {"alias": "gems13_r13_lattice_s5_00904", "repo": "13GEMSDOE", "path": "docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif", "owner_reported_score": 0.0904, "bytes": 1706456},
+    {"alias": "gems13_r14_union_tips10_lat6", "repo": "13GEMSDOE", "path": "docs/downloads/13gems_20261001_r14-union-tips10-lat6_nan-outside.tif", "owner_reported_score": null, "bytes": 1748864},
+    {"alias": "gems50_h52_coincidence8_80k", "repo": "GEMSDOE50", "path": "docs/downloads/gems50-h52-coincidence8-80000-20261007T032938Z.tif", "owner_reported_score": null, "bytes": 376448},
+    {"alias": "gems50_h60_officialstack_50k", "repo": "GEMSDOE50", "path": "docs/downloads/gemsdoe50-h60-officialstack-50000-20261007T2100Z.tif", "owner_reported_score": null, "bytes": 338302},
+    {"alias": "gems50_h60_union_d2_75308", "repo": "GEMSDOE50", "path": "docs/downloads/gemsdoe50-h60-union-d2-75308-20261007T2250Z.tif", "owner_reported_score": null, "bytes": 396677},
+    {"alias": "gems19_h19_4_multiline_thermal_01894", "repo": "19GEMSDOE", "path": "docs/downloads/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif", "owner_reported_score": 0.1894, "bytes": 1716768},
+    {"alias": "gems19_h19_5_powerlaw_01922", "repo": "19GEMSDOE", "path": "docs/downloads/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif", "owner_reported_score": 0.1922, "bytes": 1712322},
+    {"alias": "gems49_gate_ortho_w025_02376", "repo": "GEMSDOE49", "path": "docs/downloads/gems49-gate_ortho_w0.25-40k-20261006T213721Z-nan.tif", "owner_reported_score": 0.2376, "bytes": 377092},
+    {"alias": "gems36_anderson_pinn_02750", "repo": "GEMSDOE36", "path": "docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-nan.tif", "owner_reported_score": 0.2750, "bytes": 371126},
+    {"alias": "gems32_h32d_submodular_46090", "repo": "GEMSDOE32", "path": "docs/downloads/gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif", "owner_reported_score": null, "bytes": 250577},
+    {"alias": "gems48_h59_cover_ds_belief_02296", "repo": "GEMSDOE48", "path": "docs/downloads/GEMSDOE48-H59-cover-ds-belief-20261008T184547Z.tif", "owner_reported_score": 0.2296, "bytes": null},
+    {"alias": "gems27_topo_gap_closure_t_v2_02449", "repo": "GEMSDOE27", "path": "docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif", "owner_reported_score": 0.2449, "bytes": 1635084},
+    {"alias": "gems52_h83_offcatalogue_cotrain_e3", "repo": "GEMSDOE52", "path": "docs/downloads/gems52-h83-offcatalogue-cotrain-37654px-e3-20261010T202956Z-template-nan.tif", "owner_reported_score": null, "bytes": 1580000},
+    {"alias": "gems60_h65_dem10_knick", "repo": "60GEMSDOE", "path": "docs/downloads/gems60-h65-dem10-knick-40000-20261011T051305Z-9406dc92098b-zeros.tif", "owner_reported_score": null, "bytes": 104600},
+    {"alias": "gems60_h66_dem10_bedrock_dksn", "repo": "60GEMSDOE", "path": "docs/downloads/gems60-h66-dem10-bedrock-dksn-40000-20261011T162456Z-dbafa4373009-zeros.tif", "owner_reported_score": null, "bytes": 144800},
+    {"alias": "gems61c_gravstep_liveband_40k", "repo": "61GEMSDOE", "path": "docs/downloads/gems61c-gravstep-liveband-40k-20261011.tif", "owner_reported_score": null, "bytes": 154600},
+    {"alias": "gems57_h57r2_shipped8", "repo": "57GEMSDOE", "path": "docs/downloads/gems57-h57r2-shipped8-all-flank0-20261009T180433Z.tx90e532947353-zeros.tif", "owner_reported_score": null, "bytes": null, "skip": true},
+    {"alias": "gems59_j_coherence_consensus_dotted", "repo": "59GEMSDOE", "path": "docs/downloads/gems59-j-coherence-consensus-dotted-20261011T043000Z.tif", "owner_reported_score": null, "bytes": null, "skip": true}
+  ]
+}

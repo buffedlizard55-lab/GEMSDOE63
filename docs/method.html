@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method - GEMSDOE63</title>
+<link rel="stylesheet" href="assets/site.css"></head>
+<body>
+<header><div class="wrap">
+<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
+<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
+plausible label worlds &middot; every number on this site is generated from
+<code>evidence/run_card.json</code></p>
+</div></header>
+<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html" class="on">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<div class="wrap">
+
+<section>
+<h2>Method</h2>
+<h3>1. The metric, and the two identities that drive the design</h3>
+<p>From
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page
+967</a>, with <code>R = 300 m = 3 px</code> and <code>k(d) = max(1 - d/R, 0)</code>:</p>
+<pre>TP_w = sum_g  max_(x: d(x,g) &lt;= R)  p(x) k(d(x,g))
+FP_w = sum_(x: p(x)&gt;0)  p(x) [ 1 - max_g k(d(x,g)) ]
+FN_w = sum_g  [ 1 - max_(x: d(x,g) &lt;= R)  p(x) k(d(x,g)) ]
+DTI  = TP_w / ( TP_w + 0.2 FP_w + 0.8 FN_w + eps )</pre>
+<p><b>Identity 1.</b> Every ground-truth pixel contributes <code>max + (1 - max) = 1</code>
+across the TP and FN terms, so <code>FN_w = |G| - TP_w</code>, and with
+<code>N = |G|</code>:</p>
+<pre>DTI = TP_w / ( 0.2 (TP_w + FP_w) + 0.8 N )</pre>
+<p><b>Identity 2.</b> Adding mass <code>p</code> with realised kernel weight
+<code>k</code> moves <code>TP_w</code> by <code>k p</code> and <code>FP_w</code> by
+<code>(1-k) p</code>, so the denominator moves by exactly <code>0.2 p</code> and</p>
+<pre>the score rises  &lt;=&gt;  k &gt; 0.2 * DTI</pre>
+<p>A dot that lands <i>on</i> a truth pixel pays <b>no</b> false-positive penalty at all,
+because FP carries the factor <code>(1 - kmax)</code> and <code>kmax = 1</code> there.
+That single fact is why sparse, accurately placed emission beats dense emission.</p>
+<div class="warnbox"><b>A refinement this lane contributes.</b> Identity 2 is a
+<i>necessary</i> condition, not a sufficient one, once emission already exists. Because
+<code>TP_w</code> is a <b>maximum</b> per truth pixel, the credit a new set <code>A</code>
+actually earns is <code>sum_g [max(k_E, k_A) - k_E]</code>, which is strictly less than
+<code>sum_(x in A) k_x</code> wherever existing emission already covers that truth pixel.
+The false-positive cost, by contrast, is incurred in full. So the naive rule
+"emit if k &gt; 0.2 DTI" over-states the benefit of widening, and the empirical greedy
+prune below is what actually decides the width. This is measured, not argued: see the
+per-band table on the <a href="results.html">results</a> page, where every band out to
+4 px clears the naive bar and bands 3-7 are still rejected by the exact metric.</div>
+
+<h3>2. Why emission is binary</h3>
+<p>For a pixel with realised weight <code>k</code> above the bar, the interior optimum in
+<code>p</code> is <code>p* = (k - 0.2 DTI) D / (0.2 k)</code> with
+<code>D = TP_w / DTI</code>. At any realistic operating point <code>D</code> is in the
+thousands, so <code>p* &gt;&gt; 1</code> and the cap <code>p = 1</code> binds. Binary
+emission at 1.0 is therefore optimal, and the only real choice left is <i>which</i>
+pixels. That is asserted numerically in <code>tests/test_metric.py</code>.</p>
+
+<h3>3. The scored domain</h3>
+<p>The organizer's masking rule (thread 11516) is applied pixel-exactly: the scored
+domain is <code>footprint &amp; ~catalogue</code>. Known-fault pixels are removed from
+<i>every</i> sum, so emission placed on a mapped trace can neither help nor hurt &mdash;
+which is why the ribbon excludes the catalogue pixels themselves.</p>
+
+<h3>4. The label-world generator</h3>
+<p>Every rate is calibrated to a measurement or an organizer statement; none is invented.</p>
+<table>
+<tr><th>Parameter</th><th class="num">Value used</th><th>Calibrated from</th></tr>
+<tr><td>displacement radius</td><td class="num">1.50&ndash;4.00 px</td>
+    <td>Hermant et al. 2025: USGS trace offsets "up to 400 m" (= 4 px) and "discrepancies
+        &gt; 150 m" (= 1.5 px). The <i>distribution</i> below the bound is not published,
+        so the radius is drawn per world rather than pinned at the bound.</td></tr>
+<tr><td>omission</td><td class="num">0.10&ndash;0.30</td>
+    <td>Phase 2 adds, removes and changes faults; thread 11527 says the construction will
+        not be disclosed.</td></tr>
+<tr><td>phi (share that is new geometry of an existing system)</td>
+    <td class="num">0.15&ndash;0.95</td>
+    <td>Thread 11536 says a new fault "<i>can</i> include" newly mapped geometry of an
+        existing system. "Can" is not a fraction, so phi is drawn per world and the
+        selection is made robust across the whole interval.</td></tr>
+<tr><td>decoy density</td><td class="num">&le; 1&times; observed</td>
+    <td>The catalogue's own segment count and length distribution, never denser.</td></tr>
+</table>
+<p>Truth is always clipped to the scored domain, so no world ever contains a pixel the
+organizer's mask would remove.</p>
+
+<h3>5. Selection and pruning</h3>
+<p>With loss <code>L = 1 - DTI</code>, CVaR at confidence beta is the mean of the worst
+<code>1 - beta</code> fraction. Rockafellar &amp; Uryasev show
+<code>CVaR_beta(L) = min_zeta [ zeta + E(L - zeta)+ / (1 - beta) ]</code>; both routes are
+implemented and <code>tests/test_cvar</code> asserts they agree, so the tail number is not
+taken on trust. Candidates are ranked by</p>
+<pre>objective = (1 - lam) * mean(DTI) + lam * CVaR_worst(DTI),   lam = 0.5000</pre>
+<p>then pruned greedily: each distance band is offered up in turn and dropped if removing
+it improves the objective. The unit of pruning is the <b>band</b>, not the pixel &mdash;
+pixel-level greedy on a several-hundred-thousand-pixel emission is O(N) full-metric
+evaluations and is not tractable, and the band is the smallest grouping that answers the
+question the pruning is for.</p>
+
+<h3>6. Leakage canary</h3>
+<p>The only signal this lane uses is distance-to-catalogue, so that is what is tested
+alone on the holdout. Measured mean AUC:
+<b>nan</b>
+against a gate of 0.90. Below the gate &mdash; but read the caveat in the run card: at
+high phi the worlds are displaced copies of the catalogue, so the canary is only
+informative because the ensemble spans phi down to 0.15.</p>
+</section>
+<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
+hand.</footer>
+</div></body></html>

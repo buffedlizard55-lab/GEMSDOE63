@@ -1,7 +1,7 @@
 """Verify the fast exact DTI against the literal brute-force transcription of the official formula."""
 import numpy as np
 
-from gems63.dti import dti_binary_pixels, dti_bruteforce, cvar_lower
+from gems63_stack.dti import dti_binary_pixels, dti_bruteforce, cvar_lower
 
 
 def _rand_case(rng, h=40, w=40, n_dots=30, n_truth=25):
