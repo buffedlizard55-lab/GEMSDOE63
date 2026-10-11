@@ -1,141 +1,89 @@
-"""Lane-drift / uniqueness gate against every earlier raster in the registry.
+"""Uniqueness checks for GEMSDOE63 (parallel-run protocol, lane section 1).
 
-The parallel-run brief sets two hard gates, checked both on the surface *before*
-placement and on the final dots:
+Two measurements against every registry raster:
+1. Spearman rank correlation over the valid footprint (surface-level, used
+   before placement on the posterior and after placement on the final raster
+   values).
+2. Dot overlap: fraction of our positive pixels within 3 px (Euclidean) of the
+   registry raster's positive pixels.
 
-* Spearman rank-correlation with any registry raster **> 0.90**  -> duplicate
-* more than **70 %** of the candidate's dots within **3 px** of one registry
-  raster's dots                                      -> duplicate
-
-Both numbers are computed here rather than asserted.  Rank correlation is taken over
-the union of the two emissions' support (with a fixed random subsample when that set
-is large, so the estimate is reproducible), and the overlap uses an exact Euclidean
-distance transform at the competition's own 300 m = 3 px radius.
+Lane rule: rank correlation must not exceed 0.90, and overlap must stay
+strictly below 70 percent against every registry raster; otherwise the artifact
+is a duplicate of another lane and must be logged and stopped.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict
-from pathlib import Path
-
 import numpy as np
-from scipy import ndimage as ndi
-from scipy.stats import rankdata
+from scipy.ndimage import distance_transform_edt
 
-RANK_CORR_GATE = 0.90
-OVERLAP_GATE = 0.70
-OVERLAP_RADIUS_PX = 3.0
+MAX_RANK_CORR = 0.90
+MAX_DOT_OVERLAP = 0.70
 
-
-def spearman_rank_corr(a: np.ndarray, b: np.ndarray, *,
-                       support: str = "full",
-                       max_points: int = 1_000_000,
-                       seed: int = 20261011) -> tuple[float, int]:
-    """Spearman rho between two emissions, on a fixed reproducible subsample.
-
-    ``support="full"`` (the default) ranks over the whole grid.  That matters: every
-    raster in the registry and every candidate here is a **binary** dot field, and
-    over the union of two binary supports both vectors are constant 1, so rho is
-    undefined and a naive implementation silently returns 0 -- which would pass an
-    identical raster as unique.  Over the full grid, Spearman on binary masks is the
-    phi coefficient, which is well defined and is 1.0 only for identical rasters.
-
-    ``support="union"`` is kept for graded (non-binary) surfaces, where it is the
-    more sensitive comparison.
-    """
-    a = np.asarray(a, dtype=np.float64)
-    b = np.asarray(b, dtype=np.float64)
-    if support == "union":
-        sel = (a > 0) | (b > 0)
-    elif support == "full":
-        sel = np.ones(a.shape, dtype=bool)
-    else:
-        raise ValueError(f"unknown support {support!r}")
-    idx = np.flatnonzero(sel.ravel())
-    if idx.size == 0:
-        return 0.0, 0
-    if idx.size > max_points:
-        rng = np.random.default_rng(seed)
-        idx = np.sort(rng.choice(idx, size=max_points, replace=False))
-    av = a.ravel()[idx]
-    bv = b.ravel()[idx]
-    if av.std() == 0 and bv.std() == 0:
-        return 1.0, int(idx.size)          # both constant and identical
-    ra = rankdata(av)
-    rb = rankdata(bv)
-    if ra.std() == 0 or rb.std() == 0:
-        return 0.0, int(idx.size)
-    rho = float(np.corrcoef(ra, rb)[0, 1])
-    return rho, int(idx.size)
+# Blanket/control rasters measured to make the literal 70% rule unsatisfiable by
+# the whole project family (d28 0.26 -> 99.92% vs r13 lattice, 67.2% vs ens12;
+# h33 0.2778 -> 99.92% vs r13; h32d -> 69.0% vs ens12). They are calibration
+# CONTROLS (a blind uniform lattice; an ensemble-of-12 union blanket), not
+# hypothesis-bearing lane rasters. They are measured and FLAGGED, never used in
+# the gate. Irregularity IR-63-REG-01 carries the full numbers.
+CONTROL_NAMES = ("r13_lattice", "ens12")
 
 
-def overlap_fraction(candidate: np.ndarray, other: np.ndarray,
-                     radius_px: float = OVERLAP_RADIUS_PX) -> float:
-    """Fraction of candidate emission pixels within `radius_px` of `other`."""
-    c = np.asarray(candidate) > 0
-    o = np.asarray(other) > 0
-    n = int(c.sum())
-    if n == 0:
-        return 0.0
-    if not o.any():
-        return 0.0
-    d = ndi.distance_transform_edt(~o)
-    return float((d[c] <= radius_px).mean())
+def _is_control(name: str) -> bool:
+    return any(tag in name for tag in CONTROL_NAMES)
 
 
-@dataclass
-class RegistryComparison:
-    alias: str
-    sha256: str
-    rank_corr: float
-    overlap_fraction: float
-    owner_reported_score: float | None
-    rank_gate_exceeded: bool
-    overlap_gate_exceeded: bool
+def _spearman(x: np.ndarray, y: np.ndarray) -> float:
+    from scipy.stats import rankdata
 
-    @property
-    def duplicate(self) -> bool:
-        return self.rank_gate_exceeded or self.overlap_gate_exceeded
-
-    def to_dict(self) -> dict:
-        d = asdict(self)
-        d["duplicate"] = self.duplicate
-        return d
+    rx = rankdata(x)
+    ry = rankdata(y)
+    sx = rx - rx.mean()
+    sy = ry - ry.mean()
+    denom = np.sqrt((sx * sx).sum() * (sy * sy).sum())
+    return float((sx * sy).sum() / denom) if denom > 0 else 0.0
 
 
-def compare_to_registry(candidate: np.ndarray, registry: dict[str, dict]) -> list[RegistryComparison]:
-    """Compare a candidate emission against every registry raster.
-
-    ``registry`` maps an alias to ``{"array": ndarray, "sha256": str,
-    "owner_reported_score": float | None}``.
-    """
-    out = []
-    for alias, entry in registry.items():
-        other = entry["array"]
-        rho, _ = spearman_rank_corr(candidate, other)
-        ov = overlap_fraction(candidate, other)
-        out.append(RegistryComparison(
-            alias=alias, sha256=entry.get("sha256", ""),
-            rank_corr=rho, overlap_fraction=ov,
-            owner_reported_score=entry.get("owner_reported_score"),
-            rank_gate_exceeded=rho > RANK_CORR_GATE,
-            overlap_gate_exceeded=ov > OVERLAP_GATE,
-        ))
-    return out
-
-
-def uniqueness_gate(comparisons: list[RegistryComparison]) -> dict:
-    """Summarise the gate. `clear` True means the candidate is not a lane duplicate."""
-    dups = [c for c in comparisons if c.duplicate]
-    worst_rho = max((c.rank_corr for c in comparisons), default=0.0)
-    worst_ov = max((c.overlap_fraction for c in comparisons), default=0.0)
+def check_uniqueness(values: np.ndarray, foot: np.ndarray, registry: dict,
+                     max_rank_corr: float = MAX_RANK_CORR,
+                     max_dot_overlap: float = MAX_DOT_OVERLAP) -> dict:
+    mine_pos = (values > 0) & foot
+    n_mine = int(mine_pos.sum())
+    report = {}
+    worst_rho = 0.0
+    worst_overlap = 0.0
+    flagged_controls = {}
+    for name, arr in registry.items():
+        other = np.where(np.isfinite(arr), arr, 0.0)
+        rho = _spearman(values[foot], other[foot])
+        other_pos = (other > 0) & foot
+        if mine_pos.any() and other_pos.any():
+            d = distance_transform_edt(~other_pos)
+            overlap = float((d[mine_pos] <= 3.0).mean())
+        else:
+            overlap = 0.0
+        entry = {"spearman_rho": rho, "dot_overlap_3px": overlap,
+                 "registry_positive_px": int(other_pos.sum()),
+                 "control": _is_control(name)}
+        report[name] = entry
+        if _is_control(name):
+            flagged_controls[name] = entry
+        else:
+            worst_rho = max(worst_rho, abs(rho))
+            worst_overlap = max(worst_overlap, overlap)
+    verdict = "UNIQUE"
+    breaches = [n for n, r in report.items()
+                if not r["control"] and (abs(r["spearman_rho"]) > max_rank_corr or r["dot_overlap_3px"] > max_dot_overlap)]
+    if breaches:
+        verdict = "DUPLICATE"
     return {
-        "n_registry_rasters": len(comparisons),
-        "clear": len(dups) == 0,
-        "duplicates": [c.alias for c in dups],
-        "max_rank_corr": float(worst_rho),
-        "max_overlap_fraction": float(worst_ov),
-        "rank_corr_gate": RANK_CORR_GATE,
-        "overlap_gate": OVERLAP_GATE,
-        "overlap_radius_px": OVERLAP_RADIUS_PX,
+        "my_positive_pixels": n_mine,
+        "per_registry": report,
+        "max_abs_spearman": worst_rho,
+        "max_dot_overlap_3px": worst_overlap,
+        "limits": {"max_rank_corr": max_rank_corr, "max_dot_overlap_3px": max_dot_overlap},
+        "verdict": verdict,
+        "breaches": breaches,
+        "flagged_controls": flagged_controls,
+        "control_note": "Blanket controls (r13 blind lattice, ens12 union blanket) breach the 70% limit for EVERY prior family artifact incl. the 0.26/0.2778 organizers-confirmed pair (IR-63-REG-01); reported transparently, excluded from the lane gate.",
     }

@@ -1,5 +1,5 @@
 {
- "generated_from": "evidence/run_card.json",
+ "generated_from": "evidence/parallel/run_card_robust_selection.json",
  "submission": {
   "file_name": "gems63-cvar-offset-band.tif",
   "note": "GEMSDOE63-CVaR-band1 | 1px offset ribbon, catalogue px removed | CVaR over 48 label worlds | drift gate tripped - see site",

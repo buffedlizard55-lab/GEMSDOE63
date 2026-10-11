@@ -1,40 +1,168 @@
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --green: #22c55e;
+  --gold: #eab308;
+  --code-bg: #090d16;
+}
 
-:root{--ink:#12212b;--mut:#5b6b76;--line:#dde5ea;--bg:#f7fafb;--acc:#0b6b62;--warn:#9a3412;--ok:#14532d}
-*{box-sizing:border-box}
-body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-header{background:#0e2a26;color:#fff;padding:28px 20px}
-header h1{margin:0 0 6px;font-size:26px}
-header p{margin:0;color:#bfe3dd;font-size:14px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px 80px}
-nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-nav .wrap{padding:0 20px;display:flex;flex-wrap:wrap;gap:2px}
-nav a{padding:12px 12px;color:var(--mut);text-decoration:none;font-size:14px;border-bottom:3px solid transparent}
-nav a:hover,nav a.on{color:var(--acc);border-bottom-color:var(--acc)}
-section{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-top:22px}
-h2{margin:0 0 12px;font-size:21px}
-h3{font-size:16px;margin:22px 0 8px}
-.hero{background:#e8f6f3;border:2px solid var(--acc);border-radius:12px;padding:24px;margin-top:22px}
-.hero h2{color:var(--acc)}
-.dl{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;font-weight:700;
-    padding:16px 28px;border-radius:8px;font-size:18px;margin:8px 0}
-.dl:hover{background:#095449}
-.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.02em}
-.pill.ok{background:#dcfce7;color:var(--ok)} .pill.bad{background:#fee2e2;color:#7f1d1d}
-.pill.warn{background:#fef3c7;color:var(--warn)}
-table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
-th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
-th{background:#f0f5f6;font-weight:600}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-pre{background:#0f2b28;color:#dff3ef;padding:14px;border-radius:8px;overflow-x:auto;font-size:12.5px;line-height:1.5}
-code{background:#eef3f4;padding:1px 5px;border-radius:4px;font-size:13px}
-.mut{color:var(--mut);font-size:13.5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:10px}
-.card{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#fcfdfe}
-.card .k{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
-.card .v{font-size:20px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
-ol li,ul li{margin:5px 0}
-.note{border-left:4px solid var(--acc);background:#f2f9f7;padding:10px 14px;margin:12px 0;font-size:14px}
-.warnbox{border-left:4px solid var(--warn);background:#fff8f1;padding:10px 14px;margin:12px 0;font-size:14px}
-a{color:var(--acc)}
-footer{color:var(--mut);font-size:13px;margin-top:26px;text-align:center}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0;
+}
+
+header.top {
+  background-color: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+h1 { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+nav a:hover, nav a.active {
+  color: var(--text);
+  background: var(--border);
+}
+
+.banner-ready {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.banner-ready h2 { color: var(--green); font-size: 1.3rem; margin-bottom: 0.25rem; }
+.banner-ready p { color: #dcfce7; font-size: 0.95rem; }
+
+.btn {
+  background: var(--green);
+  color: #052e16;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  transition: transform 0.1s, background-color 0.2s;
+}
+.btn:hover { background: #16a34a; transform: translateY(-1px); }
+
+.btn.alt {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.btn.alt:hover { background: var(--border); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th { background: rgba(0,0,0,0.2); color: var(--muted); font-weight: 600; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.badge.pass { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #22c55e; }
+.badge.warn { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid #eab308; }
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+pre {
+  background: var(--code-bg);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  color: #38bdf8;
+  font-size: 0.88rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}

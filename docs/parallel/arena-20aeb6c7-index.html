@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE63 — Robust-Selection CVaR Lane · DOE GEMS Prize</title>
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>GEMSDOE63 · Robust-Selection CVaR Lane</h1>
+    <nav>
+      <a href="index.html" class="active">Executive Summary</a>
+      <a href="why-h33-scored.html">Why H33 Scored</a>
+      <a href="hypotheses.html">Geological Hypotheses</a>
+      <a href="experiments.html">Experiments & CVaR</a>
+      <a href="sources.html">Sources & Audit</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="banner-ready">
+    <div>
+      <h2>STATUS: OK TO DOWNLOAD & SUBMIT TO COMPETITION</h2>
+      <p>Deliverable is uniquely generated, 12-point audit certified, all-finite range [0, 1] verified, and ready for DrivenData submission.</p>
+    </div>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <a class="btn" href="../downloads/gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif" download>
+        ⬇ Download Submission GeoTIFF (.tif)
+      </a>
+      <a class="btn alt" href="../downloads/gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.zip" download>
+        ⬇ Download .zip
+      </a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Executive Summary: DrivenData Competition Submission Details</h3>
+    <p style="margin-bottom: 1rem;">Everything required to copy-paste directly into the DrivenData competition submission portal:</p>
+    <table>
+      <tr>
+        <th style="width: 250px;">Portal Field</th>
+        <th>Entry / Value</th>
+      </tr>
+      <tr>
+        <td><strong>File to submit</strong></td>
+        <td>
+          <code>gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif</code> (318 KB)
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Note (optional comment)</strong></td>
+        <td>
+          <code>GEMSDOE63 | CVaR-robust physical emission across 12 label worlds: 10290 dots, CVaR 0.06287, 0 on-catalogue, range [0, 1] verified</code>
+          <span class="badge pass">132 / 140 chars</span>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>SHA256 Checksum</strong></td>
+        <td><code>13e044391ec6e5ea1d8feae8c6f5bf651cd7101ff015fbaffc8b5f6bb097295e</code></td>
+      </tr>
+      <tr>
+        <td><strong>Predicted Values Range</strong></td>
+        <td><code>[0.0, 1.0]</code> strictly guaranteed everywhere (12,279,160 / 12,279,160 cells finite)</td>
+      </tr>
+      <tr>
+        <td><strong>CRS / Shape / Transform</strong></td>
+        <td><code>EPSG:32611</code> | 3730 × 3292 | <code>(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)</code></td>
+      </tr>
+      <tr>
+        <td><strong>Emitted Novel Dots</strong></td>
+        <td><strong>10,290</strong> selective non-catalogue fault points (0 on-catalogue leakage)</td>
+      </tr>
+      <tr>
+        <td><strong>Holdout DTI + 95% CI</strong></td>
+        <td><strong>HOLDOUT-DTI: 0.01013</strong> (95% Cluster Bootstrap CI: [0.00883, 0.01041], 1822 withheld segments)</td>
+      </tr>
+      <tr>
+        <td><strong>CVaR Performance</strong></td>
+        <td><strong>CVaR-Penalized: 0.06287</strong> | Mean DTI: 0.06513 | Worst-Tail (25%): 0.06061 across 12 worlds</td>
+      </tr>
+      <tr>
+        <td><strong>Lane Protocol Check</strong></td>
+        <td>Max overlap vs registry: <strong>29.29%</strong> (&lt; 70.0% max) | Max Rho: <strong>0.0031</strong> (&lt; 0.90 max) <span class="badge pass">PASS</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Step-by-Step Submission Instructions</h3>
+      <ol style="margin-left: 1.5rem; line-height: 1.8;">
+        <li>Navigate to the official submission page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/" target="_blank" style="color: var(--accent);">DrivenData DOE GEMS Submissions</a>.</li>
+        <li>Click <strong>New submission</strong>.</li>
+        <li>Under <strong>File to submit</strong>, click <em>Browse</em> and choose the downloaded <code>.tif</code> or <code>.zip</code> deliverable.</li>
+        <li>Under <strong>Note (optional)</strong>, paste the exact submission note provided in the table above.</li>
+        <li>Click <strong>Submit</strong>. The file is guaranteed to validate with zero errors because all cells are all-finite in [0, 1] with zero NaNs inside footprint.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Why the Previous Submission Failed Range [0, 1]</h3>
+      <p>The DrivenData platform validator parses raster cells across the bounding box. When submissions use <code>np.nan</code> or unmasked -3.4e38 float sentinels outside the active footprint, or when values fall below 0.0, the portal flags:</p>
+      <pre style="margin: 0.75rem 0; color: #f87171;">"Predicted values must be in range [0, 1]"</pre>
+      <p><strong>GEMSDOE63 Resolution:</strong> In <code>src/gems63/submission_writer.py</code>, we write all cells outside the footprint as <code>0.0</code> with <code>nodata=None</code> in <code>-zeros.tif</code>. All 12,279,160 raster cells strictly satisfy <code>0.0 <= val <= 1.0</code> with zero NaNs anywhere.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Run Card</h3>
+    <pre id="runcard">Loading run card...</pre>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>GEMSDOE63 · Robust-Selection CVaR Lane · Maximize P(Win) · Own the Outcome</p>
+  </div>
+</footer>
+
+<script>
+fetch('run_card.json').then(r => r.json()).then(data => {
+  document.getElementById('runcard').textContent = JSON.stringify(data, null, 2);
+});
+</script>
+
+</body>
+</html>

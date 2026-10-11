@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from gems63 import emission, holdout, worlds
+from gems63_rs import emission, holdout, worlds
 
 
 @pytest.fixture(scope="module")

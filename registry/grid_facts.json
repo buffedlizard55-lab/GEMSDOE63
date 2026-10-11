@@ -1,0 +1,69 @@
+{
+  "labels": {
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "dtype": "int8",
+    "nodata": -1.0,
+    "values": {
+      "-1": 7111787,
+      "0": 5106385,
+      "1": 60988
+    }
+  },
+  "sample_submission": {
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": NaN,
+    "nan_px": 7111787,
+    "ones_px": 60988,
+    "zeros_px": 5106385,
+    "equals_labels_positive": true,
+    "nan_equals_labels_nodata": true
+  },
+  "training_features": {
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "bands": 19,
+    "dtype": "float32",
+    "nodata": -3.4028234663852886e+38,
+    "band_descriptions": [
+      "Magnetic anomaly - deviation from expected Earth's magnetic field",
+      "Reduced to pole magnetic data - magnetic anomaly corrected for latitude effects",
+      "Total magnetic intensity horizontal gradient - rate of change in horizontal direction",
+      "Geodetic second invariant - measure of strain rate tensor magnitude",
+      "Isostatic gravity anomaly slope - gradient of gravity after isostatic correction",
+      "Tilt angle or total curvature - magnetic field derivative for edge detection",
+      "Geodetic shear rate - rate of angular deformation from GPS/InSAR",
+      "Geodetic dilatation rate - rate of volumetric strain (expansion/contraction)",
+      "Total magnetic intensity vertical gradient - rate of change in vertical direction",
+      "Distance to earthquake (n=100km radius, a=15\u00b0 azimuth parameters)",
+      "Isostatic gravity anomaly vertical gradient - vertical rate of change",
+      "Detrended elevation - topography with regional trends removed",
+      "Isostatic gravity anomaly - gravity after compensating for topographic mass",
+      "Total magnetic intensity - total strength of magnetic field",
+      "Depth to basement surface - thickness of sedimentary cover",
+      "Earthquake intensity or density (n=100km radius, a=15\u00b0 parameters)",
+      "Conductivity surface - electrical conductivity of subsurface",
+      "Isostatic gravity anomaly horizontal gradient - horizontal rate of change",
+      "Detrended elevation slope - gradient of elevation after detrending"
+    ]
+  }
+}

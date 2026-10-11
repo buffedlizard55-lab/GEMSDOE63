@@ -1,35 +1,64 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sources - GEMSDOE63</title>
-<link rel="stylesheet" href="assets/site.css"></head>
-<body>
+<title>Sources — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
 <header><div class="wrap">
-<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
-<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
-plausible label worlds &middot; every number on this site is generated from
-<code>evidence/run_card.json</code></p>
-</div></header>
-<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html" class="on">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
 <div class="wrap">
-
-<section>
-<h2>Sources, for manual review</h2>
-<p>Every claim on this site labelled OFFICIAL traces to one of the rows below, and each
-was read in this session rather than recalled. Where a source could not be reached from
-the sandbox that is stated in <a href="irregularities.html">Irregularities</a>.</p>
-<table>
-<tr><th>source</th><th>what was read from it</th><th>class</th></tr>
-<tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition problem description (page 967)</a></td><td>The metric verbatim: DTI = TP_w/(TP_w + 0.2 FP_w + 0.8 FN_w + eps) with triangular kernel k(d) = max(1 - d/R, 0), R = 300 m; the worked example TP_w=3.00, FP_w=1.89, FN_w=2.00 -&gt; 0.60; and the submission format (EPSG:32611, 100 m, single layer, float32, values in [0, 1], null/NaN permitted outside the bounds).</td><td><span class="pill ok">OFFICIAL</span></td></tr><tr><td><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Forum thread 11516 - scoring clarification</a></td><td>chrisk-dd (DrivenData Staff), 2026-09-16: &quot;Pixels corresponding to known USGS/INGENIOUS faults are masked / excluded from evaluation, so they do not count towards penalty terms&quot; and &quot;Re-evaluation will also mask/exclude the existing USGS/INGENIOUS faults.&quot;</td><td><span class="pill ok">OFFICIAL</span></td></tr><tr><td><a href="https://community.drivendata.org/t/where-do-you-draw-the-line/11536">Forum thread 11536 - where do you draw the line</a></td><td>chrisk-dd (DrivenData Staff), 2026-09-23: &quot;&#x27;new fault&#x27; means &#x27;any fault pixel not already captured by USGS/INGENIOUS&#x27; and can include newly mapped geometry of an existing fault system.&quot;</td><td><span class="pill ok">OFFICIAL</span></td></tr><tr><td><a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527">Forum thread 11527 - how were the new test faults identified</a></td><td>The organizers will not disclose the data sources, fault types or coverage behind the test faults beyond the problem description; Phase 2 re-scores the same submission against an expert-expanded label set.</td><td><span class="pill ok">OFFICIAL</span></td></tr><tr><td><a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Hermant.pdf">Hermant et al., Stanford Geothermal Workshop 2025</a></td><td>&quot;Using Deep Learning to Map Quaternary Faults in Western US&quot;. Figure 1 caption: &quot;Local discrepancy observed in North Central Nevada: distance between USGS Quaternary faults and TLS fault label can be up to 400m.&quot; The text also reports &quot;discrepancies &gt; 150 m ... with a clear offset between the USGS fault line&quot; and the independent mapping. This is the calibration for the 4 px = 400 m shift cap.</td><td><span class="pill warn">PEER-REVIEWED CONFERENCE PAPER</span></td></tr><tr><td><a href="https://doi.org/10.21314/JOR.2000.038">Rockafellar &amp; Uryasev, Journal of Risk 2(3), 2000</a></td><td>&quot;Optimization of conditional value-at-risk&quot;. CVaR_beta(L) = min_zeta [ zeta + 1/(1-beta) E(L - zeta)+ ]. The selection objective in this lane.</td><td><span class="pill warn">PEER-REVIEWED JOURNAL</span></td></tr><tr><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution (DrivenData)</a></td><td>U-Net with Monte-Carlo cross-validation and a Tversky loss (alpha 0.2, beta 0.8). Confirms the feature stack layout, the labels.tif convention and the writer contract (CRS and georeferencing copied from the label raster).</td><td><span class="pill ok">OFFICIAL</span></td></tr><tr><td><a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></td><td>The asymmetric generalisation of Jaccard that the competition&#x27;s metric weights by distance.</td><td><span class="pill warn">REFERENCE</span></td></tr><tr><td><a href="https://epsg.io/32611">EPSG:32611</a></td><td>WGS 84 / UTM zone 11N, the required submission CRS.</td><td><span class="pill warn">REFERENCE</span></td></tr><tr><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN survey</a></td><td>The airborne magnetic and radiometric surveys the feature stack is built from.</td><td><span class="pill ok">OFFICIAL</span></td></tr><tr><td><a href="https://gbcge.org/current-projects/ingenious/">INGENIOUS project</a></td><td>Source of part of the fault label set.</td><td><span class="pill ok">OFFICIAL</span></td></tr>
-</table>
-<h3>What this repository does not claim</h3>
-<ul>
-<li>No organizer-confirmed score exists for any file produced here. None is claimed.</li>
-<li>No holdout number is presented as a score, and no projection is written as one.</li>
-<li>No pixel emitted here is asserted to be a fault. The emission is a set of candidates
-    with a named non-tectonic confuser in the run card.</li>
-</ul>
-</section>
-<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
-hand.</footer>
+<div class="panel"><h2>Official / verified sources (manual review links)</h2>
+<ul class="tight">
+<li>Competition home — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
+<li>Problem description & metric — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></li>
+<li>About / additional resources — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></li>
+<li>Rules / submission format PDF — <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a> (mirrored copy linked from the family data page via Dropbox)</li>
+<li>Leaderboard — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">competition leaderboard</a> (access requires sign-in)</li>
+<li>Known-fault masking clarification — <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum thread 11516</a></li>
+<li>Reference solution — <a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></li>
+<li>GEODAWN airborne surveys (USGS) — <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov GEODAWN data page</a></li>
+<li>INGENIOUS project (GBCGE) — <a href="https://gbcge.org/current-projects/ingenious/">gbcge.org/current-projects/ingenious</a></li>
+<li>GDR submission 1391 (geothermal data) — <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></li>
+<li>Grid CRS — <a href="https://epsg.io/32611">EPSG:32611 (UTM 11N)</a></li>
+<li>Tversky index — <a href="https://en.wikipedia.org/wiki/Tversky_index">Wikipedia</a></li>
+<li>CVaR — Rockafellar, R.T. & Uryasev, S. (2000) <i>Optimization of conditional value-at-risk</i>, Journal of Risk</li>
+<li>Hermant et al. catalogue-offset measurement (north-central Nevada, USGS-vs-TLS label distances "up to 400 m") — <a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Hermant.pdf">SGW 2025 paper (Stanford/PDES)</a> — basis of the ±4 px shift calibration; the parallel session rates it a local figure (IR-09)</li>
+<li>Official public leaderboard snapshot captured 2026-10-11 (#1 = 0.4133) — <a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/official_leaderboard_snapshot_2026-10-11.csv">registry/official_leaderboard_snapshot_2026-10-11.csv</a></li>
+<li>Family evidence reused under the reuse-don't-rebuild protocol: GEMSDOE32 registry/data_manifest.json
+(owner-supplied, sha256-pinned mirrors of the login-walled DrivenData files — integrity-pinned, NOT organizer-authenticated),
+GEMSDOE32 evidence/d28_forensic_autopsy.json (dot-family pathology), evidence/instrument_calibration.json
+(live-receipt calibration of the SGMC/drift instruments).</li>
+</ul></div>
 </div></body></html>

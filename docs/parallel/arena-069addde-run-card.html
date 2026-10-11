@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Run card - GEMSDOE63</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header><div class="wrap">
+<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
+<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
+plausible label worlds &middot; every number on this site is generated from
+<code>evidence/run_card.json</code></p>
+</div></header>
+<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html" class="on">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<div class="wrap">
+
+<section>
+<h2>Run card</h2>
+<p>The protocol's JSON card, in full. The selection table and the per-raster registry
+comparisons are on the <a href="results.html">results</a> page; the machine-readable
+original is <code>evidence/run_card.json</code>.</p>
+<h3>Hypothesis</h3><p>The scoreable truth is concentrated in the annulus immediately around the mapped trace network, because (a) known USGS/INGENIOUS fault pixels are masked out of evaluation in both rounds [OFFICIAL, thread 11516], (b) a &#x27;new fault&#x27; includes newly mapped geometry of an existing system [OFFICIAL, thread 11536], and (c) measured USGS trace displacement in north-central Nevada reaches 400 m = 4 px [Hermant et al., SGW 2025].</p>
+<h3>Mechanism</h3><p>A hard ribbon of CVaR-selected width around the catalogue, with the catalogue pixels themselves removed, plus trace-tip continuations; the width and the retained distance bands are chosen by mean DTI penalised by the worst-tail average over an ensemble of shifted/omitted/decoyed label worlds.</p>
+<h3>The named non-fault process that could mimic it</h3>
+<p>A laterally displaced mapped trace is indistinguishable, in this geometry, from (i) a parallel splay or secondary strand of the same system, (ii) a scarp formed by landslide or alluvial-fan edge construction, and (iii) an anthropogenic linear feature (road cut, canal, pipeline). Only (i) is a fault; (ii) and (iii) are not, and nothing in this lane separates them.</p>
+<pre>{
+ &quot;hypothesis&quot;: &quot;The scoreable truth is concentrated in the annulus immediately around the mapped trace network, because (a) known USGS/INGENIOUS fault pixels are masked out of evaluation in both rounds [OFFICIAL, thread 11516], (b) a &#x27;new fault&#x27; includes newly mapped geometry of an existing system [OFFICIAL, thread 11536], and (c) measured USGS trace displacement in north-central Nevada reaches 400 m = 4 px [Hermant et al., SGW 2025].&quot;,
+ &quot;mechanism&quot;: &quot;A hard ribbon of CVaR-selected width around the catalogue, with the catalogue pixels themselves removed, plus trace-tip continuations; the width and the retained distance bands are chosen by mean DTI penalised by the worst-tail average over an ensemble of shifted/omitted/decoyed label worlds.&quot;,
+ &quot;named_non_fault_confounder&quot;: &quot;A laterally displaced mapped trace is indistinguishable, in this geometry, from (i) a parallel splay or secondary strand of the same system, (ii) a scarp formed by landslide or alluvial-fan edge construction, and (iii) an anthropogenic linear feature (road cut, canal, pipeline). Only (i) is a fault; (ii) and (iii) are not, and nothing in this lane separates them.&quot;,
+ &quot;holdout_dti&quot;: {
+  &quot;label&quot;: &quot;HOLDOUT-DTI&quot;,
+  &quot;evaluator&quot;: &quot;gems63.metric.binary_dti_components via gems63.cvar (alpha 0.2, beta 0.8, 300 m triangular kernel)&quot;,
+  &quot;pooled_over&quot;: &quot;48 worlds x 4 folds&quot;,
+  &quot;withheld_positives_pixels&quot;: 836744,
+  &quot;pooled&quot;: 0.23358239828353922,
+  &quot;mean_per_world&quot;: 0.24655647043654141,
+  &quot;cvar_worst_tail&quot;: 0.12480423812714381,
+  &quot;tail_fraction&quot;: 0.2,
+  &quot;lam&quot;: 0.5,
+  &quot;ci95_cluster_bootstrap&quot;: [
+   0.1906857569651437,
+   0.20678518147033076
+  ],
+  &quot;leakage_canary_auc_distance_to_catalogue&quot;: NaN,
+  &quot;leakage_canary_verdict&quot;: &quot;LEAKAGE-CIRCULAR by construction when phi is high; the ensemble spans phi in [0.15, 0.95] and the objective is tail-penalised for exactly this reason&quot;,
+  &quot;not_a_score&quot;: true
+ },
+ &quot;registry&quot;: {
+  &quot;n_registry_rasters&quot;: 21,
+  &quot;rank_corr_gate&quot;: 0.9,
+  &quot;overlap_gate&quot;: 0.7,
+  &quot;overlap_radius_px&quot;: 3.0,
+  &quot;lift_gate&quot;: 2.0,
+  &quot;max_rank_corr&quot;: 0.07929388333852395,
+  &quot;max_overlap&quot;: 1.0,
+  &quot;max_lift&quot;: 3.5105883027194316,
+  &quot;literal_gate_clear&quot;: false,
+  &quot;literal_gate_tripped_by&quot;: [
+   &quot;gems8_hedge_v2_01563&quot;,
+   &quot;gems13_r11_greedy_mp&quot;,
+   &quot;gems13_r14_union_tips10_lat6&quot;,
+   &quot;gems13_r13_lattice_s5_00904&quot;
+  ],
+  &quot;lift_gate_clear&quot;: false,
+  &quot;lift_gate_tripped_by&quot;: [
+   &quot;gems8_hedge_v2_01563&quot;
+  ],
+  &quot;clear&quot;: false,
+  &quot;duplicates&quot;: [
+   &quot;gems8_hedge_v2_01563&quot;,
+   &quot;gems13_r11_greedy_mp&quot;,
+   &quot;gems13_r14_union_tips10_lat6&quot;,
+   &quot;gems13_r13_lattice_s5_00904&quot;
+  ],
+  &quot;interpretation&quot;: &quot;The literal gate is the brief&#x27;s test and is reported unchanged. Comparators whose overlap_random is close to their overlap are dense enough that co-location is explained by density alone; only a lift well above 1 is evidence of a lane collision.&quot;
+ },
+ &quot;raster&quot;: {
+  &quot;sha256&quot;: &quot;b8f15e4d5fee63348c00bb7fb5a92ed529be438fa3b0a70af933ba63fac25244&quot;,
+  &quot;bytes&quot;: 197922,
+  &quot;path&quot;: &quot;docs/downloads/gems63-cvar-offset-band.tif&quot;,
+  &quot;positive_pixels&quot;: 122509,
+  &quot;value_range&quot;: [
+   0.0,
+   1.0
+  ]
+ },
+ &quot;validator&quot;: {
+  &quot;path&quot;: &quot;/home/user/GEMSDOE63/docs/downloads/gems63-cvar-offset-band.tif&quot;,
+  &quot;ok&quot;: true,
+  &quot;checks&quot;: {
+   &quot;file exists&quot;: true,
+   &quot;driver is GTiff&quot;: true,
+   &quot;single band (count == 1)&quot;: true,
+   &quot;dtype is float32&quot;: true,
+   &quot;CRS is EPSG:32611&quot;: true,
+   &quot;shape matches template (3730 x 3292)&quot;: true,
+   &quot;geotransform matches template exactly&quot;: true,
+   &quot;resolution is 100 m&quot;: true,
+   &quot;no NaN inside the survey footprint&quot;: true,
+   &quot;no NaN anywhere in the raster (zeros-outside variant)&quot;: true,
+   &quot;min value &gt;= 0&quot;: true,
+   &quot;max value &lt;= 1&quot;: true,
+   &quot;no infinities&quot;: true
+  },
+  &quot;failures&quot;: [],
+  &quot;sha256&quot;: &quot;b8f15e4d5fee63348c00bb7fb5a92ed529be438fa3b0a70af933ba63fac25244&quot;,
+  &quot;stats&quot;: {
+   &quot;bytes&quot;: 197922,
+   &quot;min&quot;: 0.0,
+   &quot;max&quot;: 1.0,
+   &quot;positive_pixels&quot;: 122509,
+   &quot;distinct_values&quot;: 2,
+   &quot;nan_pixels&quot;: 0
+  }
+ },
+ &quot;submission&quot;: {
+  &quot;file_name&quot;: &quot;gems63-cvar-offset-band.tif&quot;,
+  &quot;note&quot;: &quot;GEMSDOE63-CVaR-band1 | 1px offset ribbon, catalogue px removed | CVaR over 48 label worlds | drift gate tripped - see site&quot;,
+  &quot;submission_name&quot;: &quot;gems63-cvar-offset-band&quot;
+ },
+ &quot;verdict&quot;: {
+  &quot;promote&quot;: false,
+  &quot;decision&quot;: &quot;DO NOT SPEND A SLOT ON THIS FILE (selector step must decide)&quot;,
+  &quot;reason&quot;: [
+   &quot;The brief&#x27;s lane-drift overlap gate is literally tripped: 100.0% of this file&#x27;s 122,509 dots lie within 3 px of gems8_hedge_v2_01563, against a 70% threshold.&quot;,
+   &quot;That statistic is non-discriminating here, and measurably so: gems8_hedge_v2 emits p=1.0 on all 60,988 catalogue pixels (measured here; corroborated by 8GEMSDOE reports/hedge_v2.json), and this emission is the 1-px ring around that same catalogue, so every dot is 0 px from a hedge dot by construction.&quot;,
+   &quot;The discriminating statistic is clean: max Spearman rank correlation against all 21 registry rasters is 0.079 against a 0.90 gate; against hedge_v2 it is -0.006.&quot;,
+   &quot;The three other literal trips are dense-comparator artifacts: their chance overlap is 0.763, 0.999 and 0.739 versus observed 0.770, 0.999 and 1.000 (lift 1.01, 1.00, 1.35).&quot;,
+   &quot;Separately, the mechanism this file implements is already occupied: the catalogue hedge scored 0.1563 (owner-reported), well below the group&#x27;s best off-catalogue artifact at 0.2778. Spending a slot here would repeat a lower-scoring bet.&quot;
+  ],
+  &quot;still_true&quot;: &quot;The file is format-valid: 13/13 validator checks pass, single band, float32, EPSG:32611, 100 m, exact geotransform, 0 NaN, values {0,1}. It is safe to download and would be accepted by the form. The recommendation against submitting is scientific, not technical.&quot;,
+  &quot;recommendation&quot;: &quot;Use the next slot on H1 (strain-rate second invariant) from hypotheses.html: it is off-catalogue, so it is gate-clear by construction and aligned with where the score actually is.&quot;
+ },
+ &quot;world_config&quot;: {
+  &quot;shift_lo_px&quot;: 1.5,
+  &quot;shift_hi_px&quot;: 4.0,
+  &quot;shift_max_px&quot;: 4.0,
+  &quot;drop_lo&quot;: 0.1,
+  &quot;drop_hi&quot;: 0.3,
+  &quot;phi_lo&quot;: 0.15,
+  &quot;phi_hi&quot;: 0.95,
+  &quot;decoy_max_fraction&quot;: 1.0,
+  &quot;seed&quot;: 20261011,
+  &quot;n_worlds&quot;: 12
+ },
+ &quot;prune_log&quot;: [
+  {
+   &quot;step&quot;: 0,
+   &quot;action&quot;: &quot;init&quot;,
+   &quot;objective&quot;: 0.12125916020665647,
+   &quot;mean_dti&quot;: 0.14522750384590735,
+   &quot;tail_dti&quot;: 0.09729081656740561,
+   &quot;n_emitted&quot;: 766247
+  },
+  {
+   &quot;step&quot;: 1,
+   &quot;action&quot;: &quot;drop:band-5px&quot;,
+   &quot;objective&quot;: 0.13872366876686978,
+   &quot;mean_dti&quot;: 0.16751838512316275,
+   &quot;tail_dti&quot;: 0.1099289524105768,
+   &quot;n_emitted&quot;: 616748
+  },
+  {
+   &quot;step&quot;: 2,
+   &quot;action&quot;: &quot;drop:band-4px&quot;,
+   &quot;objective&quot;: 0.15586208093715964,
+   &quot;mean_dti&quot;: 0.18958287522039033,
+   &quot;tail_dti&quot;: 0.12214128665392894,
+   &quot;n_emitted&quot;: 497246
+  },
+  {
+   &quot;step&quot;: 3,
+   &quot;action&quot;: &quot;drop:band-3px&quot;,
+   &quot;objective&quot;: 0.1746065378540297,
+   &quot;mean_dti&quot;: 0.2142468666797043,
+   &quot;tail_dti&quot;: 0.13496620902835504,
+   &quot;n_emitted&quot;: 357109
+  },
+  {
+   &quot;step&quot;: 4,
+   &quot;action&quot;: &quot;drop:band-2px&quot;,
+   &quot;objective&quot;: 0.1817989040149015,
+   &quot;mean_dti&quot;: 0.22284569923651332,
+   &quot;tail_dti&quot;: 0.14075210879328967,
+   &quot;n_emitted&quot;: 236226
+  },
+  {
+   &quot;step&quot;: 5,
+   &quot;action&quot;: &quot;drop:band-6px&quot;,
+   &quot;objective&quot;: 0.1856803542818426,
+   &quot;mean_dti&quot;: 0.24655647043654141,
+   &quot;tail_dti&quot;: 0.12480423812714381,
+   &quot;n_emitted&quot;: 122509
+  },
+  {
+   &quot;step&quot;: 6,
+   &quot;action&quot;: &quot;final&quot;,
+   &quot;objective&quot;: 0.1856803542818426,
+   &quot;mean_dti&quot;: 0.24655647043654141,
+   &quot;tail_dti&quot;: 0.12480423812714381,
+   &quot;n_emitted&quot;: 122509
+  }
+ ],
+ &quot;phi_stratified&quot;: {
+  &quot;pruned&quot;: {
+   &quot;low&quot;: {
+    &quot;n_worlds&quot;: 12,
+    &quot;mean_dti&quot;: 0.13524550757407236
+   },
+   &quot;mid&quot;: {
+    &quot;n_worlds&quot;: 21,
+    &quot;mean_dti&quot;: 0.2258154916013997
+   },
+   &quot;high&quot;: {
+    &quot;n_worlds&quot;: 15,
+    &quot;mean_dti&quot;: 0.36464261109571505
+   }
+  },
+  &quot;selected:band-1px&quot;: {
+   &quot;low&quot;: {
+    &quot;n_worlds&quot;: 12,
+    &quot;mean_dti&quot;: 0.13524550757407236
+   },
+   &quot;mid&quot;: {
+    &quot;n_worlds&quot;: 21,
+    &quot;mean_dti&quot;: 0.2258154916013997
+   },
+   &quot;high&quot;: {
+    &quot;n_worlds&quot;: 15,
+    &quot;mean_dti&quot;: 0.36464261109571505
+   }
+  },
+  &quot;ribbon-w5&quot;: {
+   &quot;low&quot;: {
+    &quot;n_worlds&quot;: 12,
+    &quot;mean_dti&quot;: 0.10592863779812091
+   },
+   &quot;mid&quot;: {
+    &quot;n_worlds&quot;: 21,
+    &quot;mean_dti&quot;: 0.15107954394835366
+   },
+   &quot;high&quot;: {
+    &quot;n_worlds&quot;: 15,
+    &quot;mean_dti&quot;: 0.2086504204750441
+   }
+  }
+ },
+ &quot;runtime_s&quot;: 594.9,
+ &quot;marginal_bar_at_selection&quot;: 0.049311294087308284,
+ &quot;gate_context&quot;: {
+  &quot;hedge_v2_contains_whole_catalogue&quot;: true,
+  &quot;catalogue_px&quot;: 60988,
+  &quot;catalogue_px_in_hedge&quot;: 60988,
+  &quot;source&quot;: &quot;measured here from registry/rasters/gems8_hedge_v2_01563.tif&quot;,
+  &quot;corroborating_report&quot;: &quot;8GEMSDOE reports/hedge_v2.json: on_training_labels_px = 60988; description = base 0.1563 emission UNIONED with the full USGS/INGENIOUS catalogue at p=1.0&quot;,
+  &quot;consequence&quot;: &quot;Any emission confined to the 1-px ring around the catalogue is within 1 px of a hedge-v2 dot at every pixel, so the brief&#x27;s 70%-within-3px statistic is 1.000 by construction and cannot discriminate. The discriminating statistic is rank correlation, measured at -0.006 against a 0.90 gate.&quot;
+ }
+}</pre>
+</section>
+<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
+hand.</footer>
+</div></body></html>

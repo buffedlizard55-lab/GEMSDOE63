@@ -1,0 +1,90 @@
+{
+  "submission_name": "gems63-cvar-ridge-q020-s2-r3-20261011T212315Z",
+  "file": "held/gems63-cvar-ridge-q020-s2-r3-20261011T212315Z.tif",
+  "sha256": "73713d024eb45bc03d2f58977cb8526ef7c75b5df971849c9e90d4f7e5e57564",
+  "bytes": 288758,
+  "note": "CVaR-robust ridge-lineness dots, 2% budget, NMS 2px, 3px catalogue-flank cut; holdout ~ random-dot control (NEGATIVE, not promoted)",
+  "note_chars": 131,
+  "policy": {
+    "family": "ridge",
+    "q": 0.02,
+    "s": 2,
+    "r": 3
+  },
+  "dot_count": 11237,
+  "validator": {
+    "file": "gems63-cvar-ridge-q020-s2-r3-20261011T212315Z.tif",
+    "sha256": "73713d024eb45bc03d2f58977cb8526ef7c75b5df971849c9e90d4f7e5e57564",
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_matches_template": true,
+      "shape_matches_template": true,
+      "transform_matches_template": true,
+      "outside_bounds_null_or_nan": true,
+      "inside_bounds_all_finite": true,
+      "inside_values_in_0_1": true,
+      "no_sentinel_values": true
+    },
+    "errors": [],
+    "count": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": "nan",
+    "in_bounds_px": 5167373,
+    "dot_px_in_bounds": 11237,
+    "zero_px_in_bounds": 5156136,
+    "min_inside": 0.0,
+    "max_inside": 1.0,
+    "nan_inside_count": 0,
+    "nan_outside_count": 7111787,
+    "all_checks_passed": true
+  },
+  "evidence": {
+    "holdout_nominal_dti": {
+      "value": 0.025797214391682612,
+      "ci95": [
+        0.015835555690798253,
+        0.03560412372515281
+      ],
+      "n_withheld_positives": 60988,
+      "evaluator": "gems63.dti v1 (exact binary, alpha 0.2, beta 0.8, R 300 m)",
+      "label": "HOLDOUT-DTI"
+    },
+    "random_dot_control_dti": {
+      "label": "HOLDOUT-DTI control",
+      "source": "registry/experiments/controls.json"
+    },
+    "organizer_score": {
+      "value": null,
+      "label": "ORGANIZER-CONFIRMED",
+      "status": "none - not submitted"
+    }
+  },
+  "generated_utc": "20261011T212315Z",
+  "generator": "scripts/build_submission.py",
+  "status": "HOLD \u2014 uniqueness gate tripped (DUPLICATE verdict, dot-overlap test; see IR-17). Not published for download; not submitted.",
+  "uniqueness": {
+    "file": "registry/uniqueness_check.json",
+    "verdict": "DUPLICATE - log and stop",
+    "max_pearson": 0.0947,
+    "max_dot_overlap": 1.0,
+    "overlap_raster": "5GEMSDOE docs/downloads/gems-density-probe-20260925T184215Z-9cdae9b4.tif (5,106,385 of 5,167,373 footprint cells are ones, so the overlap gate saturates; IR-17)"
+  },
+  "evidence_labels": {
+    "holdout": "HOLDOUT-DTI 0.0258 (95% CI 0.0158-0.0356; n=60,988 withheld positives; evaluator gems63.dti)",
+    "organizer": "ORGANIZER-CONFIRMED: none"
+  }
+}

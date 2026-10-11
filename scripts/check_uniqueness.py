@@ -38,8 +38,8 @@ from scipy.ndimage import distance_transform_edt
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
-from gems63.raster_io import footprint, sha256          # noqa: E402
-from gems63.uniqueness import (OVERLAP_GATE, RANK_CORR_GATE,  # noqa: E402
+from gems63_rs.raster_io import footprint, sha256          # noqa: E402
+from gems63_rs.uniqueness import (OVERLAP_GATE, RANK_CORR_GATE,  # noqa: E402
                                spearman_rank_corr)
 
 LIFT_GATE = 2.0

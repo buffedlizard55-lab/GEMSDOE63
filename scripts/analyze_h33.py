@@ -34,8 +34,8 @@ from scipy.ndimage import distance_transform_edt
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
-from gems63.metric import ALPHA, BETA  # noqa: E402
-from gems63.raster_io import catalogue, footprint, sha256  # noqa: E402
+from gems63_rs.metric import ALPHA, BETA  # noqa: E402
+from gems63_rs.raster_io import catalogue, footprint, sha256  # noqa: E402
 
 # Credit a single dot can earn on an ideal straight trace: the published worked
 # example, TP_w = 3.00 for one dot centred on a vertical line.

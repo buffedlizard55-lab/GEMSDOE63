@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch every earlier raster in the registry and verify it byte-for-byte.
 
-The uniqueness gate in :mod:`gems63.uniqueness` is only as good as the rasters it
+The uniqueness gate in :mod:`gems63_rs.uniqueness` is only as good as the rasters it
 compares against, so this script downloads each registry entry from the GitHub
 contents API, checks its sha256 against the manifest, and records what it got in
 ``registry/cache.json``.  A manifest entry whose hash does not match is reported and

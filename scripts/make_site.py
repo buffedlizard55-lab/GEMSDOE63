@@ -16,8 +16,10 @@ import json
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-DOCS = REPO / "docs"
-EVIDENCE = REPO / "evidence"
+LANE = "arena-069addde"
+DOCS = REPO / "docs" / "parallel"
+EVIDENCE = REPO / "evidence" / "parallel"
+ROOT = "../"
 
 CSS = """
 :root{--ink:#12212b;--mut:#5b6b76;--line:#dde5ea;--bg:#f7fafb;--acc:#0b6b62;--warn:#9a3412;--ok:#14532d}
@@ -142,7 +144,7 @@ def page(title: str, body: str, active: str) -> str:
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} - GEMSDOE63</title>
-<link rel="stylesheet" href="assets/site.css"></head>
+<link rel="stylesheet" href="../assets/site.css"></head>
 <body>
 <header><div class="wrap">
 <h1>GEMSDOE63 &mdash; robust-selection lane</h1>
@@ -221,7 +223,7 @@ def hero(card: dict) -> str:
 <div class="hero">
 <h2>Submission file &mdash; download here</h2>
 {answer}
-<a class="dl" href="downloads/{esc(fname)}" download>&#11015;&nbsp; Download {esc(fname)}</a>
+<a class="dl" href="../downloads/{esc(fname)}" download>&#11015;&nbsp; Download {esc(fname)}</a>
 <div>{pill} &nbsp; {gate}</div>
 <div class="grid">
 <div class="card"><div class="k">sha256</div><div class="v" style="font-size:13px;word-break:break-all">{esc(ras.get('sha256',''))}</div></div>
@@ -716,6 +718,66 @@ def build_irregularities(card: dict) -> str:
     return f"""
 <section>
 <h2>Irregularities flagged for review</h2>
+<h3>Found on <code>main</code> during the merge of this lane</h3>
+<p>These are defects in the shared trunk, not in this lane. Each was reproduced on an
+unmodified checkout of <code>origin/main</code> before being fixed, and each is reported
+here rather than fixed silently.</p>
+<table>
+<tr><th>#</th><th>Finding</th><th>Evidence</th><th>Status</th></tr>
+<tr><td>A</td><td><b>Unresolved conflict markers were committed to the trunk.</b>
+<code>src/gems63/metric.py</code> on <code>origin/main</code> contained
+<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> at line 1, <code>=======</code> at line 52 and
+<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</code> at line 120 &mdash; two complete
+implementations of the metric in one file, plus a verbatim duplicate of two functions
+after the closing marker. The module could not be imported at all.</td>
+<td><code>git grep -l "^&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" origin/main</code> returns exactly
+this one file. An unmodified checkout of <code>origin/main</code> fails pytest collection
+with <code>SyntaxError: invalid syntax</code> at <code>metric.py</code> line 1.</td>
+<td><b>FIXED</b> &mdash; resolved to the union both lineages need:
+<code>ALPHA, BETA, RADIUS_PX, EPS, kernel, _offsets, _OFFS, dti_from_counts</code> plus
+<code>dti_binary, cvar_penalized_score</code>.</td></tr>
+<tr><td>B</td><td><b>Two packages claimed the name <code>gems63</code>.</b> A root-level
+<code>gems63/</code> (<code>dti, emit, features, grid, validate, worlds</code>) shadowed
+<code>src/gems63/</code> (<code>emission, holdout, instrument, metric, posterior,
+uniqueness, writer, worlds</code>), because <code>conftest.py</code> inserts the repo root
+at <code>sys.path[0]</code>. The two need contradictory resolutions:
+<code>scripts/controls.py</code> wants root's <code>worlds.FoldSegments</code> while
+<code>scripts/run_pipeline.py</code> wants src's <code>worlds.generate_worlds</code>. No
+single path order satisfies both.</td>
+<td>Unmodified <code>origin/main</code>: <code>PYTHONPATH=src pytest tests/</code>
+errors on <code>tests/test_gems63.py</code> and <code>tests/test_instrument.py</code> with
+<code>ImportError: cannot import name 'instrument' from 'gems63'
+(.../gems63/__init__.py)</code>. The two <code>worlds.py</code> are different APIs
+(106 vs 121 lines, <code>cmp</code> says not identical). No file imports from both.</td>
+<td><b>FIXED</b> &mdash; root package renamed to <code>src/gems63_stack/</code> and its 8
+consumers repointed. Both packages now import; the full suite runs.</td></tr>
+<tr><td>C</td><td><b><code>scikit-learn</code> is used but not declared.</b> Four scripts
+import it and <code>requirements.txt</code> did not list it.</td>
+<td><code>scripts/build_submission.py</code>, <code>controls.py</code>,
+<code>e2_cvar_select.py</code>, <code>run_experiments.py</code> all failed with
+<code>ModuleNotFoundError: No module named 'sklearn'</code> until it was installed.</td>
+<td><b>FIXED</b> &mdash; added to <code>requirements.txt</code>.</td></tr>
+<tr><td>D</td><td><b><code>scripts/run_experiments.py</code> targets an API that does not
+exist.</b> It imports <code>LabelWorldEnsemble</code> from <code>src.gems63.holdout</code>;
+that name appears zero times in <code>origin/main</code>'s
+<code>src/gems63/holdout.py</code>.</td>
+<td><code>git show origin/main:src/gems63/holdout.py | grep -c LabelWorldEnsemble</code>
+&rarr; <code>0</code></td>
+<td><b>REPORTED, NOT FIXED</b> &mdash; repairing it means choosing another lane's holdout
+semantics, which is that lane's call. Left untouched rather than guessed.</td></tr>
+<tr><td>E</td><td><b>The trunk's own parallel snapshot has broken links.</b>
+<code>docs/parallel/arena-20aeb6c7-index.html</code> references
+<code>href="assets/site.css"</code> and <code>href="downloads/&hellip;"</code>, which from
+inside <code>docs/parallel/</code> resolve to <code>docs/parallel/assets/</code> and 404.</td>
+<td>Link targets read directly from the committed file.</td>
+<td><b>FIXED</b> in that snapshot; this lane's pages use correct <code>../</code>
+relatives.</td></tr>
+</table>
+<div class="note"><b>Why the fixes are in this lane's commit:</b> the brief says a wrong
+shared tool gets fixed once, in the shared place, and reported &mdash; never forked. A and
+B both blocked <code>pytest</code> from running at all, so no lane's work could be
+verified until they were fixed. The suite now runs: 73 passed, 4 skipped.</div>
+
 <p>Everything found during this session that did not match expectation, including
 problems in this repository's own code. Each is stated with what was observed and what
 was done about it.</p>
@@ -780,7 +842,7 @@ Verified: maximum observed displacement over 12 worlds is exactly 4.00 px.</td><
 <code>dti_components</code>.</td>
 <td>Not fixed here &mdash; it is another repository's file and the brief forbids a
 private fork of a shared tool. Reported instead. This repository implements its own
-<code>gems63.metric</code> with an independent test suite.</td></tr>
+<code>gems63_rs.metric</code> with an independent test suite.</td></tr>
 
 <tr><td>9</td><td><b>The competition data is not reachable from this sandbox.</b></td>
 <td>HTTP 000 from <code>www.drivendata.org</code> and <code>usgs.gov</code>; the data page
@@ -1027,7 +1089,7 @@ sessions on hypotheses 1-3 rather than on more selection machinery.</p>
 def main() -> int:
     h33_path = EVIDENCE / "h33_analysis.json"
     h33 = json.loads(h33_path.read_text()) if h33_path.exists() else {}
-    card_path = EVIDENCE / "run_card.json"
+    card_path = EVIDENCE / "run_card_robust_selection.json"
     if card_path.exists():
         card = json.loads(card_path.read_text())
     else:
@@ -1037,11 +1099,13 @@ def main() -> int:
                 "holdout_dti": {}, "world_config": {}, "selection_table": [],
                 "prune_log": [], "registry_comparisons": [],
                 "verdict": "NO ARTIFACT YET - run scripts/run_lane.py"}
-    (DOCS / "assets").mkdir(parents=True, exist_ok=True)
+    (REPO / "docs" / "assets").mkdir(parents=True, exist_ok=True)
     (DOCS / "downloads").mkdir(parents=True, exist_ok=True)
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
-    (DOCS / ".nojekyll").write_text("")
-    (DOCS / "assets" / "site.css").write_text(CSS)
+    (REPO / "docs" / ".nojekyll").write_text("")
+    # main owns docs/assets/site.css; this lane does not overwrite it
+    if not (REPO / "docs" / "assets" / "site.css").exists():
+        (REPO / "docs" / "assets" / "site.css").write_text(CSS)
 
     pages = {
         "index.html": ("GEMSDOE63", build_index(card), "index.html"),
@@ -1056,10 +1120,10 @@ def main() -> int:
         "next-steps.html": ("Next steps", build_next_steps(card), "next-steps.html"),
     }
     for fname, (title, body, active) in pages.items():
-        (DOCS / fname).write_text(page(title, body, active))
-        print(f"  wrote docs/{fname}  ({(DOCS/fname).stat().st_size:,} bytes)")
+        (DOCS / f"{LANE}-{fname}").write_text(page(title, body, active))
+        print(f"  wrote docs/parallel/{LANE}-{fname}  ({(DOCS / (LANE + chr(45) + fname)).stat().st_size:,} bytes)")
 
-    site = {"generated_from": "evidence/run_card.json",
+    site = {"generated_from": "evidence/parallel/run_card_robust_selection.json",
             "submission": card.get("submission", {}),
             "raster": card.get("raster", {}),
             "validator_ok": card.get("validator", {}).get("ok"),
@@ -1069,8 +1133,8 @@ def main() -> int:
             "sources": [{"title": t, "url": u, "what": w, "class": c} for t, u, w, c in SOURCES],
             "hypotheses": [{k: v for k, v in hh.items()} for hh in HYPOTHESES],
             "h33_analysis": h33}
-    (DOCS / "data" / "site.json").write_text(json.dumps(site, indent=1, default=str))
-    print(f"  wrote docs/data/site.json")
+    (DOCS / f"{LANE}-site.json").write_text(json.dumps(site, indent=1, default=str))
+    print(f"  wrote docs/parallel/{LANE}-site.json")
     return 0
 
 

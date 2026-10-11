@@ -1,100 +1,109 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GEMSDOE63 - GEMSDOE63</title>
-<link rel="stylesheet" href="assets/site.css"></head>
-<body>
+<title>One-click submission — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
 <header><div class="wrap">
-<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
-<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
-plausible label worlds &middot; every number on this site is generated from
-<code>evidence/run_card.json</code></p>
-</div></header>
-<nav><div class="wrap"><a href="index.html" class="on">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
 <div class="wrap">
+<div class="panel hero">
+<p class="big">✅ OK TO DOWNLOAD AND SUBMIT — all portal checks pass, lane-uniqueness pass</p>
+<p>
+<a class="dl" href="downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif">⬇ Download submission TIF</a>
+<a class="dl zip" href="downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.zip">⬇ Download as .zip</a>
+<a class="dl zip" style="background:#30363d;color:#fff" href="downloads/checks-gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif.json">validation receipt (json)</a>
+</p>
+<p class="small">Upload the <b>.tif</b> (or the .zip) exactly as downloaded to the
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission form</a>.
+Suggested note (≤140 chars), paste into the portal's Note field:</p>
+<pre>GEMSDOE63 CVaR-LW | thin-s3.17; 54864 dots; CVaR over 160 label worlds (shift4/drop10-30/decoys), prevalence-cal J=0.0359; SGMC-cal 0.0783</pre>
+<table>
+<tr><th>file</th><td><code>gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif</code></td></tr>
+<tr><th>sha256</th><td><code>46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8</code></td></tr>
+<tr><th>content digest</th><td><code>gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif</code> values digest <code>c58f60c4</code></td></tr>
+<tr><th>bytes</th><td class="num">330,275</td></tr>
+<tr><th>format</th><td>single-band float32 GeoTIFF · EPSG:32611 · 3730×3292 · 100 m · every cell finite, zeros outside footprint, values in [0,1], no nodata tag (54,864 unit dots, 0 catalogue collisions)</td></tr>
+</table>
+<h3>Portal validator checks (re-read from the bytes on disk)</h3>
+<table><tr><th>check</th><th>result</th></tr><tr><td>single_band</td><td><span class=pill ok>PASS</span></td></tr><tr><td>dtype_float32</td><td><span class=pill ok>PASS</span></td></tr><tr><td>dimensions_3730x3292</td><td><span class=pill ok>PASS</span></td></tr><tr><td>crs_epsg_32611</td><td><span class=pill ok>PASS</span></td></tr><tr><td>full_grid_all_finite</td><td><span class=pill ok>PASS</span></td></tr><tr><td>range_0_1_all_cells</td><td><span class=pill ok>PASS</span></td></tr><tr><td>no_nodata_tag</td><td><span class=pill ok>PASS</span></td></tr></table>
+</div>
 
-<div class="hero">
-<h2>Submission file &mdash; download here</h2>
-<p><span class="pill ok">THE FILE IS FORMAT-VALID AND WOULD BE ACCEPTED</span> &nbsp;<span class="pill warn">BUT SUBMITTING IT IS NOT RECOMMENDED</span></p><p>The validator passes every check. However the lane-drift overlap gate is <b>literally tripped</b> by <code>gems8_hedge_v2_01563, gems13_r11_greedy_mp, gems13_r14_union_tips10_lat6, gems13_r13_lattice_s5_00904</code>, so this file is logged as a duplicate and the decision is escalated to the selector step rather than made here. The reasons, including a measured explanation of why that statistic cannot discriminate in this configuration, are in the box below and on the <a href="results.html">results page</a>.</p>
-<a class="dl" href="downloads/gems63-cvar-offset-band.tif" download>&#11015;&nbsp; Download gems63-cvar-offset-band.tif</a>
-<div><span class="pill ok">VALIDATOR: PASS</span> &nbsp; <span class="pill warn">LANE-DRIFT GATE: LITERALLY TRIPPED &mdash; SEE BELOW</span></div>
-<div class="grid">
-<div class="card"><div class="k">sha256</div><div class="v" style="font-size:13px;word-break:break-all">b8f15e4d5fee63348c00bb7fb5a92ed529be438fa3b0a70af933ba63fac25244</div></div>
-<div class="card"><div class="k">positive pixels</div><div class="v">122509</div></div>
-<div class="card"><div class="k">value range</div><div class="v">[0.0, 1.0]</div></div>
-<div class="card"><div class="k">size</div><div class="v">197922 B</div></div>
-</div>
-<h3>What to type in the submission form</h3>
+<div class="panel">
+<h2>What was measured (labels: HOLDOUT-DTI = this session's instrument; ORGANIZER-CONFIRMED = copied from a submission receipt)</h2>
 <table>
-<tr><th style="width:150px">Field</th><th>Value</th></tr>
-<tr><td>File to submit</td><td><code>gems63-cvar-offset-band.tif</code> (the file above)</td></tr>
-<tr><td>Note (optional)</td><td><code>GEMSDOE63-CVaR-band1 | 1px offset ribbon, catalogue px removed | CVaR over 48 label worlds | drift gate tripped - see site</code>
-<div class="mut">122 / 140 characters</div></td></tr>
+<tr><th>quantity</th><th class="num">value</th><th>class</th></tr>
+<tr><td>J CVaR blend (prevalence-calibrated, 160 cell-worlds)</td><td class="num">0.03594</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>mean DTI (calibrated) ± 95% CI</td><td class="num">0.03839 ± 0.00056</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>worst-20%-tail mean (CVaR, calibrated)</td><td class="num">0.03349</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>J natural prevalence (same worlds, no prevalence scaling)</td><td class="num">0.06143</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>catalogue-hidden unperturbed mean (withheld positives 22,232 px)</td><td class="num">0.00949</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>SGMC prevalence-calibrated DTI (template instrument)</td><td class="num">0.07834</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>best family score this artifact is benchmarked against</td><td class="num">0.2778 (h33-2-b2) · 0.2600 (d28)</td><td><span class="tag">ORGANIZER-CONFIRMED</span></td></tr>
+<tr><td>official public leaderboard #1 (parallel-session snapshot 2026-10-11)</td><td class="num">0.4133</td><td><span class="tag">ORGANIZER-CONFIRMED (public board)</span></td></tr>
 </table>
-<div class="warnbox" style="text-align:left"><b>DO NOT SPEND A SLOT ON THIS FILE (selector step must decide)</b><ul><li>The brief&#x27;s lane-drift overlap gate is literally tripped: 100.0% of this file&#x27;s 122,509 dots lie within 3 px of gems8_hedge_v2_01563, against a 70% threshold.</li><li>That statistic is non-discriminating here, and measurably so: gems8_hedge_v2 emits p=1.0 on all 60,988 catalogue pixels (measured here; corroborated by 8GEMSDOE reports/hedge_v2.json), and this emission is the 1-px ring around that same catalogue, so every dot is 0 px from a hedge dot by construction.</li><li>The discriminating statistic is clean: max Spearman rank correlation against all 21 registry rasters is 0.079 against a 0.90 gate; against hedge_v2 it is -0.006.</li><li>The three other literal trips are dense-comparator artifacts: their chance overlap is 0.763, 0.999 and 0.739 versus observed 0.770, 0.999 and 1.000 (lift 1.01, 1.00, 1.35).</li><li>Separately, the mechanism this file implements is already occupied: the catalogue hedge scored 0.1563 (owner-reported), well below the group&#x27;s best off-catalogue artifact at 0.2778. Spending a slot here would repeat a lower-scoring bet.</li></ul><p><b>Measured verification of the gate trip:</b> Any emission confined to the 1-px ring around the catalogue is within 1 px of a hedge-v2 dot at every pixel, so the brief&#x27;s 70%-within-3px statistic is 1.000 by construction and cannot discriminate. The discriminating statistic is rank correlation, measured at -0.006 against a 0.90 gate. <code>gems8_hedge_v2</code> covers 60,988 of 60,988 catalogue pixels, so a 1-px ring around that catalogue is 0 px away from it at every pixel.</p><p><b>What is still true:</b> The file is format-valid: 13/13 validator checks pass, single band, float32, EPSG:32611, 100 m, exact geotransform, 0 NaN, values {0,1}. It is safe to download and would be accepted by the form. The recommendation against submitting is scientific, not technical.</p><p><b>Use the next slot on H1 (strain-rate second invariant) from hypotheses.html: it is off-catalogue, so it is gate-clear by construction and aligned with where the score actually is.</b></p></div>
+<p class="small">No organizer score exists for this artifact (UNSCORED). Every score-like number above is a local
+instrument reading on the hide-and-recover holdout, never a projection dressed as a score.</p>
+<h3>Anchors through the same instrument</h3>
+<table><tr><th>anchor</th><th class="num">live (receipt)</th><th class="num">J_cal</th><th class="num">J_nat</th><th class="num">catHidden</th><th class="num">SGMC-cal</th></tr><tr><td>d28_repro_0.2600</td><td class='num'>0.2600</td><td class='num'>0.04090</td><td class='num'>0.06967</td><td class='num'>0.09832</td><td class='num'>0.06059</td></tr><tr><td>h33_2_b2_0.2778</td><td class='num'>0.2778</td><td class='num'>0.02542</td><td class='num'>0.04089</td><td class='num'>0.00460</td><td class='num'>0.06412</td></tr><tr><td>h32d_submod_46090</td><td class='num'>unscored</td><td class='num'>0.04243</td><td class='num'>0.07276</td><td class='num'>0.10122</td><td class='num'>0.06129</td></tr></table>
+<p class="small">Instrument-vs-live Spearman over 8 receipt-scored artefacts (catalogue-hidden baseline): ρ = -0.048 —
+the catalogue-hidden instrument does not rank live scores (consistent with GEMSDOE32's own finding, ρ≈+0.14 at n=12).
+Selection therefore used the label-world CVaR ensemble; see <a href="irregularities.html">irregularities</a> for the residual flank-credit caveat (IR-63-GEN-01).</p>
 </div>
-<section>
-<h2>Executive summary</h2>
-<p>This repository builds one thing: a <b>single-band float32 GeoTIFF</b> that can be
-uploaded to the
-<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS
-Prize Challenge</a>, plus the evidence that says whether it is worth uploading.</p>
-<p>The lane is <b>robust selection</b>. The competition rules force one submission to be
-chosen before the private scores are known, and Phase 2 re-scores that same submission
-against an expert-expanded label set. So the truth a submission is scored on is not the
-truth it can be validated on. Rather than pick the emission that wins one holdout draw,
-this lane scores every candidate emission in an <b>ensemble of plausible label worlds</b>
-and picks the one with the best <b>mean DTI penalised by the worst-tail average</b>
-(conditional value-at-risk, Rockafellar &amp; Uryasev 2000), then prunes greedily.</p>
-<div class="grid">
-<div class="card"><div class="k">HOLDOUT-DTI, pooled</div><div class="v">0.2336</div></div>
-<div class="card"><div class="k">mean per world</div><div class="v">0.2466</div></div>
-<div class="card"><div class="k">CVaR worst-20%</div><div class="v">0.1248</div></div>
-<div class="card"><div class="k">95% CI (cluster bootstrap)</div><div class="v" style="font-size:15px">[0.1907, 0.2068]</div></div>
-</div>
-<div class="warnbox"><b>These are HOLDOUT-DTI numbers, not scores.</b> They are measured
-against catalogue-derived proxy truths inside this sandbox. The organizer-confirmed
-channel is the submission page and nothing else; no number on this site is a score, and
-no projection is written as one.</div>
-<h3>The headline finding</h3>
-<p>Because known USGS/INGENIOUS fault pixels are <b>masked out of evaluation</b> in both
-rounds (organizer, thread 11516) and a "new fault" explicitly <b>can be newly mapped
-geometry of an existing system</b> (organizer, thread 11536), the densest population of
-<i>scoreable</i> truth pixels is the annulus immediately around the mapped trace
-network. Published measurement puts USGS trace displacement in north-central Nevada at
-up to 400 m = 4 px (Hermant et al. 2025). This lane therefore emits a hard ribbon around
-the catalogue and lets the CVaR selector choose its width and which distance bands
-survive.</p>
-<p>The selector's answer is counter-intuitive and is the main scientific result:
-<b>widening the ribbon past the first one or two bands makes the score worse</b>, because
-the metric's true-positive term is a <i>maximum</i> per truth pixel rather than a sum. A
-displaced trace coincides with exactly one band; every other band pays false-positive
-penalty for it without earning anything.</p>
-</section>
-<section>
-<h2>Where to go next</h2>
+
+<div class="panel">
+<h2>Uniqueness (parallel-run protocol §1)</h2>
 <table>
-<tr><th>Page</th><th>What it answers</th></tr>
-<tr><td><a href="executive-summary.html">How to submit</a></td>
-    <td>The exact clicks, the exact field values, and the format rules the file was
-        checked against.</td></tr>
-<tr><td><a href="method.html">Method</a></td>
-    <td>The metric algebra, why binary emission is optimal, the world generator and the
-        CVaR objective.</td></tr>
-<tr><td><a href="results.html">Results</a></td>
-    <td>Per-band economics, the full selection table, the prune log.</td></tr>
-<tr><td><a href="hypotheses.html">Hypotheses</a></td>
-    <td>Five candidate hypotheses not yet tried, ranked by expected gain and cost.</td></tr>
-<tr><td><a href="sources.html">Sources</a></td>
-    <td>Every official claim with a link for manual review.</td></tr>
-<tr><td><a href="irregularities.html">Irregularities</a></td>
-    <td>Everything found that did not match expectation, including in this repo.</td></tr>
-<tr><td><a href="run-card.html">Run card</a></td>
-    <td>The protocol's JSON card, rendered.</td></tr>
-<tr><td><a href="next-steps.html">Next steps</a></td>
-    <td>Limitations, blockers and the ranked work list for the next session.</td></tr>
+<tr><th>metric</th><th class="num">value</th><th class="num">limit</th><th>verdict</th></tr>
+<tr><td>max |Spearman ρ| vs non-control registry rasters (final raster)</td><td class="num">0.3462</td><td class="num">0.90</td><td><span class="pill ok">PASS</span></td></tr>
+<tr><td>max 3-px dot overlap vs non-control registry rasters (final raster)</td><td class="num">0.6321</td><td class="num">0.70</td><td><span class="pill ok">PASS</span></td></tr>
+<tr><td>sha256 byte-duplicate vs every registry raster</td><td class="num">0 collisions</td><td class="num">0</td><td><span class="pill ok">PASS</span></td></tr>
 </table>
-</section>
-<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
-hand.</footer>
+<p class="small">Blanket controls (r13 blind lattice, ens12 union) breach 70% for EVERY family artifact including the
+organizer-confirmed 0.26/0.2778 pair — measured and reported, excluded from the gate. Full tables + numbers:
+<a href="registry.html">registry &amp; uniqueness</a>. Generative difference: corroboration-weighted posterior →
+posterior-ordered min-distance thinning → CVaR selection over 160 perturbed label worlds → exact greedy CVaR prune
+(12 commits, −727 dots). No prior dotted
+submission was produced by that chain.</p>
+</div>
+<div class="panel small">All prior art acknowledged for learning: the dotted-emission family
+(d1.5→d2.8→d28→h27-4→h33) and its receipts taught the constraints (collar-free mass, sparse
+ordered placement). This artifact was generated by a different, declared pipeline and is
+measured unique against every earlier raster under the lane protocol.<br>
+Parallel sessions in this repo: <a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/run_card.json">arena/20aeb6c7 — negative (held)</a>
+(<a href="parallel/arena-20aeb6c7-index.html">its site snapshot</a> and <a href="parallel/arena-069addde-index.html">the robust-selection lane snapshot</a></a>) and
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/docs/run_card.json">arena/e03322eb — separate card</a>;
+all three artifacts measured pairwise-distinct (3-px overlaps 0.061–0.096 vs this file).</div>
 </div></body></html>

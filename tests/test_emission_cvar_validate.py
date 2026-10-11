@@ -6,9 +6,9 @@ import numpy as np
 import pytest
 import rasterio
 
-from gems63 import cvar, emission
-from gems63.raster_io import EXPECTED_SHAPE, write_submission
-from gems63.uniqueness import (
+from gems63_rs import cvar, emission
+from gems63_rs.raster_io import EXPECTED_SHAPE, write_submission
+from gems63_rs.uniqueness import (
     OVERLAP_GATE,
     RANK_CORR_GATE,
     compare_to_registry,
@@ -16,7 +16,7 @@ from gems63.uniqueness import (
     spearman_rank_corr,
     uniqueness_gate,
 )
-from gems63.validate import validate_submission
+from gems63_rs.validate import validate_submission
 
 
 # ------------------------------- emission ------------------------------------
@@ -148,7 +148,7 @@ def test_greedy_prune_removes_a_harmful_group():
     junk = np.zeros((30, 30), bool); junk[25:29, 25:29] = True
     emit = good | junk
 
-    from gems63.metric import binary_dti_components
+    from gems63_rs.metric import binary_dti_components
 
     def scorer(mask):
         d = binary_dti_components(mask, truth).dti

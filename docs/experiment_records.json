@@ -1,0 +1,103 @@
+{
+  "exp1": {
+    "spacing_2.5": {
+      "spacing_px": 2.5,
+      "dots": 36749,
+      "mean_dti": 0.05594,
+      "worst_tail_cvar": 0.05179,
+      "penalized_cvar": 0.05387
+    },
+    "spacing_2.8": {
+      "spacing_px": 2.8,
+      "dots": 36749,
+      "mean_dti": 0.05594,
+      "worst_tail_cvar": 0.05179,
+      "penalized_cvar": 0.05387
+    },
+    "spacing_3.0": {
+      "spacing_px": 3.0,
+      "dots": 34126,
+      "mean_dti": 0.05471,
+      "worst_tail_cvar": 0.05066,
+      "penalized_cvar": 0.05268
+    }
+  },
+  "exp2": {
+    "corridor_15px": {
+      "corridor_px": 15,
+      "corridor_m": 1500,
+      "dots": 24283,
+      "mean_dti": 0.06073,
+      "worst_tail_cvar": 0.05642,
+      "penalized_cvar": 0.05857
+    },
+    "corridor_20px": {
+      "corridor_px": 20,
+      "corridor_m": 2000,
+      "dots": 31042,
+      "mean_dti": 0.05804,
+      "worst_tail_cvar": 0.05385,
+      "penalized_cvar": 0.05595
+    },
+    "corridor_25px": {
+      "corridor_px": 25,
+      "corridor_m": 2500,
+      "dots": 36749,
+      "mean_dti": 0.05594,
+      "worst_tail_cvar": 0.05179,
+      "penalized_cvar": 0.05387
+    },
+    "corridor_35px": {
+      "corridor_px": 35,
+      "corridor_m": 3500,
+      "dots": 45238,
+      "mean_dti": 0.0531,
+      "worst_tail_cvar": 0.04907,
+      "penalized_cvar": 0.05109
+    }
+  },
+  "exp3": {
+    "prune_0pct": {
+      "prune_frac": 0.0,
+      "dots": 36749,
+      "mean_dti": 0.05594,
+      "worst_tail_cvar": 0.05179,
+      "penalized_cvar": 0.05387
+    },
+    "prune_40pct": {
+      "prune_frac": 0.4,
+      "dots": 22050,
+      "mean_dti": 0.06166,
+      "worst_tail_cvar": 0.05722,
+      "penalized_cvar": 0.05944
+    },
+    "prune_60pct": {
+      "prune_frac": 0.6,
+      "dots": 14700,
+      "mean_dti": 0.06426,
+      "worst_tail_cvar": 0.05972,
+      "penalized_cvar": 0.06199
+    },
+    "prune_70pct": {
+      "prune_frac": 0.7,
+      "dots": 11025,
+      "mean_dti": 0.06509,
+      "worst_tail_cvar": 0.06056,
+      "penalized_cvar": 0.06282
+    },
+    "prune_72pct": {
+      "prune_frac": 0.72,
+      "dots": 10290,
+      "mean_dti": 0.06513,
+      "worst_tail_cvar": 0.06061,
+      "penalized_cvar": 0.06287
+    },
+    "prune_75pct": {
+      "prune_frac": 0.75,
+      "dots": 9188,
+      "mean_dti": 0.06512,
+      "worst_tail_cvar": 0.06055,
+      "penalized_cvar": 0.06283
+    }
+  }
+}

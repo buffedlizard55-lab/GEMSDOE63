@@ -8,7 +8,7 @@ What it does, in order
 1.  Builds the masking-faithful scored domain from the organizer's own rule:
     footprint & ~USGS/INGENIOUS catalogue pixels (thread 11516), spatially blocked
     into four quadrant folds.
-2.  Draws an ensemble of plausible *label worlds* per fold (gems63.worlds): whole
+2.  Draws an ensemble of plausible *label worlds* per fold (gems63_rs.worlds): whole
     segments withheld, 10-30 % dropped, survivors displaced by <= 4 px (Hermant et
     al. 2025: USGS traces in north-central Nevada offset up to 400 m), the rest
     replaced by unrelated new structure at the observed segment density, and the
@@ -40,14 +40,14 @@ from scipy.ndimage import distance_transform_edt
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
-from gems63 import cvar, emission, holdout, worlds          # noqa: E402
-from gems63.metric import RADIUS_PX, binary_dti_components, kernel, marginal_bar  # noqa: E402
-from gems63.raster_io import catalogue, footprint, write_submission, sha256  # noqa: E402
-from gems63.uniqueness import compare_to_registry, uniqueness_gate  # noqa: E402
-from gems63.validate import validate_submission             # noqa: E402
-from gems63.auc import auc_from_scores                      # noqa: E402
+from gems63_rs import cvar, emission, holdout, worlds          # noqa: E402
+from gems63_rs.metric import RADIUS_PX, binary_dti_components, kernel, marginal_bar  # noqa: E402
+from gems63_rs.raster_io import catalogue, footprint, write_submission, sha256  # noqa: E402
+from gems63_rs.uniqueness import compare_to_registry, uniqueness_gate  # noqa: E402
+from gems63_rs.validate import validate_submission             # noqa: E402
+from gems63_rs.auc import auc_from_scores                      # noqa: E402
 
-EVIDENCE = REPO / "evidence"
+EVIDENCE = REPO / "evidence" / "parallel"
 DOWNLOADS = REPO / "docs" / "downloads"
 
 
@@ -397,7 +397,7 @@ def main() -> int:
             "fault; (ii) and (iii) are not, and nothing in this lane separates them."),
         "holdout_dti": {
             "label": "HOLDOUT-DTI",
-            "evaluator": "gems63.metric.binary_dti_components via gems63.cvar "
+            "evaluator": "gems63_rs.metric.binary_dti_components via gems63_rs.cvar "
                          "(alpha 0.2, beta 0.8, 300 m triangular kernel)",
             "pooled_over": f"{len(wl)} worlds x {len(folds)} folds",
             "withheld_positives_pixels": int(pooled["n_truth"]),
@@ -434,8 +434,8 @@ def main() -> int:
         "marginal_bar_at_selection": marginal_bar(final_sc.mean_dti),
     }
     EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "run_card.json").write_text(json.dumps(card, indent=1, default=str))
-    print(f"\nrun card -> {EVIDENCE / 'run_card.json'}")
+    (EVIDENCE / "run_card_robust_selection.json").write_text(json.dumps(card, indent=1, default=str))
+    print(f"\nrun card -> {EVIDENCE / 'run_card_robust_selection.json'}")
     return 0
 
 

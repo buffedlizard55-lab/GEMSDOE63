@@ -1,11 +1,11 @@
-"""Tests for gems63.metric — anchored on the competition's own published numbers."""
+"""Tests for gems63_rs.metric — anchored on the competition's own published numbers."""
 
 from __future__ import annotations
 
 import numpy as np
 import pytest
 
-from gems63.metric import (
+from gems63_rs.metric import (
     ALPHA,
     BETA,
     RADIUS_PX,
@@ -194,7 +194,7 @@ def test_empty_prediction_scores_zero():
 @pytest.mark.parametrize("seed", [0, 1, 2, 3])
 def test_binary_fast_path_equals_general_path(seed):
     """binary_dti_components must equal dti_components exactly for p in {0, 1}."""
-    from gems63.metric import binary_dti_components
+    from gems63_rs.metric import binary_dti_components
     rng = np.random.default_rng(seed)
     truth = rng.random((64, 64)) < 0.05
     emit = rng.random((64, 64)) < 0.15
@@ -209,7 +209,7 @@ def test_binary_fast_path_equals_general_path(seed):
 
 def test_binary_fast_path_honours_precomputed_edt():
     from scipy.ndimage import distance_transform_edt
-    from gems63.metric import binary_dti_components
+    from gems63_rs.metric import binary_dti_components
     rng = np.random.default_rng(9)
     emit = rng.random((50, 50)) < 0.1
     valid = np.ones((50, 50), bool)
@@ -229,6 +229,6 @@ def test_binary_fast_path_honours_precomputed_edt():
     ([1, 2, 3, 4, 5, 6], [True, False, True, False, True, False], 3 / 9),
 ])
 def test_auc_matches_known_values(scores, labels, expected):
-    from gems63.auc import auc_from_scores
+    from gems63_rs.auc import auc_from_scores
     assert auc_from_scores(np.array(scores, float), np.array(labels, bool)) == \
         pytest.approx(expected)

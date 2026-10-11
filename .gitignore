@@ -1,7 +1,14 @@
-# large / re-derivable inputs -- see scripts/fetch_registry.py and data/README.md
-data/cache/
-registry/rasters/
 __pycache__/
-*.py[co]
 .pytest_cache/
-.venv/
+*.pyc
+
+# Heavy raw rasters (from main)
+data/*.tif
+data/external/*.tif
+data/external/*.zip
+data/external/*.csv
+*.log
+/tmp/
+data/cache/
+__pycache__/
+*.pyc

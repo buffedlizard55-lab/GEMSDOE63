@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE63 — Official Sources & 12-Point Audit</title>
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>GEMSDOE63 · Robust-Selection CVaR Lane</h1>
+    <nav>
+      <a href="index.html">Executive Summary</a>
+      <a href="why-h33-scored.html">Why H33 Scored</a>
+      <a href="hypotheses.html">Geological Hypotheses</a>
+      <a href="experiments.html">Experiments & CVaR</a>
+      <a href="sources.html" class="active">Sources & Audit</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top: 2rem;">
+
+  <div class="card">
+    <h3>Official Trusted Sources & Benchmark Verification</h3>
+    <p style="margin-bottom: 1rem;">
+      All physical datasets and rules are verified against official, free, and publicly accessible repositories:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Source / Authority</th>
+          <th>Resource & DOI</th>
+          <th>Official Verification Link</th>
+          <th>Role in GEMSDOE63</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DrivenData Competition</strong></td>
+          <td>DOE GEMS Prize Page 967 / 968</td>
+          <td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/" target="_blank" style="color: var(--accent);">drivendata.org/competitions/306/</a></td>
+          <td>Official evaluation protocol, DTI metric definition, raster bounds, and submission validator specifications.</td>
+        </tr>
+        <tr>
+          <td><strong>USGS 3DEP LiDAR</strong></td>
+          <td>1m High-Resolution Digital Elevation Models</td>
+          <td><a href="https://www.usgs.gov/3dep" target="_blank" style="color: var(--accent);">usgs.gov/3dep</a></td>
+          <td>High-resolution fault scarp step detection and slope break extraction.</td>
+        </tr>
+        <tr>
+          <td><strong>USGS GeoDAWN</strong></td>
+          <td>Airborne Magnetic and Radiometric Surveys</td>
+          <td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and" target="_blank" style="color: var(--accent);">usgs.gov/data/geodawn</a></td>
+          <td>$Th/K$ radiometric hydrothermal alteration ratios and total magnetic intensity tilt gradients.</td>
+        </tr>
+        <tr>
+          <td><strong>Geothermal Data Repository (GDR)</strong></td>
+          <td>GDR Submission 1391 (INGENIOUS)</td>
+          <td><a href="https://gdr.openei.org/submissions/1391" target="_blank" style="color: var(--accent);">gdr.openei.org/submissions/1391</a></td>
+          <td>Regional geothermal wellspring chemistry, hydrothermal manifestations, and Quaternary fault databases.</td>
+        </tr>
+        <tr>
+          <td><strong>EPSG Geodetic Registry</strong></td>
+          <td>EPSG:32611 (WGS 84 / UTM Zone 11N)</td>
+          <td><a href="https://epsg.io/32611" target="_blank" style="color: var(--accent);">epsg.io/32611</a></td>
+          <td>Coordinate reference system verification for all raster transforms and pixel alignments.</td>
+        </tr>
+        <tr>
+          <td><strong>Academic Literature</strong></td>
+          <td>Rockafellar & Uryasev (2000), <em>Journal of Risk</em></td>
+          <td><a href="https://doi.org/10.21314/JOR.2000.038" target="_blank" style="color: var(--accent);">doi:10.21314/JOR.2000.038</a></td>
+          <td>Mathematical formulation of Conditional Value-at-Risk (CVaR) for optimization under distribution shifts.</td>
+        </tr>
+        <tr>
+          <td><strong>Geological Studies</strong></td>
+          <td>Hermant et al. (2023)</td>
+          <td><a href="https://doi.org/10.1016/j.geothermics.2023.102716" target="_blank" style="color: var(--accent);">doi:10.1016/j.geothermics.2023.102716</a></td>
+          <td>Empirical quantification of Quaternary fault catalog mapping offsets (up to 400 m) in the Great Basin.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>12-Point Submission Validator Audit Report</h3>
+    <p style="margin-bottom: 1rem;">
+      Full compliance receipt for <code>gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif</code>:
+    </p>
+    <pre id="audit-receipt">Loading audit receipt...</pre>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>GEMSDOE63 · Robust-Selection CVaR Lane · Maximize P(Win) · Own the Outcome</p>
+  </div>
+</footer>
+
+<script>
+fetch('audit_receipt.json').then(r => r.json()).then(data => {
+  document.getElementById('audit-receipt').textContent = JSON.stringify(data, null, 2);
+});
+</script>
+
+</body>
+</html>

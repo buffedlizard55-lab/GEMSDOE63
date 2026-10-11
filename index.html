@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMSDOE63 — submission hub (DOE GEMS Prize #306)</title>
+<style>
+  :root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--bad:#f85149;--line:#25313d}
+  {box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 64px}
+  h1{font-size:23px;margin:8px 0 4px} h2{font-size:17px;margin:26px 0 8px}
+  a{color:#6cb6ff}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+  .hero{border:2px solid var(--acc);background:#0e1a12}
+  .no{border:2px solid var(--bad);background:#1a0e10}
+  .big{font-size:19px;font-weight:700}
+  .dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:11px 18px;border-radius:8px;text-decoration:none;font-size:16px;margin:6px 6px 6px 0}
+  .dl.zip{background:#1f6feb;color:#fff}
+  .dl.gray{background:#30363d;color:#fff}
+  code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}
+  pre{padding:10px;overflow:auto}
+  table{border-collapse:collapse;width:100%;font-size:14px} th,td{border:1px solid var(--line);padding:6px 9px;text-align:left}
+  td.num,th.num{text-align:right}
+  .small{font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body><div class="wrap">
+<h1>GEMSDOE63 — DOE GEMS Prize submission hub</h1>
+<p class="small">Robust-selection lane · DrivenData competition #306 ·
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition</a> ·
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">repo</a> · <a href="docs/index.html">full audit site (docs/)</a></p>
+
+<div class="panel hero">
+<p class="big">✅ OK TO DOWNLOAD AND SUBMIT — <code>gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif</code></p>
+<p>
+<a class="dl" href="docs/downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif">⬇ Download submission TIF</a>
+<a class="dl zip" href="docs/downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.zip">⬇ .zip</a>
+<a class="dl gray" href="docs/downloads/checks-gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif.json">validation receipt</a>
+<a class="dl gray" href="docs/index.html">full audit page →</a>
+</p>
+<table>
+<tr><th>session</th><td>arena/bba216be — verdict <b>promote</b></td></tr>
+<tr><th>format</th><td>single-band float32 GeoTIFF · EPSG:32611 · 3730×3292 · 100 m · all cells finite · values in [0,1] (54,864 unit dots) · 0 catalogue-collision pixels</td></tr>
+<tr><th>uniqueness</th><td>PASS vs 38 earlier rasters incl. both parallel-session artifacts (max 3-px overlap 0.632 &lt; 0.70 · max |Spearman ρ| 0.346 &lt; 0.90 · 0 sha256 collisions)</td></tr>
+<tr><th>orgANIZER score</th><td><b>none — UNSCORED</b> (all numbers on the audit site are HOLDOUT-DTI, labelled)</td></tr>
+</table>
+<p>Paste into the portal Note field:</p>
+<pre>GEMSDOE63 CVaR-LW | thin-s3.17; 54864 dots; CVaR over 160 label worlds (shift4/drop10-30/decoys), prevalence-cal J=0.0357; SGMC-cal 0.0783</pre>
+<p class="small">Submission steps (with the "Predicted values must be in range [0, 1]" fix):
+<a href="docs/executive-summary.html">executive summary</a>.</p>
+</div>
+
+<div class="panel no">
+<p class="big">⛔ Parallel session deliverables — do NOT download for submission</p>
+<table>
+<tr><th>file</th><th>session</th><th>status</th></tr>
+<tr><td><code>held/gems63-cvar-ridge-q020-s2-r3-20261011T212315Z.tif</code></td><td>arena/20aeb6c7</td><td><b>NEGATIVE (held)</b> — ridge-lineness CVaR emission scored ~1.2× random dots on the holdout; kept as the protocol-required negative deliverable. <a href="docs/parallel/arena-20aeb6c7-index.html">its summary</a> · <a href="registry/run_card.json">run card</a></td></tr>
+<tr><td><code>docs/downloads/gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif</code></td><td>arena/e03322eb</td><td>separate session artifact with its own <a href="docs/run_card.json">run card</a> — not selected by the bba216be evidence; check that card before any use</td></tr>
+</table>
+<p class="small">These files remain in the repo for auditability. The only file endorsed for the portal is the one in the green box above.</p>
+</div>
+
+<div class="panel">
+<h2>What lives where</h2>
+<table>
+<tr><td>Full audit site</td><td><a href="docs/index.html">docs/index.html</a> — download, instruments, uniqueness tables, hypotheses, irregularities, sources</td></tr>
+<tr><td>How to submit (portal walkthrough)</td><td><a href="docs/executive-summary.html">docs/executive-summary.html</a></td></tr>
+<tr><td>Run cards</td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/evidence/run_card.json">evidence/run_card.json</a> (promote) · <a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/run_card.json">registry/run_card.json</a> (negative) · <a href="docs/run_card.json">docs/run_card.json</a> (e03322eb)</td></tr>
+<tr><td>Parallel negative session pages</td><td><a href="docs/parallel/arena-20aeb6c7-index.html">docs/parallel/</a></td></tr>
+<tr><td>Official leaderboard snapshot 2026-10-11 (#1 = 0.4133 public)</td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/official_leaderboard_snapshot_2026-10-11.csv">registry CSV</a></td></tr>
+</table>
+</div>
+</div></body></html>
