@@ -1,3 +1,11 @@
 __pycache__/
 .pytest_cache/
 *.pyc
+
+# Heavy raw rasters (from main)
+data/*.tif
+data/external/*.tif
+data/external/*.zip
+data/external/*.csv
+*.log
+/tmp/

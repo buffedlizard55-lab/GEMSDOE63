@@ -157,3 +157,20 @@ See [`registry/run_card.json`](registry/run_card.json) (one card, protocol item 
 
 - 2026-10-11: uniqueness gate tripped (DUPLICATE via dot-overlap, IR-17); file moved to held/; site moved to root index.html.
 - 2026-10-11: repo initialised with the holdout, CVaR and validator pipeline; E1–E3 run; controls; uniqueness check; irregularities register; ledger.
+
+---
+
+## 10. Prior status on `main` (PR #1, merged earlier today) — superseded
+
+PR #1 (`arena/e03322eb-gemsdoe63`) put a different file on `main` and marked it **"OK TO DOWNLOAD AND SUBMIT"**. This section records the conflict, because the top-priority question is whether a file may be downloaded and submitted. **This branch's status (§1) governs.** The owner must resolve the items below.
+
+| Item (PR #1) | Claim | Our check |
+|---|---|---|
+| File | `docs/downloads/gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif` (SHA-256 `13e04439…`) | Not verified by us (not in our tree before merge). Not endorsed. |
+| Holdout | "HOLDOUT-DTI 0.01013 (CI 0.00883–0.01041, 1,822 withheld segments, evaluator `gems63.holdout.v1`)" | Labelled HOLDOUT-DTI by its author. Our random-dot control on **our** holdout is 0.0208. The holdouts differ, so the numbers are **not directly comparable**. This must be checked on one common holdout before any "OK". |
+| Outside-footprint values | "0.0 all-finite zeros (nodata=None)" — 12,279,160 finite cells | Official page and sample use NaN outside bounds (rules wording: "null or nan"). Zero-fill is a format risk (IR-06). |
+| Uniqueness | "max Spearman 0.003; max 3-px overlap 0.293" | Our overlap test (IR-17) and comparator set differ. Not reconciled. |
+| Duplicate code | `src/gems63/` (metric, uniqueness, submission_writer) duplicates our `gems63/` (dti, validate, grid, emit). | Violates "reuse, don't rebuild". Needs consolidation (IR-19). |
+| Score claims | Cites 0.2778 (GEMSDOE32 `h33-2-b2`) as the comparator; no organiser receipt (IR-01). | Same as IR-01/IR-15. |
+
+**What to do (owner decision, not made here):** (1) decide whether the PR #1 file stays downloadable; (2) run both holdouts on one common fold set; (3) choose one `gems63` package and one uniqueness gate. Until then, no file in this repo is cleared for submission.
