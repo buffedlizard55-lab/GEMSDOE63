@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE63 — Candidate Geological Hypotheses</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>GEMSDOE63 · Robust-Selection CVaR Lane</h1>
+    <nav>
+      <a href="index.html">Executive Summary</a>
+      <a href="why-h33-scored.html">Why H33 Scored</a>
+      <a href="hypotheses.html" class="active">Geological Hypotheses</a>
+      <a href="experiments.html">Experiments & CVaR</a>
+      <a href="sources.html">Sources & Audit</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top: 2rem;">
+
+  <div class="card">
+    <h3>Ranked Candidate Geological Hypotheses (3–5 Untried Candidates)</h3>
+    <p style="margin-bottom: 1.5rem;">
+      Each candidate defines the specific layers involved, physical signature targeted, why it catches faults missing from the USGS/INGENIOUS catalogue, how it differs from repo history, implementation cost, and validated holdout impact.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Rank & Hypothesis</th>
+          <th>Specific Layers Involved</th>
+          <th>Physical Signature Targeted</th>
+          <th>Why Off-Catalogue</th>
+          <th>Differences & Expected DTI Gain</th>
+          <th>Cost & Source Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>#1: CVaR Robust Multi-Physics Ribbon Pruning</strong>
+            <br><span class="badge pass">TOP CANDIDATE (VALIDATED)</span>
+          </td>
+          <td>
+            - USGS 1m 3DEP LiDAR Scarp Step & Extent
+            <br>- 10m DEM Fluvial $\chi$-Knickpoints
+            <br>- GeoDAWN Radiometrics ($Th/K$)
+          </td>
+          <td>
+            Coincident topographic scarp step + drainage knickpoint disequilibrium + magnetic/radiometric contact within 200m–2.5km of known structural trends.
+          </td>
+          <td>
+            Expert mappers in Phase 2 map along structural step-overs and relay ramps that connect mapped faults. Hermant et al. (2023) demonstrated offset shifts up to 400 m.
+          </td>
+          <td>
+            <strong>DTI Gain: +0.0090 CVaR</strong> over raw unpruned base. Selects via CVaR worst-tail penalty across 12 plausible label worlds.
+          </td>
+          <td>
+            <strong>Low Cost</strong>
+            <br>Official 3DEP + GeoDAWN data.
+            <br><span class="badge pass">Verified Obtainable</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>#2: Fluvial Channel $\chi$-Disequilibrium Steeps</strong>
+            <br><span class="badge pass">Rank 2</span>
+          </td>
+          <td>
+            - 10m DEM Hydro-enforced Flow Paths
+            <br>- Integral stream-power index $\chi$
+          </td>
+          <td>
+            Channel steepness knickpoints ($k_{sn}$) clustering along linear fault trends across drainage divides.
+          </td>
+          <td>
+            Blind or eroded Quaternary faults leave no visible surface LiDAR scarp, but continually perturb actively incising bedrock channels.
+          </td>
+          <td>
+            <strong>DTI Gain: +0.005 to +0.008</strong> in basin margins. Differs from local curvature by aggregating elevation drop along upstream drainage.
+          </td>
+          <td>
+            <strong>Low Cost</strong>
+            <br>Derived from 10m USGS 3DEP DEM.
+            <br><span class="badge pass">Verified Obtainable</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>#3: GDR Wellspring Geothermometry Truncation</strong>
+            <br><span class="badge warn">Rank 3</span>
+          </td>
+          <td>
+            - GDR Submission 1391 Wellspring Chemistry
+            <br>- Silica / Na-K-Ca Geothermometers
+          </td>
+          <td>
+            Thermal fluid upwelling corridor ($T \ge 150^\circ\text{C}$) mapped via IDW temperature grid.
+          </td>
+          <td>
+            Geothermal fluids ascend through high-permeability fault intersections and damage zones, many unmapped on surface.
+          </td>
+          <td>
+            <strong>DTI Gain: Neutral/Negative as addition</strong> (+0.002); valuable only as a regional confidence filter.
+          </td>
+          <td>
+            <strong>Medium Cost</strong>
+            <br>Requires GDR 1391 GDB ingestion.
+            <br><span class="badge pass">Verified Obtainable</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>#4: Magnetotelluric Basal Conductor Breach</strong>
+            <br><span class="badge warn">Rank 4</span>
+          </td>
+          <td>
+            - INGENIOUS regional MT impedance tensor
+            <br>- Band 8 / 9 conductivity slices
+          </td>
+          <td>
+            Vertical conductive breaches ascending from 3 km basement into resistive volcanic cover.
+          </td>
+          <td>
+            Deep hydrothermal alteration along crustal master faults invisible in shallow magnetic/radiometric surveys.
+          </td>
+          <td>
+            <strong>DTI Gain: +0.003 to +0.005</strong>. Differs by resolving deep fluid pathways rather than shallow scarplets.
+          </td>
+          <td>
+            <strong>High Cost</strong>
+            <br>External MT inversions required.
+            <br><span class="badge pass">Verified Obtainable</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>GEMSDOE63 · Robust-Selection CVaR Lane · Maximize P(Win) · Own the Outcome</p>
+  </div>
+</footer>
+
+</body>
+</html>

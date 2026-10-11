@@ -1,0 +1,12 @@
+# Ignore heavy raw data rasters
+data/*.tif
+data/external/*.tif
+data/external/*.zip
+data/external/*.csv
+
+# Temporary files and python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+/tmp/

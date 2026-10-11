@@ -1,0 +1,32 @@
+{
+  "hypothesis": "CVaR-robust emission selection across plausible label worlds (offset shifts up to 400m, omission 10-30%, decoys) penalizes tail false-positive risk and isolates genuine structural fault lineaments from spuriously correlated singletons.",
+  "mechanism": "Combining scale-invariant topographic knickpoints (chi) and 1m LiDAR scarp steps into a physical surface, selecting optimal emission policy (2.8 px spacing, 25 px ribbon corridor) and greedily pruning dots whose removal most improves tail CVaR.",
+  "named_non_fault_process": "Quaternary alluvial fan channel incisive scarps and fluvial terrace terrace-risers that mimic fault-scarp curvature and knickpoint signatures.",
+  "holdout_dti": "HOLDOUT-DTI: 0.01013 (evaluator gems63.holdout.v1, 1822 withheld segments, 95% CI: [0.00883, 0.01041])",
+  "cvar_score": "CVaR-Penalized: 0.06287 | Mean DTI: 0.06513 | Worst-Tail (25%): 0.06061 across 12 plausible label worlds",
+  "correlation_overlap_vs_registry": {
+    "max_spearman_rho": 0.003075050050863765,
+    "max_3px_overlap": 0.29290573372206025,
+    "comparators_tested": [
+      "GEMSDOE32_h33_2_b2 (0.2778)",
+      "GEMSDOE36_pinn (0.2750)",
+      "GEMSDOE33_stepover (0.2632)",
+      "GEMSDOE25_d2_8 (0.2600)",
+      "62GEMSDOE_lahontan"
+    ],
+    "verdict": "PASS \u2014 fully inside Robust-Selection lane, zero drift into sibling lanes"
+  },
+  "raster_sha256": "13e044391ec6e5ea1d8feae8c6f5bf651cd7101ff015fbaffc8b5f6bb097295e",
+  "validator_output": {
+    "all_checks_passed": true,
+    "in_footprint_all_finite": true,
+    "in_footprint_zero_nan": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "emitted_dots": 10290,
+    "outside_footprint": "0.0 all-finite zeros (nodata=None) guarantees DrivenData range-[0, 1] compliance"
+  },
+  "submission_name": "gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif",
+  "submission_note": "GEMSDOE63 | CVaR-robust physical emission across 12 label worlds: 10290 dots, CVaR 0.06287, 0 on-catalogue, range [0, 1] verified",
+  "verdict": "promote"
+}

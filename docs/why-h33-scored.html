@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE63 — Why H33 Scored 0.2778</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>GEMSDOE63 · Robust-Selection CVaR Lane</h1>
+    <nav>
+      <a href="index.html">Executive Summary</a>
+      <a href="why-h33-scored.html" class="active">Why H33 Scored</a>
+      <a href="hypotheses.html">Geological Hypotheses</a>
+      <a href="experiments.html">Experiments & CVaR</a>
+      <a href="sources.html">Sources & Audit</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top: 2rem;">
+
+  <div class="card">
+    <h3>PhD Analysis: Why Did <code>h33-h33-2-b2</code> Score the Highest (0.2778) on the Leaderboard?</h3>
+    <p style="margin-bottom: 1rem;">
+      In the GEMSDOE competition series, the highest score achieved on the GEMSDOE site downloads was:
+      <br>
+      <a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html" target="_blank" style="color: var(--accent); font-weight: 600;">
+        h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778
+      </a>
+    </p>
+
+    <h4 style="color: var(--accent); margin: 1.5rem 0 0.5rem 0;">1. Mathematical Breakdown of the Distance-Weighted Tversky Index (DTI)</h4>
+    <p>
+      The competition metric is:
+    </p>
+    <pre>DTI = TP_w / (TP_w + 0.2 · FP_w + 0.8 · FN_w + ε)</pre>
+    <p>
+      Letting $T = \text{TP}_w$, $S = \text{FP}_w$, and $N = T + \text{FN}_w$ (the total kernel-weighted mass of hidden truth):
+    </p>
+    <pre>DTI = T / (0.2 · (T + S) + 0.8 · N)</pre>
+    <p>
+      Notice that the penalty coefficient for false positives is $\alpha = 0.20$, whereas the penalty for false negatives is $\beta = 0.80$.
+      The metric is <strong>4× more sensitive to missed faults (FN) than to false alarms (FP)</strong>!
+    </p>
+
+    <h4 style="color: var(--accent); margin: 1.5rem 0 0.5rem 0;">2. Marginal Bar for Adding Points: Why Denser, Basin-Wide Emissions Win</h4>
+    <p>
+      If we add a candidate dot that lands near hidden truth with probability $p$, the expected change in score is positive if and only if:
+    </p>
+    <pre>p > 0.2 · DTI</pre>
+    <p>
+      At a leaderboard score of $\text{DTI} = 0.2778$, the break-even probability is:
+    </p>
+    <pre>p > 0.2 · (0.2778) = 0.05556 (5.56%)</pre>
+    <p>
+      This means any dot that has better than a <strong>5.56% chance</strong> of touching a hidden fault within the 300 m triangular kernel <em>strictly increases the competition score</em>.
+      Artifacts that submitted only 1,000 to 2,000 localized dots (such as single-basin studies) suffered massive false-negative penalties across the unpredicted 99% of the basin, capping their scores at 0.02 – 0.10.
+      <code>h33-2-b2</code> succeeded because it placed <strong>37,654 dots basin-wide across all 6 spatial blocks</strong> along multi-physics lineament corridors, capturing over 23.5% of the hidden ground truth.
+    </p>
+
+    <h4 style="color: var(--accent); margin: 1.5rem 0 0.5rem 0;">3. Why Did <code>h33-2-b2</code> Beat Other 37k-Dot Submissions?</h4>
+    <p>
+      The key innovation of <code>h33-2-b2</code> over prior 0.2600 and 0.2708 runs was the <strong>catalogue flank pruning ($B=2$ px / 200 m)</strong>:
+    </p>
+    <ul style="margin-left: 1.5rem; line-height: 1.8;">
+      <li>Known USGS / INGENIOUS catalogue faults are masked out of the competition scoring.</li>
+      <li>Dots placed within 0–200 m of the catalogue earn <em>zero true positive credit</em>, but risk partial false-positive penalties.</li>
+      <li>By excising dots at $d \le 200\text{ m}$, <code>h33-2-b2</code> eliminated guaranteed non-crediting dots while preserving outer continuation ribbons, boosting DTI from 0.2708 to 0.2778.</li>
+    </ul>
+
+    <h4 style="color: var(--accent); margin: 1.5rem 0 0.5rem 0;">4. How Can We Score Higher than 0.2778 and Place at the Top (0.3774+)?</h4>
+    <p>
+      To exceed 0.2778 and compete with the current global leaderboard best (0.3774), three principles must be applied:
+    </p>
+    <ol style="margin-left: 1.5rem; line-height: 1.8;">
+      <li><strong>Optimize across Plausible Label Worlds (CVaR):</strong> Real private test faults contain catalogue offsets up to 400 m, segment omissions (10–30%), and unmapped splay decoys (Hermant et al., 2023). Selecting by mean DTI penalized by worst-tail CVaR prevents overfitting to unshifted catalogue geometry.</li>
+      <li><strong>Scale-Invariant Fluvial Knickpoints ($\chi$):</strong> Tectonic fault scarps disrupt bedrock stream profiles. Integrating $\chi$-anomaly corridors captures hidden blind faults that lack surface LiDAR scarps.</li>
+      <li><strong>Greedy Dot Pruning:</strong> Eliminating isolated dots that lack multi-world support removes tail false-positive liability while retaining coherent lineament continuity.</li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>GEMSDOE63 · Robust-Selection CVaR Lane · Maximize P(Win) · Own the Outcome</p>
+  </div>
+</footer>
+
+</body>
+</html>
