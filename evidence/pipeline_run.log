@@ -1,0 +1,50 @@
+[21:47:04] loading grid + labels + sgmc
+[21:47:04] building hide-and-recover cells (draws 20/21 x 4 quadrants, hide 20%)
+[21:48:09] cells built: 8; withheld positive pixels total = 22232
+[21:48:09] EXPERIMENT 1: leakage canary (solo AUC vs hidden truth) + solo baseline DTI weights
+[21:48:10]   h19_5: AUC=0.4883 solo DTI=0.07008 -> TRUSTABLE
+[21:48:12]   h19_4: AUC=0.4880 solo DTI=0.07054 -> TRUSTABLE
+[21:48:13]   h16_1: AUC=0.4880 solo DTI=0.06938 -> TRUSTABLE
+[21:48:15]   ens12: AUC=0.5371 solo DTI=0.08820 -> TRUSTABLE
+[21:48:15] building corroboration posterior (weights from solo holdout, collar-excluded)
+[21:48:15]   posterior AUC=0.4746; weights={'h19_5': 0.235, 'h19_4': 0.2365, 'h16_1': 0.2327, 'ens12': 0.2958}
+[21:48:16] emitting candidates (posterior-ordered thinning; spacings/budgets/anti-speckle)
+[21:48:29]   candidate dot counts: {"thin-s2.00": 94599, "thin-s2.24": 74570, "thin-s2.83": 68811, "thin-s3.00": 63101, "thin-s3.17": 55591, "thin-s3.61": 49927, "sgmc-thin-s2.24": 74264, "sgmc-thin-s2.83": 68522, "sgmc-thin-s3.17": 55362, "thin-s2.83-b30k": 30000, "thin-s2.83-b38k": 38000, "as-thin-s2.24": 59009, "as-thin-s2.83": 54013}
+[21:48:30] building universe (union of candidates + hard-anchor supports)
+[21:48:30]   universe N = 159,297 px
+[21:48:30] generating label worlds (shift +/-4px, drop 10-30%, decoys @ observed density; seed 63000)
+[21:48:32] precomputing per-(cell,world) kmax at universe dots (the heavy pass)
+[21:48:42] EXPERIMENT 2: scoring candidates in every world with the exact metric
+[21:48:43]   thin-s2.00             dots= 94599 J=0.06251 mean=0.07060 worst20=0.05443 catHidden=0.00981
+[21:48:44]   thin-s2.24             dots= 74570 J=0.06354 mean=0.07156 worst20=0.05552 catHidden=0.00968
+[21:48:45]   thin-s2.83             dots= 68811 J=0.06349 mean=0.07123 worst20=0.05575 catHidden=0.00945
+[21:48:46]   thin-s3.00             dots= 63101 J=0.06274 mean=0.07021 worst20=0.05526 catHidden=0.00949
+[21:48:47]   thin-s3.17             dots= 55591 J=0.06130 mean=0.06851 worst20=0.05409 catHidden=0.00942
+[21:48:48]   thin-s3.61             dots= 49927 J=0.05937 mean=0.06611 worst20=0.05264 catHidden=0.00915
+[21:48:49]   sgmc-thin-s2.24        dots= 74264 J=0.06326 mean=0.07132 worst20=0.05519 catHidden=0.00951
+[21:48:50]   sgmc-thin-s2.83        dots= 68522 J=0.06307 mean=0.07084 worst20=0.05529 catHidden=0.00928
+[21:48:51]   sgmc-thin-s3.17        dots= 55362 J=0.06117 mean=0.06828 worst20=0.05405 catHidden=0.00927
+[21:48:52]   thin-s2.83-b30k        dots= 30000 J=0.03960 mean=0.04360 worst20=0.03561 catHidden=0.00643
+[21:48:53]   thin-s2.83-b38k        dots= 38000 J=0.04553 mean=0.05050 worst20=0.04056 catHidden=0.00733
+[21:48:54]   as-thin-s2.24          dots= 59009 J=0.05312 mean=0.06031 worst20=0.04594 catHidden=0.00766
+[21:48:55]   as-thin-s2.83          dots= 54013 J=0.05245 mean=0.05936 worst20=0.04555 catHidden=0.00725
+[21:48:55]   SELECTED by CVaR J: thin-s2.24
+[21:48:55] scoring hard anchors through the same label-world instrument
+[21:48:56]   d28_repro_0.2600       dots= 44090 J=0.06967 mean=0.07612 catHidden=0.09832
+[21:48:57]   h33_2_b2_0.2778        dots= 37654 J=0.04089 mean=0.04533 catHidden=0.00460
+[21:48:59]   h32d_submod_46090      dots= 46090 J=0.07276 mean=0.07892 catHidden=0.10122
+[21:48:59] instrument-vs-live calibration table (soft-exact catalogue-hidden baseline)
+[21:49:08]   instrument-vs-live spearman rho = -0.04761904761904763
+[21:49:08] EXPERIMENT 3: exact greedy CVaR pruning of the selected candidate
+[21:49:08]   pre-prune: J=0.06354 mean=0.07156 worst20=0.05552 dots=74570
+[21:49:10]   commit 1: no batch improved exact J; stop. tried=[{'batch': 250, 'J': 0.06344048114457801, 'mean': 0.0715119296983893, 'worst20': 0.055369032590766705}, {'batch': 500, 'J': 0.06341912298448474, 'mean': 0.07151543274149573, 'worst20': 0.055322813227473754}, {'batch': 1000, 'J': 0.06330682916760147, 'mean': 0.07150147854050194, 'worst20': 0.055112179794701004}]
+[21:49:11]   FINAL: dots=74570 J=0.06354 mean=0.07156+-CI0.00191 catHidden=0.00968
+[21:49:14]   SGMC-calibrated final=0.08036 vs h33=0.06412 vs d28=0.06059
+[21:49:15]   wrote gemsdoe63-cvarlw-thin-s2p24-74570-20261011T214703Z-c0b752c8-zeros.tif: sha256=6aaca15a6df080a0... all_checks=True
+[21:49:15] uniqueness checks vs registry rasters
+[21:50:36]   final: max|rho|=0.3838 max3pxOverlap=0.9993 -> DUPLICATE
+[21:50:36]   posterior surface: max|rho|=0.6602 -> DUPLICATE
+[21:50:36]   LANE BREACH: duplicate of another lane; logging and stopping before promotion claims
+[21:50:36]   SURFACE BREACH: posterior too similar to a registry raster; flagged
+[21:50:36] run card: verdict=negative ok_to_submit=False
+[21:50:36] elapsed 3.5 min

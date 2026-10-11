@@ -1,0 +1,47 @@
+[21:39:22] loading grid + labels + sgmc
+[21:39:23] building hide-and-recover cells (draws 20/21 x 4 quadrants, hide 20%)
+[21:40:28] cells built: 8; withheld positive pixels total = 22232
+[21:40:28] EXPERIMENT 1: leakage canary (solo AUC vs hidden truth) + solo baseline DTI weights
+[21:40:30]   h19_5: AUC=0.4883 solo DTI=0.07008 -> TRUSTABLE
+[21:40:31]   h19_4: AUC=0.4880 solo DTI=0.07054 -> TRUSTABLE
+[21:40:33]   h16_1: AUC=0.4880 solo DTI=0.06938 -> TRUSTABLE
+[21:40:34]   ens12: AUC=0.5371 solo DTI=0.08820 -> TRUSTABLE
+[21:40:34] building corroboration posterior (weights from solo holdout, collar-excluded)
+[21:40:35]   posterior AUC=0.4746; weights={'h19_5': 0.235, 'h19_4': 0.2365, 'h16_1': 0.2327, 'ens12': 0.2958}
+[21:40:35] emitting candidates (posterior-ordered thinning; spacings/budgets/anti-speckle)
+[21:40:47]   candidate dot counts: {"thin-s2.0": 94599, "thin-s2.4": 74570, "thin-s2.8": 74570, "thin-s3.2": 55591, "thin-s3.6": 55591, "sgmc-thin-s2.4": 74264, "sgmc-thin-s2.8": 74264, "sgmc-thin-s3.2": 55362, "thin-s2.8-b30k": 30000, "thin-s2.8-b38k": 38000, "as-thin-s2.4": 59009, "as-thin-s2.8": 59009}
+[21:40:48] building universe (union of candidates + hard-anchor supports)
+[21:40:48]   universe N = 149,351 px
+[21:40:48] generating label worlds (shift +/-4px, drop 10-30%, decoys @ observed density; seed 63000)
+[21:40:49] precomputing per-(cell,world) kmax at universe dots (the heavy pass)
+[21:40:59] EXPERIMENT 2: scoring candidates in every world with the exact metric
+[21:41:00]   thin-s2.0              dots= 94599 J=0.04473 mean=0.05044 worst20=0.03902 catHidden=0.00981
+[21:41:01]   thin-s2.4              dots= 74570 J=0.04691 mean=0.05298 worst20=0.04083 catHidden=0.00968
+[21:41:02]   thin-s2.8              dots= 74570 J=0.04691 mean=0.05298 worst20=0.04083 catHidden=0.00968
+[21:41:03]   thin-s3.2              dots= 55591 J=0.04742 mean=0.05339 worst20=0.04145 catHidden=0.00942
+[21:41:04]   thin-s3.6              dots= 55591 J=0.04742 mean=0.05339 worst20=0.04145 catHidden=0.00942
+[21:41:05]   sgmc-thin-s2.4         dots= 74264 J=0.04677 mean=0.05285 worst20=0.04070 catHidden=0.00951
+[21:41:06]   sgmc-thin-s2.8         dots= 74264 J=0.04677 mean=0.05285 worst20=0.04070 catHidden=0.00951
+[21:41:07]   sgmc-thin-s3.2         dots= 55362 J=0.04719 mean=0.05307 worst20=0.04131 catHidden=0.00927
+[21:41:08]   thin-s2.8-b30k         dots= 30000 J=0.02959 mean=0.03524 worst20=0.02394 catHidden=0.00647
+[21:41:09]   thin-s2.8-b38k         dots= 38000 J=0.03445 mean=0.03999 worst20=0.02892 catHidden=0.00741
+[21:41:10]   as-thin-s2.4           dots= 59009 J=0.03884 mean=0.04462 worst20=0.03306 catHidden=0.00766
+[21:41:11]   as-thin-s2.8           dots= 59009 J=0.03884 mean=0.04462 worst20=0.03306 catHidden=0.00766
+[21:41:11]   SELECTED by CVaR J: thin-s3.2
+[21:41:11] scoring hard anchors through the same label-world instrument
+[21:41:12]   d28_repro_0.2600       dots= 44090 J=0.06642 mean=0.07536 catHidden=0.09832
+[21:41:13]   h33_2_b2_0.2778        dots= 37654 J=0.02925 mean=0.03419 catHidden=0.00460
+[21:41:14]   h32d_submod_46090      dots= 46090 J=0.06980 mean=0.07800 catHidden=0.10122
+[21:41:14] instrument-vs-live calibration table (soft-exact catalogue-hidden baseline)
+[21:41:24]   instrument-vs-live spearman rho = -0.04761904761904763
+[21:41:24] EXPERIMENT 3: exact greedy CVaR pruning of the selected candidate
+Traceback (most recent call last):
+  File "/home/user/GEMSDOE63/scripts/run_pipeline.py", line 521, in <module>
+    main()
+  File "/home/user/GEMSDOE63/scripts/run_pipeline.py", line 311, in main
+    J0, m0, w0, _ = dti_vector_and_J(st)
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/GEMSDOE63/scripts/run_pipeline.py", line 307, in dti_vector_and_J
+    j, m, wc = instrument.j_from_dti(v)
+               ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'gems63.instrument' has no attribute 'j_from_dti'

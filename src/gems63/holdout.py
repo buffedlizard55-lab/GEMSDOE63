@@ -1,126 +1,174 @@
-"""Hide-and-recover spatial holdout and plausible label-world ensemble generator.
+"""Hide-and-recover spatially-blocked holdout cells for GEMSDOE63.
 
-Protocol rules:
-- Withhold whole fault segments with a buffer (300 m / 3 px).
-- Visible faults masked pixel-exactly.
-- Shift withheld segments by up to +/- 4 px (calibrated to Hermant et al. 400 m offset).
-- Drop 10-30% of withheld segments.
-- Add decoy segments at observed segment density.
+PROVENANCE: cell construction adapted from the shared template
+buffedlizard55-lab/GEMSDOE32 src/gems32/holdout.py (draws 20/21 x 4 quadrants,
+hide_frac 0.20, 1.5 km collar, 1.2 km domain erosion), itself implementing the
+team's shared hide-and-recover protocol: withhold whole fault segments with a
+buffer, derive catalogue-based features only from visible faults, mask visible
+faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular
+kernel). Kept identical so instruments are comparable across sessions.
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+
 import numpy as np
-from scipy import ndimage as ndi
-from scipy.ndimage import distance_transform_edt
-from .metric import dti_binary, cvar_penalized_score
+import rasterio
+from scipy.ndimage import binary_dilation, binary_erosion, label
 
-BUFFER_PX = 3
+FOLD_NAMES = ("NW", "NE", "SW", "SE")
+FOLDS = (0, 1, 2, 3)
+DRAWS = (20, 21)
+COLLAR_PX = 15
+DOMAIN_ERODE = 12
+NEAR_LABEL_PX = 3
 
 
-class LabelWorldEnsemble:
-    def __init__(self, labels_path: str, holdout_fold: str = "nw", seed: int = 20261011):
-        import rasterio
-        with rasterio.open(labels_path) as src:
-            self.labels = src.read(1)
-            self.nodata = src.nodata
-            self.foot = (self.labels != self.nodata)
-            self.cat = (self.labels == 1)
+def read_binary(path: Path) -> np.ndarray:
+    with rasterio.open(path) as ds:
+        a = ds.read(1)
+    return np.isfinite(a) & (a > 0)
 
-        self.h, self.w = self.labels.shape
-        self.mid_r, self.mid_c = self.h // 2, self.w // 2
 
-        struct = ndi.generate_binary_structure(2, 2)
-        lab, n_segs = ndi.label(self.cat, structure=struct)
-        rr, cc = np.nonzero(lab)
-        labels_flat = lab[rr, cc]
-        order = np.argsort(labels_flat)
-        rr_sorted = rr[order]
-        cc_sorted = cc[order]
-        labels_sorted = labels_flat[order]
-        splits = np.flatnonzero(np.diff(labels_sorted)) + 1
-        split_indices = np.concatenate(([0], splits, [len(labels_sorted)]))
+def load_grid(ddir: Path):
+    """Load footprint, labels (catalogue), and SGMC off-catalogue surrogate faults."""
+    with rasterio.open(ddir / "sample_submission.tif") as ds:
+        foot = np.isfinite(ds.read(1))
+        transform = ds.transform
+        crs = ds.crs
+    labels = read_binary(ddir / "labels.tif") & foot
+    with rasterio.open(ddir / "external" / "derived_sgmc_faults_100m_u8.tif") as ds:
+        sgm = ds.read(1) > 0
+    near = binary_dilation(labels, iterations=NEAR_LABEL_PX)
+    sgmc_off = sgm & ~labels & ~near & foot
+    return foot, labels, sgmc_off, near, transform, crs
 
-        self.seg_list = []
-        self.holdout_segs = []
-        self.visible_segs = []
 
-        for i in range(len(split_indices) - 1):
-            idx0 = split_indices[i]
-            idx1 = split_indices[i+1]
-            s_rr = rr_sorted[idx0:idx1]
-            s_cc = cc_sorted[idx0:idx1]
-            self.seg_list.append((s_rr, s_cc))
-            cr = s_rr.mean()
-            cc_mean = s_cc.mean()
-            # 4 quadrants: nw, ne, sw, se
-            is_nw = (cr < self.mid_r and cc_mean < self.mid_c)
-            if holdout_fold == "nw" and is_nw:
-                self.holdout_segs.append(i)
-            else:
-                self.visible_segs.append(i)
+def quadrant_ids(footprint: np.ndarray) -> np.ndarray:
+    footprint = np.asarray(footprint, bool)
+    yy, xx = np.nonzero(footprint)
+    ym, xm = int(np.median(yy)), int(np.median(xx))
+    H, W = footprint.shape
+    gy, gx = np.ogrid[:H, :W]
+    q = np.full((H, W), -1, np.int8)
+    q[(gy < ym) & (gx < xm) & footprint] = 0
+    q[(gy < ym) & (gx >= xm) & footprint] = 1
+    q[(gy >= ym) & (gx < xm) & footprint] = 2
+    q[(gy >= ym) & (gx >= xm) & footprint] = 3
+    return q
 
-        # Build visible catalogue mask and buffer
-        self.visible_cat = np.zeros_like(self.cat)
-        for i in self.visible_segs:
-            s_rr, s_cc = self.seg_list[i]
-            self.visible_cat[s_rr, s_cc] = True
 
-        self.visible_buffer = ndi.binary_dilation(self.visible_cat, structure=struct, iterations=BUFFER_PX)
-        # Scored domain: footprint excluding visible faults and buffer
-        self.scored_domain = self.foot & ~self.visible_buffer
+@dataclass
+class Cell:
+    key: str
+    fold: int
+    seed: int
+    bbox: tuple
+    domain_sub: np.ndarray          # eroded fold domain within bbox
+    active_sub: np.ndarray          # domain & ~visible within bbox
+    visible_sub: np.ndarray         # visible catalogue within bbox
+    hidden_comp_coords: list        # list of (rows, cols) per hidden component, bbox coords
+    fold_comp_shapes: list          # catalogue component shapes in this fold (for decoy sampling)
+    n_hidden_truth: int             # unperturbed hidden truth pixels inside active
+    n_fold_components: int = 0      # observed catalogue components in this fold (decoy density)
+    n_domain_px: int = 0            # domain area in pixels (decoy density)
 
-        self.rng = np.random.default_rng(seed)
 
-    def generate_worlds(self, n_worlds: int = 12, shift_max: int = 4, drop_range: tuple[float, float] = (0.10, 0.30), decoy_frac: float = 0.05) -> list[tuple[np.ndarray, np.ndarray]]:
-        """Generate N plausible label worlds on the holdout.
-        Returns list of (world_mask, world_distance_transform).
-        """
-        worlds = []
-        for _ in range(n_worlds):
-            drop_rate = self.rng.uniform(drop_range[0], drop_range[1])
-            keep = self.rng.uniform(0, 1, size=len(self.holdout_segs)) > drop_rate
-            kept_ids = [self.holdout_segs[k] for k in range(len(self.holdout_segs)) if keep[k]]
+def _pick_components(rng, comp_size: np.ndarray, ids: np.ndarray, target_px: float) -> np.ndarray:
+    if ids.size == 0:
+        return ids
+    perm = rng.permutation(ids)
+    cum = np.cumsum(comp_size[perm])
+    k = int(np.searchsorted(cum, target_px)) + 1
+    return perm[: min(k, perm.size)]
 
-            w_mask = np.zeros((self.h, self.w), dtype=bool)
-            for s_idx in kept_ids:
-                s_rr, s_cc = self.seg_list[s_idx]
-                dy = self.rng.integers(-shift_max, shift_max + 1)
-                dx = self.rng.integers(-shift_max, shift_max + 1)
-                sh_r = np.clip(s_rr + dy, 0, self.h - 1)
-                sh_c = np.clip(s_cc + dx, 0, self.w - 1)
-                w_mask[sh_r, sh_c] = True
 
-            # Decoy segments
-            n_decoys = int(len(self.holdout_segs) * decoy_frac)
-            decoy_segs = self.rng.choice(len(self.seg_list), size=n_decoys, replace=True)
-            for d_idx in decoy_segs:
-                d_rr, d_cc = self.seg_list[d_idx]
-                dy = self.rng.integers(0, self.mid_r - 50) - int(d_rr.mean())
-                dx = self.rng.integers(0, self.mid_c - 50) - int(d_cc.mean())
-                sh_r = np.clip(d_rr + dy, 0, self.h - 1)
-                sh_c = np.clip(d_cc + dx, 0, self.w - 1)
-                w_mask[sh_r, sh_c] = True
+def build_cells(foot: np.ndarray, labels: np.ndarray, hide_frac: float = 0.20) -> list:
+    """Construct the 8 hide-and-recover cells; identical draws to the template."""
+    quad = quadrant_ids(foot)
+    comp, n_comp = label(labels, structure=np.ones((3, 3), int))
+    comp_size = np.bincount(comp.ravel(), minlength=n_comp + 1)
+    all_ids = np.arange(1, n_comp + 1)
 
-            w_mask &= self.scored_domain
-            dg = distance_transform_edt(~w_mask)
-            worlds.append((w_mask, dg))
-        return worlds
+    quad_bboxes: dict = {}
+    collars: dict = {}
+    domains: dict = {}
+    for fold in FOLDS:
+        q = quad == fold
+        rows = np.flatnonzero(q.any(axis=1))
+        cols = np.flatnonzero(q.any(axis=0))
+        r0 = max(0, int(rows[0]) - 6)
+        r1 = min(foot.shape[0], int(rows[-1]) + 7)
+        c0 = max(0, int(cols[0]) - 6)
+        c1 = min(foot.shape[1], int(cols[-1]) + 7)
+        quad_bboxes[fold] = (slice(r0, r1), slice(c0, c1))
+        collars[fold] = binary_dilation(q, structure=np.ones((3, 3), bool), iterations=COLLAR_PX) & foot
+        domains[fold] = binary_erosion(q, iterations=DOMAIN_ERODE)
 
-    def evaluate_cvar(self, pred_dots: np.ndarray, worlds: list[tuple[np.ndarray, np.ndarray]]) -> dict:
-        """Evaluate a binary prediction mask across all label worlds using exact DTI."""
-        p = pred_dots & self.scored_domain
-        if p.sum() == 0:
-            return cvar_penalized_score([0.0] * len(worlds))
+    # per-fold catalogue component shapes (for decoy sampling in the world generator)
+    comp_coords: dict = {}
 
-        dp = distance_transform_edt(~p)
-        scores = []
-        for w_mask, dg in worlds:
-            k_dp = np.maximum(1.0 - dp[w_mask] / 3.0, 0.0)
-            tp = float(k_dp.sum())
-            fn = float(w_mask.sum()) - tp
-            k_dg = np.maximum(1.0 - dg[p] / 3.0, 0.0)
-            fp = float((1.0 - k_dg).sum())
-            dti = tp / (tp + 0.2 * fp + 0.8 * fn + 1e-12)
-            scores.append(dti)
+    cells: list = []
+    for seed in DRAWS:
+        for fold in FOLDS:
+            rng = np.random.default_rng(10_000 * (seed + 1) + fold)
+            q = quad == fold
+            collar = collars[fold]
+            domain = domains[fold]
+            touch_collar = np.isin(all_ids, np.unique(comp[collar & labels]))
+            in_test = np.isin(all_ids, np.unique(comp[q & labels]))
+            test_ids = all_ids[in_test]
+            train_ids = all_ids[~touch_collar]
+            hid_test = _pick_components(rng, comp_size, test_ids, hide_frac * float((labels & q).sum()))
+            hid_train = _pick_components(rng, comp_size, train_ids, hide_frac * float(comp_size[train_ids].sum()))
+            hidden_full = np.isin(comp, hid_test)
+            hidden_train = np.isin(comp, hid_train)
+            visible = labels & ~hidden_full & ~hidden_train
+            hidden = labels & ~visible
 
-        return cvar_penalized_score(scores)
+            sl = quad_bboxes[fold]
+            r0, c0 = sl[0].start, sl[1].start
+            domain_sub = domain[sl]
+            active_sub = domain_sub & ~visible[sl]
+            visible_sub = visible[sl]
+
+            comp_sub = comp[sl]
+            hidden_ids_cell = np.unique(comp_sub[hidden[sl]])
+            hidden_ids_cell = hidden_ids_cell[hidden_ids_cell > 0]
+            hidden_comp_coords = []
+            for cid in hidden_ids_cell:
+                rr, cc = np.nonzero(comp_sub == cid)
+                hidden_comp_coords.append((rr.astype(np.int32), cc.astype(np.int32)))
+
+            if fold not in comp_coords:
+                shapes = []
+                fold_ids = np.unique(comp[q & labels])
+                fold_ids = fold_ids[fold_ids > 0]
+                n_fold_components = int(fold_ids.size)
+                for cid in fold_ids[:400]:
+                    rr, cc = np.nonzero(comp == cid)
+                    rr = rr - rr.min()
+                    cc = cc - cc.min()
+                    shapes.append((rr.astype(np.int16), cc.astype(np.int16), int(rr.size)))
+                comp_coords[fold] = shapes
+
+            truth_sub = hidden[sl] & active_sub
+            cells.append(
+                Cell(
+                    key=f"draw{seed}_fold{fold}",
+                    fold=fold,
+                    seed=seed,
+                    bbox=sl,
+                    domain_sub=domain_sub,
+                    active_sub=active_sub,
+                    visible_sub=visible_sub,
+                    hidden_comp_coords=hidden_comp_coords,
+                    fold_comp_shapes=comp_coords[fold],
+                    n_hidden_truth=int(truth_sub.sum()),
+                    n_fold_components=n_fold_components,
+                    n_domain_px=int(domain_sub.sum()),
+                )
+            )
+    return cells

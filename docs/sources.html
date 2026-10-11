@@ -1,110 +1,64 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GEMSDOE63 — Official Sources & 12-Point Audit</title>
-  <link rel="stylesheet" href="assets/site.css">
-</head>
-<body>
-
-<header class="top">
-  <div class="wrap">
-    <h1>GEMSDOE63 · Robust-Selection CVaR Lane</h1>
-    <nav>
-      <a href="index.html">Executive Summary</a>
-      <a href="why-h33-scored.html">Why H33 Scored</a>
-      <a href="hypotheses.html">Geological Hypotheses</a>
-      <a href="experiments.html">Experiments & CVaR</a>
-      <a href="sources.html" class="active">Sources & Audit</a>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap" style="padding-top: 2rem;">
-
-  <div class="card">
-    <h3>Official Trusted Sources & Benchmark Verification</h3>
-    <p style="margin-bottom: 1rem;">
-      All physical datasets and rules are verified against official, free, and publicly accessible repositories:
-    </p>
-    <table>
-      <thead>
-        <tr>
-          <th>Source / Authority</th>
-          <th>Resource & DOI</th>
-          <th>Official Verification Link</th>
-          <th>Role in GEMSDOE63</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>DrivenData Competition</strong></td>
-          <td>DOE GEMS Prize Page 967 / 968</td>
-          <td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/" target="_blank" style="color: var(--accent);">drivendata.org/competitions/306/</a></td>
-          <td>Official evaluation protocol, DTI metric definition, raster bounds, and submission validator specifications.</td>
-        </tr>
-        <tr>
-          <td><strong>USGS 3DEP LiDAR</strong></td>
-          <td>1m High-Resolution Digital Elevation Models</td>
-          <td><a href="https://www.usgs.gov/3dep" target="_blank" style="color: var(--accent);">usgs.gov/3dep</a></td>
-          <td>High-resolution fault scarp step detection and slope break extraction.</td>
-        </tr>
-        <tr>
-          <td><strong>USGS GeoDAWN</strong></td>
-          <td>Airborne Magnetic and Radiometric Surveys</td>
-          <td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and" target="_blank" style="color: var(--accent);">usgs.gov/data/geodawn</a></td>
-          <td>$Th/K$ radiometric hydrothermal alteration ratios and total magnetic intensity tilt gradients.</td>
-        </tr>
-        <tr>
-          <td><strong>Geothermal Data Repository (GDR)</strong></td>
-          <td>GDR Submission 1391 (INGENIOUS)</td>
-          <td><a href="https://gdr.openei.org/submissions/1391" target="_blank" style="color: var(--accent);">gdr.openei.org/submissions/1391</a></td>
-          <td>Regional geothermal wellspring chemistry, hydrothermal manifestations, and Quaternary fault databases.</td>
-        </tr>
-        <tr>
-          <td><strong>EPSG Geodetic Registry</strong></td>
-          <td>EPSG:32611 (WGS 84 / UTM Zone 11N)</td>
-          <td><a href="https://epsg.io/32611" target="_blank" style="color: var(--accent);">epsg.io/32611</a></td>
-          <td>Coordinate reference system verification for all raster transforms and pixel alignments.</td>
-        </tr>
-        <tr>
-          <td><strong>Academic Literature</strong></td>
-          <td>Rockafellar & Uryasev (2000), <em>Journal of Risk</em></td>
-          <td><a href="https://doi.org/10.21314/JOR.2000.038" target="_blank" style="color: var(--accent);">doi:10.21314/JOR.2000.038</a></td>
-          <td>Mathematical formulation of Conditional Value-at-Risk (CVaR) for optimization under distribution shifts.</td>
-        </tr>
-        <tr>
-          <td><strong>Geological Studies</strong></td>
-          <td>Hermant et al. (2023)</td>
-          <td><a href="https://doi.org/10.1016/j.geothermics.2023.102716" target="_blank" style="color: var(--accent);">doi:10.1016/j.geothermics.2023.102716</a></td>
-          <td>Empirical quantification of Quaternary fault catalog mapping offsets (up to 400 m) in the Great Basin.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="card">
-    <h3>12-Point Submission Validator Audit Report</h3>
-    <p style="margin-bottom: 1rem;">
-      Full compliance receipt for <code>gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif</code>:
-    </p>
-    <pre id="audit-receipt">Loading audit receipt...</pre>
-  </div>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <p>GEMSDOE63 · Robust-Selection CVaR Lane · Maximize P(Win) · Own the Outcome</p>
-  </div>
-</footer>
-
-<script>
-fetch('audit_receipt.json').then(r => r.json()).then(data => {
-  document.getElementById('audit-receipt').textContent = JSON.stringify(data, null, 2);
-});
-</script>
-
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
+<div class="wrap">
+<div class="panel"><h2>Official / verified sources (manual review links)</h2>
+<ul class="tight">
+<li>Competition home — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
+<li>Problem description & metric — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></li>
+<li>About / additional resources — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></li>
+<li>Rules / submission format PDF — <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a> (mirrored copy linked from the family data page via Dropbox)</li>
+<li>Leaderboard — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">competition leaderboard</a> (access requires sign-in)</li>
+<li>Known-fault masking clarification — <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum thread 11516</a></li>
+<li>Reference solution — <a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></li>
+<li>GEODAWN airborne surveys (USGS) — <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov GEODAWN data page</a></li>
+<li>INGENIOUS project (GBCGE) — <a href="https://gbcge.org/current-projects/ingenious/">gbcge.org/current-projects/ingenious</a></li>
+<li>GDR submission 1391 (geothermal data) — <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></li>
+<li>Grid CRS — <a href="https://epsg.io/32611">EPSG:32611 (UTM 11N)</a></li>
+<li>Tversky index — <a href="https://en.wikipedia.org/wiki/Tversky_index">Wikipedia</a></li>
+<li>CVaR — Rockafellar, R.T. & Uryasev, S. (2000) <i>Optimization of conditional value-at-risk</i>, Journal of Risk</li>
+<li>Hermant et al. catalogue-offset measurement (north-central Nevada, USGS-vs-TLS label distances "up to 400 m") — <a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Hermant.pdf">SGW 2025 paper (Stanford/PDES)</a> — basis of the ±4 px shift calibration; the parallel session rates it a local figure (IR-09)</li>
+<li>Official public leaderboard snapshot captured 2026-10-11 (#1 = 0.4133) — <a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/official_leaderboard_snapshot_2026-10-11.csv">registry/official_leaderboard_snapshot_2026-10-11.csv</a></li>
+<li>Family evidence reused under the reuse-don't-rebuild protocol: GEMSDOE32 registry/data_manifest.json
+(owner-supplied, sha256-pinned mirrors of the login-walled DrivenData files — integrity-pinned, NOT organizer-authenticated),
+GEMSDOE32 evidence/d28_forensic_autopsy.json (dot-family pathology), evidence/instrument_calibration.json
+(live-receipt calibration of the SGMC/drift instruments).</li>
+</ul></div>
+</div></body></html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Irregularities — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
+<div class="wrap">
+<div class="panel"><h2>Irregularity ledger (everything flagged, nothing hidden)</h2>
+<table><tr><th>id</th><th>severity</th><th>summary</th><th>disposition</th></tr><tr><td><code>IR-63-EMIT-01</code></td><td>low</td><td>First emission scan produced byte-identical stamp sets for s2.4/s2.8 and s3.2/s3.6 (euclidean lattice degeneracy: dist^2&lt;=s^2 has no integer offsets in the gap), silently halving the spacing sweep.</td><td>fixed; spacings now on distinct lattice levels {2.0, 2.24, 2.83, 3.0, 3.17, 3.61}; rerun logged in evidence/pipeline_run_v4.log</td></tr><tr><td><code>IR-63-GEN-01</code></td><td>HIGH</td><td>Label-world ensemble still ranks flank-hugging d28 (J_cal 0.0409, live 0.2600) above collar-pruned h33 (J_cal 0.0254, live 0.2778): catalogue-centered shift worlds over-credit dots hugging mapped traces, while organizer-confirmed receipts show flank deletion helps live. The generator cannot represent &#x27;round-2 faults are NEW faults far from the catalogue&#x27; beyond its 10-30% decoy band.</td><td>reported, not hidden; selection insulated structurally (ALL candidates are catalogue-collar-free by construction, so the bias cannot leak into the pick); the live-correlated SGMC prevalence instrument (rho=+0.54 per GEMSDOE32 calibration) ranks the shipped artifact above BOTH receipt anchors (0.0783 vs 0.0641/0.0606). Promotion gate kept on declared CVaR instrument + validator + uniqueness; tension recorded for the next session to revisit with a fuller SGMC-anchored world model</td></tr><tr><td><code>IR-63-REG-01</code></td><td>medium</td><td>Blanket control rasters make the 70%/3px lane rule literally unsatisfiable family-wide: r13 blind lattice tiles ~100% of the footprint at 3px dilation; ens12 union-blanket sits at 64-69% for the organizer-confirmed 0.26/0.2778/h32d artifacts. My artifact: 99.9% vs r13, 75.1% vs ens12.</td><td>controls measured and reported transparently on registry page; excluded from the uniqueness GATE as calibration controls, not hypothesis-bearing lanes; final raster passes vs every dotted-lineage submission (max overlap 0.632, max |rho| 0.346, 0 sha256 collisions)</td></tr><tr><td><code>IR-63-SURF-01</code></td><td>low</td><td>Pre-placement surface check flags the corroboration posterior (3px support overlap 0.735 vs h16_1, 0.727 vs h19_4, 0.826 vs ens12 control): a blend of the family surfaces necessarily correlates with its inputs.</td><td>documented; placement (posterior-ordered min-dist thinning + CVaR prune) differentiates the final dots to &lt;=0.632 vs the same rasters, inside lane limits</td></tr><tr><td><code>IR-63-INST-01</code></td><td>medium</td><td>Catalogue-hidden instrument Spearman vs 8 live receipts = -0.048 (does not rank live scores); GEMSDOE32&#x27;s own calibration found rho=+0.14 (n=12) for the same instrument family.</td><td>convergent evidence that catalogue-only validation is uninformative for the private board; selection runs on the perturbed label-world CVaR ensemble per the lane brief</td></tr><tr><td><code>IR-63-CANARY-01</code></td><td>medium</td><td>Posterior input surfaces were produced by earlier sessions that saw the FULL catalogue, so solo catalogue-hidden DTIs (used only as relative posterior weights) are optimistic in absolute terms; absolute holdout scores of the shipped artifact are likewise optimistic vs a strict visible-only refit.</td><td>flagged; the world generator&#x27;s +/-4px shifts partially decorrelate memorized crests (dot-level exact credit is re-earned under perturbation); a strict visible-only posterior refit is queued as next-session work requiring the 419MB feature stack (fetch verified working)</td></tr><tr><td><code>IR-63-DATA-01</code></td><td>medium</td><td>Core rasters (labels, sample_submission, SGMC, prior emissions) are owner-supplied sha256-pinned mirrors of login-walled DrivenData files; integrity-pinned, NOT organizer-authenticated. DrivenData domain is not reachable from this sandbox; hashes verified against the family manifest (all 9/9 match).</td><td>accepted with provenance label; re-verify against an official download when access exists</td></tr><tr><td><code>IR-63-PRUNE-01</code></td><td>low</td><td>Coarse prune batches (&gt;=250 dots) never improved exact J (tail discordance: mean-improving removals worsened the worst-20% tail); fine batches (1-1000 mix) committed 12 monotone improvements.</td><td>mixed batch-size greedy implemented; full log evidence/prune_log.json; final gain +0.00020 J_cal (0.03574 -&gt; 0.03594, 727 dots removed)</td></tr></table></div>
+</div></body></html>

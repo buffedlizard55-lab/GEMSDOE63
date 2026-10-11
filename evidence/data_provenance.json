@@ -1,0 +1,15 @@
+{
+ "note": "All rasters restored from the sha256-pinned family mirrors (integrity-pinned, NOT organizer-authenticated). Every hash below was re-computed from the restored bytes in this session and matches the family manifest (buffedlizard55-lab/GEMSDOE32 registry/data_manifest.json).",
+ "files": {
+  "data/labels.tif": {"sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093", "mirror": "github.com/buffedlizard55-lab/GEMSDOE24 @07345ea0 data/bridge/labels.tif", "verified": true},
+  "data/sample_submission.tif": {"sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc", "mirror": "github.com/buffedlizard55-lab/GEMSDOE24 @07345ea0 data/bridge/sample_submission.tif", "verified": true},
+  "data/external/derived_sgmc_faults_100m_u8.tif": {"sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0", "mirror": "github.com/buffedlizard55-lab/GEMSDOE24 @07345ea0 data/external/derived_sgmc_faults_100m_u8.tif", "verified": true},
+  "inputs/h19_5_nan.tif": {"sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d", "mirror": "GEMSDOE24 inputs/gems19-h19-5-...-nan.tif", "verified": true, "live_receipt": 0.1922},
+  "inputs/h19_4_nan.tif": {"sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3c63dd99b22", "mirror": "GEMSDOE24 inputs/gems19-h19-4-...-nan.tif", "verified": true, "live_receipt": 0.1894},
+  "inputs/h16_1_nan.tif": {"sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea", "mirror": "GEMSDOE24 inputs/gems16-h16-1-...-nan.tif", "verified": true, "live_receipt": 0.1855},
+  "inputs/calibration/ens12_7f00890a.tif": {"sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15", "mirror": "GEMSDOE24 inputs/calibration/gemsdoe-ens12-adopted-7f00890a.tif", "verified": true, "live_receipt": 0.1563},
+  "inputs/calibration/d15_scored_nan.tif": {"sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310", "mirror": "GEMSDOE24 docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-...-nan.tif", "verified": true, "live_receipt": 0.2477},
+  "inputs/calibration/r13_lattice_s5_v2_nan.tif": {"sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2", "mirror": "GEMSDOE24 inputs/calibration/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif", "verified": true, "live_receipt": 0.0904},
+  "registry_rasters/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {"sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9", "mirror": "GEMSDOE32 docs/downloads (cloned)", "verified": true, "live_receipt": 0.2778}
+ }
+}
