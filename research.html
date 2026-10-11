@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMSDOE63 — Research</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1d1d1f}
+  h1{font-size:1.6rem} h2{font-size:1.2rem;margin-top:2rem;border-bottom:1px solid #ddd;padding-bottom:.2rem}
+  code{background:#f2f2f2;padding:.1rem .3rem;border-radius:4px}
+  table{border-collapse:collapse;width:100%;font-size:.92rem} td,th{border:1px solid #ddd;padding:.3rem .45rem;text-align:left;vertical-align:top}
+  .note{background:#fff7e0;border-left:4px solid #b07a00;padding:.6rem .9rem;margin:1rem 0}
+</style>
+</head>
+<body>
+<p><a href="index.html">← Executive summary</a></p>
+<h1>Research: GEMSDOE63</h1>
+<p class="note">Every number is labelled <strong>HOLDOUT-DTI</strong> (our exact DTI, evaluator <code>gems63.dti</code>, 300 m triangular kernel, pooled over 5 spatial folds, withheld positives given), <strong>OFFICIAL-SNAPSHOT</strong> (public board, dated), <strong>OWNER-REPORT</strong> (claimed, no organiser receipt), <strong>CONTROL</strong> (pipeline check) or <strong>PROJECTION</strong> (never a score). Nothing here is ORGANIZER-CONFIRMED.</p>
+
+<h2>1. Why the highest-scoring files scored as they did</h2>
+<p>The brief asks for this study. The evidence we could check is limited, so this section says what is and is not known.</p>
+<ul>
+  <li><strong>Metric (official + checked).</strong> DTI = TP<sub>w</sub> / (TP<sub>w</sub> + 0.2·FP<sub>w</sub> + 0.8·FN<sub>w</sub>), with R = 300 m (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official page</a>). Our brute-force check matches the cKDTree version to 1e-9 (<code>tests/test_dti.py</code>).</li>
+  <li><strong>What the owner's analysis says (OWNER-REPORT).</strong> On a shared frame, the owner argues the metric rewards dropping low-weight dots: a dot helps only if its credit exceeds 0.2 × DTI. The owner's file <code>dotted-h19-5-d2-8</code> is the same model thinned to fewer dots, which is why it scored higher than its parent. The owner's own proxy ranked the same three files in the opposite order from the reported leaderboard. The analysis is in the GEMSDOE32 repo: <code>knowledge/01_why_0260_and_the_path_to_03195.md</code> and <code>docs/research/score-ceiling-analysis.md</code>.</li>
+  <li><strong>The 0.2600 attribution is unresolved.</strong> The official leaderboard snapshot of 2026-10-03 shows a 0.2600 entry, but it names no file or hash. The owner page says the same file is unscored. No receipt links the file to the score (<code>docs/research/why-d28-scored-026.md</code>).</li>
+  <li><strong>Current leader.</strong> The 2026-10-11 official read shows DW-Tversky at 0.4133 (#1). We have not inspected its file, so we cannot say why it scored well.</li>
+</ul>
+<p>Scores in the brief conflict. 0.2778 (GEMSDOE32, h33-2-b2) has no organiser receipt, and its owner audit gives 0.2747 as a projection (IR-01). 0.3774 is not in any official snapshot we read (IR-02).</p>
+
+<h2>2. Holdout design (how HOLDOUT-DTI is measured)</h2>
+<ul>
+  <li>Catalogue: 60,988 USGS/INGENIOUS positive pixels (<code>registry/grid_facts.json</code>). Grid 3730 × 3292 at 100 m, EPSG:32611.</li>
+  <li>Five folds of spatial 4×4 blocks. For each fold, that fold's catalogue is withheld and the other folds' catalogue is visible. Visible segments are masked out of scoring; a 10-px buffer surrounds them.</li>
+  <li>Pooled TP/FP/FN over folds give the reported HOLDOUT-DTI. The 95% CI is a fold bootstrap.</li>
+  <li>Label worlds (40 per fold) perturb the withheld truth: segments shifted by up to ±4 px, 10–30% dropped, decoys added at 0.5–1.0× the withheld truth. The shift size is only loosely calibrated (Hermant et al. 2025: "up to 400 m" in north-central Nevada only, IR-09).</li>
+</ul>
+
+<h2>3. Results</h2>
+<table>
+  <tr><th>Quantity</th><th>Value</th><th>Label / source</th></tr>
+  <tr><td>Canary: top single-feature AUC</td><td>0.852 (geod_shear); 0.849 (geod_2ndinv)</td><td>Canary, <code>registry/experiments/e1_canary.json</code>. PASS (&lt; 0.90), flagged for review.</td></tr>
+  <tr><td>Chosen: ridge, q=2%, s=2, r=3</td><td>HOLDOUT-DTI 0.0258 (95% CI 0.0158–0.0356; n = 60,988)</td><td>HOLDOUT-DTI, <code>registry/experiments/e2_cvar.json</code></td></tr>
+  <tr><td>Chosen: world mean / CVaR<sub>0.2</sub></td><td>0.0249 / 0.0234</td><td>HOLDOUT-DTI (40 worlds × 5 folds)</td></tr>
+  <tr><td>Logit, q=2%, s=2, r=0</td><td>nominal 0.0341; world mean 0.0199</td><td>HOLDOUT-DTI. Rejected: the nominal score does not survive the worlds.</td></tr>
+  <tr><td>Random dots, same count</td><td>0.0208 (5 seeds)</td><td>CONTROL</td></tr>
+  <tr><td>Oracle (50% of withheld truth as dots)</td><td>0.796</td><td>CONTROL: the scoring machinery behaves</td></tr>
+</table>
+<p><strong>Verdict: NEGATIVE.</strong> The chosen ridge is about 1.2× random dots. The logistic model is rejected. Under the protocol, no holdout win means no submission slot.</p>
+
+<h2>4. Hypotheses (ranked)</h2>
+<p>Full text: <code>registry/hypotheses.md</code>. Each has a non-fault mimic (a feature that looks like faults but is not) and its cost.</p>
+<ul>
+  <li><strong>H1</strong> catalogue-free ridge — measured negative (HOLDOUT-DTI above).</li>
+  <li><strong>H2</strong> logistic model — negative under the worlds.</li>
+  <li><strong>H3</strong> basement-depth step — untested.</li>
+  <li><strong>H4</strong> geodetic shear — untested; its canary AUC (0.852) is close to the leakage threshold.</li>
+  <li><strong>H5</strong> 1 m DEM scarps — ranked first by PROJECTION only; blocked because its hosts are not reachable from the sandbox (IR-16). Not validated.</li>
+</ul>
+
+<h2>5. Limitations</h2>
+<ol>
+  <li>The holdout measures catalogue-type faults. The organisers say the private truth includes faults missing from the public USGS database. The holdout may not represent that.</li>
+  <li>No organiser score exists for any file in this work.</li>
+  <li>The chosen policy is at the top of the q-grid; larger q was not tested.</li>
+  <li>Competition inputs come from third-party mirrors (IR-04).</li>
+  <li>The uniqueness check covers HEAD only of 62 repos (IR-13). It tripped DUPLICATE on the overlap test (IR-17), so the file is on hold.</li>
+  <li>A full study of the top-scoring submissions is not complete: we have no access to their files, and the attribution gaps above are unresolved.</li>
+</ol>
+
+<h2>6. Sources</h2>
+<ul>
+  <li>Competition page (metric, format): <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">drivendata.org/…/page/967/</a></li>
+  <li>Rules (AI disclosure §3.2, submission limits): <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/…/96647.pdf</a></li>
+  <li>Scoring clarification (USGS/INGENIOUS masked): <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community thread 11516</a></li>
+  <li>Official leaderboard (read 2026-10-11): <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a></li>
+  <li>Hermant et al. (2025), label-distance study: <a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Hermant.pdf">pangea.stanford.edu</a></li>
+  <li>Rockafellar &amp; Uryasev (2000), CVaR. Volume/page disputed (IR-10).</li>
+</ul>
+</body>
+</html>
