@@ -1,0 +1,136 @@
+== data ==
+  footprint px       5,165,852
+  catalogue px          60,894
+  scored domain px   5,104,958  (footprint minus catalogue,
+                                       organizer masking rule, thread 11516)
+== folds (4 spatial quadrants, whole segments) ==
+  nw: segments= 1822  valid px=2,418,797
+  ne: segments=  681  valid px=1,353,560
+  sw: segments=  376  valid px=  554,186
+  se: segments=  319  valid px=  778,415
+== label worlds: 12 per fold ==
+  48 worlds; phi ~ U(0.15, 0.95) realised [0.154, 0.938]
+  truth px per world: mean 17,432
+  max displacement used: 4.00 px (cap 4.0 px = 400 m, Hermant et al. 2025)
+  bootstrap representatives: {'nw': 0.511, 'ne': 0.633, 'sw': 0.457, 'se': 0.603}
+== candidates ==
+  band-1px                           n= 122,509  mean=0.2466  tail=0.1248  obj=0.1857
+  band-1px-thin-2                    n=  24,344  mean=0.1782  tail=0.0885  obj=0.1333
+  band-1px-thin-3                    n=  12,989  mean=0.1190  tail=0.0581  obj=0.0886
+  band-2px                           n= 120,883  mean=0.2375  tail=0.1328  obj=0.1851
+  band-2px-thin-2                    n=  33,407  mean=0.2033  tail=0.1125  obj=0.1579
+  band-2px-thin-3                    n=  20,820  mean=0.1542  tail=0.0845  obj=0.1194
+  band-3px                           n= 140,137  mean=0.1784  tail=0.1132  obj=0.1458
+  band-3px-thin-2                    n=  34,776  mean=0.1539  tail=0.0950  obj=0.1245
+  band-3px-thin-3                    n=  21,340  mean=0.1162  tail=0.0711  obj=0.0936
+  band-4px                           n= 119,502  mean=0.1078  tail=0.0753  obj=0.0916
+  band-4px-thin-2                    n=  34,087  mean=0.0876  tail=0.0602  obj=0.0739
+  band-4px-thin-3                    n=  20,932  mean=0.0642  tail=0.0427  obj=0.0535
+  band-5px                           n= 149,499  mean=0.0644  tail=0.0424  obj=0.0534
+  band-5px-thin-2                    n=  32,591  mean=0.0502  tail=0.0332  obj=0.0417
+  band-5px-thin-3                    n=  21,186  mean=0.0383  tail=0.0253  obj=0.0318
+  band-6px                           n= 113,717  mean=0.0476  tail=0.0273  obj=0.0374
+  band-6px-thin-2                    n=  31,773  mean=0.0390  tail=0.0229  obj=0.0309
+  band-6px-thin-3                    n=  20,616  mean=0.0298  tail=0.0175  obj=0.0236
+  ribbon-w1                          n= 122,509  mean=0.2466  tail=0.1248  obj=0.1857
+  ribbon-w2                          n= 243,392  mean=0.2334  tail=0.1248  obj=0.1791
+  ribbon-w3                          n= 383,529  mean=0.2038  tail=0.1166  obj=0.1602
+  ribbon-w4                          n= 503,031  mean=0.1802  tail=0.1091  obj=0.1446
+  ribbon-w5                          n= 652,530  mean=0.1578  tail=0.1018  obj=0.1298
+  continuations-L12                  n=  94,192  mean=0.1509  tail=0.0891  obj=0.1200
+  band-2px-plus-continuations-L12    n= 199,075  mean=0.2261  tail=0.1329  obj=0.1795
+
+== CVaR selection (lam=0.5, tail=0.2) ==
+  winner: band-1px  objective=0.1857 (mean 0.2466, worst-20% mean 0.1248)
+
+== leakage canary: distance-to-catalogue alone ==
+  mean AUC = nan  -> below the 0.90 gate
+
+== greedy prune (drop the band whose removal most improves CVaR) ==
+  pruned band-5px: objective 0.13872
+  pruned band-4px: objective 0.15586
+  pruned band-3px: objective 0.17461
+  pruned band-2px: objective 0.18180
+  pruned band-6px: objective 0.18568
+  step 0: init                   obj=0.1213 mean=0.1452 tail=0.0973 n=766,247
+  step 1: drop:band-5px          obj=0.1387 mean=0.1675 tail=0.1099 n=616,748
+  step 2: drop:band-4px          obj=0.1559 mean=0.1896 tail=0.1221 n=497,246
+  step 3: drop:band-3px          obj=0.1746 mean=0.2142 tail=0.1350 n=357,109
+  step 4: drop:band-2px          obj=0.1818 mean=0.2228 tail=0.1408 n=236,226
+  step 5: drop:band-6px          obj=0.1857 mean=0.2466 tail=0.1248 n=122,509
+  step 6: final                  obj=0.1857 mean=0.2466 tail=0.1248 n=122,509
+
+== pruned candidate ==
+  HOLDOUT-DTI (pooled over 48 worlds x 4 folds): 0.2336
+  mean per-world 0.2466  worst-20% 0.1248  objective 0.1857
+  emitted pixels 122,509
+
+== robustness across phi (share of truth that is new geometry of a mapped system) ==
+  pruned                     low=0.1352(n=12)  mid=0.2258(n=21)  high=0.3646(n=15)
+  selected:band-1px          low=0.1352(n=12)  mid=0.2258(n=21)  high=0.3646(n=15)
+  ribbon-w5                  low=0.1059(n=12)  mid=0.1511(n=21)  high=0.2087(n=15)
+
+== written ==
+  /home/user/GEMSDOE63/docs/downloads/gems63-cvar-offset-band.tif
+  197,922 bytes  sha256 b8f15e4d5fee6334
+
+validator: PASS  /home/user/GEMSDOE63/docs/downloads/gems63-cvar-offset-band.tif
+  [ok ] file exists
+  [ok ] driver is GTiff
+  [ok ] single band (count == 1)
+  [ok ] dtype is float32
+  [ok ] CRS is EPSG:32611
+  [ok ] shape matches template (3730 x 3292)
+  [ok ] geotransform matches template exactly
+  [ok ] resolution is 100 m
+  [ok ] no NaN inside the survey footprint
+  [ok ] no NaN anywhere in the raster (zeros-outside variant)
+  [ok ] min value >= 0
+  [ok ] max value <= 1
+  [ok ] no infinities
+  . bytes = 197922
+  . min = 0.0
+  . max = 1.0
+  . positive_pixels = 122509
+  . distinct_values = 2
+  . nan_pixels = 0
+  gemsdoe32_h33_2_b2_02778_zeros               rho=-0.0056 overlap=0.0885
+  gems28_h27_4_r1_solo_d2_8_02708              rho=-0.0058 overlap=0.2065
+  gems25_dotted_h19_5_d2_8_02600               rho=+0.0453 overlap=0.3815
+  gems33_h33d_tip_stepover_r30_02632           rho=+0.0116 overlap=0.2695
+  gems8_hedge_v2_01563                         rho=+0.0545 overlap=1.0000
+  gems13_r11_greedy_mp                         rho=+0.0233 overlap=1.0000
+  gems13_r13_lattice_s5_00904                  rho=+0.0183 overlap=0.9988
+  gems13_r14_union_tips10_lat6                 rho=+0.0793 overlap=0.7698
+  gems50_h52_coincidence8_80k                  rho=-0.0082 overlap=0.2681
+  gems50_h60_officialstack_50k                 rho=-0.0064 overlap=0.0269
+  gems50_h60_union_d2_75308                    rho=-0.0079 overlap=0.0108
+  gems19_h19_4_multiline_thermal_01894         rho=+0.0663 overlap=0.4330
+  gems19_h19_5_powerlaw_01922                  rho=+0.0673 overlap=0.4260
+  gems49_gate_ortho_w025_02376                 rho=-0.0058 overlap=0.0892
+  gems36_anderson_pinn_02750                   rho=-0.0057 overlap=0.0924
+  gems32_h32d_submodular_46090                 rho=+0.0465 overlap=0.4025
+  gems27_topo_gap_closure_t_v2_02449           rho=+0.0513 overlap=0.4060
+  gems52_h83_offcatalogue_cotrain_e3           rho=-0.0056 overlap=0.1498
+  gems60_h65_dem10_knick                       rho=-0.0057 overlap=0.0225
+  gems60_h66_dem10_bedrock_dksn                rho=-0.0057 overlap=0.1369
+  gems61c_gravstep_liveband_40k                rho=-0.0057 overlap=0.0635
+
+== uniqueness gate ==
+  {
+  "n_registry_rasters": 21,
+  "clear": false,
+  "duplicates": [
+    "gems8_hedge_v2_01563",
+    "gems13_r11_greedy_mp",
+    "gems13_r13_lattice_s5_00904",
+    "gems13_r14_union_tips10_lat6"
+  ],
+  "max_rank_corr": 0.07926091057432556,
+  "max_overlap_fraction": 1.0,
+  "rank_corr_gate": 0.9,
+  "overlap_gate": 0.7,
+  "overlap_radius_px": 3.0
+}
+
+run card -> /home/user/GEMSDOE63/evidence/run_card.json

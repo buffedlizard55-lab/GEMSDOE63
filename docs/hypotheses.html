@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hypotheses - GEMSDOE63</title>
+<link rel="stylesheet" href="assets/site.css"></head>
+<body>
+<header><div class="wrap">
+<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
+<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
+plausible label worlds &middot; every number on this site is generated from
+<code>evidence/run_card.json</code></p>
+</div></header>
+<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html" class="on">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html">Next steps</a></div></nav>
+<div class="wrap">
+
+<section>
+<h2>Candidate hypotheses not yet tried</h2>
+<p>Five candidates, each naming the layers involved, the physical signature targeted,
+why it should catch a fault <i>missing</i> from the USGS/INGENIOUS catalogue rather than
+one already in it, and how it differs from anything already implemented here or in the
+registry. Ranked by expected DTI improvement against implementation cost.</p>
+<div class="note"><b>Discipline:</b> none of these gets a submission slot until it has
+been validated on the spatially-blocked holdout and beaten the current holdout best.
+Candidate 5 is deliberately last but should be tested first, because a single-feature
+holdout AUC settles it in minutes and it is the cheapest to falsify.</div>
+<table>
+<tr><th class="num">#</th><th>hypothesis &amp; layers</th><th>physical signature</th>
+<th>why it catches a missing fault</th><th>how it differs from what exists</th>
+<th>expected gain</th><th>cost</th></tr>
+<tr>
+<td class="num">1</td>
+<td><b>Strain-rate second invariant as a blind-fault detector</b><div class="mut">Band 4 (geodetic second invariant of strain rate) with band 7 (shear rate) and band 8 (dilatation rate)</div></td>
+<td>Ridge extraction on the second invariant after scale normalisation, restricted to pixels where dilatation is extensional (positive). A blind or buried normal fault loads the fault plane without breaking the surface, so it leaves a strain-rate concentration and no topographic scarp.</td>
+<td>Geodetic strain accumulates on faults whether or not anyone has mapped them. A fault absent from USGS/INGENIOUS because it is buried under basin fill is precisely the case where the catalogue is silent and the strain field is not.</td>
+<td>Every sibling lane in the registry works from magnetics, radiometrics, topography or the catalogue geometry. None uses the geodetic strain bands as the primary detector, and this lane uses no detector at all -- it shapes an emission around catalogue geometry.</td>
+<td>High. Strain-rate ridges are the one provided layer that is physically obliged to respond to an unmapped active structure.</td>
+<td>Low. The bands are already in the cached feature stack; a ridge filter and a holdout run is a few hours.</td></tr><tr>
+<td class="num">2</td>
+<td><b>Radiometric potassium/thorium depletion along concealed fault zones</b><div class="mut">The GeoDAWN radiometric stack (sibling repos cache geodawn_rad_u8.tif); not in the 19-band numerical stack</div></td>
+<td>Hydrothermal alteration leaches K and mobilises Th, so a fault that has conducted fluid shows a K/Th ratio anomaly along its strike even where it is topographically invisible.</td>
+<td>Alteration is a function of fluid flow history, not of whether a mapper could see the trace. Concealed faults that carried fluid are systematically under-mapped and systematically anomalous.</td>
+<td>Sibling GEMSDOE46 fused radiometrics with a scarp detector and scored 0.1589. This hypothesis uses the ratio, not the raw counts, and gates on the absence of a topographic expression so it targets concealed rather than expressed structure.</td>
+<td>Medium-high. Two sibling runs using raw radiometrics landed mid-field, which suggests the signal is real but the encoding was wrong.</td>
+<td>Medium. Needs the radiometric raster, which is cached in sibling repos but not in the 19-band stack; it must be fetched and co-registered.</td></tr><tr>
+<td class="num">3</td>
+<td><b>Top-of-crustal magnetic source depth steps</b><div class="mut">Band 19 of the numerical stack is detrended-elevation slope; the problem description also lists a top-of-crustal magnetic source depth estimate among the provided features</div></td>
+<td>A fault juxtaposes blocks with different basement depth, so the estimated depth-to-magnetic-source field steps across it. The target is the step, not the gradient.</td>
+<td>Depth-to-source steps appear where the catalogue has no trace because the fault does not reach the surface. These are the structures most likely to be missing entirely.</td>
+<td>Sibling GEMSDOE40 and GEMSDOE57 used Euler deconvolution of magnetics and scored 0.0355 and unrecorded. This targets the provided depth estimate directly rather than re-deriving it, which removes the free-parameter search that made Euler unstable.</td>
+<td>Medium. Physically clean, but the provided depth estimate is itself smoothed, which may wash out the step.</td>
+<td>Low if the band is present; it must be confirmed in the stack first, because the 19 bands read here do not include it by that name.</td></tr><tr>
+<td class="num">4</td>
+<td><b>Fault-zone damage fabric from 1 m DEM curvature anisotropy</b><div class="mut">The 1 m DEM tiles listed in 1m_DEM_links.csv, resampled to 100 m</div></td>
+<td>Second-derivative curvature computed along and across a range-front azimuth. A damage zone has a measurable along-strike fabric even when the scarp itself is eroded away.</td>
+<td>Eroded scarps are removed from the map but the damage-zone fabric survives. This targets the population that mapping by eye misses.</td>
+<td>Sibling GEMSDOE60 and 61GEMSDOE used DEM knickpoints and basement steps. Curvature anisotropy is a different operator and a different target: fabric, not profile break.</td>
+<td>Medium. Sibling DEM lanes cluster around 0.03-0.09, so the ceiling may be low, but they used profile features rather than fabric.</td>
+<td>High. Needs the 1 m tiles, which are 300-380 MB each and are not reachable from this sandbox; they must be fetched on a GitHub Actions runner.</td></tr><tr>
+<td class="num">5</td>
+<td><b>Earthquake-density voids adjacent to mapped traces</b><div class="mut">Band 10 (distance to earthquake) and band 16 (earthquake intensity or density)</div></td>
+<td>A locked or creeping segment shows up as a local minimum in seismicity density next to an otherwise seismic range front. The target is the deficit, not the excess.</td>
+<td>A seismicity deficit marks a locked patch. Locked patches on unmapped structures are invisible to both the catalogue and to every detector keyed to highs.</td>
+<td>No registry raster uses the seismic bands as a primary signal; they are present in the stack and, so far as the registry shows, unused.</td>
+<td>Speculative. The 100 km radius used to build these bands may be far too coarse to resolve a single structure.</td>
+<td>Low to test, and it should be tested precisely because it is cheap: a single-feature holdout AUC settles it in minutes.</td></tr>
+</table>
+<h3>Data each one needs, and whether it is obtainable</h3>
+<table>
+<tr><th>#</th><th>data</th><th>free official source</th><th>obtainable here?</th></tr>
+<tr><td>1</td><td>bands 4, 7, 8</td><td>already in
+<code>data/cache/gems-geodawn-numerical-features.tif</code></td><td><span class="pill ok">YES</span></td></tr>
+<tr><td>2</td><td>GeoDAWN radiometrics</td><td>
+<a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a>,
+cached as <code>geodawn_rad_u8.tif</code> in sibling repos</td>
+<td><span class="pill warn">VIA SIBLING CACHE</span></td></tr>
+<tr><td>3</td><td>top-of-crustal magnetic source depth</td><td>listed on
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a>
+among the provided features</td>
+<td><span class="pill bad">UNCONFIRMED</span> &mdash; the 19 bands read from the stack
+do not include it under that name; must be resolved before proposing</td></tr>
+<tr><td>4</td><td>1 m DEM tiles</td><td>USGS 3DEP via the TNM Access API, URLs listed in
+<code>1m_DEM_links.csv</code></td>
+<td><span class="pill bad">NO</span> from this sandbox (USGS hosts unreachable); a GitHub
+Actions runner can reach them</td></tr>
+<tr><td>5</td><td>bands 10, 16</td><td>already in the cached feature stack</td>
+<td><span class="pill ok">YES</span></td></tr>
+</table>
+</section>
+<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
+hand.</footer>
+</div></body></html>

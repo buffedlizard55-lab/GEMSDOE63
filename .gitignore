@@ -1,0 +1,7 @@
+# large / re-derivable inputs -- see scripts/fetch_registry.py and data/README.md
+data/cache/
+registry/rasters/
+__pycache__/
+*.py[co]
+.pytest_cache/
+.venv/

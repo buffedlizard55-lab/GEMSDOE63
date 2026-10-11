@@ -1,0 +1,761 @@
+{
+ "generated_from": "evidence/run_card.json",
+ "submission": {
+  "file_name": "gems63-cvar-offset-band.tif",
+  "note": "GEMSDOE63-CVaR-band1 | 1px offset ribbon, catalogue px removed | CVaR over 48 label worlds | drift gate tripped - see site",
+  "submission_name": "gems63-cvar-offset-band"
+ },
+ "raster": {
+  "sha256": "b8f15e4d5fee63348c00bb7fb5a92ed529be438fa3b0a70af933ba63fac25244",
+  "bytes": 197922,
+  "path": "docs/downloads/gems63-cvar-offset-band.tif",
+  "positive_pixels": 122509,
+  "value_range": [
+   0.0,
+   1.0
+  ]
+ },
+ "validator_ok": true,
+ "uniqueness": {
+  "n_registry_rasters": 21,
+  "rank_corr_gate": 0.9,
+  "overlap_gate": 0.7,
+  "overlap_radius_px": 3.0,
+  "lift_gate": 2.0,
+  "max_rank_corr": 0.07929388333852395,
+  "max_overlap": 1.0,
+  "max_lift": 3.5105883027194316,
+  "literal_gate_clear": false,
+  "literal_gate_tripped_by": [
+   "gems8_hedge_v2_01563",
+   "gems13_r11_greedy_mp",
+   "gems13_r14_union_tips10_lat6",
+   "gems13_r13_lattice_s5_00904"
+  ],
+  "lift_gate_clear": false,
+  "lift_gate_tripped_by": [
+   "gems8_hedge_v2_01563"
+  ],
+  "clear": false,
+  "duplicates": [
+   "gems8_hedge_v2_01563",
+   "gems13_r11_greedy_mp",
+   "gems13_r14_union_tips10_lat6",
+   "gems13_r13_lattice_s5_00904"
+  ],
+  "interpretation": "The literal gate is the brief's test and is reported unchanged. Comparators whose overlap_random is close to their overlap are dense enough that co-location is explained by density alone; only a lift well above 1 is evidence of a lane collision."
+ },
+ "holdout_dti": {
+  "label": "HOLDOUT-DTI",
+  "evaluator": "gems63.metric.binary_dti_components via gems63.cvar (alpha 0.2, beta 0.8, 300 m triangular kernel)",
+  "pooled_over": "48 worlds x 4 folds",
+  "withheld_positives_pixels": 836744,
+  "pooled": 0.23358239828353922,
+  "mean_per_world": 0.24655647043654141,
+  "cvar_worst_tail": 0.12480423812714381,
+  "tail_fraction": 0.2,
+  "lam": 0.5,
+  "ci95_cluster_bootstrap": [
+   0.1906857569651437,
+   0.20678518147033076
+  ],
+  "leakage_canary_auc_distance_to_catalogue": NaN,
+  "leakage_canary_verdict": "LEAKAGE-CIRCULAR by construction when phi is high; the ensemble spans phi in [0.15, 0.95] and the objective is tail-penalised for exactly this reason",
+  "not_a_score": true
+ },
+ "selection": [
+  {
+   "name": "band-1px",
+   "params": {
+    "kind": "single-band",
+    "band_px": 1
+   },
+   "mean_dti": 0.24655647043654141,
+   "tail_dti": 0.12480423812714381,
+   "var_dti": 0.14283717488542383,
+   "worst_world": "se-w000",
+   "best_world": "ne-w009",
+   "objective": 0.1856803542818426,
+   "per_fold_mean": {
+    "nw": 0.23114225977564562,
+    "ne": 0.2556350462273215,
+    "sw": 0.2565541944440285,
+    "se": 0.24289438129916993
+   },
+   "n_emitted": 122509
+  },
+  {
+   "name": "ribbon-w1",
+   "params": {
+    "kind": "ribbon",
+    "half_width_px": 1.0
+   },
+   "mean_dti": 0.24655647043654141,
+   "tail_dti": 0.12480423812714381,
+   "var_dti": 0.14283717488542383,
+   "worst_world": "se-w000",
+   "best_world": "ne-w009",
+   "objective": 0.1856803542818426,
+   "per_fold_mean": {
+    "nw": 0.23114225977564562,
+    "ne": 0.2556350462273215,
+    "sw": 0.2565541944440285,
+    "se": 0.24289438129916993
+   },
+   "n_emitted": 122509
+  },
+  {
+   "name": "band-2px",
+   "params": {
+    "kind": "single-band",
+    "band_px": 2
+   },
+   "mean_dti": 0.23747313885450771,
+   "tail_dti": 0.13276051389562737,
+   "var_dti": 0.16061023065882754,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.18511682637506754,
+   "per_fold_mean": {
+    "nw": 0.22639049437939066,
+    "ne": 0.2520861443401579,
+    "sw": 0.24090775212542379,
+    "se": 0.23050816457305848
+   },
+   "n_emitted": 120883
+  },
+  {
+   "name": "band-2px-plus-continuations-L12",
+   "params": {
+    "kind": "band+continuations",
+    "band_px": 2,
+    "continuation_px": 12
+   },
+   "mean_dti": 0.22605164107348852,
+   "tail_dti": 0.13287893970364612,
+   "var_dti": 0.15394640582723948,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.17946529038856732,
+   "per_fold_mean": {
+    "nw": 0.21751198252130835,
+    "ne": 0.23119456051959256,
+    "sw": 0.23383812504999799,
+    "se": 0.22166189620305518
+   },
+   "n_emitted": 199075
+  },
+  {
+   "name": "ribbon-w2",
+   "params": {
+    "kind": "ribbon",
+    "half_width_px": 2.0
+   },
+   "mean_dti": 0.23344210239041444,
+   "tail_dti": 0.12477373898520336,
+   "var_dti": 0.14623990734628822,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w009",
+   "objective": 0.1791079206878089,
+   "per_fold_mean": {
+    "nw": 0.22321321620588375,
+    "ne": 0.24112640914714745,
+    "sw": 0.2413796221523611,
+    "se": 0.2280491620562656
+   },
+   "n_emitted": 243392
+  },
+  {
+   "name": "ribbon-w3",
+   "params": {
+    "kind": "ribbon",
+    "half_width_px": 3.0
+   },
+   "mean_dti": 0.20384312961097187,
+   "tail_dti": 0.11664980664368736,
+   "var_dti": 0.13546424499989906,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.16024646812732962,
+   "per_fold_mean": {
+    "nw": 0.19896455547061984,
+    "ne": 0.2071810627417017,
+    "sw": 0.21060500376461985,
+    "se": 0.1986218964669462
+   },
+   "n_emitted": 383529
+  },
+  {
+   "name": "band-2px-thin-2",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 2,
+    "min_sep_px": 2.0
+   },
+   "mean_dti": 0.20330217563593247,
+   "tail_dti": 0.11247250181138484,
+   "var_dti": 0.13550469838509185,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.15788733872365865,
+   "per_fold_mean": {
+    "nw": 0.19147211812446682,
+    "ne": 0.22059567513313635,
+    "sw": 0.20534917420468024,
+    "se": 0.1957917350814464
+   },
+   "n_emitted": 33407
+  },
+  {
+   "name": "band-3px",
+   "params": {
+    "kind": "single-band",
+    "band_px": 3
+   },
+   "mean_dti": 0.17841908089569736,
+   "tail_dti": 0.11318120786005217,
+   "var_dti": 0.13238569915376125,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.14580014437787475,
+   "per_fold_mean": {
+    "nw": 0.17271181627091525,
+    "ne": 0.19294630058926154,
+    "sw": 0.17655152133198793,
+    "se": 0.17146668539062485
+   },
+   "n_emitted": 140137
+  },
+  {
+   "name": "ribbon-w4",
+   "params": {
+    "kind": "ribbon",
+    "half_width_px": 4.0
+   },
+   "mean_dti": 0.18018113176803263,
+   "tail_dti": 0.10911124712767092,
+   "var_dti": 0.12551412034653373,
+   "worst_world": "ne-w005",
+   "best_world": "ne-w002",
+   "objective": 0.1446461894478518,
+   "per_fold_mean": {
+    "nw": 0.1783759193864725,
+    "ne": 0.17846306953549615,
+    "sw": 0.18853080977302247,
+    "se": 0.1753547283771393
+   },
+   "n_emitted": 503031
+  },
+  {
+   "name": "band-1px-thin-2",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 1,
+    "min_sep_px": 2.0
+   },
+   "mean_dti": 0.1781870869660405,
+   "tail_dti": 0.08850263692033958,
+   "var_dti": 0.10049955229998425,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w009",
+   "objective": 0.13334486194319004,
+   "per_fold_mean": {
+    "nw": 0.1648624693165001,
+    "ne": 0.18501674987510155,
+    "sw": 0.1865443627226917,
+    "se": 0.17632476594986865
+   },
+   "n_emitted": 24344
+  },
+  {
+   "name": "ribbon-w5",
+   "params": {
+    "kind": "ribbon",
+    "half_width_px": 5.0
+   },
+   "mean_dti": 0.15778271632538624,
+   "tail_dti": 0.1017709387503751,
+   "var_dti": 0.11485115934133114,
+   "worst_world": "ne-w005",
+   "best_world": "sw-w006",
+   "objective": 0.12977682753788067,
+   "per_fold_mean": {
+    "nw": 0.15849464900253327,
+    "ne": 0.15152541637189,
+    "sw": 0.16744049262933244,
+    "se": 0.15367030729778927
+   },
+   "n_emitted": 652530
+  },
+  {
+   "name": "band-3px-thin-2",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 3,
+    "min_sep_px": 2.0
+   },
+   "mean_dti": 0.15393647982399972,
+   "tail_dti": 0.09504235665740639,
+   "var_dti": 0.1103426916430475,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.12448941824070306,
+   "per_fold_mean": {
+    "nw": 0.14569615060093835,
+    "ne": 0.17123483335548773,
+    "sw": 0.15142433121355667,
+    "se": 0.14739060412601615
+   },
+   "n_emitted": 34776
+  },
+  {
+   "name": "continuations-L12",
+   "params": {
+    "kind": "continuations",
+    "length_px": 12
+   },
+   "mean_dti": 0.1508512271800182,
+   "tail_dti": 0.08914965829231583,
+   "var_dti": 0.10172135771252426,
+   "worst_world": "se-w000",
+   "best_world": "nw-w001",
+   "objective": 0.12000044273616702,
+   "per_fold_mean": {
+    "nw": 0.1631472214094409,
+    "ne": 0.1548155779045805,
+    "sw": 0.16045888031989658,
+    "se": 0.12498322908615477
+   },
+   "n_emitted": 94192
+  },
+  {
+   "name": "band-2px-thin-3",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 2,
+    "min_sep_px": 3.0
+   },
+   "mean_dti": 0.15419083724985735,
+   "tail_dti": 0.0845262322823214,
+   "var_dti": 0.1026297715073859,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.11935853476608937,
+   "per_fold_mean": {
+    "nw": 0.14431596887264772,
+    "ne": 0.16859332922530035,
+    "sw": 0.15242878194082435,
+    "se": 0.15142526896065692
+   },
+   "n_emitted": 20820
+  },
+  {
+   "name": "band-3px-thin-3",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 3,
+    "min_sep_px": 3.0
+   },
+   "mean_dti": 0.11617757284686354,
+   "tail_dti": 0.07110163446240941,
+   "var_dti": 0.08366312112103748,
+   "worst_world": "sw-w004",
+   "best_world": "ne-w004",
+   "objective": 0.09363960365463647,
+   "per_fold_mean": {
+    "nw": 0.10973414805848497,
+    "ne": 0.1312492156180782,
+    "sw": 0.11262318130912492,
+    "se": 0.11110374640176605
+   },
+   "n_emitted": 21340
+  },
+  {
+   "name": "band-4px",
+   "params": {
+    "kind": "single-band",
+    "band_px": 4
+   },
+   "mean_dti": 0.1077839703365739,
+   "tail_dti": 0.07532715817794104,
+   "var_dti": 0.08166618389122936,
+   "worst_world": "nw-w009",
+   "best_world": "ne-w010",
+   "objective": 0.09155556425725747,
+   "per_fold_mean": {
+    "nw": 0.10799239115201652,
+    "ne": 0.1154370061502411,
+    "sw": 0.10699961121781869,
+    "se": 0.10070687282621928
+   },
+   "n_emitted": 119502
+  },
+  {
+   "name": "band-1px-thin-3",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 1,
+    "min_sep_px": 3.0
+   },
+   "mean_dti": 0.11901244951884556,
+   "tail_dti": 0.05813889292833478,
+   "var_dti": 0.06440509524427594,
+   "worst_world": "nw-w002",
+   "best_world": "ne-w009",
+   "objective": 0.08857567122359017,
+   "per_fold_mean": {
+    "nw": 0.11035156063945674,
+    "ne": 0.1253930912230122,
+    "sw": 0.12598875006713964,
+    "se": 0.11431639614577366
+   },
+   "n_emitted": 12989
+  },
+  {
+   "name": "band-4px-thin-2",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 4,
+    "min_sep_px": 2.0
+   },
+   "mean_dti": 0.0875633044981935,
+   "tail_dti": 0.06020939869276062,
+   "var_dti": 0.06521270614510556,
+   "worst_world": "se-w002",
+   "best_world": "ne-w010",
+   "objective": 0.07388635159547706,
+   "per_fold_mean": {
+    "nw": 0.0861027322988665,
+    "ne": 0.09761124357880886,
+    "sw": 0.08533095937136809,
+    "se": 0.08120828274373046
+   },
+   "n_emitted": 34087
+  },
+  {
+   "name": "band-4px-thin-3",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 4,
+    "min_sep_px": 3.0
+   },
+   "mean_dti": 0.06424239786547681,
+   "tail_dti": 0.04271800181612668,
+   "var_dti": 0.04683261051664738,
+   "worst_world": "se-w002",
+   "best_world": "ne-w010",
+   "objective": 0.05348019984080174,
+   "per_fold_mean": {
+    "nw": 0.06377295540427093,
+    "ne": 0.0733531032346799,
+    "sw": 0.061010270505731067,
+    "se": 0.0588332623172253
+   },
+   "n_emitted": 20932
+  },
+  {
+   "name": "band-5px",
+   "params": {
+    "kind": "single-band",
+    "band_px": 5
+   },
+   "mean_dti": 0.0643990705662462,
+   "tail_dti": 0.04241697889369784,
+   "var_dti": 0.050483116866119455,
+   "worst_world": "ne-w009",
+   "best_world": "nw-w003",
+   "objective": 0.053408024729972026,
+   "per_fold_mean": {
+    "nw": 0.06786466648624388,
+    "ne": 0.062030953767877546,
+    "sw": 0.06957605606126412,
+    "se": 0.058124605949599256
+   },
+   "n_emitted": 149499
+  },
+  {
+   "name": "band-5px-thin-2",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 5,
+    "min_sep_px": 2.0
+   },
+   "mean_dti": 0.05023308297751485,
+   "tail_dti": 0.03315619839958332,
+   "var_dti": 0.04007028119623281,
+   "worst_world": "ne-w009",
+   "best_world": "sw-w007",
+   "objective": 0.041694640688549084,
+   "per_fold_mean": {
+    "nw": 0.052402550244846524,
+    "ne": 0.048831235777472816,
+    "sw": 0.05512200948509271,
+    "se": 0.04457653640264736
+   },
+   "n_emitted": 32591
+  },
+  {
+   "name": "band-6px",
+   "params": {
+    "kind": "single-band",
+    "band_px": 6
+   },
+   "mean_dti": 0.047598849835938484,
+   "tail_dti": 0.027286114720195792,
+   "var_dti": 0.03803159382154152,
+   "worst_world": "ne-w009",
+   "best_world": "sw-w001",
+   "objective": 0.03744248227806714,
+   "per_fold_mean": {
+    "nw": 0.0519707744240995,
+    "ne": 0.03998324053069835,
+    "sw": 0.05671509586027701,
+    "se": 0.04172628852867904
+   },
+   "n_emitted": 113717
+  },
+  {
+   "name": "band-5px-thin-3",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 5,
+    "min_sep_px": 3.0
+   },
+   "mean_dti": 0.0383373673385526,
+   "tail_dti": 0.025272573176655648,
+   "var_dti": 0.030133387686279014,
+   "worst_world": "ne-w009",
+   "best_world": "sw-w007",
+   "objective": 0.03180497025760412,
+   "per_fold_mean": {
+    "nw": 0.03975457511347616,
+    "ne": 0.037582819372251254,
+    "sw": 0.04194447088241111,
+    "se": 0.03406760398607187
+   },
+   "n_emitted": 21186
+  },
+  {
+   "name": "band-6px-thin-2",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 6,
+    "min_sep_px": 2.0
+   },
+   "mean_dti": 0.03896137051712878,
+   "tail_dti": 0.022933612491465225,
+   "var_dti": 0.0309628806799089,
+   "worst_world": "ne-w009",
+   "best_world": "sw-w001",
+   "objective": 0.030947491504297,
+   "per_fold_mean": {
+    "nw": 0.04180875749359494,
+    "ne": 0.03340723871213552,
+    "sw": 0.0467909693615326,
+    "se": 0.03383851650125204
+   },
+   "n_emitted": 31773
+  },
+  {
+   "name": "band-6px-thin-3",
+   "params": {
+    "kind": "single-band-thinned",
+    "band_px": 6,
+    "min_sep_px": 3.0
+   },
+   "mean_dti": 0.029764617870495388,
+   "tail_dti": 0.017499113709841488,
+   "var_dti": 0.024801355487261055,
+   "worst_world": "ne-w009",
+   "best_world": "sw-w001",
+   "objective": 0.02363186579016844,
+   "per_fold_mean": {
+    "nw": 0.03182455439898802,
+    "ne": 0.025844764724624613,
+    "sw": 0.035480063912363184,
+    "se": 0.02590908844600573
+   },
+   "n_emitted": 20616
+  }
+ ],
+ "sources": [
+  {
+   "title": "Competition problem description (page 967)",
+   "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+   "what": "The metric verbatim: DTI = TP_w/(TP_w + 0.2 FP_w + 0.8 FN_w + eps) with triangular kernel k(d) = max(1 - d/R, 0), R = 300 m; the worked example TP_w=3.00, FP_w=1.89, FN_w=2.00 -> 0.60; and the submission format (EPSG:32611, 100 m, single layer, float32, values in [0, 1], null/NaN permitted outside the bounds).",
+   "class": "OFFICIAL"
+  },
+  {
+   "title": "Forum thread 11516 - scoring clarification",
+   "url": "https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516",
+   "what": "chrisk-dd (DrivenData Staff), 2026-09-16: \"Pixels corresponding to known USGS/INGENIOUS faults are masked / excluded from evaluation, so they do not count towards penalty terms\" and \"Re-evaluation will also mask/exclude the existing USGS/INGENIOUS faults.\"",
+   "class": "OFFICIAL"
+  },
+  {
+   "title": "Forum thread 11536 - where do you draw the line",
+   "url": "https://community.drivendata.org/t/where-do-you-draw-the-line/11536",
+   "what": "chrisk-dd (DrivenData Staff), 2026-09-23: \"'new fault' means 'any fault pixel not already captured by USGS/INGENIOUS' and can include newly mapped geometry of an existing fault system.\"",
+   "class": "OFFICIAL"
+  },
+  {
+   "title": "Forum thread 11527 - how were the new test faults identified",
+   "url": "https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527",
+   "what": "The organizers will not disclose the data sources, fault types or coverage behind the test faults beyond the problem description; Phase 2 re-scores the same submission against an expert-expanded label set.",
+   "class": "OFFICIAL"
+  },
+  {
+   "title": "Hermant et al., Stanford Geothermal Workshop 2025",
+   "url": "https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Hermant.pdf",
+   "what": "\"Using Deep Learning to Map Quaternary Faults in Western US\". Figure 1 caption: \"Local discrepancy observed in North Central Nevada: distance between USGS Quaternary faults and TLS fault label can be up to 400m.\" The text also reports \"discrepancies > 150 m ... with a clear offset between the USGS fault line\" and the independent mapping. This is the calibration for the 4 px = 400 m shift cap.",
+   "class": "PEER-REVIEWED CONFERENCE PAPER"
+  },
+  {
+   "title": "Rockafellar & Uryasev, Journal of Risk 2(3), 2000",
+   "url": "https://doi.org/10.21314/JOR.2000.038",
+   "what": "\"Optimization of conditional value-at-risk\". CVaR_beta(L) = min_zeta [ zeta + 1/(1-beta) E(L - zeta)+ ]. The selection objective in this lane.",
+   "class": "PEER-REVIEWED JOURNAL"
+  },
+  {
+   "title": "Reference solution (DrivenData)",
+   "url": "https://github.com/drivendataorg/gems-prize-reference-solution",
+   "what": "U-Net with Monte-Carlo cross-validation and a Tversky loss (alpha 0.2, beta 0.8). Confirms the feature stack layout, the labels.tif convention and the writer contract (CRS and georeferencing copied from the label raster).",
+   "class": "OFFICIAL"
+  },
+  {
+   "title": "Tversky index",
+   "url": "https://en.wikipedia.org/wiki/Tversky_index",
+   "what": "The asymmetric generalisation of Jaccard that the competition's metric weights by distance.",
+   "class": "REFERENCE"
+  },
+  {
+   "title": "EPSG:32611",
+   "url": "https://epsg.io/32611",
+   "what": "WGS 84 / UTM zone 11N, the required submission CRS.",
+   "class": "REFERENCE"
+  },
+  {
+   "title": "USGS GeoDAWN survey",
+   "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+   "what": "The airborne magnetic and radiometric surveys the feature stack is built from.",
+   "class": "OFFICIAL"
+  },
+  {
+   "title": "INGENIOUS project",
+   "url": "https://gbcge.org/current-projects/ingenious/",
+   "what": "Source of part of the fault label set.",
+   "class": "OFFICIAL"
+  }
+ ],
+ "hypotheses": [
+  {
+   "rank": 1,
+   "name": "Strain-rate second invariant as a blind-fault detector",
+   "layers": "Band 4 (geodetic second invariant of strain rate) with band 7 (shear rate) and band 8 (dilatation rate)",
+   "signature": "Ridge extraction on the second invariant after scale normalisation, restricted to pixels where dilatation is extensional (positive). A blind or buried normal fault loads the fault plane without breaking the surface, so it leaves a strain-rate concentration and no topographic scarp.",
+   "why_missing": "Geodetic strain accumulates on faults whether or not anyone has mapped them. A fault absent from USGS/INGENIOUS because it is buried under basin fill is precisely the case where the catalogue is silent and the strain field is not.",
+   "differs": "Every sibling lane in the registry works from magnetics, radiometrics, topography or the catalogue geometry. None uses the geodetic strain bands as the primary detector, and this lane uses no detector at all -- it shapes an emission around catalogue geometry.",
+   "gain": "High. Strain-rate ridges are the one provided layer that is physically obliged to respond to an unmapped active structure.",
+   "cost": "Low. The bands are already in the cached feature stack; a ridge filter and a holdout run is a few hours."
+  },
+  {
+   "rank": 2,
+   "name": "Radiometric potassium/thorium depletion along concealed fault zones",
+   "layers": "The GeoDAWN radiometric stack (sibling repos cache geodawn_rad_u8.tif); not in the 19-band numerical stack",
+   "signature": "Hydrothermal alteration leaches K and mobilises Th, so a fault that has conducted fluid shows a K/Th ratio anomaly along its strike even where it is topographically invisible.",
+   "why_missing": "Alteration is a function of fluid flow history, not of whether a mapper could see the trace. Concealed faults that carried fluid are systematically under-mapped and systematically anomalous.",
+   "differs": "Sibling GEMSDOE46 fused radiometrics with a scarp detector and scored 0.1589. This hypothesis uses the ratio, not the raw counts, and gates on the absence of a topographic expression so it targets concealed rather than expressed structure.",
+   "gain": "Medium-high. Two sibling runs using raw radiometrics landed mid-field, which suggests the signal is real but the encoding was wrong.",
+   "cost": "Medium. Needs the radiometric raster, which is cached in sibling repos but not in the 19-band stack; it must be fetched and co-registered."
+  },
+  {
+   "rank": 3,
+   "name": "Top-of-crustal magnetic source depth steps",
+   "layers": "Band 19 of the numerical stack is detrended-elevation slope; the problem description also lists a top-of-crustal magnetic source depth estimate among the provided features",
+   "signature": "A fault juxtaposes blocks with different basement depth, so the estimated depth-to-magnetic-source field steps across it. The target is the step, not the gradient.",
+   "why_missing": "Depth-to-source steps appear where the catalogue has no trace because the fault does not reach the surface. These are the structures most likely to be missing entirely.",
+   "differs": "Sibling GEMSDOE40 and GEMSDOE57 used Euler deconvolution of magnetics and scored 0.0355 and unrecorded. This targets the provided depth estimate directly rather than re-deriving it, which removes the free-parameter search that made Euler unstable.",
+   "gain": "Medium. Physically clean, but the provided depth estimate is itself smoothed, which may wash out the step.",
+   "cost": "Low if the band is present; it must be confirmed in the stack first, because the 19 bands read here do not include it by that name."
+  },
+  {
+   "rank": 4,
+   "name": "Fault-zone damage fabric from 1 m DEM curvature anisotropy",
+   "layers": "The 1 m DEM tiles listed in 1m_DEM_links.csv, resampled to 100 m",
+   "signature": "Second-derivative curvature computed along and across a range-front azimuth. A damage zone has a measurable along-strike fabric even when the scarp itself is eroded away.",
+   "why_missing": "Eroded scarps are removed from the map but the damage-zone fabric survives. This targets the population that mapping by eye misses.",
+   "differs": "Sibling GEMSDOE60 and 61GEMSDOE used DEM knickpoints and basement steps. Curvature anisotropy is a different operator and a different target: fabric, not profile break.",
+   "gain": "Medium. Sibling DEM lanes cluster around 0.03-0.09, so the ceiling may be low, but they used profile features rather than fabric.",
+   "cost": "High. Needs the 1 m tiles, which are 300-380 MB each and are not reachable from this sandbox; they must be fetched on a GitHub Actions runner."
+  },
+  {
+   "rank": 5,
+   "name": "Earthquake-density voids adjacent to mapped traces",
+   "layers": "Band 10 (distance to earthquake) and band 16 (earthquake intensity or density)",
+   "signature": "A locked or creeping segment shows up as a local minimum in seismicity density next to an otherwise seismic range front. The target is the deficit, not the excess.",
+   "why_missing": "A seismicity deficit marks a locked patch. Locked patches on unmapped structures are invisible to both the catalogue and to every detector keyed to highs.",
+   "differs": "No registry raster uses the seismic bands as a primary signal; they are present in the stack and, so far as the registry shows, unused.",
+   "gain": "Speculative. The 100 km radius used to build these bands may be far too coarse to resolve a single structure.",
+   "cost": "Low to test, and it should be tested precisely because it is cheap: a single-feature holdout AUC settles it in minutes."
+  }
+ ],
+ "h33_analysis": {
+  "artifact": {
+   "alias": "gemsdoe32_h33_2_b2_02778_zeros",
+   "path": "registry/rasters/gemsdoe32_h33_2_b2_02778_zeros.tif",
+   "bytes": 219065,
+   "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "manifest_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "sha256_matches_manifest": true,
+   "shape": [
+    3730,
+    3292
+   ],
+   "crs": "EPSG:32611",
+   "dtype": "float32",
+   "n_nan": 0,
+   "distinct_values": [
+    0.0,
+    1.0
+   ],
+   "is_binary": true
+  },
+  "measured": {
+   "positive_pixels": 37654,
+   "on_catalogue_pixels": 0,
+   "within_3px_of_catalogue": 2171,
+   "beyond_3px_of_catalogue": 35483,
+   "fraction_beyond_3px": 0.9423434429277102,
+   "mean_distance_to_catalogue_px": 28.996593932371773,
+   "median_distance_to_catalogue_px": 19.6468827043885,
+   "spatial_blocks_3x2": [
+    [
+     12422,
+     9257
+    ],
+    [
+     8655,
+     1345
+    ],
+    [
+     1746,
+     4229
+    ]
+   ],
+   "catalogue_pixels_total": 60988,
+   "footprint_pixels_total": 5165852,
+   "dot_density_of_footprint": 0.007289020281649571
+  },
+  "implied_by_owner_reported_score": {
+   "score_used": 0.2778,
+   "score_class": "OWNER-REPORTED, not an organizer receipt",
+   "T_equals": "T = 0.058829*S + 0.235314*N",
+   "recall_floor_T_over_N_at_S_zero": 0.235314048536699,
+   "case_A_assumption": "all scoreable truth lies within 3 px (300 m) of the mapped catalogue, i.e. this repository's offset-ribbon hypothesis is the whole truth",
+   "case_A_min_S": 35483,
+   "case_A_max_T": 6513.0,
+   "case_A_max_truth_pixels_N": 18807.155507559393,
+   "case_A_max_N_as_fraction_of_catalogue": 0.30837468858725314,
+   "reading": "If the scoreable truth were confined to within 300 m of the mapped catalogue, this artifact could only have reached 0.2778 if the entire truth set were <= 18,807 pixels, about 31% of the catalogue's own pixel count. A larger truth set makes that impossible, which would mean a substantial share of the truth lies further out than 300 m -- exactly where 94% of this artifact's dots are."
+  }
+ }
+}

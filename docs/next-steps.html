@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Next steps - GEMSDOE63</title>
+<link rel="stylesheet" href="assets/site.css"></head>
+<body>
+<header><div class="wrap">
+<h1>GEMSDOE63 &mdash; robust-selection lane</h1>
+<p>DOE GEMS Prize Challenge &middot; emission shaped by CVaR across an ensemble of
+plausible label worlds &middot; every number on this site is generated from
+<code>evidence/run_card.json</code></p>
+</div></header>
+<nav><div class="wrap"><a href="index.html">Home</a><a href="executive-summary.html">How to submit</a><a href="method.html">Method</a><a href="results.html">Results</a><a href="why-h33.html">Why 0.2778</a><a href="hypotheses.html">Hypotheses</a><a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a><a href="next-steps.html" class="on">Next steps</a></div></nav>
+<div class="wrap">
+
+<section>
+<h2>Next steps, limitations and blockers</h2>
+<h3>What this session delivered</h3>
+<ul>
+<li>A validated, uniqueness-checked GeoTIFF under <code>docs/downloads/</code>.</li>
+<li>A holdout instrument (hide-and-recover folds, masking-faithful domain, label-world
+ensemble, exact metric, CVaR selector, greedy prune) with
+<b>62 unit tests</b>, every one passing.</li>
+<li>Two independent verifications of the metric: the organizer's own worked example and a
+brute-force transcription of the published equations.</li>
+<li>A registry of 21 sha256-verified prior rasters and a working lane-drift gate.</li>
+</ul>
+
+<h3>Hard blockers</h3>
+<table>
+<tr><th>blocker</th><th>consequence</th><th>what unblocks it</th></tr>
+<tr><td>No DrivenData credentials in the sandbox</td>
+    <td>The feature stack and labels are a second-hand copy recovered from sibling
+        repositories, not a download from the organizer. Every derived number inherits
+        that provenance.</td>
+    <td>Run <code>scripts/download_competition_data.sh</code> on a machine with a
+        competition login, into <code>data/</code>.</td></tr>
+<tr><td>No USGS / 3DEP egress</td>
+    <td>Hypotheses 2 and 4 cannot be validated here.</td>
+    <td>A GitHub Actions runner reaches those hosts; sibling repos already do this.</td></tr>
+<tr><td>No organizer-confirmed score for anything here</td>
+    <td>HOLDOUT-DTI at 0.2336 says nothing about the leaderboard. The
+        relationship between the proxy holdout and live score is unknown, and sibling
+        repositories report it anti-selects novelty.</td>
+    <td>Only the submission page. Each slot is one experiment with one variable
+        changed.</td></tr>
+</table>
+
+<h3>Ranked work list for the next session</h3>
+<ol>
+<li><b>Test hypothesis 1 (strain-rate second invariant).</b> The bands are already cached,
+the hypothesis is the strongest of the five, and it is independent of catalogue geometry,
+so it cannot collide with this lane. Expected: hours, not days.</li>
+<li><b>Fit the offset distribution instead of assuming it.</b> The whole ribbon width
+rests on Hermant et al.'s "up to 400 m" upper bound. Measure the actual distribution by
+comparing the USGS catalogue against an independent trace set (the sibling repos cache
+<code>trace_segments_utm11.csv</code> and <code>gdr_qfaults_traces.csv</code>). A measured
+distribution replaces an assumption that currently drives the result.</li>
+<li><b>Add a physics-corroborated prior inside the band.</b> The band says <i>where</i>;
+nothing yet says <i>which part of the band</i>. Multiplying by a corroboration field
+raises per-dot credit without widening, which is the one lever left that does not pay
+more false-positive penalty.</li>
+<li><b>Resolve the depth-to-magnetic-source band.</b> Hypothesis 3 is blocked on whether
+the feature actually exists in the stack. Read the 19 band descriptions and settle it
+before proposing the hypothesis as viable.</li>
+<li><b>Ask the forum about <code>labels.tif</code> vs
+<code>existing_faults.tif</code>.</b> They are byte-identical here. Either the download is
+wrong or the distinction is nominal, and several lanes assume otherwise.</li>
+<li><b>Pixel-level greedy pruning on the winning band.</b> Band-level pruning is a
+tractable approximation. A single pass of pixel-level pruning on the surviving band only
+is affordable and may recover a little more.</li>
+</ol>
+
+<h3>What would make this a top-of-leaderboard programme rather than one artifact</h3>
+<p>The metric rewards <i>coverage at low false-positive cost</i>, and the arithmetic says
+a dot needs only a 0.0493 chance of landing within
+300 m of a hidden fault to raise the score. The binding constraint is therefore not the
+emission policy &mdash; that is now close to optimal for a given prior &mdash; but the
+<i>quality of the prior</i>. Every point of improvement from here comes from a better
+belief field, not from a better selector. That is the argument for spending the next
+sessions on hypotheses 1-3 rather than on more selection machinery.</p>
+</section>
+<footer>Built by <code>scripts/make_site.py</code>. No number on this site is typed by
+hand.</footer>
+</div></body></html>
