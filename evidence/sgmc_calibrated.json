@@ -1,0 +1,24 @@
+{
+ "final": {
+  "n_off_catalogue": 54864,
+  "coverage_sgmc": 0.1304011391807153,
+  "sgmc_prevalence_calibrated_dti": 0.07833722390570956
+ },
+ "anchors": {
+  "d28_repro_0.2600": {
+   "n_off_catalogue": 44090,
+   "coverage_sgmc": 0.09057505387996088,
+   "sgmc_prevalence_calibrated_dti": 0.06059248997356903
+  },
+  "h33_2_b2_0.2778": {
+   "n_off_catalogue": 37654,
+   "coverage_sgmc": 0.08934591544258991,
+   "sgmc_prevalence_calibrated_dti": 0.06412093764176459
+  },
+  "h32d_submod_46090": {
+   "n_off_catalogue": 46090,
+   "coverage_sgmc": 0.09355667516590185,
+   "sgmc_prevalence_calibrated_dti": 0.061294720121546874
+  }
+ }
+}

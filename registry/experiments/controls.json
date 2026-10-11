@@ -1,0 +1,11 @@
+{
+  "policy": {
+    "family": "ridge",
+    "q": 0.02,
+    "s": 2,
+    "r": 3
+  },
+  "random_dots_same_count_pooled_dti_mean5seeds": 0.0208448997033321,
+  "oracle_half_truth_pooled_dti": 0.7956598501271992,
+  "note": "controls for the holdout machinery; not competition scores"
+}

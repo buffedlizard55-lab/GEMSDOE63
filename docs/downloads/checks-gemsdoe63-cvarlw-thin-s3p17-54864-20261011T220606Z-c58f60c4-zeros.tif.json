@@ -1,0 +1,35 @@
+{
+ "filename": "gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+ "sha256": "46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8",
+ "size_bytes": 330275,
+ "crs": "EPSG:32611",
+ "transform": [
+  100.0,
+  0.0,
+  243350.0,
+  0.0,
+  -100.0,
+  4508550.0
+ ],
+ "shape": [
+  3730,
+  3292
+ ],
+ "dtype": "float32",
+ "grid_min": 0.0,
+ "grid_max": 1.0,
+ "emitted_positive_pixels": 54864,
+ "checks": {
+  "single_band": true,
+  "dtype_float32": true,
+  "dimensions_3730x3292": true,
+  "crs_epsg_32611": true,
+  "full_grid_all_finite": true,
+  "range_0_1_all_cells": true,
+  "no_nodata_tag": true
+ },
+ "all_checks_passed": true,
+ "content_digest8": "c58f60c4",
+ "catalogue_collision_px": 0,
+ "collar2_collision_px": 0
+}

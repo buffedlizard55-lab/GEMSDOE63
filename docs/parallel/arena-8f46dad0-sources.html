@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources · GEMSDOE63 lane (CVaR robust selection)</title>
+<link rel="stylesheet" href="../assets/site.css"></head><body>
+<header class="top"><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
+<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
+<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
+</div></header>
+<div class="wrap">
+<nav class="crumbs">
+<a href="arena-8f46dad0-index.html">Dashboard</a><a href="arena-8f46dad0-executive-summary.html">Executive summary &amp; how to submit</a>
+<a href="arena-8f46dad0-hypotheses.html">Hypotheses</a><a href="arena-8f46dad0-research.html">Why h33 scored 0.2778</a>
+<a href="arena-8f46dad0-sources.html">Sources</a><a href="arena-8f46dad0-irregularities.html">Irregularities</a><a href="arena-8f46dad0-run-card.html">Run card</a>
+</nav>
+
+<div class="card"><h2 style="margin-top:0;border:none">Sources (official / verified)</h2>
+<table>
+<tr><th>Purpose</th><th>Source</th><th>Status from this environment</th></tr>
+<tr><td>Competition overview / metric</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData page 967</a></td><td>login-walled here; transcribed in family repo GEMSDOE66/docs/research/metric-derivation.md (worked example reproduced by tests)</td></tr>
+<tr><td>About page</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></td><td>login-walled here</td></tr>
+<tr><td>Data page</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data</a></td><td>login-walled; mirrors hash-pinned in registry/data_manifest.json (owner-supplied, NOT organizer-authenticated)</td></tr>
+<tr><td>Leaderboard</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a></td><td>login-walled; all leaderboard numbers here are USER-REPORTED</td></tr>
+<tr><td>Reference solution</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>public</td></tr>
+<tr><td>GeoDAWN airborne magnetics+radiometrics (USGS)</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov record</a></td><td>official source of the radiometric layer mirrored in GEMSDOE24</td></tr>
+<tr><td>INGENIOUS project</td><td><a href="https://gbcge.org/current-projects/ingenious/">gbcge.org</a></td><td>catalogue provenance context</td></tr>
+<tr><td>CRS</td><td><a href="https://epsg.io/32611">EPSG:32611</a></td><td>UTM 11N — matches all rasters (verified locally)</td></tr>
+<tr><td>Metric family</td><td><a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></td><td>background</td></tr>
+<tr><td>CVaR method</td><td>Rockafellar &amp; Uryasev (2000), "Optimization of Conditional Value-at-Risk", Journal of Risk 2(4) 21–42</td><td>selection rule of this lane</td></tr>
+<tr><td>Competition PDF</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov fy26osti 96647</a> (prompt-cited)</td><td>not reachable from sandbox allowlist; Dropbox mirrors cited in prompt not fetched</td></tr>
+<tr><td>GDR submission 1391</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></td><td>prompt-cited; not fetched (host outside sandbox allowlist)</td></tr>
+</table></div>
+<div class="card"><h3>Mirror provenance chain for the rasters used</h3>
+<ul class="small">
+<li>labels.tif / existing_faults.tif — sha256 7ba308cc…4093 — mirrored in buffedlizard55-lab/GEMSDOE24 @ 07345ea, verified locally.</li>
+<li>sample_submission.tif — sha256 2176d08e…35cbc — same mirror, verified locally.</li>
+<li>geodawn_rad_u8.tif — sha256 c22420f7…ba682 — same mirror; band descriptions read locally: ['k','th','u','tc'].</li>
+<li>template gems57 — byte-pinned from buffedlizard55-lab/GEMSDOE66 @ 0f6762f; evaluator hashes match the
+published gems57-pooled-hide-v2 hashes recorded in 60GEMSDOE/evidence/h73b_holdout.json.</li>
+</ul></div>
+<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
+WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
+promotion to a submission slot is a separate selector step.</footer></div></body></html>

@@ -1,10 +1,14 @@
 __pycache__/
-*.pyc
-.venv/
 .pytest_cache/
-data/registry_rasters/
-data/external/
-nohup.out
+*.pyc
+
+# Heavy raw rasters (from main)
+data/*.tif
+data/external/*.tif
+data/external/*.zip
+data/external/*.csv
+*.log
+/tmp/
 
 # downloaded registry scan inputs (restorable via scripts/fetch_inputs.sh)
 data/registry_rasters/

@@ -1,4 +1,4 @@
-numpy>=2.0
+numpy>=1.26
 scipy>=1.11
 rasterio>=1.3
-affine
+affine>=2.4

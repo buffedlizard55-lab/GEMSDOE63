@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary · GEMSDOE63 lane (CVaR robust selection)</title>
+<link rel="stylesheet" href="../assets/site.css"></head><body>
+<header class="top"><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
+<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
+<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
+</div></header>
+<div class="wrap">
+<nav class="crumbs">
+<a href="arena-8f46dad0-index.html">Dashboard</a><a href="arena-8f46dad0-executive-summary.html">Executive summary &amp; how to submit</a>
+<a href="arena-8f46dad0-hypotheses.html">Hypotheses</a><a href="arena-8f46dad0-research.html">Why h33 scored 0.2778</a>
+<a href="arena-8f46dad0-sources.html">Sources</a><a href="arena-8f46dad0-irregularities.html">Irregularities</a><a href="arena-8f46dad0-run-card.html">Run card</a>
+</nav>
+
+<div class="card">
+<h2 style="margin-top:0;border:none">Executive summary</h2>
+<p>This lane produced <b>one downloadable, locally-validated GeoTIFF submission</b> for the DOE GEMS
+Prize. It was selected by conditional value-at-risk (CVaR) across plausible Phase-2 label worlds and
+greedy-pruned with the exact competition metric. <span class="badge no">⛔ NOT CLEARED FOR SUBMISSION — registry duplicate under the lane-1 3-px rule (see verdict). Download for learning/education only.</span></p>
+</div>
+
+<h2>How to enter this submission into the competition (5 steps)</h2>
+<div class="card">
+<ol>
+<li><b>Download the TIF</b> from the <a href="arena-8f46dad0-index.html">dashboard</a>
+(file <span class="mono">gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.tif</span>).</li>
+<li>Open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">the competition page</a>
+and go to <i>Participate → New submission</i> (login required).</li>
+<li><b>File to submit:</b> choose the downloaded <span class="mono">.tif</span> (or the ZIP — it contains only that one TIF).</li>
+<li><b>Note (optional):</b> paste <span class="mono">lane63 CVaR world-selection + greedy prune on hide-recover holdout; all-finite zeros export</span></li>
+<li>Click submit. Expected receipt: values accepted in [0,1]; the file is all-finite (zeros outside the
+footprint) specifically to avoid the earlier portal error <i>"Predicted values must be in range [0, 1]"</i>.</li>
+</ol>
+<p class="small">Rename policy: the file already carries a unique name
+(<span class="mono">gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z</span>). Do not rename it to match any earlier submission —
+uniqueness is tracked by bytes and by name in this project's registry.</p>
+</div>
+
+<h2>Why this raster exists (and why it is allowed to be submitted)</h2>
+<div class="card">
+<ul>
+<li><b>Format</b> — CRS EPSG:32611, shape 3730×3292, transform (100, 0, 243350, 0, −100, 4508550),
+single-band float32 — identical to the sample submission grid. Validated by the shared template
+validator on disk, after writing (15 checks, all passed).</li>
+<li><b>Range</b> — every value finite and in [0,1]; zeros outside the footprint; no sentinel values.
+This is the strictest export policy in the family (the "allfinite/zeros" policy).</li>
+<li><b>Uniqueness</b> — scanned against 729 prediction-like registry rasters
+(GEMSDOE65 registry scope). Literal gates: worst forward dot overlap 1.0 (limit 0.70);
+worst Spearman rho 0.34 (limit 0.90). Stratified dot-like subset
+(555 rasters): worst overlap 1.0,
+worst rho 0.1736.
+Scope caveat: registry covers public owner repositories only — never organizer-complete.</li>
+<li><b>Evidence</b> — HOLDOUT-DTI 0.3622
+(CI95 [0.3414,
+0.3795],
+11321 withheld px,
+evaluator gems57-pooled-hide-v2, buffered whole-component folds) vs baseline arm
+HOLDOUT-DTI 0.3762.
+A holdout number is <b>not</b> a leaderboard projection; the two measure different truths.</li>
+<li><b>No slot spent</b> — this lane prepares the candidate; promotion to a weekly slot is a separate
+selector decision (protocol rule 6).</li>
+</ul>
+</div>
+
+<h2>Known limitations</h2>
+<div class="card"><ul>
+<li>DrivenData and the live leaderboard are not reachable from the build environment; organizer
+confirmation must be pasted into <span class="mono">evidence/</span> after a manual submission.</li>
+<li>The label-world generator is calibrated from the prompt-cited 400 m catalogue-offset measurement
+and family drift evidence; if real Phase-2 motion differs, the CVaR advantage changes with it.</li>
+<li>The world-scored numbers (WORLD-DTI) are internal robustness measurements, never organizer scores.</li>
+</ul></div>
+<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
+WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
+promotion to a submission slot is a separate selector step.</footer></div></body></html>

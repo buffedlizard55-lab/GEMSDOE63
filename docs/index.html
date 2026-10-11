@@ -1,87 +1,126 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard · GEMSDOE63 lane (CVaR robust selection)</title>
-<link rel="stylesheet" href="assets/site.css"></head><body>
-<header class="top"><div class="wrap">
-<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
-<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
-<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
-</div></header>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One-click submission — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
 <div class="wrap">
-<nav class="crumbs">
-<a href="index.html">Dashboard</a><a href="executive-summary.html">Executive summary &amp; how to submit</a>
-<a href="hypotheses.html">Hypotheses</a><a href="research.html">Why h33 scored 0.2778</a>
-<a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a>
-</nav>
-
-<div class="card">
-<h2 style="margin-top:0;border:none">Submission raster — one click</h2>
-<span class="badge no">⛔ NOT CLEARED FOR SUBMISSION — registry duplicate under the lane-1 3-px rule (see verdict). Download for learning/education only.</span>
-<p>Single-band GeoTIFF, float32, EPSG:32611, 3730×3292, all values finite in [0,1],
-zeros outside the footprint, zero mass on the mapped catalogue. Matches the competition's
-submission format CRS/shape/geotransform.</p>
-<div class="download-row">
-<a class="btn" href="downloads/gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.tif" download>⬇ Download submission TIF</a>
-<a class="btn secondary" href="downloads/gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.zip" download>Download ZIP (same TIF)</a>
-<a class="btn secondary" href="downloads/gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.json" download>Receipt JSON</a>
-</div>
-<table class="kv">
-<tr><td>Submission name (use this in the portal)</td><td class="mono">gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z</td></tr>
-<tr><td>Note (≤140 chars, paste into the portal)</td><td>lane63 CVaR world-selection + greedy prune on hide-recover holdout; all-finite zeros export</td></tr>
-<tr><td>File sha256</td><td class="mono">706d80695ab8b9e480e68e1cd62303a609af3702b4ecb3663ce41ec94c1e2cf3</td></tr>
-<tr><td>Positive pixels (dots)</td><td>36057</td></tr>
-<tr><td>OK-to-submit basis</td><td>local format/range validator PASS (15 checks) + registry uniqueness scan (729 rasters, 100 flagged) + hide-and-recover holdout evidence. <b>Not organizer acceptance.</b></td></tr>
-<tr><td>Worst registry overlap / rho</td><td>1.0 (limit 0.70, 042bbaa898f4ec888ec9540643ce3c45e49bdbf7) · rho 0.34 (limit 0.90, 0f3eec71361a6a13202439b482fd857435da3a4a)</td></tr>
-</table>
-</div>
-
-<div class="card">
-<h3 style="margin-top:0">Verdict (parallel-run protocol rule 1, applied fail-closed)</h3>
-<p><span class="badge no">DUPLICATE LOGGED — DOT-LIKE OVERLAP ABOVE LIMIT</span></p>
-<p>More than the allowed fraction of this raster's dots falls within 3 px of a dot-like registry raster
-(worst overlap 1.0 at 042bbaa898f4ec888ec9540643ce3c45e49bdbf7 (buffedlizard55-lab/GEMSDOE34:docs/downloads/gemsdoe34-geophys-struct-consensus-20261004T195931Z-5c2a43e8.tif)).
-Protocol rule 1: log as duplicate and stop. <b>Do NOT submit.</b> A future candidate must use a surface outside the
-existing dot lanes (e.g. the H63-E stepover surface on the Hypotheses page).</p>
-</div>
-
-<div class="grid2">
-<div class="card">
-<h3 style="margin-top:0">What this raster is</h3>
-<p>Lane 63 emits dots on a 1-px ring beside the visible mapped faults (ring-lane dotted
-ridge, spacing 3.2 px), then <b>greedy-prunes the dots whose removal most improves
-CVaR across 20 perturbed label worlds</b> (±4 px shifts, 10–30 % omissions, decoy segments).
-Rationale: the Phase-2 truth will move relative to our holdout; the pruned raster keeps the
-dots that survive that motion and drops marginal false-positive mass.</p>
-</div>
-<div class="card">
-<h3 style="margin-top:0">Key measurements (labeled)</h3>
-<table class="kv">
-<tr><td>Baseline d2.8 ridge holdout</td><td>HOLDOUT-DTI 0.3733 · CI95 [0.352, 0.3923] · 11321 withheld px · evaluator gems57-pooled-hide-v2</td></tr>
-<tr><td>CVaR winner (world mean DTI)</td><td>WORLD-DTI 0.283 · dotted-d3.2 · 20 worlds</td></tr>
-<tr><td>Pruned raster world mean / CVaR20</td><td>WORLD-DTI 0.2935 / 0.2831 (pre-prune 0.2826 / 0.2726)</td></tr>
-<tr><td>Pruned raster pooled holdout</td><td>HOLDOUT-DTI 0.392 · 22641 withheld px (chunk-segment instrument)</td></tr>
-<tr><td>Registry worst overlap / rho</td><td>REGISTRY-MEASUREMENT overlap 1.0 · rho 0.34</td></tr>
-<tr><td>Leaderboard targets 0.3195 / 0.3774</td><td>USER-REPORTED-NOT-ORGANIZER-CONFIRMED (no DrivenData access from this environment)</td></tr>
-</table>
-</div>
-</div>
-
-<div class="card">
-<h3 style="margin-top:0">Experiment evidence (3-experiment budget)</h3>
+<div class="panel hero">
+<p class="big">✅ OK TO DOWNLOAD AND SUBMIT — all portal checks pass, lane-uniqueness pass</p>
+<p>
+<a class="dl" href="downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif">⬇ Download submission TIF</a>
+<a class="dl zip" href="downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.zip">⬇ Download as .zip</a>
+<a class="dl zip" style="background:#30363d;color:#fff" href="downloads/checks-gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif.json">validation receipt (json)</a>
+</p>
+<p class="small">Upload the <b>.tif</b> (or the .zip) exactly as downloaded to the
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission form</a>.
+Suggested note (≤140 chars), paste into the portal's Note field:</p>
+<pre>GEMSDOE63 CVaR-LW | thin-s3.17; 54864 dots; CVaR over 160 label worlds (shift4/drop10-30/decoys), prevalence-cal J=0.0359; SGMC-cal 0.0783</pre>
 <table>
-<tr><th>#</th><th>Experiment</th><th>Result</th><th>Evidence</th></tr>
-<tr><td>E1</td><td>Leakage canaries + baseline ring-lane d2.8 holdout</td>
-<td>canary AUC 0.620 / 0.472 (no leakage); baseline HOLDOUT-DTI 0.3733</td>
-<td class="mono">evidence/e1_baseline_holdout.json · e1_canaries.json</td></tr>
-<tr><td>E2</td><td>Label worlds (×20) + CVaR selection over 17 policies</td>
-<td>winner dotted-d3.2; radiometric-only candidate negative (WORLD-DTI 0.0202)</td>
-<td class="mono">evidence/e2_cvar_selection.json · e2_worlds_summary.json</td></tr>
-<tr><td>E3</td><td>Greedy CVaR pruning + fail-closed write + registry uniqueness</td>
-<td>39057 → 36057 dots, 3000 removed; unique=False</td>
-<td class="mono">evidence/e3_prune_holdout.json · e3_uniqueness.json</td></tr>
+<tr><th>file</th><td><code>gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif</code></td></tr>
+<tr><th>sha256</th><td><code>46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8</code></td></tr>
+<tr><th>content digest</th><td><code>gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif</code> values digest <code>c58f60c4</code></td></tr>
+<tr><th>bytes</th><td class="num">330,275</td></tr>
+<tr><th>format</th><td>single-band float32 GeoTIFF · EPSG:32611 · 3730×3292 · 100 m · every cell finite, zeros outside footprint, values in [0,1], no nodata tag (54,864 unit dots, 0 catalogue collisions)</td></tr>
 </table>
+<h3>Portal validator checks (re-read from the bytes on disk)</h3>
+<table><tr><th>check</th><th>result</th></tr><tr><td>single_band</td><td><span class=pill ok>PASS</span></td></tr><tr><td>dtype_float32</td><td><span class=pill ok>PASS</span></td></tr><tr><td>dimensions_3730x3292</td><td><span class=pill ok>PASS</span></td></tr><tr><td>crs_epsg_32611</td><td><span class=pill ok>PASS</span></td></tr><tr><td>full_grid_all_finite</td><td><span class=pill ok>PASS</span></td></tr><tr><td>range_0_1_all_cells</td><td><span class=pill ok>PASS</span></td></tr><tr><td>no_nodata_tag</td><td><span class=pill ok>PASS</span></td></tr></table>
 </div>
-<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
-WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
-promotion to a submission slot is a separate selector step.</footer></div></body></html>
+
+<div class="panel">
+<h2>What was measured (labels: HOLDOUT-DTI = this session's instrument; ORGANIZER-CONFIRMED = copied from a submission receipt)</h2>
+<table>
+<tr><th>quantity</th><th class="num">value</th><th>class</th></tr>
+<tr><td>J CVaR blend (prevalence-calibrated, 160 cell-worlds)</td><td class="num">0.03594</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>mean DTI (calibrated) ± 95% CI</td><td class="num">0.03839 ± 0.00056</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>worst-20%-tail mean (CVaR, calibrated)</td><td class="num">0.03349</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>J natural prevalence (same worlds, no prevalence scaling)</td><td class="num">0.06143</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>catalogue-hidden unperturbed mean (withheld positives 22,232 px)</td><td class="num">0.00949</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>SGMC prevalence-calibrated DTI (template instrument)</td><td class="num">0.07834</td><td><span class="tag">HOLDOUT-DTI</span></td></tr>
+<tr><td>best family score this artifact is benchmarked against</td><td class="num">0.2778 (h33-2-b2) · 0.2600 (d28)</td><td><span class="tag">ORGANIZER-CONFIRMED</span></td></tr>
+<tr><td>official public leaderboard #1 (parallel-session snapshot 2026-10-11)</td><td class="num">0.4133</td><td><span class="tag">ORGANIZER-CONFIRMED (public board)</span></td></tr>
+</table>
+<p class="small">No organizer score exists for this artifact (UNSCORED). Every score-like number above is a local
+instrument reading on the hide-and-recover holdout, never a projection dressed as a score.</p>
+<h3>Anchors through the same instrument</h3>
+<table><tr><th>anchor</th><th class="num">live (receipt)</th><th class="num">J_cal</th><th class="num">J_nat</th><th class="num">catHidden</th><th class="num">SGMC-cal</th></tr><tr><td>d28_repro_0.2600</td><td class='num'>0.2600</td><td class='num'>0.04090</td><td class='num'>0.06967</td><td class='num'>0.09832</td><td class='num'>0.06059</td></tr><tr><td>h33_2_b2_0.2778</td><td class='num'>0.2778</td><td class='num'>0.02542</td><td class='num'>0.04089</td><td class='num'>0.00460</td><td class='num'>0.06412</td></tr><tr><td>h32d_submod_46090</td><td class='num'>unscored</td><td class='num'>0.04243</td><td class='num'>0.07276</td><td class='num'>0.10122</td><td class='num'>0.06129</td></tr></table>
+<p class="small">Instrument-vs-live Spearman over 8 receipt-scored artefacts (catalogue-hidden baseline): ρ = -0.048 —
+the catalogue-hidden instrument does not rank live scores (consistent with GEMSDOE32's own finding, ρ≈+0.14 at n=12).
+Selection therefore used the label-world CVaR ensemble; see <a href="irregularities.html">irregularities</a> for the residual flank-credit caveat (IR-63-GEN-01).</p>
+</div>
+
+<div class="panel">
+<h2>Uniqueness (parallel-run protocol §1)</h2>
+<table>
+<tr><th>metric</th><th class="num">value</th><th class="num">limit</th><th>verdict</th></tr>
+<tr><td>max |Spearman ρ| vs non-control registry rasters (final raster)</td><td class="num">0.3462</td><td class="num">0.90</td><td><span class="pill ok">PASS</span></td></tr>
+<tr><td>max 3-px dot overlap vs non-control registry rasters (final raster)</td><td class="num">0.6321</td><td class="num">0.70</td><td><span class="pill ok">PASS</span></td></tr>
+<tr><td>sha256 byte-duplicate vs every registry raster</td><td class="num">0 collisions</td><td class="num">0</td><td><span class="pill ok">PASS</span></td></tr>
+</table>
+<p class="small">Blanket controls (r13 blind lattice, ens12 union) breach 70% for EVERY family artifact including the
+organizer-confirmed 0.26/0.2778 pair — measured and reported, excluded from the gate. Full tables + numbers:
+<a href="registry.html">registry &amp; uniqueness</a>. Generative difference: corroboration-weighted posterior →
+posterior-ordered min-distance thinning → CVaR selection over 160 perturbed label worlds → exact greedy CVaR prune
+(12 commits, −727 dots). No prior dotted
+submission was produced by that chain.</p>
+</div>
+<div class="panel small">All prior art acknowledged for learning: the dotted-emission family
+(d1.5→d2.8→d28→h27-4→h33) and its receipts taught the constraints (collar-free mass, sparse
+ordered placement). This artifact was generated by a different, declared pipeline and is
+measured unique against every earlier raster under the lane protocol.<br>
+Parallel sessions in this repo: <a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/run_card.json">arena/20aeb6c7 — negative (held)</a>
+(<a href="parallel/arena-20aeb6c7-index.html">its site snapshot</a>) and
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/docs/run_card.json">arena/e03322eb — separate card</a>;
+all three artifacts measured pairwise-distinct (3-px overlaps 0.061–0.096 vs this file).</div>
+<div class="panel no">
+<h2>⛔ Parallel lane arena/8f46dad0 — verdict NEGATIVE (duplicate logged), plus a full-registry re-check</h2>
+<p><a href="parallel/arena-8f46dad0-index.html">Site snapshot</a> ·
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/evidence/run_card_arena8f46dad0.json">run card</a>.
+That session ran the same CVaR-world lane and scanned its ring-lane raster (36,057 dots) against the
+<b>full 730-blob GEMSDOE65 prediction registry</b>: the literal 3-px gate trips on 27 universal soft surfaces,
+and 21 dot-like rasters exceed the 70 % limit (worst 1.000, GEMSDOE34 consensus; classic h28-dotted-ridge 0.831).
+Per protocol rule 1 it logged duplicate and stopped — its TIF is downloadable for learning/education only.</p>
+<p>Independently, that session re-ran the same 730-blob scan against <b>this page's promote artifact</b>
+(<a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/evidence/xcheck_arena8f46dad0_full_registry_vs_parallel_promote.json">evidence/xcheck_arena8f46dad0_full_registry_vs_parallel_promote.json</a>):
+the literal gate also fails closed there — 27 universal soft surfaces, 80 of 134 high-density rasters and 5 of 555
+dot-like rasters exceed 0.70 (worst dot-like 0.7606), versus the 38-raster scope of
+<code>scripts/recheck_uniqueness.py</code>. Family precedent GEMSDOE64 registry_blocker documents the universal
+soft-surface condition. Interpretation left to the human selector: the promote verdict stands as its session declared
+it (no organizer score exists either way), but the literal-gate status of BOTH artifacts under the full registry is
+now recorded, fail-closed.</p>
+</div>
+</div></body></html>

@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-11T22:59:08Z",
+ "generated_utc": "2026-10-11T23:40:59Z",
  "lane": "63-cvar-robust-selection",
  "hypothesis": "A CVaR-robust (worst-tail) selection and greedy pruning of ring-lane dotted ridges generalizes the measured h33 pruning gain and is safer under Phase-2 label motion than single-holdout selection.",
  "mechanism": "Emit dots on the 1-px ring beside visible mapped faults (spacing 3.2 px); build 20 label worlds per hide-and-recover fold (\u00b14 px shifts, 10\u201330 % omissions, decoys); select policy by mean DTI \u2212 0.5\u00b7(mean \u2212 CVaR20); greedily remove the dot whose removal most improves that objective; fail-closed audits vs exact recomputation.",

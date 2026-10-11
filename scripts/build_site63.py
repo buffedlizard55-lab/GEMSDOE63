@@ -25,7 +25,7 @@ HEAD = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} · GEMSDOE63 lane (CVaR robust selection)</title>
-<link rel="stylesheet" href="assets/site.css"></head><body>
+<link rel="stylesheet" href="../assets/site.css"></head><body>
 <header class="top"><div class="wrap">
 <h1>GEMSDOE63 — CVaR robust-selection lane</h1>
 <p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
@@ -33,9 +33,9 @@ HEAD = """<!doctype html>
 </div></header>
 <div class="wrap">
 <nav class="crumbs">
-<a href="index.html">Dashboard</a><a href="executive-summary.html">Executive summary &amp; how to submit</a>
-<a href="hypotheses.html">Hypotheses</a><a href="research.html">Why h33 scored 0.2778</a>
-<a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a>
+<a href="arena-8f46dad0-index.html">Dashboard</a><a href="arena-8f46dad0-executive-summary.html">Executive summary &amp; how to submit</a>
+<a href="arena-8f46dad0-hypotheses.html">Hypotheses</a><a href="arena-8f46dad0-research.html">Why h33 scored 0.2778</a>
+<a href="arena-8f46dad0-sources.html">Sources</a><a href="arena-8f46dad0-irregularities.html">Irregularities</a><a href="arena-8f46dad0-run-card.html">Run card</a>
 </nav>
 """
 FOOT = """<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
@@ -49,6 +49,7 @@ def page(title, body):
 
 
 def build():
+    (DOCS / "parallel").mkdir(exist_ok=True)
     e1 = load("e1_baseline_holdout.json", {})
     can = load("e1_canaries.json", {})
     e2 = load("e2_cvar_selection.json", {})
@@ -105,9 +106,9 @@ existing dot lanes (e.g. the H63-E stepover surface on the Hypotheses page).</p>
 zeros outside the footprint, zero mass on the mapped catalogue. Matches the competition's
 submission format CRS/shape/geotransform.</p>
 <div class="download-row">
-<a class="btn" href="downloads/{esc(sub_name)}" download>⬇ Download submission TIF</a>
-<a class="btn secondary" href="downloads/{esc(zip_name)}" download>Download ZIP (same TIF)</a>
-<a class="btn secondary" href="downloads/{esc(sub_name[:-4])}.json" download>Receipt JSON</a>
+<a class="btn" href="../downloads/{esc(sub_name)}" download>⬇ Download submission TIF</a>
+<a class="btn secondary" href="../downloads/{esc(zip_name)}" download>Download ZIP (same TIF)</a>
+<a class="btn secondary" href="../downloads/{esc(sub_name[:-4])}.json" download>Receipt JSON</a>
 </div>
 <table class="kv">
 <tr><td>Submission name (use this in the portal)</td><td class="mono">{esc(receipt.get('submission_name','—'))}</td></tr>
@@ -162,7 +163,7 @@ dots that survive that motion and drops marginal false-positive mass.</p>
 </table>
 </div>
 """
-    (DOCS / "index.html").write_text(page("Dashboard", body))
+    (DOCS / "parallel" / "arena-8f46dad0-index.html").write_text(page("Dashboard", body))
 
     # ---------------- executive summary ----------------
     body = f"""
@@ -176,7 +177,7 @@ greedy-pruned with the exact competition metric. {badge}</p>
 <h2>How to enter this submission into the competition (5 steps)</h2>
 <div class="card">
 <ol>
-<li><b>Download the TIF</b> from the <a href="index.html">dashboard</a>
+<li><b>Download the TIF</b> from the <a href="arena-8f46dad0-index.html">dashboard</a>
 (file <span class="mono">{esc(sub_name)}</span>).</li>
 <li>Open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">the competition page</a>
 and go to <i>Participate → New submission</i> (login required).</li>
@@ -225,7 +226,7 @@ and family drift evidence; if real Phase-2 motion differs, the CVaR advantage ch
 <li>The world-scored numbers (WORLD-DTI) are internal robustness measurements, never organizer scores.</li>
 </ul></div>
 """
-    (DOCS / "executive-summary.html").write_text(page("Executive summary", body))
+    (DOCS / "parallel" / "arena-8f46dad0-executive-summary.html").write_text(page("Executive summary", body))
 
     # ---------------- hypotheses ----------------
     body = """
@@ -272,7 +273,7 @@ before any submission slot is touched.</p></div>
 comparable; geophysical-field candidates (B, C) need the 419 MB feature mirror restored first, but address
 the genuinely unmapped (covered) population, which is where the private truth most likely grows.</div>
 """
-    (DOCS / "hypotheses.html").write_text(page("Hypotheses", body))
+    (DOCS / "parallel" / "arena-8f46dad0-hypotheses.html").write_text(page("Hypotheses", body))
 
     # ---------------- research: why h33 scored 0.2778 ----------------
     body = f"""
@@ -310,7 +311,7 @@ h27-4 → h33 (+0.007 user-reported) is the same mechanism applied here under st
 private truth rewards it is ORGANIZER-CONFIRMED-or-not: paste the receipt into evidence/ after a manual submission.</p>
 </div>
 """
-    (DOCS / "research.html").write_text(page("Why h33 scored 0.2778", body))
+    (DOCS / "parallel" / "arena-8f46dad0-research.html").write_text(page("Why h33 scored 0.2778", body))
 
     # ---------------- sources ----------------
     body = """
@@ -339,7 +340,7 @@ private truth rewards it is ORGANIZER-CONFIRMED-or-not: paste the receipt into e
 published gems57-pooled-hide-v2 hashes recorded in 60GEMSDOE/evidence/h73b_holdout.json.</li>
 </ul></div>
 """
-    (DOCS / "sources.html").write_text(page("Sources", body))
+    (DOCS / "parallel" / "arena-8f46dad0-sources.html").write_text(page("Sources", body))
 
     # ---------------- irregularities ----------------
     body = f"""
@@ -357,7 +358,7 @@ published gems57-pooled-hide-v2 hashes recorded in 60GEMSDOE/evidence/h73b_holdo
 <tr><td>IR-63-09</td><td>Hermant et al. 400 m catalogue-offset figure is prompt-cited; the paper itself is not fetchable from the sandbox allowlist.</td><td>Calibration records it as the anchor with that provenance (evidence/e2_worlds_summary.json).</td></tr>
 </table></div>
 """
-    (DOCS / "irregularities.html").write_text(page("Irregularities", body))
+    (DOCS / "parallel" / "arena-8f46dad0-irregularities.html").write_text(page("Irregularities", body))
 
     # ---------------- run card ----------------
     vals = val.get("checks", {}) if val else {}
@@ -414,17 +415,17 @@ published gems57-pooled-hide-v2 hashes recorded in 60GEMSDOE/evidence/h73b_holdo
             "No ORGANIZER-CONFIRMED score exists; no slot was spent."),
         budget=dict(experiments=3, hours_used="≈2", slots_spent=0),
     )
-    (ROOT / "evidence" / "run_card.json").write_text(json.dumps(card, indent=1, allow_nan=False, default=str))
+    (ROOT / "evidence" / "run_card_arena8f46dad0.json").write_text(json.dumps(card, indent=1, allow_nan=False, default=str))
     body = f"""
 <div class="card"><h2 style="margin-top:0;border:none">Run card (protocol rule 5)</h2>
 <pre>{esc(json.dumps(card, indent=1, default=str))}</pre>
 </div>
 """
-    (DOCS / "run-card.html").write_text(page("Run card", body))
+    (DOCS / "parallel" / "arena-8f46dad0-run-card.html").write_text(page("Run card", body))
 
     # data JSON for future feeds
     (DOCS / "data").mkdir(exist_ok=True)
-    shutil.copy(ROOT / "evidence" / "run_card.json", DOCS / "data" / "run_card.json")
+    shutil.copy(ROOT / "evidence" / "run_card_arena8f46dad0.json", DOCS / "data" / "run_card_arena8f46dad0.json")
     for f in ("e1_baseline_holdout.json", "e1_canaries.json", "e2_cvar_selection.json",
               "e2_worlds_summary.json", "e3_prune_holdout.json", "e3_uniqueness.json",
               "e3_validator_output.json"):

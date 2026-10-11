@@ -1,44 +1,64 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sources · GEMSDOE63 lane (CVaR robust selection)</title>
-<link rel="stylesheet" href="assets/site.css"></head><body>
-<header class="top"><div class="wrap">
-<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
-<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
-<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
-</div></header>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
 <div class="wrap">
-<nav class="crumbs">
-<a href="index.html">Dashboard</a><a href="executive-summary.html">Executive summary &amp; how to submit</a>
-<a href="hypotheses.html">Hypotheses</a><a href="research.html">Why h33 scored 0.2778</a>
-<a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a>
-</nav>
-
-<div class="card"><h2 style="margin-top:0;border:none">Sources (official / verified)</h2>
-<table>
-<tr><th>Purpose</th><th>Source</th><th>Status from this environment</th></tr>
-<tr><td>Competition overview / metric</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData page 967</a></td><td>login-walled here; transcribed in family repo GEMSDOE66/docs/research/metric-derivation.md (worked example reproduced by tests)</td></tr>
-<tr><td>About page</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></td><td>login-walled here</td></tr>
-<tr><td>Data page</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data</a></td><td>login-walled; mirrors hash-pinned in registry/data_manifest.json (owner-supplied, NOT organizer-authenticated)</td></tr>
-<tr><td>Leaderboard</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a></td><td>login-walled; all leaderboard numbers here are USER-REPORTED</td></tr>
-<tr><td>Reference solution</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>public</td></tr>
-<tr><td>GeoDAWN airborne magnetics+radiometrics (USGS)</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov record</a></td><td>official source of the radiometric layer mirrored in GEMSDOE24</td></tr>
-<tr><td>INGENIOUS project</td><td><a href="https://gbcge.org/current-projects/ingenious/">gbcge.org</a></td><td>catalogue provenance context</td></tr>
-<tr><td>CRS</td><td><a href="https://epsg.io/32611">EPSG:32611</a></td><td>UTM 11N — matches all rasters (verified locally)</td></tr>
-<tr><td>Metric family</td><td><a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></td><td>background</td></tr>
-<tr><td>CVaR method</td><td>Rockafellar &amp; Uryasev (2000), "Optimization of Conditional Value-at-Risk", Journal of Risk 2(4) 21–42</td><td>selection rule of this lane</td></tr>
-<tr><td>Competition PDF</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov fy26osti 96647</a> (prompt-cited)</td><td>not reachable from sandbox allowlist; Dropbox mirrors cited in prompt not fetched</td></tr>
-<tr><td>GDR submission 1391</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></td><td>prompt-cited; not fetched (host outside sandbox allowlist)</td></tr>
-</table></div>
-<div class="card"><h3>Mirror provenance chain for the rasters used</h3>
-<ul class="small">
-<li>labels.tif / existing_faults.tif — sha256 7ba308cc…4093 — mirrored in buffedlizard55-lab/GEMSDOE24 @ 07345ea, verified locally.</li>
-<li>sample_submission.tif — sha256 2176d08e…35cbc — same mirror, verified locally.</li>
-<li>geodawn_rad_u8.tif — sha256 c22420f7…ba682 — same mirror; band descriptions read locally: ['k','th','u','tc'].</li>
-<li>template gems57 — byte-pinned from buffedlizard55-lab/GEMSDOE66 @ 0f6762f; evaluator hashes match the
-published gems57-pooled-hide-v2 hashes recorded in 60GEMSDOE/evidence/h73b_holdout.json.</li>
+<div class="panel"><h2>Official / verified sources (manual review links)</h2>
+<ul class="tight">
+<li>Competition home — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
+<li>Problem description & metric — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></li>
+<li>About / additional resources — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></li>
+<li>Rules / submission format PDF — <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a> (mirrored copy linked from the family data page via Dropbox)</li>
+<li>Leaderboard — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">competition leaderboard</a> (access requires sign-in)</li>
+<li>Known-fault masking clarification — <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum thread 11516</a></li>
+<li>Reference solution — <a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></li>
+<li>GEODAWN airborne surveys (USGS) — <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov GEODAWN data page</a></li>
+<li>INGENIOUS project (GBCGE) — <a href="https://gbcge.org/current-projects/ingenious/">gbcge.org/current-projects/ingenious</a></li>
+<li>GDR submission 1391 (geothermal data) — <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></li>
+<li>Grid CRS — <a href="https://epsg.io/32611">EPSG:32611 (UTM 11N)</a></li>
+<li>Tversky index — <a href="https://en.wikipedia.org/wiki/Tversky_index">Wikipedia</a></li>
+<li>CVaR — Rockafellar, R.T. & Uryasev, S. (2000) <i>Optimization of conditional value-at-risk</i>, Journal of Risk</li>
+<li>Hermant et al. catalogue-offset measurement (north-central Nevada, USGS-vs-TLS label distances "up to 400 m") — <a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Hermant.pdf">SGW 2025 paper (Stanford/PDES)</a> — basis of the ±4 px shift calibration; the parallel session rates it a local figure (IR-09)</li>
+<li>Official public leaderboard snapshot captured 2026-10-11 (#1 = 0.4133) — <a href="https://github.com/buffedlizard55-lab/GEMSDOE63/blob/main/registry/official_leaderboard_snapshot_2026-10-11.csv">registry/official_leaderboard_snapshot_2026-10-11.csv</a></li>
+<li>Family evidence reused under the reuse-don't-rebuild protocol: GEMSDOE32 registry/data_manifest.json
+(owner-supplied, sha256-pinned mirrors of the login-walled DrivenData files — integrity-pinned, NOT organizer-authenticated),
+GEMSDOE32 evidence/d28_forensic_autopsy.json (dot-family pathology), evidence/instrument_calibration.json
+(live-receipt calibration of the SGMC/drift instruments).</li>
 </ul></div>
-<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
-WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
-promotion to a submission slot is a separate selector step.</footer></div></body></html>
+</div></body></html>

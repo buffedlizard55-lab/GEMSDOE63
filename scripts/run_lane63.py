@@ -31,7 +31,8 @@ from gems57 import evaluate_holdout as EH                      # noqa: E402
 from gems57 import submission_writer as SW                     # noqa: E402
 from gems57 import validate as V                               # noqa: E402
 from gems57 import uniqueness as UQ                            # noqa: E402
-from gems63 import canary, cvar, policies, worlds              # noqa: E402
+from gems63 import canary, cvar, policies                          # noqa: E402
+from gems63 import worlds_arena8f46dad0 as worlds                 # noqa: E402
 
 EV = ROOT / "evidence"
 EV.mkdir(exist_ok=True)

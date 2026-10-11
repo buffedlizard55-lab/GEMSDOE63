@@ -13,7 +13,7 @@ from gems57 import holdout as H  # noqa: E402
 from gems57 import metric  # noqa: E402
 from gems57.grid import load_grid  # noqa: E402
 from gems63 import canary, cvar, policies  # noqa: E402
-from gems63.worlds import WorldCell  # noqa: E402
+from gems63.worlds_arena8f46dad0 import WorldCell  # noqa: E402
 
 
 def _cell_stub():

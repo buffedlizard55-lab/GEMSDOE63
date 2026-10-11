@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hypotheses · GEMSDOE63 lane (CVaR robust selection)</title>
+<link rel="stylesheet" href="../assets/site.css"></head><body>
+<header class="top"><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
+<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
+<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
+</div></header>
+<div class="wrap">
+<nav class="crumbs">
+<a href="arena-8f46dad0-index.html">Dashboard</a><a href="arena-8f46dad0-executive-summary.html">Executive summary &amp; how to submit</a>
+<a href="arena-8f46dad0-hypotheses.html">Hypotheses</a><a href="arena-8f46dad0-research.html">Why h33 scored 0.2778</a>
+<a href="arena-8f46dad0-sources.html">Sources</a><a href="arena-8f46dad0-irregularities.html">Irregularities</a><a href="arena-8f46dad0-run-card.html">Run card</a>
+</nav>
+
+<div class="card"><h2 style="margin-top:0;border:none">Candidate geological hypotheses (new this session)</h2>
+<p>Per the prompt: each names the layers, the physical signature, why it catches faults MISSING from the
+USGS/INGENIOUS catalogue, and how it differs from anything already implemented. Ranked by expected
+DTI improvement ÷ implementation cost. Top-candidate validation happens on the spatially-blocked holdout
+before any submission slot is touched.</p></div>
+<table>
+<tr><th>Rank</th><th>Hypothesis</th><th>Layers</th><th>Signature</th><th>Why it catches unmapped faults</th><th>Difference vs prior lanes</th><th>Cost</th><th>Status</th></tr>
+<tr><td>1</td><td><b>H63-E relay-ramp stepovers:</b> strike-rotation maxima at catalogue stepovers mark dilational jogs hosting blind synthetic splays</td>
+<td>visible catalogue + local strike field (gems57.network.local_strike)</td>
+<td>strike rotation rate |∇θ| along trace, maxima within 2 px of segment endpoints, gated by endpoint proximity pairs</td>
+<td>mapped traces truncate at tips; strain transfers into relay ramps where the mapped trace bends/apart — blind splays there are absent from the catalogue</td>
+<td>h33 (GEMSDOE33, 0.2632 user-reported) placed analog tip points geometrically; this ranks stepovers by MEASURED strike rotation and emits only CVaR-selected top relays</td>
+<td>low (catalogue only)</td><td>queued for next session holdout validation</td></tr>
+<tr><td>2</td><td><b>H63-D uranium-depletion rings:</b> hydrothermal U leaching halos around upflow</td>
+<td>geodawn_rad_u8 band 'u' + DEM curvature (mirrored layers present)</td>
+<td>U z-score minima coincident with positive curvature; ring morphology via 3-5 px annular maxima count</td>
+<td>U mobility is a fluid-process signature independent of mapped structure; upflow zones can be blind</td>
+<td>GEMSDOE46 fused radiometrics onto scarps; H63-A used K/Th point maxima (validated negative here); this is U-channel ring geometry</td>
+<td>low</td><td>canary AUC pending</td></tr>
+<tr><td>3</td><td><b>H63-B magnetic edge cross-coherence:</b> TMI-edge × RTP-edge coherence corridors</td>
+<td>training_features.tif magnetic channels (419 MB mirror pinned, not restored this session)</td>
+<td>normalized cross-correlation of two independent magnetic reductions along 5 px corridors, persistence over 3 scales</td>
+<td>buried magnetite damage zones under alluvium produce coherent magnetic gradients with no surface scarp</td>
+<td>GEMSDOE49 (0.2376 user-reported) gated orthogonality of trend vs gradient; this is multi-scale conjunction of two independent reductions</td>
+<td>medium (needs training_features restore)</td><td>blocked on data restore</td></tr>
+<tr><td>4</td><td><b>H63-C gravity-gradient persistence under playas:</b> grav_edge stable across smoothing scales</td>
+<td>training_features.tif gravity channel</td>
+<td>persistence ratio of |∇g| at scales 1/3/9 px; emit on ratio &gt; p95 inside alluvial mask</td>
+<td>covered basin faults show only in the gravity fabric; USGS/INGENIOUS catalogues map scarps, not buried contrasts</td>
+<td>h18-4 used map-polygon gaps (0.0360 user-reported); SGMC lanes used interpreted lines; this is raw-gradient persistence</td>
+<td>medium</td><td>blocked on data restore</td></tr>
+<tr><td>5</td><td><b>H63-A K/Th metasomatic maxima</b> (this session's validated candidate)</td>
+<td>geodawn_rad_u8 bands k, th (descriptions confirm band order)</td>
+<td>log-ratio z-score local maxima, 7 px NMS, ≥1 px off catalogue</td>
+<td>adularia/illite K-metasomatism marks upflow independent of scarps</td>
+<td>never run as a solo emission in earlier lanes</td>
+<td>low</td><td><b>VALIDATED NEGATIVE:</b> canary AUC 0.472; WORLD-DTI 0.0202 vs winner 0.2830 (evidence/e2_cvar_selection.json)</td></tr>
+</table>
+<div class="card small">Ranking rationale: expected improvement is judged against the pooled-hide-v2 baseline
+(HOLDOUT-DTI 0.3733 for the d2.8 ring ridge). Catalogue-geometry candidates (E) are cheap and directly
+comparable; geophysical-field candidates (B, C) need the 419 MB feature mirror restored first, but address
+the genuinely unmapped (covered) population, which is where the private truth most likely grows.</div>
+<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
+WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
+promotion to a submission slot is a separate selector step.</footer></div></body></html>

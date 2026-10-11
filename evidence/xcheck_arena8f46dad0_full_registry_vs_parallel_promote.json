@@ -1,0 +1,158 @@
+{
+  "generated_utc": "2026-10-11T23:51:30+00:00",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "purpose": "independent re-check of the parallel-session promote artifact against the FULL 730-blob registry (GEMSDOE65 prediction-like scope); their 38-raster recheck was narrower",
+  "artifact": "gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+  "artifact_dots": 54864,
+  "registry_scope": "data/registry_rasters/*.tif (730 prediction-like blobs from registry/prior_rasters.json)",
+  "gate": ">70% of artifact dots within 3 px of a registry raster positive cells (literal protocol rule 1)",
+  "stratification": {
+    "universal": {
+      "count": 27,
+      "exceeding_gate": 27,
+      "worst_overlap": 1.0,
+      "worst_sha": "0c42fc03b2c1830b"
+    },
+    "bigdot": {
+      "count": 134,
+      "exceeding_gate": 80,
+      "worst_overlap": 0.999234,
+      "worst_sha": "5c1a159439735522"
+    },
+    "dotlike": {
+      "count": 555,
+      "exceeding_gate": 5,
+      "worst_overlap": 0.76059,
+      "worst_sha": "7d19b90ed6e358b1"
+    }
+  },
+  "errors": 1,
+  "rows": [
+    {
+      "sha": "0c42fc03b2c1830b4bbbd09e3a58a7f31c310118",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "1102512580ae652c866e0cf5754afd1531fac952",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "1cb4f016b4876391236f4960822171a3820a7597",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "1edd83ef3eb73289f0c73c21c0422df469f091aa",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "2ea6197a126469b3f7c225fe3fa113f62eb28a72",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "2ef0c06c25cdab62ba3381a1b43db230776fc631",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "35616cbb48ac3533dd4c957b8acca57f71ba365f",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "3d3ee66300203bdc878f3a052caabde671daf042",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "45469b332d0a742da90c159bac511936bb47134a",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "4ed175911c1537cd7690bf54f01d8920ac7fceba",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "5b7d2fe254a81674793ad5b3a9947a493da02e68",
+      "their_dots": 5106385,
+      "overlap": 1.0
+    },
+    {
+      "sha": "70b12c34ea848e6a2b60c865d31ef9df52a4c662",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "70e09941ffab77b15fd1f776221d43e0a6def3b0",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "8bf0bf2d1814689811fe95b3a8c9f03990ff8c9b",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "8c3d512092bfd9ea12ab22b259444e934031ab7d",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "916cdeecd661878529afa9e2fa280f632cad956c",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "a3626a07a5156a311e83fe255899346d8d2e68a9",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "b25bae2852d368c75c69ba486350187597fed0b3",
+      "their_dots": 12279160,
+      "overlap": 1.0
+    },
+    {
+      "sha": "b782e3233089529759feed3860c1e8b8bf5085d7",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "ba3de6dbc61ffbe1750590ab7c501f8805193903",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "c34205e19ca635df5d9c3d8aba6959b5514c47ef",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "ca8d98f3634799689ea7aa0ea175e11a3ea20699",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "cd838daadd39de3ccdb9d30025b7feacc4d87c9f",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "d89160eb2675d6f8fdc9c8af261bc73c5c535f63",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    },
+    {
+      "sha": "d89695181cadd18a7284241c571af6f82671bf6d",
+      "their_dots": 5167373,
+      "overlap": 1.0
+    }
+  ],
+  "conclusion": "literal gate FAILS CLOSED for this artifact too: 27 universal soft surfaces, 85 high-density rasters and 5 dot-like rasters (worst 0.7606) exceed 0.70. This is a family-wide registry-structure condition (GEMSDOE64 precedent), not evidence either artifact copies another lane; their 38-raster recheck did not cover these blobs."
+}

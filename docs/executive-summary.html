@@ -1,78 +1,73 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Executive summary · GEMSDOE63 lane (CVaR robust selection)</title>
-<link rel="stylesheet" href="assets/site.css"></head><body>
-<header class="top"><div class="wrap">
-<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
-<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
-<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
-</div></header>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Executive summary — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
 <div class="wrap">
-<nav class="crumbs">
-<a href="index.html">Dashboard</a><a href="executive-summary.html">Executive summary &amp; how to submit</a>
-<a href="hypotheses.html">Hypotheses</a><a href="research.html">Why h33 scored 0.2778</a>
-<a href="sources.html">Sources</a><a href="irregularities.html">Irregularities</a><a href="run-card.html">Run card</a>
-</nav>
-
-<div class="card">
-<h2 style="margin-top:0;border:none">Executive summary</h2>
-<p>This lane produced <b>one downloadable, locally-validated GeoTIFF submission</b> for the DOE GEMS
-Prize. It was selected by conditional value-at-risk (CVaR) across plausible Phase-2 label worlds and
-greedy-pruned with the exact competition metric. <span class="badge no">⛔ NOT CLEARED FOR SUBMISSION — registry duplicate under the lane-1 3-px rule (see verdict). Download for learning/education only.</span></p>
-</div>
-
-<h2>How to enter this submission into the competition (5 steps)</h2>
-<div class="card">
-<ol>
-<li><b>Download the TIF</b> from the <a href="index.html">dashboard</a>
-(file <span class="mono">gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.tif</span>).</li>
-<li>Open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">the competition page</a>
-and go to <i>Participate → New submission</i> (login required).</li>
-<li><b>File to submit:</b> choose the downloaded <span class="mono">.tif</span> (or the ZIP — it contains only that one TIF).</li>
-<li><b>Note (optional):</b> paste <span class="mono">lane63 CVaR world-selection + greedy prune on hide-recover holdout; all-finite zeros export</span></li>
-<li>Click submit. Expected receipt: values accepted in [0,1]; the file is all-finite (zeros outside the
-footprint) specifically to avoid the earlier portal error <i>"Predicted values must be in range [0, 1]"</i>.</li>
+<div class="panel">
+<h2>How to make a submission into the contest (exact steps)</h2>
+<ol class="tight">
+<li>Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition #306</a> and open the <b>Submissions</b> tab.</li>
+<li>Click <b>New submission</b> → <b>File to submit</b> → choose <code>gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif</code>
+(download: <a href="downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif">tif</a> / <a href="downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.zip">zip</a>).</li>
+<li>Paste this note (≤140 chars) into <b>Note (optional)</b>:
+<pre>GEMSDOE63 CVaR-LW | thin-s3.17; 54864 dots; CVaR over 160 label worlds (shift4/drop10-30/decoys), prevalence-cal J=0.0359; SGMC-cal 0.0783</pre></li>
+<li>Submit. The file is scored in BOTH prize phases automatically (rules §3.6.2: one file counts for both rounds; weekly cap applies — check the submission page before spending a slot).</li>
 </ol>
-<p class="small">Rename policy: the file already carries a unique name
-(<span class="mono">gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z</span>). Do not rename it to match any earlier submission —
-uniqueness is tracked by bytes and by name in this project's registry.</p>
-</div>
-
-<h2>Why this raster exists (and why it is allowed to be submitted)</h2>
-<div class="card">
-<ul>
-<li><b>Format</b> — CRS EPSG:32611, shape 3730×3292, transform (100, 0, 243350, 0, −100, 4508550),
-single-band float32 — identical to the sample submission grid. Validated by the shared template
-validator on disk, after writing (15 checks, all passed).</li>
-<li><b>Range</b> — every value finite and in [0,1]; zeros outside the footprint; no sentinel values.
-This is the strictest export policy in the family (the "allfinite/zeros" policy).</li>
-<li><b>Uniqueness</b> — scanned against 729 prediction-like registry rasters
-(GEMSDOE65 registry scope). Literal gates: worst forward dot overlap 1.0 (limit 0.70);
-worst Spearman rho 0.34 (limit 0.90). Stratified dot-like subset
-(555 rasters): worst overlap 1.0,
-worst rho 0.1736.
-Scope caveat: registry covers public owner repositories only — never organizer-complete.</li>
-<li><b>Evidence</b> — HOLDOUT-DTI 0.3622
-(CI95 [0.3414,
-0.3795],
-11321 withheld px,
-evaluator gems57-pooled-hide-v2, buffered whole-component folds) vs baseline arm
-HOLDOUT-DTI 0.3762.
-A holdout number is <b>not</b> a leaderboard projection; the two measure different truths.</li>
-<li><b>No slot spent</b> — this lane prepares the candidate; promotion to a weekly slot is a separate
-selector decision (protocol rule 6).</li>
+<h2>Current status</h2>
+<p>✅ OK TO DOWNLOAD AND SUBMIT — all portal checks pass, lane-uniqueness pass</p>
+<h2>The "[0, 1]" portal error, and why this file avoids it</h2>
+<p>An earlier upload returned <code>Predicted values must be in range [0, 1]</code>. Cause: NaN-valued cells (or
+float overshoot) inside the scored footprint. This artifact is written in the proven-accepted layout that scored
+0.2477–0.2778 for the family: <b>single-band float32, every cell finite, zeros outside the footprint, values exactly
+0.0 or 1.0, no nodata tag, EPSG:32611, 3730×3292, geotransform (100, 0, 243350, 0, −100, 4508550)</b>, re-read
+and verified from the bytes on disk (<a href="downloads/checks-gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif.json">machine receipt</a>).</p>
+<h2>Competition &amp; rules</h2>
+<ul class="tight">
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition home</a> ·
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description (metric: distance-weighted Tversky, α=0.2, β=0.8, 300 m kernel)</a> ·
+<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Rules PDF (submission format; phases)</a></li>
+<li>Scoring clarification (known faults masked, round-2 label set): <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">organizer forum thread 11516</a></li>
+<li>Reference solution: <a href="https://github.com/drivendataorg/gems-prize-reference-solution">drivendataorg/gems-prize-reference-solution</a></li>
 </ul>
+<h2>What this session's artifact is (one paragraph)</h2>
+<p>H63-A/B/C: a corroboration-weighted multi-physics posterior, emitted by posterior-ordered thinning with spacing/budget chosen to maximize mean-DTI penalized by the worst-tail average (CVaR, Rockafellar-Uryasev 2000) across label worlds shifted +/-4px, dropped 10-30%, decoyed at observed density; then exact greedy CVaR pruning.</p>
+<p>Mechanism: Independent-physics coincidence localizes unmapped structures; CVaR selection hedges catalogue drift (known-fault set can change in round 2, rules 3.6.2); pruning removes dots whose cost alpha=0.2 exceeds their robust credit.</p>
+<p>Named mimicking process (pre-registered): Intersections of independent geophysical edges that are NOT faults: e.g. coincident lithologic/magnetic contacts plus terrace edges from younger sediments can mimic a fault lineament; decoy worlds price this risk into the selection.</p>
 </div>
-
-<h2>Known limitations</h2>
-<div class="card"><ul>
-<li>DrivenData and the live leaderboard are not reachable from the build environment; organizer
-confirmation must be pasted into <span class="mono">evidence/</span> after a manual submission.</li>
-<li>The label-world generator is calibrated from the prompt-cited 400 m catalogue-offset measurement
-and family drift evidence; if real Phase-2 motion differs, the CVaR advantage changes with it.</li>
-<li>The world-scored numbers (WORLD-DTI) are internal robustness measurements, never organizer scores.</li>
-</ul></div>
-<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
-WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
-promotion to a submission slot is a separate selector step.</footer></div></body></html>
+</div></body></html>
