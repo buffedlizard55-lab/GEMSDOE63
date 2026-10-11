@@ -1,0 +1,91 @@
+{
+ "generated_utc": "2026-10-11T23:40:59Z",
+ "lane": "63-cvar-robust-selection",
+ "hypothesis": "A CVaR-robust (worst-tail) selection and greedy pruning of ring-lane dotted ridges generalizes the measured h33 pruning gain and is safer under Phase-2 label motion than single-holdout selection.",
+ "mechanism": "Emit dots on the 1-px ring beside visible mapped faults (spacing 3.2 px); build 20 label worlds per hide-and-recover fold (\u00b14 px shifts, 10\u201330 % omissions, decoys); select policy by mean DTI \u2212 0.5\u00b7(mean \u2212 CVaR20); greedily remove the dot whose removal most improves that objective; fail-closed audits vs exact recomputation.",
+ "named_non_fault_mimic": "Alluvial-channel margins and terrace edges run parallel to range fronts and can sit exactly where ring-lane dots are emitted; they are not faults and would appear as matched-to-nothing FP mass under Phase-2 truth. Radiometric ratio maxima (H63-A) were mimicked by nothing useful: AUC 0.472 (validated negative).",
+ "holdout_dti": {
+  "baseline_d28": {
+   "value": 0.3733,
+   "ci95": [
+    0.352,
+    0.3923
+   ],
+   "withheld_positive_pixels": 11321,
+   "evaluator": "gems57-pooled-hide-v2",
+   "folds": "buffered whole-component LOQO",
+   "evidence": "evidence/e1_baseline_holdout.json"
+  },
+  "cvar_pruned": {
+   "value": 0.3622,
+   "ci95": [
+    0.3414,
+    0.3795
+   ],
+   "withheld_positive_pixels": 11321,
+   "evaluator": "gems57-pooled-hide-v2",
+   "paired_difference_vs_baseline": {
+    "baseline_dotted_d3.2": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.014062305851703483,
+     "ci95": [
+      -0.024333377907403985,
+      -0.005614397258969688
+     ],
+     "withheld_positive_pixels": 11321
+    }
+   },
+   "evidence": "evidence/e3_prune_holdout.json"
+  }
+ },
+ "world_dti": {
+  "before": {
+   "mean": 0.2826331420128517,
+   "cvar20": 0.27261286872417123
+  },
+  "after": {
+   "mean": 0.2934856937511063,
+   "cvar20": 0.28309702491741445
+  },
+  "note": "WORLD-DTI: per-world DTI over label-perturbed holdouts; internal robustness measure, never an organizer score"
+ },
+ "canary": {
+  "k_visible_auc": 0.62,
+  "rad_ratio_auc": 0.472,
+  "leakage_bar": 0.9,
+  "evidence": "evidence/e1_canaries.json"
+ },
+ "registry": {
+  "worst_dot_overlap": 1.0,
+  "worst_spearman": 0.33997106617455086,
+  "overlap_limit": 0.7,
+  "rho_limit": 0.9,
+  "rasters_checked": 729,
+  "rasters_errored": 1,
+  "unique": false,
+  "evidence": "evidence/e3_uniqueness.json"
+ },
+ "raster_sha256": "706d80695ab8b9e480e68e1cd62303a609af3702b4ecb3663ce41ec94c1e2cf3",
+ "raster_bytes": 120646,
+ "validator": {
+  "all_checks_passed": true,
+  "n_checks": 15,
+  "no_nan_inside_footprint": true,
+  "values_in_0_1": true,
+  "crs_shape_transform_match": {
+   "crs": null,
+   "shape": null,
+   "transform": null
+  }
+ },
+ "submission_name": "gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z",
+ "submission_note": "lane63 CVaR world-selection + greedy prune on hide-recover holdout; all-finite zeros export",
+ "verdict": "negative",
+ "verdict_note": "Literal protocol rule 1 gate FAILS CLOSED: 27 universal soft-surface registry rasters (>4M positive px) give forward overlap 1.0 to any dot field, AND 21 dot-like registry rasters exceed the 70% 3-px overlap limit (worst: GEMSDOE34 geophys-struct-consensus at 1.000; classic h28-dotted-ridge at 0.831). Rho everywhere <= 0.34 (limit 0.90). The ring-lane surface is inside the dotted-ridge family lane; logged as duplicate, stopped, and NOT cleared for a submission slot. The CVaR mechanism result stands as research evidence; next candidate must run on a uniqueness-gated surface (e.g. H63-E stepovers). No ORGANIZER-CONFIRMED score exists; no slot was spent.",
+ "budget": {
+  "experiments": 3,
+  "hours_used": "\u22482",
+  "slots_spent": 0
+ }
+}

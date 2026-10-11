@@ -1,0 +1,80 @@
+[e3] winner dotted-d3.2 dots=39057 mean=0.28263 cvar=0.27261
+[prune] audit@init: internal vs recomputed max drift 0.00e+00 OK
+[prune] start n=39057 obj=0.277623 mean=0.282633 cvar=0.272613
+[prune] iter=1 removed=1 obj=0.277626 mean=0.282637 cvar=0.272616
+[prune] iter=2 removed=2 obj=0.277630 mean=0.282640 cvar=0.272620
+[prune] iter=3 removed=3 obj=0.277633 mean=0.282644 cvar=0.272623
+[prune] iter=4 removed=4 obj=0.277637 mean=0.282647 cvar=0.272626
+[prune] iter=5 removed=5 obj=0.277640 mean=0.282651 cvar=0.272630
+[prune] iter=50 removed=50 obj=0.277794 mean=0.282807 cvar=0.272781
+[prune] iter=100 removed=100 obj=0.277966 mean=0.282982 cvar=0.272950
+[prune] iter=150 removed=150 obj=0.278138 mean=0.283157 cvar=0.273119
+[prune] iter=200 removed=200 obj=0.278310 mean=0.283332 cvar=0.273288
+[prune] iter=250 removed=250 obj=0.278482 mean=0.283507 cvar=0.273457
+[prune] iter=300 removed=300 obj=0.278654 mean=0.283682 cvar=0.273626
+[prune] iter=350 removed=350 obj=0.278827 mean=0.283858 cvar=0.273796
+[prune] iter=400 removed=400 obj=0.279000 mean=0.284034 cvar=0.273966
+[prune] iter=450 removed=450 obj=0.279173 mean=0.284210 cvar=0.274136
+[prune] audit@removed=500: internal vs recomputed max drift 0.00e+00 OK
+[prune] iter=500 removed=500 obj=0.279346 mean=0.284386 cvar=0.274306
+[prune] iter=550 removed=550 obj=0.279519 mean=0.284562 cvar=0.274476
+[prune] iter=600 removed=600 obj=0.279693 mean=0.284739 cvar=0.274647
+[prune] iter=650 removed=650 obj=0.279867 mean=0.284916 cvar=0.274818
+[prune] iter=700 removed=700 obj=0.280041 mean=0.285093 cvar=0.274989
+[prune] iter=750 removed=750 obj=0.280215 mean=0.285270 cvar=0.275160
+[prune] iter=800 removed=800 obj=0.280390 mean=0.285448 cvar=0.275332
+[prune] iter=850 removed=850 obj=0.280565 mean=0.285626 cvar=0.275504
+[prune] iter=900 removed=900 obj=0.280740 mean=0.285804 cvar=0.275676
+[prune] iter=950 removed=950 obj=0.280915 mean=0.285982 cvar=0.275848
+[prune] audit@removed=1000: internal vs recomputed max drift 0.00e+00 OK
+[prune] iter=1000 removed=1000 obj=0.281090 mean=0.286160 cvar=0.276020
+[prune] iter=1050 removed=1050 obj=0.281266 mean=0.286339 cvar=0.276193
+[prune] iter=1100 removed=1100 obj=0.281442 mean=0.286518 cvar=0.276366
+[prune] iter=1150 removed=1150 obj=0.281618 mean=0.286697 cvar=0.276539
+[prune] iter=1200 removed=1200 obj=0.281794 mean=0.286876 cvar=0.276712
+[prune] iter=1250 removed=1250 obj=0.281971 mean=0.287056 cvar=0.276885
+[prune] iter=1300 removed=1300 obj=0.282147 mean=0.287236 cvar=0.277059
+[prune] iter=1350 removed=1350 obj=0.282324 mean=0.287416 cvar=0.277233
+[prune] iter=1400 removed=1400 obj=0.282502 mean=0.287596 cvar=0.277407
+[prune] iter=1450 removed=1450 obj=0.282679 mean=0.287777 cvar=0.277581
+[prune] audit@removed=1500: internal vs recomputed max drift 0.00e+00 OK
+[prune] iter=1500 removed=1500 obj=0.282857 mean=0.287957 cvar=0.277756
+[prune] iter=1550 removed=1550 obj=0.283034 mean=0.288138 cvar=0.277931
+[prune] iter=1600 removed=1600 obj=0.283213 mean=0.288319 cvar=0.278106
+[prune] iter=1650 removed=1650 obj=0.283391 mean=0.288501 cvar=0.278281
+[prune] iter=1700 removed=1700 obj=0.283569 mean=0.288682 cvar=0.278457
+[prune] iter=1750 removed=1750 obj=0.283748 mean=0.288864 cvar=0.278632
+[prune] iter=1800 removed=1800 obj=0.283927 mean=0.289046 cvar=0.278808
+[prune] iter=1850 removed=1850 obj=0.284106 mean=0.289228 cvar=0.278984
+[prune] iter=1900 removed=1900 obj=0.284286 mean=0.289411 cvar=0.279161
+[prune] iter=1950 removed=1950 obj=0.284465 mean=0.289594 cvar=0.279337
+[prune] audit@removed=2000: internal vs recomputed max drift 0.00e+00 OK
+[prune] iter=2000 removed=2000 obj=0.284645 mean=0.289777 cvar=0.279514
+[prune] iter=2050 removed=2050 obj=0.284825 mean=0.289960 cvar=0.279691
+[prune] iter=2100 removed=2100 obj=0.285006 mean=0.290143 cvar=0.279868
+[prune] iter=2150 removed=2150 obj=0.285186 mean=0.290327 cvar=0.280046
+[prune] iter=2200 removed=2200 obj=0.285367 mean=0.290511 cvar=0.280223
+[prune] iter=2250 removed=2250 obj=0.285548 mean=0.290695 cvar=0.280401
+[prune] iter=2300 removed=2300 obj=0.285729 mean=0.290880 cvar=0.280579
+[prune] iter=2350 removed=2350 obj=0.285911 mean=0.291064 cvar=0.280758
+[prune] iter=2400 removed=2400 obj=0.286093 mean=0.291249 cvar=0.280936
+[prune] iter=2450 removed=2450 obj=0.286275 mean=0.291434 cvar=0.281115
+[prune] audit@removed=2500: internal vs recomputed max drift 0.00e+00 OK
+[prune] iter=2500 removed=2500 obj=0.286457 mean=0.291619 cvar=0.281294
+[prune] iter=2550 removed=2550 obj=0.286639 mean=0.291805 cvar=0.281473
+[prune] iter=2600 removed=2600 obj=0.286822 mean=0.291991 cvar=0.281653
+[prune] iter=2650 removed=2650 obj=0.287005 mean=0.292177 cvar=0.281833
+[prune] iter=2700 removed=2700 obj=0.287188 mean=0.292363 cvar=0.282012
+[prune] iter=2750 removed=2750 obj=0.287371 mean=0.292550 cvar=0.282193
+[prune] iter=2800 removed=2800 obj=0.287555 mean=0.292736 cvar=0.282373
+[prune] iter=2850 removed=2850 obj=0.287739 mean=0.292923 cvar=0.282554
+[prune] iter=2900 removed=2900 obj=0.287923 mean=0.293111 cvar=0.282735
+[prune] iter=2950 removed=2950 obj=0.288107 mean=0.293298 cvar=0.282916
+[prune] audit@removed=3000: internal vs recomputed max drift 0.00e+00 OK
+[prune] iter=3000 removed=3000 obj=0.288291 mean=0.293486 cvar=0.283097
+[prune] audit@final: internal vs recomputed max drift 0.00e+00 OK
+[e3] pruned dots=36057 removed=3000 mean=0.29349 cvar=0.28310
+[evidence] /home/user/GEMSDOE63/evidence/e3_prune_holdout.json
+[evidence] /home/user/GEMSDOE63/evidence/e3_submission_receipt.json
+[evidence] /home/user/GEMSDOE63/evidence/e3_validator_output.json
+[e3] submission gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.tif written and locally validated

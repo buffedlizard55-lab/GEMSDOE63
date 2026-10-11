@@ -1,0 +1,27 @@
+{
+  "evidence_class": "CALIBRATION-ASSUMPTION",
+  "generated_utc": "2026-10-11T22:30:00Z",
+  "purpose": "Calibration anchors for the lane-63 label-world generator (src/gems63/worlds.py). These are ASSUMPTIONS with stated provenance, not measured scores.",
+  "shift_prior": {
+    "p_no_shift": 0.30,
+    "magnitude_weights_px": {"1": 0.30, "2": 0.27, "3": 0.24, "4": 0.19},
+    "max_shift_px": 4,
+    "max_shift_m": 400,
+    "metric": "componentwise cap |dy|,|dx| <= 4 px (Chebyshev); directions uniform over the 8 lattice directions",
+    "anchors": [
+      "Prompt-cited Hermant et al. measurement: catalogue offsets up to 400 m (= 4 px at the 100 m grid). The paper itself is not fetchable from this sandbox's allowlist (IR-63-09); the figure is carried with that provenance.",
+      "Organizer statement (competition problem page, prompt-cited): Phase-2 faults may be added, removed or changed — motivates the omission + decoy components.",
+      "Family drift evidence: 60GEMSDOE evidence/h33_holdout.json shows a large gap between raw and drift-corrected holdout means on the gems32 instrument (e.g. D2.8-Poisson300m-Ref 0.0983 raw vs 0.1480 drift-corrected), demonstrating that geometric perturbation of the truth materially changes scores."
+    ]
+  },
+  "omission": {
+    "drop_fraction_range": [0.10, 0.30],
+    "unit": "whole withheld components",
+    "anchor": "lane prescription in the prompt"
+  },
+  "decoys": {
+    "policy": "one decoy segment per dropped component, same pixel size, uniform placement inside the scored (active) domain, orientation uniform over [0,180)",
+    "anchor": "prompt instruction 'add decoy segments at the observed density' — expected segment count per world is held equal to the withheld count"
+  },
+  "honesty_note": "The world generator is only as honest as these anchors. If the true Phase-2 motion distribution differs, the CVaR ranking can change. No public-leaderboard tuning was used anywhere in the pipeline."
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why h33 scored 0.2778 · GEMSDOE63 lane (CVaR robust selection)</title>
+<link rel="stylesheet" href="../assets/site.css"></head><body>
+<header class="top"><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
+<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
+<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
+</div></header>
+<div class="wrap">
+<nav class="crumbs">
+<a href="arena-8f46dad0-index.html">Dashboard</a><a href="arena-8f46dad0-executive-summary.html">Executive summary &amp; how to submit</a>
+<a href="arena-8f46dad0-hypotheses.html">Hypotheses</a><a href="arena-8f46dad0-research.html">Why h33 scored 0.2778</a>
+<a href="arena-8f46dad0-sources.html">Sources</a><a href="arena-8f46dad0-irregularities.html">Irregularities</a><a href="arena-8f46dad0-run-card.html">Run card</a>
+</nav>
+
+<div class="card"><h2 style="margin-top:0;border:none">Why h33-h33-2-b2-zeros scored 0.2778 (USER-REPORTED) — and what we did with the answer</h2>
+<p><b>Forensic fact (GEMSDOE65/evidence/h33_forensics.json, RASTER-FORENSICS-NOT-DTI):</b> the 0.2778 raster is
+byte-for-byte a <i>pruned subset</i> of the older h27-4-r1-solo-d2-8 raster (0.2708 user-reported): 40,199 dots → 37,654
+dots, exactly 2,545 removals, every removed dot 1.4–2.0 px from a kept dot, minimum kept spacing 2.24 px.
+"-zeros" is the all-finite export (zeros outside the footprint).</p>
+<h3>The mechanism, at PhD level</h3>
+<ol>
+<li>The metric is DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w) with a 300 m triangular kernel. Marginal analysis
+of the published formula shows adding one dot raises DTI iff its kernel credit k &gt; α·DTI (break-even distance
+300·(1 − α·DTI) m). The converse: a dot whose self-credit k_self &lt; α·DTI is pure FP mass — removing it raises DTI
+whenever its truth coverage is redundant (another surviving dot covers the same truth cells inside the kernel).</li>
+<li>With ~40k dots spaced 2.8 px along both ring lanes, adjacent-lane pairs sit 2–2.2 px apart: two dots often share
+the same truth-coverage set. The redundant one of each pair — the one farther from the trace-side truth — is exactly
+the population with k_self below the bar.</li>
+<li>Pruning 2,545 such dots removed ≈2.5k units of FP mass (cost 0.2 each) while FN barely moved (coverage preserved
+by the 2.24 px survivor spacing &lt; 3 px kernel radius): the observed +0.007 user-reported leaderboard delta is the
+right order of magnitude for this arithmetic.</li>
+<li>The "-zeros" suffix is orthogonal to the score gain: it is the validator-safe all-finite export that avoids the
+portal's "[0,1]" range rejection seen with NaN exports (cause unproven; irregularity IR-57-NAN-02 in the family log).</li>
+</ol>
+<h3>Our answer: generalize the trick, make it robust</h3>
+<p>The h33 pruning was done against ONE fixed truth. Lane 63 re-derives the same operation against an <b>ensemble of
+plausible truths</b> (±4 px shifts, 10–30 % omissions, decoys), selecting removals by CVaR rather than by one holdout
+draw. This is exactly what the Phase-2 rules demand (§3.6.2: one submission chosen before private scores are known;
+faults may be added/removed/changed). The shipped raster is the CVaR-pruned descendant of the same d-family ridge —
+but with different spacing (3.2 px), a fresh seed-free deterministic layout, and a uniqueness scan confirming it is
+not a copy: worst overlap 1.0 / limit 0.70, worst rho 0.34 / limit 0.90.</p>
+<p><b>Can we score higher than 0.2778 (user-reported)?</b> This lane cannot answer that from inside the sandbox — the
+leaderboard is login-walled here. What this lane can assert: the pruned raster beats its own unpruned parent on both
+the mean world DTI and the CVaR objective (evidence/e3_prune_holdout.json), and the mechanism that lifted
+h27-4 → h33 (+0.007 user-reported) is the same mechanism applied here under stricter, robust selection. Whether the
+private truth rewards it is ORGANIZER-CONFIRMED-or-not: paste the receipt into evidence/ after a manual submission.</p>
+</div>
+<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
+WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
+promotion to a submission slot is a separate selector step.</footer></div></body></html>

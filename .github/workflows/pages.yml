@@ -1,0 +1,58 @@
+name: Research site publishing
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      workflow_pages: ${{ steps.mode.outputs.workflow_pages }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/build_site63.py
+      - name: Verify Pages uses workflow deployments
+        id: mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type' 2>/dev/null || echo unknown)"
+          if [ "$build_type" = workflow ]; then
+            echo 'workflow_pages=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'workflow_pages=false' >> "$GITHUB_OUTPUT"
+            echo '::notice::Pages uses the existing main:/docs publisher (or is not enabled). No settings change attempted.'
+          fi
+      - name: Stage only the public site
+        if: steps.mode.outputs.workflow_pages == 'true'
+        run: |
+          mkdir -p .cache/pages
+          cp index.html .nojekyll .cache/pages/
+          cp -R docs .cache/pages/docs
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.mode.outputs.workflow_pages == 'true'
+        with:
+          path: .cache/pages
+  deploy:
+    if: needs.build.outputs.workflow_pages == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy research site
+        id: deployment
+        uses: actions/deploy-pages@v4

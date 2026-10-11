@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irregularities · GEMSDOE63 lane (CVaR robust selection)</title>
+<link rel="stylesheet" href="../assets/site.css"></head><body>
+<header class="top"><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane</h1>
+<p>DOE GEMS Prize (DrivenData 306) · hide-and-recover holdout · label-world ensemble · exact DTI metric</p>
+<p>Session 2026-10-11 · branch arena/8f46dad0-gemsdoe63 · template gems57-pooled-hide-v2 (byte-pinned)</p>
+</div></header>
+<div class="wrap">
+<nav class="crumbs">
+<a href="arena-8f46dad0-index.html">Dashboard</a><a href="arena-8f46dad0-executive-summary.html">Executive summary &amp; how to submit</a>
+<a href="arena-8f46dad0-hypotheses.html">Hypotheses</a><a href="arena-8f46dad0-research.html">Why h33 scored 0.2778</a>
+<a href="arena-8f46dad0-sources.html">Sources</a><a href="arena-8f46dad0-irregularities.html">Irregularities</a><a href="arena-8f46dad0-run-card.html">Run card</a>
+</nav>
+
+<div class="card"><h2 style="margin-top:0;border:none">Irregularities flagged for review</h2>
+<table>
+<tr><th>ID</th><th>Finding</th><th>Action</th></tr>
+<tr><td>IR-63-01</td><td>Shared template grid.py assumed src/ layout for REPO_ROOT and broke when vendored (vendor/template66/gems57).</td><td>Fixed ONCE in the vendored template (upward search for data/bridge); reported per protocol rule 2.</td></tr>
+<tr><td>IR-63-02</td><td>Same parents[2] assumption remains in uniqueness.py ROOT and evaluator_provenance.py; unused by this lane's code paths.</td><td>Flagged; not forked.</td></tr>
+<tr><td>IR-63-03</td><td>Lane world generator initially seeded from Python hash() — randomized across processes (worlds changed between e2 and e3 runs).</td><td>Fixed to zlib.crc32; worlds now deterministic (evidence/e2_worlds_summary.json vs e3 regeneration).</td></tr>
+<tr><td>IR-63-04</td><td>Pruning bookkeeping bug: each physical dot is a member of two draw cells (draw20/draw21); removals applied to one copy drifted FP/TP by ~1 dot/iteration. Fail-closed audits caught it at 1.4e-3.</td><td>Fixed with global pixel identity; audits at init/every-500/final now pass at 0 drift.</td></tr>
+<tr><td>IR-63-05</td><td>Portal error "Predicted values must be in range [0, 1]" (user-reported against an earlier site's file).</td><td>Mitigated by the all-finite zeros export policy (no NaN anywhere). Root cause remains unproven (family IR-57-NAN-02).</td></tr>
+<tr><td>IR-63-06</td><td>sample_submission.tif contains 60,988 pixels equal to 1 that coincide exactly with labelled catalogue faults (family manifest note).</td><td>Flagged; this lane writes 0 there (writer rejects positive mass on the catalogue).</td></tr>
+<tr><td>IR-63-07</td><td>Registry uniqueness scope is owner-repositories only; other competitors' rasters are not public.</td><td>Stated in evidence/e3_uniqueness.json scope; verdict remains fail-closed on any download error (none this session: 730/730).</td></tr>
+<tr><td>IR-63-08</td><td>Leaderboard values (0.3774, 0.3195, 0.2778, …) cannot be verified from this sandbox.</td><td>Labeled USER-REPORTED-NOT-ORGANIZER-CONFIRMED everywhere; organizer receipts must be pasted after manual submission.</td></tr>
+<tr><td>IR-63-09</td><td>Hermant et al. 400 m catalogue-offset figure is prompt-cited; the paper itself is not fetchable from the sandbox allowlist.</td><td>Calibration records it as the anchor with that provenance (evidence/e2_worlds_summary.json).</td></tr>
+</table></div>
+<footer>Lane 63 evidence site. Every number carries its evidence class (HOLDOUT-DTI /
+WORLD-DTI / USER-REPORTED / REGISTRY-MEASUREMENT). Local validation is not organizer acceptance;
+promotion to a submission slot is a separate selector step.</footer></div></body></html>

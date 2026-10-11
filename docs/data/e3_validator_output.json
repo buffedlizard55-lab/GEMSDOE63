@@ -1,0 +1,56 @@
+{
+ "file": "/home/user/GEMSDOE63/submissions/gems63-cvar-pruned-dotted-d3p2-36057-20261011T2200Z-allfinite.tif",
+ "bytes": 120646,
+ "sha256": "706d80695ab8b9e480e68e1cd62303a609af3702b4ecb3663ce41ec94c1e2cf3",
+ "meta": {
+  "crs": "EPSG:32611",
+  "shape": [
+   3730,
+   3292
+  ],
+  "dtype": "float32",
+  "count": 1,
+  "nodata": null,
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "profile_compress": "deflate"
+ },
+ "band_description": [
+  null
+ ],
+ "n_finite": 12279160,
+ "n_nan": 0,
+ "n_infinite": 0,
+ "min": 0.0,
+ "max": 1.0,
+ "mean": 0.0029364386573433876,
+ "emitted_positive_pixels": 36057,
+ "checks": {
+  "single_band": true,
+  "dtype_float32": true,
+  "dimensions_3730x3292": true,
+  "crs_epsg_32611": true,
+  "transform_matches_sample_submission": true,
+  "no_nan_anywhere": true,
+  "no_inf_anywhere": true,
+  "no_sentinel_values": true,
+  "range_0_1_guaranteed": true,
+  "min_ge_0": true,
+  "max_le_1": true,
+  "in_footprint_all_finite": true,
+  "in_footprint_range_0_1": true,
+  "outside_footprint_zero": true,
+  "zero_dots_on_mapped_catalogue": true
+ },
+ "all_checks_passed": true,
+ "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+ "on_catalogue_positive_pixels": 0,
+ "in_footprint_positive_pixels": 36057,
+ "footprint_fraction": 0.006977820257991827
+}
