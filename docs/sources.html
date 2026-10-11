@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
+<div class="wrap">
+<div class="panel"><h2>Official / verified sources (manual review links)</h2>
+<ul class="tight">
+<li>Competition home — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
+<li>Problem description & metric — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a></li>
+<li>About / additional resources — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a></li>
+<li>Rules / submission format PDF — <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a> (mirrored copy linked from the family data page via Dropbox)</li>
+<li>Leaderboard — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">competition leaderboard</a> (access requires sign-in)</li>
+<li>Known-fault masking clarification — <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">forum thread 11516</a></li>
+<li>Reference solution — <a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></li>
+<li>GEODAWN airborne surveys (USGS) — <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov GEODAWN data page</a></li>
+<li>INGENIOUS project (GBCGE) — <a href="https://gbcge.org/current-projects/ingenious/">gbcge.org/current-projects/ingenious</a></li>
+<li>GDR submission 1391 (geothermal data) — <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></li>
+<li>Grid CRS — <a href="https://epsg.io/32611">EPSG:32611 (UTM 11N)</a></li>
+<li>Tversky index — <a href="https://en.wikipedia.org/wiki/Tversky_index">Wikipedia</a></li>
+<li>CVaR — Rockafellar, R.T. & Uryasev, S. (2000) <i>Optimization of conditional value-at-risk</i>, Journal of Risk 2(3):21–42</li>
+<li>Family evidence reused under the reuse-don't-rebuild protocol: GEMSDOE32 registry/data_manifest.json
+(owner-supplied, sha256-pinned mirrors of the login-walled DrivenData files — integrity-pinned, NOT organizer-authenticated),
+GEMSDOE32 evidence/d28_forensic_autopsy.json (dot-family pathology), evidence/instrument_calibration.json
+(live-receipt calibration of the SGMC/drift instruments).</li>
+</ul></div>
+</div></body></html>

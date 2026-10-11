@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hypotheses &amp; scan — GEMSDOE63</title>
+<style>
+:root{--bg:#0b0f14;--panel:#131a22;--ink:#e8eef4;--mut:#9fb0bf;--acc:#2ea043;--warn:#d29922;--bad:#f85149;--line:#25313d}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:#6cb6ff} .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);background:#0d1319}header .wrap{padding-bottom:16px}
+h1{font-size:22px;margin:8px 0} h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px} h3{font-size:15px;margin:18px 0 8px}
+nav a{margin-right:14px;color:var(--mut);text-decoration:none}nav a:hover{color:#fff}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+.hero{border:2px solid var(--acc);background:#0e1a12}
+.hero.not-ok{border-color:var(--bad);background:#1a0e0e}
+.big{font-size:20px;font-weight:700}
+.dl{display:inline-block;background:var(--acc);color:#06130a;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:17px;margin:8px 8px 8px 0}
+.dl.zip{background:#1f6feb;color:#fff}
+code,pre{background:#0d1319;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+pre{padding:12px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left} th{background:#0d1319}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:#12381c;color:#56d364}.pill.warn{background:#3a2c08;color:#e3b341}.pill.bad{background:#3d1216;color:#ff7b72}
+.small{font-size:12.5px;color:var(--mut)}
+ul.tight li{margin:4px 0}
+.tag{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap">
+<h1>GEMSDOE63 — CVaR robust-selection lane · DOE GEMS Prize (DrivenData #306)</h1>
+<nav>
+<a href="index.html">Submission</a>
+<a href="executive-summary.html">Executive summary (how to submit)</a>
+<a href="run-card.html">Run card</a>
+<a href="hypotheses.html">Hypotheses &amp; scan</a>
+<a href="registry.html">Registry &amp; uniqueness</a>
+<a href="irregularities.html">Irregularities</a>
+<a href="sources.html">Sources</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE63">Repo</a>
+</nav></div></header>
+<div class="wrap">
+<div class="panel"><h2>Pre-registered candidate hypotheses (written before the run)</h2><h2>H63 candidate hypotheses — specified BEFORE the run (2026-10-11, GEMSDOE63)</h2><p>Lane constraint: this session owns the **robust-selection lane** — the emission is</p><p>chosen and shaped by CVaR across plausible label worlds (Rockafellar &amp; Uryasev,</p><p>2000). The hypotheses below therefore differ in the *geological content fed into</p><p>the fixed CVaR engine*, not in the selection rule. Each names layers, physical</p><p>signature, why it should catch a catalogue-missing fault, and how it differs from</p><p>everything already implemented across the family repos.</p><h3>H63-A — Corroboration-weighted multi-physics posterior, posterior-ordered thinning (IMPLEMENT, top ranked)</h3><p>- **Layers:** four independently-scored prior surfaces already in the family</p><p>  registry: h19-5 (multiline corroborated geophysics, live 0.1922), h19-4</p><p>  (openness + thermal population blend, 0.1894), h16-1 (topo-geophys baseline</p><p>  ridges, 0.1855), ens12 (ensemble-of-12, 0.1563).</p><p>- **Physical signature:** *coincidence* — a pixel scores only where</p><p>  geophysically independent lineament detectors agree (edge/gradient ridges of</p><p>  magnetic, gravity, topographic families), i.e. a structure boundary, not a</p><p>  single-instrument artefact.</p><p>- **Why it should catch a missing fault:** the GEMSDOE32 d28 autopsy measured</p><p>  two defects in the live-0.26 emission: 1,732 *uncorroborated* speckle dots,</p><p>  and row-major thinning letting low-posterior endpoints suppress ridge crests.</p><p>  Independent-physics agreement hit-rates on hidden faults beat single-surface</p><p>  speckle; posterior-ordered greedy thinning guarantees crest dots are never</p><p>  suppressed by weaker neighbours.</p><p>- **Differs from prior art:** every prior dotted emission (d1.5, d2.8, d28,</p><p>  h27-4, h33-2-b2) thinned a single surface in row-major or lattice order;</p><p>  none used a corroboration-multiplied posterior with ordered thinning.</p><p>- **Expected DTI gain:** +0.005–0.015 vs the d28/h33 line on the lane</p><p>  instrument. **Cost: low** (all rasters pinned in the shared data manifest).</p><h3>H63-B — SGMC-corroborated augmentation (IMPLEMENT as candidate variant)</h3><p>- **Layers:** `derived_sgmc_faults_100m_u8.tif` (off-catalogue surrogate fault</p><p>  traces the group built earlier), gated by `P &gt; 0` evidence.</p><p>- **Physical signature:** proximity to surrogate-mapped but catalogue-absent</p><p>  structures — the population the private round-2 labels are argued to add.</p><p>- **Why:** the template&#x27;s SGMC prevalence instrument is calibrated to the</p><p>  hidden-truth population size (12,691 px); mass near surrogate traces should</p><p>  have higher hit probability *if* the surrogate reflects the private truth.</p><p>- **Differs from prior art:** GEMSDOE32 used SGMC only as a scoring surrogate,</p><p>  never as an emission prior gated by multi-physics evidence.</p><p>- **Expected DTI gain:** 0 to +0.01 (risk: surrogate = circular). **Cost: low.**</p><p>  Scored head-to-head with H63-A variants inside the same CVaR ensemble — the</p><p>  engine, not intuition, decides.</p><h3>H63-C — CVaR-optimal spacing/budget scan on the label-world ensemble (IMPLEMENT — the lane&#x27;s core statistic)</h3><p>- Not a new surface; the emission **policy** itself is the hypothesis: the</p><p>  spacing/budget that maximizes mean−tail DTI robustly across shifted/dropped/</p><p>  decoyed worlds differs from the spacing that maximizes the unperturbed</p><p>  holdout (catalogue offsets up to 400 m, Hermant et al., smear the 300 m</p><p>  kernel, favouring marginally different dot density than the nominal optimum).</p><p>- **Expected DTI gain:** +0.002–0.008 robustness. **Cost: low.**</p><h3>H63-D — Drainage/valley-chain structural-control field (NOT implemented this session)</h3><p>- GEMSDOE32&#x27;s h33 probe found this label-free field scored 0.09072 on the SGMC</p><p>  off-catalogue instrument vs 0.06059 incumbent, but the catalogue-hidden</p><p>  instrument disagreed in sign; promotion stalled on instrument disagreement.</p><p>- **Needs:** 1 m/10 m DEM derivatives (valley network extraction). The 419 MB</p><p>  19-band stack is mirror-pinned and obtainable, but valley extraction plus a</p><p>  new disagreement analysis does not fit the 3-experiment budget.</p><p>- **Verdict:** deferred; named with its blocker, not faked.</p><h3>H63-E — USGS FDSN seismicity-anchored swarm conduits (DATA-BLOCKED, named for completeness)</h3><p>- GEMSDOE32 measured that the supplied seismic band is spatially smooth at</p><p>  fault scale (autocorrelation 0.9986 at 1 km) and ships a fetcher for the raw</p><p>  FDSN catalogue; `earthquake.usgs.gov` is unreachable from this sandbox</p><p>  (same egress class as there), so obtainability is NOT claimed. Requires the</p><p>  official source: https://earthquake.usgs.gov/fdsnws/event/1/ (USGS FDSN).</p><p>- **Verdict:** data-blocked; not proposed as viable in this run.</p><h3>Ranking (expected DTI gain ÷ cost)</h3><p>1. **H63-A** — implement (posterior + ordered thinning + speckle filter)</p><p>2. **H63-C** — implement (it&#x27;s the lane&#x27;s mandated selection rule)</p><p>3. **H63-B** — implement as variant inside the same candidate scan</p><p>4. **H63-D** — deferred (instrument disagreement unresolved)</p><p>5. **H63-E** — data-blocked (official source identified, not reachable here)</p><h3>Validation gate</h3><p>Nothing here touches a submission slot unless the selected artifact beats the</p><p>family anchors (d28 0.2600, h33-2-b2 0.2778) on the session&#x27;s declared lane</p><p>instrument (CVaR J across the label-world ensemble), carries all validator</p><p>checks green, and passes the parallel-run uniqueness limits</p><p>(rank-corr ≤ 0.90, dot overlap &lt; 70% vs every registry raster).</p></div>
+<div class="panel"><h2>Leakage canary — each feature alone on the holdout (flag if AUC &gt; 0.90)</h2>
+<table><tr><th>surface</th><th class="num">solo AUC</th><th class="num">solo catalogue-hidden DTI</th><th>verdict</th></tr><tr><td>h19_5</td><td class='num'>0.4883</td><td class='num'>0.07008</td><td><span class=pill ok>trustable</span></td></tr><tr><td>h19_4</td><td class='num'>0.4880</td><td class='num'>0.07054</td><td><span class=pill ok>trustable</span></td></tr><tr><td>h16_1</td><td class='num'>0.4880</td><td class='num'>0.06938</td><td><span class=pill ok>trustable</span></td></tr><tr><td>ens12</td><td class='num'>0.5371</td><td class='num'>0.08820</td><td><span class=pill ok>trustable</span></td></tr></table>
+<p class="small">Sub-0.5 AUCs are expected and healthy: the holdout hides catalogue faults while the shipped
+posterior deliberately excludes the catalogue collar — the instruments measure exactly the drift the lane prices in.</p></div>
+<div class="panel"><h2>Candidate scan on the 160 label worlds (selection = prevalence-calibrated CVaR J_cal)</h2>
+<table><tr><th>candidate</th><th class="num">dots</th><th class="num">J_cal</th><th class="num">J_nat</th><th class="num">worst20 (nat)</th><th class="num">catHidden</th></tr><tr><td>thin-s3.17</td><td class='num'>55,591</td><td class='num'>0.03574</td><td class='num'>0.06130</td><td class='num'>0.05409</td><td class='num'>0.00942</td></tr><tr><td>sgmc-thin-s3.17</td><td class='num'>55,362</td><td class='num'>0.03568</td><td class='num'>0.06117</td><td class='num'>0.05405</td><td class='num'>0.00927</td></tr><tr><td>thin-s3.61</td><td class='num'>49,927</td><td class='num'>0.03547</td><td class='num'>0.05937</td><td class='num'>0.05264</td><td class='num'>0.00915</td></tr><tr><td>thin-s3.00</td><td class='num'>63,101</td><td class='num'>0.03541</td><td class='num'>0.06274</td><td class='num'>0.05526</td><td class='num'>0.00949</td></tr><tr><td>thin-s2.83</td><td class='num'>68,811</td><td class='num'>0.03515</td><td class='num'>0.06349</td><td class='num'>0.05575</td><td class='num'>0.00945</td></tr><tr><td>sgmc-thin-s2.83</td><td class='num'>68,522</td><td class='num'>0.03495</td><td class='num'>0.06307</td><td class='num'>0.05529</td><td class='num'>0.00928</td></tr><tr><td>thin-s2.24</td><td class='num'>74,570</td><td class='num'>0.03454</td><td class='num'>0.06354</td><td class='num'>0.05552</td><td class='num'>0.00968</td></tr><tr><td>sgmc-thin-s2.24</td><td class='num'>74,264</td><td class='num'>0.03444</td><td class='num'>0.06326</td><td class='num'>0.05519</td><td class='num'>0.00951</td></tr><tr><td>thin-s2.00</td><td class='num'>94,599</td><td class='num'>0.03214</td><td class='num'>0.06251</td><td class='num'>0.05443</td><td class='num'>0.00981</td></tr><tr><td>as-thin-s2.83</td><td class='num'>54,013</td><td class='num'>0.03084</td><td class='num'>0.05245</td><td class='num'>0.04555</td><td class='num'>0.00725</td></tr><tr><td>as-thin-s2.24</td><td class='num'>59,009</td><td class='num'>0.03053</td><td class='num'>0.05312</td><td class='num'>0.04594</td><td class='num'>0.00766</td></tr><tr><td>ne-thin-s2.83</td><td class='num'>41,347</td><td class='num'>0.02955</td><td class='num'>0.04876</td><td class='num'>0.04379</td><td class='num'>0.00747</td></tr><tr><td>ne-thin-s3.17</td><td class='num'>34,858</td><td class='num'>0.02946</td><td class='num'>0.04646</td><td class='num'>0.04175</td><td class='num'>0.00747</td></tr><tr><td>thin-s2.83-b38k</td><td class='num'>38,000</td><td class='num'>0.02820</td><td class='num'>0.04553</td><td class='num'>0.04056</td><td class='num'>0.00733</td></tr><tr><td>thin-s2.83-b30k</td><td class='num'>30,000</td><td class='num'>0.02598</td><td class='num'>0.03960</td><td class='num'>0.03561</td><td class='num'>0.00643</td></tr></table>
+<h3>Exact greedy CVaR prune (12 commits)</h3>
+<pre>[
+ {
+  &quot;commit&quot;: 0,
+  &quot;J_cal&quot;: 0.03574331376117154,
+  &quot;mean&quot;: 0.03819271739031275,
+  &quot;worst20&quot;: 0.03329391013203033,
+  &quot;dots&quot;: 55591,
+  &quot;removed&quot;: 0
+ },
+ {
+  &quot;commit&quot;: 1,
+  &quot;J_cal&quot;: 0.03574429247804514,
+  &quot;mean&quot;: 0.03819626311632245,
+  &quot;worst20&quot;: 0.03329232183976784,
+  &quot;dots&quot;: 55582,
+  &quot;removed&quot;: 25
+ },
+ {
+  &quot;commit&quot;: 2,
+  &quot;J_cal&quot;: 0.03574927483625877,
+  &quot;mean&quot;: 0.03820288297035898,
+  &quot;worst20&quot;: 0.033295666702158555,
+  &quot;dots&quot;: 55556,
+  &quot;removed&quot;: 100
+ },
+ {
+  &quot;commit&quot;: 3,
+  &quot;J_cal&quot;: 0.03575372285566998,
+  &quot;mean&quot;: 0.03820693114810146,
+  &quot;worst20&quot;: 0.033300514563238494,
+  &quot;dots&quot;: 55549,
+  &quot;removed&quot;: 25
+ },
+ {
+  &quot;commit&quot;: 4,
+  &quot;J_cal&quot;: 0.03576820120390004,
+  &quot;mean&quot;: 0.03821447842982506,
+  &quot;worst20&quot;: 0.033321923977975024,
+  &quot;dots&quot;: 55472,
+  &quot;removed&quot;: 250
+ },
+ {
+  &quot;commit&quot;: 5,
+  &quot;J_cal&quot;: 0.03579173064630754,
+  &quot;mean&quot;: 0.03822966382981754,
+  &quot;worst20&quot;: 0.033353797462797555,
+  &quot;dots&quot;: 55402,
+  &quot;removed&quot;: 250
+ },
+ {
+  &quot;commit&quot;: 6,
+  &quot;J_cal&quot;: 0.035848662121347595,
+  &quot;mean&quot;: 0.03830220530155412,
+  &quot;worst20&quot;: 0.03339511894114107,
+  &quot;dots&quot;: 55124,
+  &quot;removed&quot;: 1000
+ },
+ {
+  &quot;commit&quot;: 7,
+  &quot;J_cal&quot;: 0.03592333330652375,
+  &quot;mean&quot;: 0.03837387423524566,
+  &quot;worst20&quot;: 0.03347279237780185,
+  &quot;dots&quot;: 54903,
+  &quot;removed&quot;: 1000
+ },
+ {
+  &quot;commit&quot;: 8,
+  &quot;J_cal&quot;: 0.03593367300451731,
+  &quot;mean&quot;: 0.038384765828900866,
+  &quot;worst20&quot;: 0.03348258018013375,
+  &quot;dots&quot;: 54883,
+  &quot;removed&quot;: 250
+ },
+ {
+  &quot;commit&quot;: 9,
+  &quot;J_cal&quot;: 0.03593754665970897,
+  &quot;mean&quot;: 0.03838775281573047,
+  &quot;worst20&quot;: 0.03348734050368746,
+  &quot;dots&quot;: 54875,
+  &quot;removed&quot;: 25
+ },
+ {
+  &quot;commit&quot;: 10,
+  &quot;J_cal&quot;: 0.035938151653657484,
+  &quot;mean&quot;: 0.03838836745509171,
+  &quot;worst20&quot;: 0.03348793585222326,
+  &quot;dots&quot;: 54874,
+  &quot;removed&quot;: 1
+ },
+ {
+  &quot;commit&quot;: 11,
+  &quot;J_cal&quot;: 0.03594059005810114,
+  &quot;mean&quot;: 0.03839207241316965,
+  &quot;worst20&quot;: 0.033489107703032636,
+  &quot;dots&quot;: 54867,
+  &quot;removed&quot;: 25
+ },
+ {
+  &quot;commit&quot;: 12,
+  &quot;J_cal&quot;: 0.035942406750385514,
+  &quot;mean&quot;: 0.0383939182496672,
+  &quot;worst20&quot;: 0.03349089525110383,
+  &quot;dots&quot;: 54864,
+  &quot;removed&quot;: 500
+ }
+]</pre>
+<h3>World generator statistics</h3>
+<pre>[
+ {
+  &quot;cell&quot;: &quot;draw20_fold0&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.20579557175968594,
+  &quot;mean_decoys&quot;: 121.0,
+  &quot;mean_truth_px&quot;: 3075.5
+ },
+ {
+  &quot;cell&quot;: &quot;draw20_fold1&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.2057220104800574,
+  &quot;mean_decoys&quot;: 147.9,
+  &quot;mean_truth_px&quot;: 4701.5
+ },
+ {
+  &quot;cell&quot;: &quot;draw20_fold2&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.1947813700799278,
+  &quot;mean_decoys&quot;: 214.95,
+  &quot;mean_truth_px&quot;: 6585.35
+ },
+ {
+  &quot;cell&quot;: &quot;draw20_fold3&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.20694843682764247,
+  &quot;mean_decoys&quot;: 147.2,
+  &quot;mean_truth_px&quot;: 5528.7
+ },
+ {
+  &quot;cell&quot;: &quot;draw21_fold0&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.20519964113366887,
+  &quot;mean_decoys&quot;: 148.6,
+  &quot;mean_truth_px&quot;: 3463.1
+ },
+ {
+  &quot;cell&quot;: &quot;draw21_fold1&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.20340746576588836,
+  &quot;mean_decoys&quot;: 167.15,
+  &quot;mean_truth_px&quot;: 5171.0
+ },
+ {
+  &quot;cell&quot;: &quot;draw21_fold2&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.20160427769686792,
+  &quot;mean_decoys&quot;: 157.4,
+  &quot;mean_truth_px&quot;: 5573.6
+ },
+ {
+  &quot;cell&quot;: &quot;draw21_fold3&quot;,
+  &quot;n_worlds&quot;: 20,
+  &quot;mean_drop&quot;: 0.20585350153144547,
+  &quot;mean_decoys&quot;: 160.7,
+  &quot;mean_truth_px&quot;: 5662.05
+ }
+]</pre></div>
+</div></body></html>

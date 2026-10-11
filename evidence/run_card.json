@@ -1,0 +1,83 @@
+{
+ "run_ts_utc": "20261011T220606Z",
+ "hypothesis": "H63-A/B/C: a corroboration-weighted multi-physics posterior, emitted by posterior-ordered thinning with spacing/budget chosen to maximize mean-DTI penalized by the worst-tail average (CVaR, Rockafellar-Uryasev 2000) across label worlds shifted +/-4px, dropped 10-30%, decoyed at observed density; then exact greedy CVaR pruning.",
+ "mechanism": "Independent-physics coincidence localizes unmapped structures; CVaR selection hedges catalogue drift (known-fault set can change in round 2, rules 3.6.2); pruning removes dots whose cost alpha=0.2 exceeds their robust credit.",
+ "non_fault_mimic": "Intersections of independent geophysical edges that are NOT faults: e.g. coincident lithologic/magnetic contacts plus terrace edges from younger sediments can mimic a fault lineament; decoy worlds price this risk into the selection.",
+ "holdout": {
+  "instrument": "label-world ensemble on the hide-and-recover holdout (8 cells: draws 20/21 x 4 quadrants, 20 worlds/cell = 160 cell-worlds; exact pooled DTI alpha=0.2 beta=0.8 R=300m); truth population prevalence-calibrated to the receipt-estimated hidden size G=12691px (GEMSDOE32 instrument calibration evidence)",
+  "withheld_positive_px_total": 22232,
+  "J_cvar_calibrated": 0.03594240712500944,
+  "mean_dti_calibrated": 0.03839391863951728,
+  "ci95_calibrated": 0.0005558146045329064,
+  "worst20_calibrated": 0.033490895610501614,
+  "J_cvar_natural_prevalence": 0.06142927388671392,
+  "mean_dti_natural": 0.06861482116681297,
+  "baseline_catalogue_hidden_mean_unperturbed": 0.009485736877107956,
+  "sgmc_prevalence_calibrated_dti": 0.07833722390570956,
+  "label": "HOLDOUT-DTI (this engine v0.1.0; CIs are Monte-Carlo/t across cell-worlds)"
+ },
+ "anchors_on_same_instrument": {
+  "d28_repro_0.2600": {
+   "live": 0.26,
+   "J_calibrated": 0.040903281366544114,
+   "J_natural": 0.06967200321533776,
+   "mean_dti_natural": 0.07612485292952562,
+   "catHidden": 0.09832378952859736,
+   "sgmc_cal": 0.06059248997356903
+  },
+  "h33_2_b2_0.2778": {
+   "live": 0.2778,
+   "J_calibrated": 0.025420482539575927,
+   "J_natural": 0.04088730270297082,
+   "mean_dti_natural": 0.045330439392592715,
+   "catHidden": 0.004600104101844683,
+   "sgmc_cal": 0.06412093764176459
+  },
+  "h32d_submod_46090": {
+   "live": null,
+   "J_calibrated": 0.0424339282920025,
+   "J_natural": 0.07276334783164884,
+   "mean_dti_natural": 0.07891796486133075,
+   "catHidden": 0.10122068456496827,
+   "sgmc_cal": 0.061294720121546874
+  }
+ },
+ "instrument_vs_live_spearman": -0.04761904761904763,
+ "correlation_overlap_vs_registry": {
+  "max_abs_spearman": 0.34617628485782714,
+  "max_dot_overlap_3px": 0.6320720326625838,
+  "verdict": "UNIQUE",
+  "breaches": [],
+  "n_registry_rasters_checked": 36,
+  "sha256_collisions": [],
+  "controls_flagged": [
+   "inputs::ens12_7f00890a.tif",
+   "inputs::r13_lattice_s5_v2_nan.tif"
+  ]
+ },
+ "chosen_candidate": "thin-s3.17",
+ "prune_commits": 12,
+ "raster": {
+  "filename": "gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+  "sha256": "46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8",
+  "size_bytes": 330275,
+  "dots": 54864,
+  "catalogue_collision_px": 0,
+  "validator": {
+   "single_band": true,
+   "dtype_float32": true,
+   "dimensions_3730x3292": true,
+   "crs_epsg_32611": true,
+   "full_grid_all_finite": true,
+   "range_0_1_all_cells": true,
+   "no_nodata_tag": true
+  },
+  "all_checks_passed": true
+ },
+ "submission_name": "gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4",
+ "submission_note_140c": "GEMSDOE63 CVaR-LW | thin-s3.17; 54864 dots; CVaR over 160 label worlds (shift4/drop10-30/decoys), prevalence-cal J=0.0359; SGMC-cal 0.0783",
+ "ok_to_download_and_submit": true,
+ "verdict": "promote",
+ "negative_is_deliverable": true,
+ "elapsed_min": 4.4
+}

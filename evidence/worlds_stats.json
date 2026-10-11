@@ -1,0 +1,58 @@
+[
+ {
+  "cell": "draw20_fold0",
+  "n_worlds": 20,
+  "mean_drop": 0.20579557175968594,
+  "mean_decoys": 121.0,
+  "mean_truth_px": 3075.5
+ },
+ {
+  "cell": "draw20_fold1",
+  "n_worlds": 20,
+  "mean_drop": 0.2057220104800574,
+  "mean_decoys": 147.9,
+  "mean_truth_px": 4701.5
+ },
+ {
+  "cell": "draw20_fold2",
+  "n_worlds": 20,
+  "mean_drop": 0.1947813700799278,
+  "mean_decoys": 214.95,
+  "mean_truth_px": 6585.35
+ },
+ {
+  "cell": "draw20_fold3",
+  "n_worlds": 20,
+  "mean_drop": 0.20694843682764247,
+  "mean_decoys": 147.2,
+  "mean_truth_px": 5528.7
+ },
+ {
+  "cell": "draw21_fold0",
+  "n_worlds": 20,
+  "mean_drop": 0.20519964113366887,
+  "mean_decoys": 148.6,
+  "mean_truth_px": 3463.1
+ },
+ {
+  "cell": "draw21_fold1",
+  "n_worlds": 20,
+  "mean_drop": 0.20340746576588836,
+  "mean_decoys": 167.15,
+  "mean_truth_px": 5171.0
+ },
+ {
+  "cell": "draw21_fold2",
+  "n_worlds": 20,
+  "mean_drop": 0.20160427769686792,
+  "mean_decoys": 157.4,
+  "mean_truth_px": 5573.6
+ },
+ {
+  "cell": "draw21_fold3",
+  "n_worlds": 20,
+  "mean_drop": 0.20585350153144547,
+  "mean_decoys": 160.7,
+  "mean_truth_px": 5662.05
+ }
+]

@@ -1,0 +1,674 @@
+{
+ "final": {
+  "my_positive_pixels": 54864,
+  "per_registry": {
+   "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-bayesopt-dilation-scarp-d28-20261004-nan.tif": {
+    "spearman_rho": 0.003662387736827732,
+    "dot_overlap_3px": 0.2512029746281715,
+    "registry_positive_px": 45000,
+    "control": false
+   },
+   "gems32-bayesopt-dilation-scarp-d28-20261004-zeros.tif": {
+    "spearman_rho": 0.003662387736827732,
+    "dot_overlap_3px": 0.2512029746281715,
+    "registry_positive_px": 45000,
+    "control": false
+   },
+   "gems32-lazygreedy-maxcov-44090-supconfined-zeros.tif": {
+    "spearman_rho": 0.2554175882672488,
+    "dot_overlap_3px": 0.5642133275007291,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S1-ANCHOR-identical-to-live-02600.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S2-SCALE-lambda-0.5.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S3-NULLADD-2000px.tif": {
+    "spearman_rho": 0.2833961358058221,
+    "dot_overlap_3px": 0.5713947214931467,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-nan.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-zeros.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-nan.tif": {
+    "spearman_rho": 0.2954455946761576,
+    "dot_overlap_3px": 0.6050051035287256,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-zeros.tif": {
+    "spearman_rho": 0.2954455946761576,
+    "dot_overlap_3px": 0.6050051035287256,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32b-transtensional-swarm-45890-20261004T183200Z-27b7c9e6-nan.tif": {
+    "spearman_rho": 0.29485774008953014,
+    "dot_overlap_3px": 0.5874526100904054,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32b-transtensional-swarm-45890-20261004T183200Z-27b7c9e6-zeros.tif": {
+    "spearman_rho": 0.29485774008953014,
+    "dot_overlap_3px": 0.5874526100904054,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-nan.tif": {
+    "spearman_rho": 0.2917382483742132,
+    "dot_overlap_3px": 0.5889654418197725,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-zeros.tif": {
+    "spearman_rho": 0.2917382483742132,
+    "dot_overlap_3px": 0.5889654418197725,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32d-equalbudget-44090-20261004T183200Z-350cdc3f-nan.tif": {
+    "spearman_rho": 0.2932317466063357,
+    "dot_overlap_3px": 0.5787401574803149,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32d-equalbudget-44090-20261004T183200Z-350cdc3f-zeros.tif": {
+    "spearman_rho": 0.2932317466063357,
+    "dot_overlap_3px": 0.5787401574803149,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-nan.tif": {
+    "spearman_rho": 0.2948632041640914,
+    "dot_overlap_3px": 0.600466608340624,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif": {
+    "spearman_rho": 0.2948632041640914,
+    "dot_overlap_3px": 0.600466608340624,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif": {
+    "spearman_rho": 0.31524742205450734,
+    "dot_overlap_3px": 0.5503973461650628,
+    "registry_positive_px": 37654,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+    "spearman_rho": 0.31524742205450734,
+    "dot_overlap_3px": 0.5503973461650628,
+    "registry_positive_px": 37654,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-nan.tif": {
+    "spearman_rho": 0.31195623309106946,
+    "dot_overlap_3px": 0.5520195392242636,
+    "registry_positive_px": 38554,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-zeros.tif": {
+    "spearman_rho": 0.31195623309106946,
+    "dot_overlap_3px": 0.5520195392242636,
+    "registry_positive_px": 38554,
+    "control": false
+   },
+   "inputs::d15_scored_nan.tif": {
+    "spearman_rho": 0.3065967878661749,
+    "dot_overlap_3px": 0.581291921843103,
+    "registry_positive_px": 60069,
+    "control": false
+   },
+   "inputs::ens12_7f00890a.tif": {
+    "spearman_rho": 0.29898859499524016,
+    "dot_overlap_3px": 0.7509842519685039,
+    "registry_positive_px": 172974,
+    "control": true
+   },
+   "inputs::r13_lattice_s5_v2_nan.tif": {
+    "spearman_rho": 0.0004460671629874175,
+    "dot_overlap_3px": 0.9992344706911636,
+    "registry_positive_px": 206895,
+    "control": true
+   },
+   "inputs::h16_1_nan.tif": {
+    "spearman_rho": 0.33932263969726134,
+    "dot_overlap_3px": 0.6320720326625838,
+    "registry_positive_px": 123939,
+    "control": false
+   },
+   "inputs::h19_4_nan.tif": {
+    "spearman_rho": 0.34617628485782714,
+    "dot_overlap_3px": 0.6150663458734325,
+    "registry_positive_px": 123779,
+    "control": false
+   },
+   "inputs::h19_5_nan.tif": {
+    "spearman_rho": 0.3278853226504438,
+    "dot_overlap_3px": 0.5959827938174395,
+    "registry_positive_px": 121131,
+    "control": false
+   }
+  },
+  "max_abs_spearman": 0.34617628485782714,
+  "max_dot_overlap_3px": 0.6320720326625838,
+  "limits": {
+   "max_rank_corr": 0.9,
+   "max_dot_overlap_3px": 0.7
+  },
+  "verdict": "UNIQUE",
+  "breaches": [],
+  "flagged_controls": {
+   "inputs::ens12_7f00890a.tif": {
+    "spearman_rho": 0.29898859499524016,
+    "dot_overlap_3px": 0.7509842519685039,
+    "registry_positive_px": 172974,
+    "control": true
+   },
+   "inputs::r13_lattice_s5_v2_nan.tif": {
+    "spearman_rho": 0.0004460671629874175,
+    "dot_overlap_3px": 0.9992344706911636,
+    "registry_positive_px": 206895,
+    "control": true
+   }
+  },
+  "control_note": "Blanket controls (r13 blind lattice, ens12 union blanket) breach the 70% limit for EVERY prior family artifact incl. the 0.26/0.2778 organizers-confirmed pair (IR-63-REG-01); reported transparently, excluded from the lane gate."
+ },
+ "posterior_surface": {
+  "my_positive_pixels": 262336,
+  "per_registry": {
+   "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif": {
+    "spearman_rho": 0.3477973023862785,
+    "dot_overlap_3px": 0.6868329165650159,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+    "spearman_rho": 0.3477973023862785,
+    "dot_overlap_3px": 0.6868329165650159,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-bayesopt-dilation-scarp-d28-20261004-nan.tif": {
+    "spearman_rho": 0.007591177817417546,
+    "dot_overlap_3px": 0.2603874420590388,
+    "registry_positive_px": 45000,
+    "control": false
+   },
+   "gems32-bayesopt-dilation-scarp-d28-20261004-zeros.tif": {
+    "spearman_rho": 0.007591177817417546,
+    "dot_overlap_3px": 0.2603874420590388,
+    "registry_positive_px": 45000,
+    "control": false
+   },
+   "gems32-lazygreedy-maxcov-44090-supconfined-zeros.tif": {
+    "spearman_rho": 0.34958389800978973,
+    "dot_overlap_3px": 0.6773298365454989,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S1-ANCHOR-identical-to-live-02600.tif": {
+    "spearman_rho": 0.3477973023862785,
+    "dot_overlap_3px": 0.6868329165650159,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S2-SCALE-lambda-0.5.tif": {
+    "spearman_rho": 0.3477973023862785,
+    "dot_overlap_3px": 0.6868329165650159,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S3-NULLADD-2000px.tif": {
+    "spearman_rho": 0.33930079638399674,
+    "dot_overlap_3px": 0.6871721761405221,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-nan.tif": {
+    "spearman_rho": 0.3477973023862785,
+    "dot_overlap_3px": 0.6868329165650159,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-zeros.tif": {
+    "spearman_rho": 0.3477973023862785,
+    "dot_overlap_3px": 0.6868329165650159,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-nan.tif": {
+    "spearman_rho": 0.3560071244819239,
+    "dot_overlap_3px": 0.7168631068553306,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-zeros.tif": {
+    "spearman_rho": 0.3560071244819239,
+    "dot_overlap_3px": 0.7168631068553306,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32b-transtensional-swarm-45890-20261004T183200Z-27b7c9e6-nan.tif": {
+    "spearman_rho": 0.3485928400039793,
+    "dot_overlap_3px": 0.6989357160282996,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32b-transtensional-swarm-45890-20261004T183200Z-27b7c9e6-zeros.tif": {
+    "spearman_rho": 0.3485928400039793,
+    "dot_overlap_3px": 0.6989357160282996,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-nan.tif": {
+    "spearman_rho": 0.34902109966450295,
+    "dot_overlap_3px": 0.7006167662844596,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-zeros.tif": {
+    "spearman_rho": 0.34902109966450295,
+    "dot_overlap_3px": 0.7006167662844596,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32d-equalbudget-44090-20261004T183200Z-350cdc3f-nan.tif": {
+    "spearman_rho": 0.34724972318438224,
+    "dot_overlap_3px": 0.6935228104415712,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32d-equalbudget-44090-20261004T183200Z-350cdc3f-zeros.tif": {
+    "spearman_rho": 0.34724972318438224,
+    "dot_overlap_3px": 0.6935228104415712,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-nan.tif": {
+    "spearman_rho": 0.354645928694609,
+    "dot_overlap_3px": 0.7121363442303,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif": {
+    "spearman_rho": 0.354645928694609,
+    "dot_overlap_3px": 0.7121363442303,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif": {
+    "spearman_rho": 0.37949809907523974,
+    "dot_overlap_3px": 0.6754772505489144,
+    "registry_positive_px": 37654,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+    "spearman_rho": 0.37949809907523974,
+    "dot_overlap_3px": 0.6754772505489144,
+    "registry_positive_px": 37654,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-nan.tif": {
+    "spearman_rho": 0.37508676575825,
+    "dot_overlap_3px": 0.6764035435472067,
+    "registry_positive_px": 38554,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-zeros.tif": {
+    "spearman_rho": 0.37508676575825,
+    "dot_overlap_3px": 0.6764035435472067,
+    "registry_positive_px": 38554,
+    "control": false
+   },
+   "inputs::d15_scored_nan.tif": {
+    "spearman_rho": 0.40661023607606145,
+    "dot_overlap_3px": 0.6982038302024884,
+    "registry_positive_px": 60069,
+    "control": false
+   },
+   "inputs::ens12_7f00890a.tif": {
+    "spearman_rho": 0.6602407077783902,
+    "dot_overlap_3px": 0.8264096425957551,
+    "registry_positive_px": 172974,
+    "control": true
+   },
+   "inputs::r13_lattice_s5_v2_nan.tif": {
+    "spearman_rho": -0.00021725609088992052,
+    "dot_overlap_3px": 0.9995883142229812,
+    "registry_positive_px": 206895,
+    "control": true
+   },
+   "inputs::h16_1_nan.tif": {
+    "spearman_rho": 0.5898387441597013,
+    "dot_overlap_3px": 0.734683764332764,
+    "registry_positive_px": 123939,
+    "control": false
+   },
+   "inputs::h19_4_nan.tif": {
+    "spearman_rho": 0.5937372282996843,
+    "dot_overlap_3px": 0.7269227250548914,
+    "registry_positive_px": 123779,
+    "control": false
+   },
+   "inputs::h19_5_nan.tif": {
+    "spearman_rho": 0.5837837561273733,
+    "dot_overlap_3px": 0.71345907538424,
+    "registry_positive_px": 121131,
+    "control": false
+   }
+  },
+  "max_abs_spearman": 0.5937372282996843,
+  "max_dot_overlap_3px": 0.734683764332764,
+  "limits": {
+   "max_rank_corr": 0.9,
+   "max_dot_overlap_3px": 0.7
+  },
+  "verdict": "DUPLICATE",
+  "breaches": [
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-nan.tif",
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-zeros.tif",
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-nan.tif",
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-zeros.tif",
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-nan.tif",
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif",
+   "inputs::h16_1_nan.tif",
+   "inputs::h19_4_nan.tif",
+   "inputs::h19_5_nan.tif"
+  ],
+  "flagged_controls": {
+   "inputs::ens12_7f00890a.tif": {
+    "spearman_rho": 0.6602407077783902,
+    "dot_overlap_3px": 0.8264096425957551,
+    "registry_positive_px": 172974,
+    "control": true
+   },
+   "inputs::r13_lattice_s5_v2_nan.tif": {
+    "spearman_rho": -0.00021725609088992052,
+    "dot_overlap_3px": 0.9995883142229812,
+    "registry_positive_px": 206895,
+    "control": true
+   }
+  },
+  "control_note": "Blanket controls (r13 blind lattice, ens12 union blanket) breach the 70% limit for EVERY prior family artifact incl. the 0.26/0.2778 organizers-confirmed pair (IR-63-REG-01); reported transparently, excluded from the lane gate."
+ },
+ "final_extended": {
+  "my_positive_pixels": 54864,
+  "per_registry": {
+   "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems28-h27-4-r1-solo-d2-8-allfinite.tif": {
+    "spearman_rho": 0.30460010015763855,
+    "dot_overlap_3px": 0.5624270924467775,
+    "registry_positive_px": 40199,
+    "control": false
+   },
+   "gems28-h36-1-rung30-r1-allfinite.tif": {
+    "spearman_rho": 0.3149768958452788,
+    "dot_overlap_3px": 0.5580708661417323,
+    "registry_positive_px": 37660,
+    "control": false
+   },
+   "gems28-h38-1-hf-euler-r30-r1-allfinite.tif": {
+    "spearman_rho": 0.3141915132435864,
+    "dot_overlap_3px": 0.5590551181102362,
+    "registry_positive_px": 37860,
+    "control": false
+   },
+   "gems31-h27-4-solo-d28-allfinite.tif": {
+    "spearman_rho": 0.30460010015763855,
+    "dot_overlap_3px": 0.5624270924467775,
+    "registry_positive_px": 40199,
+    "control": false
+   },
+   "gems32-bayesopt-dilation-scarp-d28-20261004-nan.tif": {
+    "spearman_rho": 0.003662387736827732,
+    "dot_overlap_3px": 0.2512029746281715,
+    "registry_positive_px": 45000,
+    "control": false
+   },
+   "gems32-bayesopt-dilation-scarp-d28-20261004-zeros.tif": {
+    "spearman_rho": 0.003662387736827732,
+    "dot_overlap_3px": 0.2512029746281715,
+    "registry_positive_px": 45000,
+    "control": false
+   },
+   "gems32-lazygreedy-maxcov-44090-supconfined-zeros.tif": {
+    "spearman_rho": 0.2554175882672488,
+    "dot_overlap_3px": 0.5642133275007291,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S1-ANCHOR-identical-to-live-02600.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S2-SCALE-lambda-0.5.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gems32-probe-S3-NULLADD-2000px.tif": {
+    "spearman_rho": 0.2833961358058221,
+    "dot_overlap_3px": 0.5713947214931467,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-nan.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-d28-ref02600-repro-44090-20261004T183200Z-426073b6-zeros.tif": {
+    "spearman_rho": 0.2901113600332949,
+    "dot_overlap_3px": 0.570939049285506,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-nan.tif": {
+    "spearman_rho": 0.2954455946761576,
+    "dot_overlap_3px": 0.6050051035287256,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32a-dip-projected-step-46090-20261004T183200Z-838fcd84-zeros.tif": {
+    "spearman_rho": 0.2954455946761576,
+    "dot_overlap_3px": 0.6050051035287256,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32b-transtensional-swarm-45890-20261004T183200Z-27b7c9e6-nan.tif": {
+    "spearman_rho": 0.29485774008953014,
+    "dot_overlap_3px": 0.5874526100904054,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32b-transtensional-swarm-45890-20261004T183200Z-27b7c9e6-zeros.tif": {
+    "spearman_rho": 0.29485774008953014,
+    "dot_overlap_3px": 0.5874526100904054,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-nan.tif": {
+    "spearman_rho": 0.2917382483742132,
+    "dot_overlap_3px": 0.5889654418197725,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32c-mt-claycap-breach-45890-20261004T183200Z-a5963d0a-zeros.tif": {
+    "spearman_rho": 0.2917382483742132,
+    "dot_overlap_3px": 0.5889654418197725,
+    "registry_positive_px": 45890,
+    "control": false
+   },
+   "gemsdoe32-h32d-equalbudget-44090-20261004T183200Z-350cdc3f-nan.tif": {
+    "spearman_rho": 0.2932317466063357,
+    "dot_overlap_3px": 0.5787401574803149,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32d-equalbudget-44090-20261004T183200Z-350cdc3f-zeros.tif": {
+    "spearman_rho": 0.2932317466063357,
+    "dot_overlap_3px": 0.5787401574803149,
+    "registry_positive_px": 44090,
+    "control": false
+   },
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-nan.tif": {
+    "spearman_rho": 0.2948632041640914,
+    "dot_overlap_3px": 0.600466608340624,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h32d-submodular-multipysics-46090-20261004T183200Z-4de30601-zeros.tif": {
+    "spearman_rho": 0.2948632041640914,
+    "dot_overlap_3px": 0.600466608340624,
+    "registry_positive_px": 46090,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif": {
+    "spearman_rho": 0.31524742205450734,
+    "dot_overlap_3px": 0.5503973461650628,
+    "registry_positive_px": 37654,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+    "spearman_rho": 0.31524742205450734,
+    "dot_overlap_3px": 0.5503973461650628,
+    "registry_positive_px": 37654,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-nan.tif": {
+    "spearman_rho": 0.31195623309106946,
+    "dot_overlap_3px": 0.5520195392242636,
+    "registry_positive_px": 38554,
+    "control": false
+   },
+   "gemsdoe32-h33-h33-2b2-plus-h33-1-20261004T220000Z-31588dc7-zeros.tif": {
+    "spearman_rho": 0.31195623309106946,
+    "dot_overlap_3px": 0.5520195392242636,
+    "registry_positive_px": 38554,
+    "control": false
+   },
+   "gemsdoe33-h33d-stepover-r30.tif": {
+    "spearman_rho": 0.30809540962682536,
+    "dot_overlap_3px": 0.5670931758530183,
+    "registry_positive_px": 41865,
+    "control": false
+   },
+   "gemsdoe36-anderson-pinn-38854-zeros.tif": {
+    "spearman_rho": 0.3106453133667871,
+    "dot_overlap_3px": 0.5549540682414699,
+    "registry_positive_px": 38854,
+    "control": false
+   },
+   "inputs::d15_scored_nan.tif": {
+    "spearman_rho": 0.3065967878661749,
+    "dot_overlap_3px": 0.581291921843103,
+    "registry_positive_px": 60069,
+    "control": false
+   },
+   "inputs::ens12_7f00890a.tif": {
+    "spearman_rho": 0.29898859499524016,
+    "dot_overlap_3px": 0.7509842519685039,
+    "registry_positive_px": 172974,
+    "control": true
+   },
+   "inputs::r13_lattice_s5_v2_nan.tif": {
+    "spearman_rho": 0.0004460671629874175,
+    "dot_overlap_3px": 0.9992344706911636,
+    "registry_positive_px": 206895,
+    "control": true
+   },
+   "inputs::h16_1_nan.tif": {
+    "spearman_rho": 0.33932263969726134,
+    "dot_overlap_3px": 0.6320720326625838,
+    "registry_positive_px": 123939,
+    "control": false
+   },
+   "inputs::h19_4_nan.tif": {
+    "spearman_rho": 0.34617628485782714,
+    "dot_overlap_3px": 0.6150663458734325,
+    "registry_positive_px": 123779,
+    "control": false
+   },
+   "inputs::h19_5_nan.tif": {
+    "spearman_rho": 0.3278853226504438,
+    "dot_overlap_3px": 0.5959827938174395,
+    "registry_positive_px": 121131,
+    "control": false
+   }
+  },
+  "max_abs_spearman": 0.34617628485782714,
+  "max_dot_overlap_3px": 0.6320720326625838,
+  "limits": {
+   "max_rank_corr": 0.9,
+   "max_dot_overlap_3px": 0.7
+  },
+  "verdict": "UNIQUE",
+  "breaches": [],
+  "flagged_controls": {
+   "inputs::ens12_7f00890a.tif": {
+    "spearman_rho": 0.29898859499524016,
+    "dot_overlap_3px": 0.7509842519685039,
+    "registry_positive_px": 172974,
+    "control": true
+   },
+   "inputs::r13_lattice_s5_v2_nan.tif": {
+    "spearman_rho": 0.0004460671629874175,
+    "dot_overlap_3px": 0.9992344706911636,
+    "registry_positive_px": 206895,
+    "control": true
+   }
+  },
+  "control_note": "Blanket controls (r13 blind lattice, ens12 union blanket) breach the 70% limit for EVERY prior family artifact incl. the 0.26/0.2778 organizers-confirmed pair (IR-63-REG-01); reported transparently, excluded from the lane gate.",
+  "sha256_collisions": [],
+  "n_registry_rasters_checked": 36
+ }
+}
