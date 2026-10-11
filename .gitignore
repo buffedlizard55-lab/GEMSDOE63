@@ -5,3 +5,7 @@ __pycache__/
 data/registry_rasters/
 data/external/
 nohup.out
+
+# downloaded registry scan inputs (restorable via scripts/fetch_inputs.sh)
+data/registry_rasters/
+registry_rasters/
