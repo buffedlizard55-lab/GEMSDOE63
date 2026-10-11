@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMSDOE63 — Executive summary: can I download and submit this TIF?</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1d1d1f}
+  h1{font-size:1.6rem} h2{font-size:1.2rem;margin-top:2rem;border-bottom:1px solid #ddd;padding-bottom:.2rem}
+  .box{border-radius:10px;padding:1rem 1.2rem;margin:1rem 0}
+  .ok{background:#e8f6ec;border:2px solid #1e7b3a} .no{background:#fdecea;border:2px solid #b3261e}
+  .warn{background:#fff7e0;border:2px solid #b07a00}
+  code{background:#f2f2f2;padding:.1rem .3rem;border-radius:4px;word-break:break-all}
+  table{border-collapse:collapse;width:100%;font-size:.95rem} td,th{border:1px solid #ddd;padding:.35rem .5rem;text-align:left;vertical-align:top}
+  .tag{font-size:.8rem;font-weight:600;padding:.05rem .4rem;border-radius:4px;background:#eee}
+</style>
+</head>
+<body>
+
+<h1>GEMSDOE63 — Executive summary</h1>
+<p>Read this box before doing anything else.</p>
+
+<div class="box no">
+  <h2 style="border:none;margin-top:0">⛔ DOWNLOAD: NOT CLEARED (on hold)</h2>
+  <p><strong>Do not download or submit the generated TIF yet.</strong> Our uniqueness check returned <strong>DUPLICATE</strong>. The protocol says to stop, so the file is held and is not published here.</p>
+  <p>The flag comes from a dot-overlap test that is saturated by one dense registry raster (5.1 million of 5.2 million cells are "dots"). It may be an artefact, but we have not verified that, and the file cannot be called unique until it is resolved (IR-17). Details: <code>registry/uniqueness_check.json</code>.</p>
+</div>
+
+<div class="box no">
+  <h2 style="border:none;margin-top:0">⛔ SUBMIT: NOT ENDORSED</h2>
+  <p><strong>Not endorsed as a leading candidate. Do not submit it as your final or best entry.</strong></p>
+  <p>Our holdout score is about 1.2× random dots (HOLDOUT-DTI 0.0258 vs 0.0208 for random dots of the same count; 95% CI 0.016–0.036). Verdict: <strong>NEGATIVE</strong>. No organiser score exists for it.</p>
+</div>
+
+<div class="box warn">
+  <h2 style="border:none;margin-top:0">⚠ Conflicting status on the site (PR #1, on main)</h2>
+  <p>An earlier merge (PR #1) published a different file, <code>docs/downloads/gems63-cvar-robust-greedy-pruned-10290dots-…-zeros.tif</code>, with the label "OK TO DOWNLOAD &amp; SUBMIT". <strong>This page's status governs.</strong> That file is not endorsed here. Its holdout (0.01013) uses a different holdout from ours, so the two are not directly comparable. It also writes zeros, not NaN, outside the footprint (IR-06). Details: README §10 and <code>registry/irregularities.md</code> (IR-19, IR-20).</p>
+</div>
+
+<div class="box warn">
+  <h2 style="border:none;margin-top:0">⚠ Rules to check before any submission</h2>
+  <ul>
+    <li>Three submissions per week; one final submission (rules).</li>
+    <li>The rules require disclosure of generative-AI use (rules §3.2). This work was drafted with AI-agent assistance; see the disclosure in <code>README.md</code> and IR-14.</li>
+    <li>Use your own work. A copied submission is allowed only for study and education (brief).</li>
+    <li>The inputs come from third-party GitHub mirrors, not DrivenData (IR-04). Check the competition rules before reusing them.</li>
+  </ul>
+</div>
+
+<h2>How to submit (only once a file is cleared)</h2>
+<ol>
+  <li>Download the cleared TIF (none is cleared today).</li>
+  <li>Open the DrivenData competition submission page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition 306</a>.</li>
+  <li>Choose <em>New submission</em>, then upload the TIF.</li>
+  <li>Name (held file, for reference only): <code>gems63-cvar-ridge-q020-s2-r3-20261011T212315Z</code></li>
+  <li>Note (short comment): <em>CVaR-robust ridge-lineness dots, 2% budget, NMS 2px, 3px catalogue-flank cut; holdout ~ random-dot control (NEGATIVE, not promoted)</em></li>
+  <li>If the site reports "Predicted values must be in range [0, 1]", the file is wrong. Stop and check the validator output in <code>registry/submissions/</code>.</li>
+</ol>
+
+<h2>What the held file is</h2>
+<p>Binary-valued dots (1 on 11,237 pixels, 0 elsewhere inside the footprint, NaN outside) at the locations our robust-selection lane chose. The lane chose a ridge score with a 2% budget, 2-px suppression and a 3-px cut next to known faults.</p>
+
+<h2>Evidence labels</h2>
+<table>
+  <tr><th>Label</th><th>Meaning</th></tr>
+  <tr><td><span class="tag">HOLDOUT-DTI</span></td><td>Our exact DTI on the spatially blocked catalogue holdout (evaluator version and 95% CI in the research page). Not an organiser score.</td></tr>
+  <tr><td><span class="tag">ORGANIZER-CONFIRMED</span></td><td>From an organiser receipt. <strong>None exists for this work.</strong></td></tr>
+  <tr><td><span class="tag">OFFICIAL-SNAPSHOT</span></td><td>Public leaderboard read on a stated date (public, not private).</td></tr>
+</table>
+
+<h2>Leaderboard context (verify before using)</h2>
+<p>The official public leaderboard read on 2026-10-11 has DW-Tversky at #1 with 0.4133, and the 0.3195 score at #9 (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a>). The brief's other figures (0.3774 as top; 0.3195 as top) conflict with this (irregularity IR-02). The owner's 0.2778 figure has no organiser receipt (IR-01).</p>
+
+<h2>More detail</h2>
+<ul>
+  <li><a href="research.html">Research page</a>: why the top submissions scored as they did (owner-report), the holdout method, controls, hypotheses and limitations.</li>
+  <li><a href="README.md">README</a>: the full brief, the protocol, reproduction steps and the run card.</li>
+  <li><a href="registry/irregularities.md">Irregularities register</a> (16 items, HIGH first).</li>
+</ul>
+
+</body>
+</html>

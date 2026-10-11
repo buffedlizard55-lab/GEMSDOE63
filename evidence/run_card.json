@@ -48,7 +48,7 @@
   "max_dot_overlap_3px": 0.6320720326625838,
   "verdict": "UNIQUE",
   "breaches": [],
-  "n_registry_rasters_checked": 36,
+  "n_registry_rasters_checked": 38,
   "sha256_collisions": [],
   "controls_flagged": [
    "inputs::ens12_7f00890a.tif",

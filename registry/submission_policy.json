@@ -1,0 +1,16 @@
+{
+  "policy": {
+    "family": "ridge",
+    "q": 0.02,
+    "s": 2,
+    "r": 3
+  },
+  "selection": "CVaR-robust over label worlds, E2 (registry/experiments/e2_cvar.json)",
+  "holdout_nominal_dti": 0.025797214391682612,
+  "holdout_nominal_ci95": [
+    0.015835555690798253,
+    0.03560412372515281
+  ],
+  "n_withheld_positives": 60988,
+  "evaluator": "gems63.dti (exact binary DTI, alpha=0.2, beta=0.8, R=300 m)"
+}

@@ -28,6 +28,20 @@ def main():
         values = ds.read(1).astype(np.float32)
 
     registry = {}
+    mine_names = {rc["raster"]["filename"], rc["raster"]["filename"].replace("-zeros.tif", "-nan.tif")}
+    parallel_dirs = [ROOT / "docs/downloads", ROOT / "held"]
+    for pdir in parallel_dirs:
+        if pdir.exists():
+            for p in sorted(pdir.glob("*.tif")):
+                if p.name in mine_names or p.name.startswith("checks-"):
+                    continue
+                try:
+                    with rasterio.open(p) as ds:
+                        a = ds.read(1).astype(np.float32)
+                    if a.shape == values.shape:
+                        registry[f"parallel::{p.parent.name}::{p.name}"] = a
+                except Exception:
+                    pass
     for p in sorted((ROOT / "registry_rasters").glob("*.tif")):
         try:
             with rasterio.open(p) as ds:

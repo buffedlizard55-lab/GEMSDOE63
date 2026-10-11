@@ -1,0 +1,117 @@
+{
+  "schema": "gems63-run-card/1",
+  "date_utc": "2026-10-11",
+  "lane": "robust-selection (CVaR over label worlds)",
+  "hypothesis": "H1: catalogue-free ridge-lineness dots, selected by CVaR over label worlds, emit useful off-catalogue fault dots (H1 tested; H2 logit as comparator).",
+  "non_fault_mimic": "Random dots of the same count (control); also oracle on 50% of withheld truth as a machinery check.",
+  "evaluator": {
+    "name": "gems63.dti (exact binary DTI, cKDTree; brute-force oracle agrees to 1e-9)",
+    "version": "unversioned; the commit that contains this card is the reference",
+    "kernel": "triangular, R = 3 px",
+    "alpha_fp": 0.2,
+    "beta_fn": 0.8
+  },
+  "holdout": {
+    "design": "5 folds of 4x4 spatial blocks; 10 px buffer; visible catalogue masked",
+    "withheld_positives": 60988,
+    "label": "HOLDOUT-DTI"
+  },
+  "results": {
+    "chosen_policy": {
+      "family": "ridge",
+      "q": 0.02,
+      "s": 2,
+      "r": 3
+    },
+    "holdout_dti": {
+      "value": 0.0258,
+      "ci95_fold_bootstrap": [
+        0.0158,
+        0.0356
+      ],
+      "label": "HOLDOUT-DTI"
+    },
+    "world_mean_dti": 0.0249,
+    "world_cvar_0.2": 0.0234,
+    "J": 0.0242,
+    "n_dots_5_folds": 57435,
+    "controls": {
+      "policy": {
+        "family": "ridge",
+        "q": 0.02,
+        "s": 2,
+        "r": 3
+      },
+      "random_dots_same_count_pooled_dti_mean5seeds": 0.0208448997033321,
+      "oracle_half_truth_pooled_dti": 0.7956598501271992,
+      "note": "controls for the holdout machinery; not competition scores"
+    },
+    "canary_top_auc": {
+      "geod_shear": 0.852,
+      "geod_2ndinv": 0.849,
+      "label": "canary (AUC)",
+      "threshold": 0.9,
+      "verdict": "PASS"
+    }
+  },
+  "correlation_and_overlap": {
+    "pearson_max_vs_registry": {
+      "value": 0.0947,
+      "repo": "58GEMSDOE",
+      "path": "evidence/ribbon/concordance_surface.tif",
+      "gate": 0.9
+    },
+    "dot_overlap_max_vs_registry": {
+      "value": 1.0,
+      "repo": "5GEMSDOE",
+      "path": "docs/downloads/gems-density-probe-20260925T184215Z-9cdae9b4.tif",
+      "gate": 0.7,
+      "note": "saturated by a near-all-ones registry raster; IR-17"
+    },
+    "rasters_compared": 1434,
+    "exact_sha256_matches": 0
+  },
+  "raster": {
+    "file": "held/gems63-cvar-ridge-q020-s2-r3-20261011T212315Z.tif",
+    "sha256": "73713d024eb45bc03d2f58977cb8526ef7c75b5df971849c9e90d4f7e5e57564",
+    "bytes": 288758,
+    "dots": 11237
+  },
+  "validator": {
+    "result": "PASS",
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_matches_template": true,
+      "shape_matches_template": true,
+      "transform_matches_template": true,
+      "outside_bounds_null_or_nan": true,
+      "inside_bounds_all_finite": true,
+      "inside_values_in_0_1": true,
+      "no_sentinel_values": true
+    }
+  },
+  "submission": {
+    "name": "gems63-cvar-ridge-q020-s2-r3-20261011T212315Z",
+    "note": "CVaR-robust ridge-lineness dots, 2% budget, NMS 2px, 3px catalogue-flank cut; holdout ~ random-dot control (NEGATIVE, not promoted)",
+    "note_chars": 131,
+    "status": "HOLD (not submitted)"
+  },
+  "uniqueness_verdict": "DUPLICATE - log and stop",
+  "organizer_confirmed": null,
+  "verdict": "NEGATIVE \u2014 not promoted; uniqueness gate tripped (IR-17), file held",
+  "budget": {
+    "experiments": 3,
+    "hours_limit": 2,
+    "note": "E1, E2, E3 + controls + uniqueness; within the 3-experiment budget"
+  },
+  "limitations": [
+    "holdout = catalogue-type faults, not verified to match private truth",
+    "no organiser receipt",
+    "q at grid edge",
+    "third-party input mirrors (IR-04)",
+    "HEAD-only registry (IR-13)",
+    "H5 blocked (IR-16)"
+  ],
+  "ai_disclosure": "This work was drafted with AI-agent assistance; the owner must review it (rules \u00a73.2; IR-14)."
+}

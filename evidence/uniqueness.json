@@ -428,6 +428,18 @@
  "final_extended": {
   "my_positive_pixels": 54864,
   "per_registry": {
+   "parallel::downloads::gems63-cvar-robust-greedy-pruned-10290dots-20261011T220000Z-f49a21c0-zeros.tif": {
+    "spearman_rho": 0.0019375937230865425,
+    "dot_overlap_3px": 0.061132983377077864,
+    "registry_positive_px": 10290,
+    "control": false
+   },
+   "parallel::held::gems63-cvar-ridge-q020-s2-r3-20261011T212315Z.tif": {
+    "spearman_rho": 0.0013656954654404862,
+    "dot_overlap_3px": 0.096055701370662,
+    "registry_positive_px": 11237,
+    "control": false
+   },
    "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif": {
     "spearman_rho": 0.2901113600332949,
     "dot_overlap_3px": 0.570939049285506,
@@ -669,6 +681,6 @@
   },
   "control_note": "Blanket controls (r13 blind lattice, ens12 union blanket) breach the 70% limit for EVERY prior family artifact incl. the 0.26/0.2778 organizers-confirmed pair (IR-63-REG-01); reported transparently, excluded from the lane gate.",
   "sha256_collisions": [],
-  "n_registry_rasters_checked": 36
+  "n_registry_rasters_checked": 38
  }
 }
